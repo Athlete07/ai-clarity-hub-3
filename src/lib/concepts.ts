@@ -1,5 +1,7 @@
 export type ExplainSpan = { text: string; explain: string };
-export type ConceptBodyBlock = { kind: "p"; parts: (string | ExplainSpan)[] };
+export type ConceptBodyBlock =
+  | { kind: "p"; parts: (string | ExplainSpan)[] }
+  | { kind: "h"; number: string; title: string; subtitle?: string };
 
 export type Example = { title: string; body: string };
 export type QuizQuestion = {
