@@ -2,10 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Nav, Footer } from "@/components/site-nav";
 import { useProgress } from "@/lib/storage";
-import {
-  Briefcase,
-  ArrowRight,
-} from "lucide-react";
+import { Briefcase, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/playbooks")({
   head: () => ({
@@ -64,8 +61,8 @@ const THEMES = {
 
 const PM_FOUNDATIONS_SEQUENCE = [
   {
-    slug: "pm-ai-hierarchy",
-    note: "Learn the core definitions (AI vs ML vs DL) and probability-based thinking.",
+    slug: "ai-vs-ml-vs-deep-learning",
+    note: "The hierarchy you'll explain 100 times in your career — AI vs ML vs Deep Learning, rule-based vs learned systems, and the 3 questions to ask any vendor.",
   },
   {
     slug: "pm-how-models-learn",
@@ -94,10 +91,7 @@ const PLAYBOOKS_BY_ROLE: Record<RoleId, Playbook[]> = {
         "A specialized sequence focusing on the technical mechanics of AI, model training vs inference, validation metrics, and handling bias/hallucination.",
       difficulty: "Intermediate",
       readingMinutes: 20,
-      topics: [
-        "AI vs ML vs DL",
-        "How models learn",
-      ],
+      topics: ["AI vs ML vs DL", "How models learn"],
       sequence: PM_FOUNDATIONS_SEQUENCE,
     },
   ],

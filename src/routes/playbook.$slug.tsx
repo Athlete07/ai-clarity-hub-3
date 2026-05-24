@@ -147,7 +147,6 @@ function ConceptPage() {
                 <Clock size={12} />
                 {concept.readingMinutes} min read · {concept.quiz.length} quiz questions
               </span>
-
             </div>
 
             <h1 id="concept" className="mt-4 text-[26px] font-medium leading-snug">
@@ -197,7 +196,6 @@ function ConceptPage() {
                 </div>
               </section>
             )}
-
 
             {/* Quiz */}
             <section id="quiz">
@@ -267,9 +265,7 @@ function BodyBlock({ block }: { block: ConceptBodyBlock }) {
         <p className="text-[11px] font-medium uppercase tracking-wider text-purple">
           Section {block.number}
         </p>
-        <h2 className="mt-1 text-[20px] font-medium leading-snug text-foreground">
-          {block.title}
-        </h2>
+        <h2 className="mt-1 text-[20px] font-medium leading-snug text-foreground">{block.title}</h2>
         {block.subtitle && (
           <p className="mt-1 text-[14px] italic text-muted-foreground">{block.subtitle}</p>
         )}
@@ -292,9 +288,7 @@ function BodyBlock({ block }: { block: ConceptBodyBlock }) {
         className="rounded-xl bg-purple-light/70 px-5 py-4 text-[14px] text-purple-dark"
         style={{ borderLeft: "3px solid var(--purple)" }}
       >
-        <p className="text-[10px] font-medium uppercase tracking-wider text-purple">
-          Key takeaway
-        </p>
+        <p className="text-[10px] font-medium uppercase tracking-wider text-purple">Key takeaway</p>
         <p className="mt-1 font-medium leading-relaxed">{block.text}</p>
       </div>
     );
@@ -324,9 +318,7 @@ function BodyBlock({ block }: { block: ConceptBodyBlock }) {
     );
   }
   if (block.kind === "trans") {
-    return (
-      <p className="text-[14px] italic leading-relaxed text-muted-foreground">{block.text}</p>
-    );
+    return <p className="text-[14px] italic leading-relaxed text-muted-foreground">{block.text}</p>;
   }
   return (
     <p>
