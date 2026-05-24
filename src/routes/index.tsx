@@ -54,13 +54,15 @@ function Home() {
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link
-              to="/playbook"
+              to="/playbook/$slug"
+              params={{ slug: "what-is-a-model" }}
               className="rounded-md bg-purple px-4 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-purple-dark"
             >
               Start the playbook →
             </Link>
             <Link
-              to="/playbook"
+              to="/playbook/$slug"
+              params={{ slug: "what-is-a-model" }}
               className="hairline rounded-md px-4 py-2.5 text-[13px] text-foreground transition-colors hover:bg-muted"
             >
               See what's inside

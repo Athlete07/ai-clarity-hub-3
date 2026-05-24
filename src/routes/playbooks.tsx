@@ -68,6 +68,26 @@ const PM_FOUNDATIONS_SEQUENCE = [
     slug: "pm-how-models-learn",
     note: "Understand how models learn from data & labels and how they are evaluated.",
   },
+  {
+    slug: "pm-training-vs-inference",
+    note: "The most expensive mistake PMs make in AI is conflating the cost of building a model with the cost of running one.",
+  },
+  {
+    slug: "pm-data-and-labels",
+    note: "Why your data strategy is your AI strategy.",
+  },
+  {
+    slug: "pm-probability-and-confidence",
+    note: "Why AI outputs aren't answers — they're bets.",
+  },
+  {
+    slug: "pm-model-evaluation",
+    note: "Why \"accuracy\" alone will mislead you every time.",
+  },
+  {
+    slug: "pm-bias-and-hallucination",
+    note: "The two failure modes that will define your AI PM career.",
+  },
 ];
 
 type Playbook = {
@@ -91,7 +111,7 @@ const PLAYBOOKS_BY_ROLE: Record<RoleId, Playbook[]> = {
         "A specialized sequence focusing on the technical mechanics of AI, model training vs inference, validation metrics, and handling bias/hallucination.",
       difficulty: "Intermediate",
       readingMinutes: 20,
-      topics: ["AI vs ML vs DL", "How models learn"],
+      topics: ["AI vs ML vs DL", "How models learn", "Training vs Inference", "Data & Labels", "Probability & Confidence", "Model Evaluation", "Bias & Hallucination"],
       sequence: PM_FOUNDATIONS_SEQUENCE,
     },
   ],

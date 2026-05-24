@@ -319,21 +319,7 @@ function BodyBlock({ block }: { block: ConceptBodyBlock }) {
       </div>
     );
   }
-  if (block.kind === "h3") {
-    return (
-      <div
-        className="mb-2 mt-10 first:mt-2"
-        id={block.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-      >
-        <h3 className="text-xl font-medium tracking-tight leading-snug text-foreground">
-          {block.title}
-        </h3>
-        {block.subtitle && (
-          <p className="mt-1 text-[14px] leading-relaxed text-muted-foreground">{block.subtitle}</p>
-        )}
-      </div>
-    );
-  }
+
   if (block.kind === "take") {
     return (
       <div
@@ -429,7 +415,7 @@ function Sidebar({
   const list = (
     <nav className="px-5 py-6 flex flex-col">
       <Link
-        to="/playbook"
+        to="/playbooks"
         className="inline-flex items-center text-[13px] text-muted-foreground transition-colors hover:text-foreground mb-6"
       >
         ← All concepts
@@ -528,7 +514,7 @@ function TableOfContents({
   const headings = useMemo(() => {
     const list: { id: string; title: string; kind: string }[] = [];
     concept.body.forEach((b) => {
-      if (b.kind === "h" || b.kind === "h3") {
+      if (b.kind === "h") {
         list.push({
           id: b.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
           title: b.title,
