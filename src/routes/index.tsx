@@ -3,7 +3,8 @@ import { Nav, Footer } from "@/components/site-nav";
 import { FaqItem } from "@/components/faq-item";
 import { StatusIndicator, StatusBadge } from "@/components/status";
 import { useProgress } from "@/lib/storage";
-import { concepts } from "@/lib/concepts";
+import { conceptBySlug } from "@/lib/concepts";
+import { playbookById } from "@/lib/playbooks";
 import { Highlighter, ListChecks, BarChart3, Bookmark } from "lucide-react";
 
 export const Route = createFileRoute("/")({
