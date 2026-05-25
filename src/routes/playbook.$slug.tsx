@@ -424,7 +424,7 @@ function ConceptPage() {
           </article>
         </main>
         {/* Right TOC */}
-        <TableOfContents concept={concept} />
+        <TableOfContents concept={concept} slug={concept.slug} />
       </div>
       <Footer />
     </div>
