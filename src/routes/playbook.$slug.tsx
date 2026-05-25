@@ -291,13 +291,12 @@ function ConceptPage() {
             <div className="mt-4 flex items-center gap-2 text-[13px] text-muted-foreground">
               <Clock size={14} className="opacity-70" />
               <span>
-                {readMode === "skim" ? `~${Math.max(2, Math.round(concept.readingMinutes / 3))}` : concept.readingMinutes} min{" "}
-                {readMode === "skim" ? "skim" : "read"}
+                ~{essentialsMinutes} min essentials
               </span>
               <span className="opacity-50">·</span>
-              <span>{Object.keys(sectionMinutes).length} sections</span>
+              <span>{concept.readingMinutes} min full</span>
               <span className="opacity-50">·</span>
-              <span>{concept.quiz.length} quiz questions</span>
+              <span>{Object.keys(sectionMinutes).length} sections</span>
             </div>
 
             <p className="hairline-b mt-6 pb-5 text-base leading-relaxed text-muted-foreground">
