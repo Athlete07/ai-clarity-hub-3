@@ -292,16 +292,18 @@ function ConceptPage() {
             >
               {concept.title}
             </h1>
-            <div className="mt-4 flex items-center gap-2 text-[13px] text-muted-foreground">
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-[13px] text-muted-foreground">
               <Clock size={14} className="opacity-70" />
-              <span>
-                ~{essentialsMinutes} min essentials
-              </span>
+              <span>~{essentialsMinutes} min essentials</span>
               <span className="opacity-50">·</span>
               <span>{concept.readingMinutes} min full</span>
               <span className="opacity-50">·</span>
               <span>{Object.keys(sectionMinutes).length} sections</span>
+              <BudgetChip mins={essentialsMinutes} />
             </div>
+
+            <ResumeSavedPill slug={concept.slug} />
+
 
             <p className="hairline-b mt-6 pb-5 text-base leading-relaxed text-muted-foreground">
               {concept.summary}
