@@ -76,15 +76,6 @@ export function Nav({ slim = false }: { slim?: boolean }) {
               {streak}-day streak
             </span>
           )}
-          {!slim ? (
-            <Link
-              to="/playbook"
-              className="hairline rounded-md px-3 py-1.5 text-[13px] text-foreground transition-colors hover:bg-muted"
-            >
-              Start learning →
-            </Link>
-          ) : null}
-          <ThemeToggle />
         </div>
       </div>
     </header>
