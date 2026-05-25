@@ -6,12 +6,10 @@ import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Quiz } from "@/components/quiz";
 import { DiagramBlock } from "@/components/diagrams";
 import {
-  concepts,
   conceptBySlug,
-  nextConcept,
-  prevConcept,
   type ConceptBodyBlock,
 } from "@/lib/concepts";
+import { playbookForSlug, nextSlugInPlaybook, prevSlugInPlaybook } from "@/lib/playbooks";
 import { useProgress, useReadMode, useSectionsViewed, useSavedDepth, type ReadMode } from "@/lib/storage";
 import { Clock, Hand, Menu, X, Check, ChevronDown, BookOpen, Zap, Bookmark, BookmarkCheck } from "lucide-react";
 
