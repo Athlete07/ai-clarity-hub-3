@@ -85,6 +85,10 @@ export const PLAYBOOKS: Playbook[] = [
         slug: "pm-llm-tokenization",
         note: "How machines read — and why tokens are the unit of cost, latency, and context for every LLM feature you'll ever ship.",
       },
+      {
+        slug: "pm-llm-transformers-attention",
+        note: "The architecture that changed everything — encoders, decoders, attention, and why these choices shape what your product can do.",
+      },
     ],
   },
 ];
