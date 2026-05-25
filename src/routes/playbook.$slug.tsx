@@ -561,32 +561,102 @@ function CollapsibleExample({
   );
 }
 
-function DepthFold({ blocks, mode }: { blocks: ConceptBodyBlock[]; mode: ReadMode }) {
+function BudgetChip({ mins }: { mins: number }) {
+  const tone =
+    mins <= 20
+      ? { label: "Within commute", cls: "bg-success-bg text-success" }
+      : mins <= 30
+        ? { label: "Long read", cls: "bg-amber-bg text-amber-dark" }
+        : { label: "Over budget", cls: "bg-error-bg text-error" };
+  return (
+    <span className={`ml-1 inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ${tone.cls}`}>
+      {tone.label}
+    </span>
+  );
+}
+
+function ResumeSavedPill({ slug }: { slug: string }) {
+  const { items } = useSavedDepth();
+  const here = items.filter((i) => i.slug === slug);
+  if (here.length === 0) return null;
+  const first = here[0];
+  const targetId = first.sectionTitle ? "" : ""; // placeholder
+  return (
+    <a
+      href={`#${first.sectionTitle ? first.sectionTitle : ""}`}
+      onClick={(e) => {
+        e.preventDefault();
+        const el = document.querySelector(`[data-section-num="${first.sectionNum}"]`);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }}
+      className="mt-4 inline-flex items-center gap-2 rounded-full bg-purple-light/60 px-3 py-1.5 text-[12px] text-purple-dark hover:bg-purple-light"
+    >
+      <BookmarkCheck size={12} />
+      Resume saved deep dive · Section {first.sectionNum}
+      {here.length > 1 && <span className="opacity-60">+{here.length - 1} more</span>}
+    </a>
+  );
+}
+
+function DepthFold({
+  blocks,
+  mode,
+  slug,
+  sectionNum,
+  sectionTitle,
+}: {
+  blocks: ConceptBodyBlock[];
+  mode: ReadMode;
+  slug: string;
+  sectionNum: string;
+  sectionTitle: string;
+}) {
   const [open, setOpen] = useState(false);
+  const { isSaved, toggle } = useSavedDepth();
   if (mode === "skim") return null;
   const paraCount = blocks.length;
-  const words = blocks.reduce((n, b) => n + (b.kind === "p" ? b.parts.reduce((m, p) => m + (typeof p === "string" ? p : p.text).split(/\s+/).length, 0) : 0), 0);
+  const words = blocks.reduce(
+    (n, b) =>
+      n +
+      (b.kind === "p"
+        ? b.parts.reduce((m, p) => m + (typeof p === "string" ? p : p.text).split(/\s+/).length, 0)
+        : 0),
+    0,
+  );
   const mins = Math.max(1, Math.round(words / 220));
+  const saved = isSaved(slug, sectionNum);
   return (
-    <div className="hairline rounded-xl bg-card/60">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="flex w-full items-center justify-between gap-3 px-5 py-3 text-left"
-        aria-expanded={open}
-      >
-        <div className="min-w-0">
-          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            Go deeper
-          </p>
-          <p className="mt-0.5 text-[13px] text-foreground/80">
-            {paraCount} more paragraph{paraCount === 1 ? "" : "s"} · ~{mins} min
-          </p>
-        </div>
-        <ChevronDown
-          size={16}
-          className={`shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </button>
+    <div className="hairline rounded-xl bg-card/60" data-section-num={sectionNum}>
+      <div className="flex w-full items-center gap-2 px-2 py-1">
+        <button
+          onClick={() => setOpen((o) => !o)}
+          className="flex flex-1 items-center justify-between gap-3 rounded-lg px-3 py-2 text-left hover:bg-muted/40"
+          aria-expanded={open}
+        >
+          <div className="min-w-0">
+            <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+              Go deeper
+            </p>
+            <p className="mt-0.5 text-[13px] text-foreground/80">
+              {paraCount} more paragraph{paraCount === 1 ? "" : "s"} · ~{mins} min
+            </p>
+          </div>
+          <ChevronDown
+            size={16}
+            className={`shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
+          />
+        </button>
+        <button
+          onClick={() => toggle(slug, sectionNum, sectionTitle)}
+          aria-label={saved ? "Remove bookmark" : "Save for later"}
+          className={`shrink-0 rounded-md p-2 transition-colors ${
+            saved ? "text-purple hover:bg-purple-light/50" : "text-muted-foreground hover:bg-muted hover:text-foreground"
+          }`}
+          title={saved ? "Saved · click to remove" : "Save for later"}
+        >
+          {saved ? <BookmarkCheck size={15} /> : <Bookmark size={15} />}
+        </button>
+      </div>
       {open && (
         <div className="hairline-t space-y-4 px-5 py-4 text-[15px] leading-relaxed text-foreground/90">
           {blocks.map((b, i) =>
