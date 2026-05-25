@@ -3,7 +3,8 @@ import { Nav, Footer } from "@/components/site-nav";
 import { FaqItem } from "@/components/faq-item";
 import { StatusIndicator, StatusBadge } from "@/components/status";
 import { useProgress } from "@/lib/storage";
-import { concepts } from "@/lib/concepts";
+import { conceptBySlug } from "@/lib/concepts";
+import { playbookById } from "@/lib/playbooks";
 import { Highlighter, ListChecks, BarChart3, Bookmark } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -30,9 +31,13 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const { progress } = useProgress();
+  const foundations = playbookById("pm-foundations")!;
+  const concepts = foundations.sequence
+    .map((s) => conceptBySlug(s.slug))
+    .filter((c): c is NonNullable<ReturnType<typeof conceptBySlug>> => Boolean(c));
   const doneCount = concepts.filter((c) => progress[c.slug] === "done").length;
   const activeSlug = concepts.find((c) => progress[c.slug] === "in-progress")?.slug;
-  const pct = Math.round((doneCount / concepts.length) * 100);
+  const pct = concepts.length ? Math.round((doneCount / concepts.length) * 100) : 0;
 
   return (
     <>
