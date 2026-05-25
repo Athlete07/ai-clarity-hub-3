@@ -16,13 +16,31 @@ export type ConceptBodyBlock =
     };
 
 export type Example = { title: string; body: string };
-export type QuizQuestion = {
+export type MCQQuestion = {
+  kind?: "mcq";
   q: string;
   options: string[];
   correct: number;
   correctFeedback: string;
   wrongFeedback: string;
 };
+export type CategorizeQuestion = {
+  kind: "categorize";
+  q: string;
+  categories: string[];
+  items: { text: string; category: number }[];
+  correctFeedback: string;
+  wrongFeedback: string;
+};
+export type OrderQuestion = {
+  kind: "order";
+  q: string;
+  items: string[]; // in CORRECT order
+  prompt?: string;
+  correctFeedback: string;
+  wrongFeedback: string;
+};
+export type QuizQuestion = MCQQuestion | CategorizeQuestion | OrderQuestion;
 
 export type Concept = {
   slug: string;
