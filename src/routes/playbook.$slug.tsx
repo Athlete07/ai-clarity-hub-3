@@ -548,6 +548,59 @@ function CollapsibleExample({
   );
 }
 
+function DepthFold({ blocks, mode }: { blocks: ConceptBodyBlock[]; mode: ReadMode }) {
+  const [open, setOpen] = useState(false);
+  if (mode === "skim") return null;
+  const paraCount = blocks.length;
+  const words = blocks.reduce((n, b) => n + (b.kind === "p" ? b.parts.reduce((m, p) => m + (typeof p === "string" ? p : p.text).split(/\s+/).length, 0) : 0), 0);
+  const mins = Math.max(1, Math.round(words / 220));
+  return (
+    <div className="hairline rounded-xl bg-card/60">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="flex w-full items-center justify-between gap-3 px-5 py-3 text-left"
+        aria-expanded={open}
+      >
+        <div className="min-w-0">
+          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+            Go deeper
+          </p>
+          <p className="mt-0.5 text-[13px] text-foreground/80">
+            {paraCount} more paragraph{paraCount === 1 ? "" : "s"} · ~{mins} min
+          </p>
+        </div>
+        <ChevronDown
+          size={16}
+          className={`shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      {open && (
+        <div className="hairline-t space-y-4 px-5 py-4 text-[15px] leading-relaxed text-foreground/90">
+          {blocks.map((b, i) =>
+            b.kind === "p" ? (
+              <p key={i}>
+                {b.parts.map((part, j) =>
+                  typeof part === "string" ? (
+                    <span key={j}>{part}</span>
+                  ) : (
+                    <span
+                      key={j}
+                      data-explain={part.explain}
+                      className="rounded-sm bg-purple-light/40 underline decoration-purple/30 decoration-dotted underline-offset-4 transition-colors hover:bg-purple-light"
+                    >
+                      {part.text}
+                    </span>
+                  ),
+                )}
+              </p>
+            ) : null,
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Sidebar({
   currentSlug,
   open,
