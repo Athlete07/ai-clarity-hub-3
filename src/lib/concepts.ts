@@ -5334,6 +5334,16 @@ export const concepts: Concept[] = [
       body: "OpenAI ships a public tokenizer at platform.openai.com/tokenizer where you can paste any string and see exactly which tokens it produces and how many there are. Paste in a paragraph of your product copy and you'll often discover your 'short' system prompt is 600 tokens, your email template is 1,200, and your help-centre article is 4,000 — numbers no PM would have guessed by eyeballing the text. Most product teams have never opened this tool. The ones that have stop having unpleasant cost conversations with finance.",
     },
     {
+      kind: "ex",
+      title: "Tiktoken in a spreadsheet — the PM tool that doesn't need engineering",
+      body: "OpenAI's tiktoken library has a wrapper that runs in a Google Sheet via Apps Script — letting a PM paste a column of prompts and read exact token counts in the next column. Several AI-first startups make this the first day-one onboarding for new product hires: build a sheet that counts tokens for your top 20 production prompts and stares at the totals. The realisation that the 'short' onboarding prompt is 2,300 tokens lands harder when you typed the formula yourself than when an engineer mentioned it in standup.",
+    },
+    {
+      kind: "ex",
+      title: "Claude's 'count_tokens' API — pre-flight checks become product features",
+      body: "Anthropic exposes a separate count_tokens endpoint that's free and orders of magnitude faster than a real inference call. Mature AI products use it before sending the actual request — to enforce per-user token quotas, warn users when their attachment will blow the context window, or auto-trim conversation history. None of those are infrastructure features; each one is a PM-level UX decision made possible by treating token counting as a first-class part of the product, not a backend afterthought.",
+    },
+    {
       kind: "h",
       number: "1.2",
       title: "How tokenization works",
