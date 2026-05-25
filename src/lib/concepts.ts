@@ -5603,6 +5603,11 @@ export const concepts: Concept[] = [
       body: "Several AI-PM communities have converged on a simple habit: for any new LLM feature proposal, the PM is expected to put a 'one-cent estimate' in the PRD — what does one call to this feature cost in pennies? It forces the tokenization conversation upstream of the build. Features that come in over 5 cents per call get a second round of review on whether the prompt can be compressed before any engineering starts. It's not a precise number; it's a forcing function.",
     },
     {
+      kind: "ex",
+      title: "Anthropic's tokenizer endpoint — used in CI, not just in design",
+      body: "Anthropic and OpenAI both ship token-counting endpoints separate from the inference endpoint. Mature AI teams wire those into CI: every prompt change runs through the counter and fails the build if total tokens jump more than a defined threshold. The discipline turns 'prompt drift' from a quarterly fire drill into a blocking PR check. PMs who set the threshold and own the alert are the ones whose features don't drift into red gross margin between launch and the next planning cycle.",
+    },
+    {
       kind: "h",
       number: "1.7",
       title: "PM decision lens: token economics at scale",
