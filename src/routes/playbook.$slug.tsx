@@ -331,7 +331,14 @@ function ConceptPage() {
                 item.type === "block" ? (
                   <BodyBlock key={i} block={item.block} mode={readMode} sectionMinutes={sectionMinutes} />
                 ) : (
-                  <DepthFold key={i} blocks={item.blocks} mode={readMode} />
+                  <DepthFold
+                    key={i}
+                    blocks={item.blocks}
+                    mode={readMode}
+                    slug={concept.slug}
+                    sectionNum={item.sectionNum}
+                    sectionTitle={item.sectionTitle}
+                  />
                 ),
               )}
             </div>
