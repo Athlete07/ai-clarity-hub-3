@@ -139,7 +139,7 @@ const PLAYBOOKS_BY_ROLE: Record<RoleId, Playbook[]> = {
         "Model families", 
         "Multimodal basics (vision, speech, image gen)"
       ],
-      sequence: [],
+      sequence: PM_LLMS_PROMPTING_SEQUENCE,
     },
   ],
 };
