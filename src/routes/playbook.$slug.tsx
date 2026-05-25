@@ -580,12 +580,9 @@ function ResumeSavedPill({ slug }: { slug: string }) {
   const here = items.filter((i) => i.slug === slug);
   if (here.length === 0) return null;
   const first = here[0];
-  const targetId = first.sectionTitle ? "" : ""; // placeholder
   return (
-    <a
-      href={`#${first.sectionTitle ? first.sectionTitle : ""}`}
-      onClick={(e) => {
-        e.preventDefault();
+    <button
+      onClick={() => {
         const el = document.querySelector(`[data-section-num="${first.sectionNum}"]`);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       }}
@@ -594,7 +591,7 @@ function ResumeSavedPill({ slug }: { slug: string }) {
       <BookmarkCheck size={12} />
       Resume saved deep dive · Section {first.sectionNum}
       {here.length > 1 && <span className="opacity-60">+{here.length - 1} more</span>}
-    </a>
+    </button>
   );
 }
 
