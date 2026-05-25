@@ -6,12 +6,10 @@ import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Quiz } from "@/components/quiz";
 import { DiagramBlock } from "@/components/diagrams";
 import {
-  concepts,
   conceptBySlug,
-  nextConcept,
-  prevConcept,
   type ConceptBodyBlock,
 } from "@/lib/concepts";
+import { playbookForSlug, nextSlugInPlaybook, prevSlugInPlaybook } from "@/lib/playbooks";
 import { useProgress, useReadMode, useSectionsViewed, useSavedDepth, type ReadMode } from "@/lib/storage";
 import { Clock, Hand, Menu, X, Check, ChevronDown, BookOpen, Zap, Bookmark, BookmarkCheck } from "lucide-react";
 
@@ -208,12 +206,16 @@ function ConceptPage() {
     markInProgress(concept.slug);
   }, [concept.slug, markInProgress]);
 
-  const doneCount = concepts.filter((c) => progress[c.slug] === "done").length;
-  const pct = Math.round((doneCount / concepts.length) * 100);
-  const next = nextConcept(concept.slug);
-  const prev = prevConcept(concept.slug);
+  const playbook = playbookForSlug(concept.slug);
+  const playbookSlugs = playbook?.sequence.map((c) => c.slug) ?? [concept.slug];
+  const doneCount = playbookSlugs.filter((s) => progress[s] === "done").length;
+  const pct = Math.round((doneCount / playbookSlugs.length) * 100);
+  const nextSlug = nextSlugInPlaybook(concept.slug);
+  const prevSlug = prevSlugInPlaybook(concept.slug);
+  const next = nextSlug ? conceptBySlug(nextSlug) : undefined;
+  const prev = prevSlug ? conceptBySlug(prevSlug) : undefined;
 
-  const currentIdx = concepts.findIndex((c) => c.slug === concept.slug);
+  const currentIdx = playbookSlugs.indexOf(concept.slug);
   const displayNum = currentIdx + 1;
 
   return (
@@ -701,6 +703,12 @@ function Sidebar({
     };
   }, []);
 
+  const playbook = playbookForSlug(currentSlug);
+  const items = (playbook?.sequence ?? []).map((s) => {
+    const c = conceptBySlug(s.slug);
+    return { slug: s.slug, shortTitle: c?.shortTitle ?? s.slug };
+  });
+
   const list = (
     <nav className="px-5 py-6 flex flex-col">
       <Link
@@ -709,9 +717,9 @@ function Sidebar({
       >
         ← Playbooks
       </Link>
-      <p className="section-label">AI Foundations for PMs</p>
+      <p className="section-label">{playbook?.title ?? "Playbook"}</p>
       <ul className="mt-4 space-y-1">
-        {concepts.map((c, idx) => {
+        {items.map((c, idx) => {
           const isCurrent = c.slug === currentSlug;
           const done = progress[c.slug] === "done";
 
