@@ -3,7 +3,7 @@
 // Keeping chapters scoped to their playbook prevents cross-playbook bleed
 // in sidebar, prev/next nav, progress %, and chapter numbering.
 
-export type PlaybookId = "pm-foundations" | "pm-llms-prompting";
+export type PlaybookId = "pm-foundations" | "pm-llms-prompting" | "pm-dev-toolchain";
 
 export type PlaybookChapter = {
   slug: string;
@@ -93,6 +93,58 @@ export const PLAYBOOKS: Playbook[] = [
         slug: "pm-llm-context-windows",
         note: "The model's working memory — why every input, output, and history token counts against the same budget, and how to design features inside that constraint.",
       },
+    ],
+  },
+  {
+    id: "pm-dev-toolchain",
+    title: "Developer Toolchain for PMs",
+    subtitle: "Understanding the tools engineers use to build AI.",
+    description: "A comprehensive guide to the modern AI developer stack, from APIs and orchestrators to vector databases and deployment infrastructure.",
+    difficulty: "Intermediate",
+    readingMinutes: 30,
+    topics: [
+      "Git & GitHub",
+      "APIs & REST",
+      "Python basics",
+      "Notebooks & Colab",
+      "Cloud (AWS/GCP/Azure)",
+      "Containers & Docker",
+      "CI/CD concepts",
+      "Cost & latency tradeoffs"
+    ],
+    sequence: [
+      {
+        slug: "pm-dev-git-github",
+        note: "Version control demystified — the system that makes software collaboration possible and gives you direct visibility into engineering velocity.",
+      },
+      {
+        slug: "pm-dev-apis-rest",
+        note: "The plumbing of modern software — how products talk to each other and why understanding webhooks vs polling is critical for your roadmap.",
+      },
+      {
+        slug: "pm-dev-python-basics",
+        note: "The language of data science, AI, and automation — what PMs need to read (not write) it.",
+      },
+      {
+        slug: "pm-dev-notebooks-colab",
+        note: "The PM's window into how data scientists actually work, and why a working notebook is not a shippable product.",
+      },
+      {
+        slug: "pm-dev-cloud",
+        note: "Where your product actually runs, and why cloud architecture decisions directly impact your margins and compliance.",
+      },
+      {
+        slug: "pm-dev-containers-docker",
+        note: "The packaging system that made 'it works on my machine' a solved problem, and what it signals about your team's maturity.",
+      },
+      {
+        slug: "pm-dev-ci-cd-concepts",
+        note: "How software goes from a developer's laptop to your users safely, and why feature flags are a PM's best friend.",
+      },
+      {
+        slug: "pm-dev-cost-latency",
+        note: "The constraint every technical product decision lives inside, and why you must calculate unit economics before writing a Jira ticket.",
+      }
     ],
   },
 ];

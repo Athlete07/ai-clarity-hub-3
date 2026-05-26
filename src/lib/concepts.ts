@@ -7006,7 +7006,1238 @@ export const concepts: Concept[] = [
         "More chunks makes the middle bigger and the problem worse. The fix is prompt assembly order: most relevant chunks at the edges of the context, not buried in the middle. Re-read section 3.6.",
     },
   ],
-}
+},
+{
+  slug: "pm-dev-git-github",
+  number: 1,
+  shortTitle: "Git & GitHub",
+  title: "Git & GitHub",
+  readingMinutes: 15,
+  summary: "Version control demystified — the system that makes software collaboration possible.",
+  keyTakeaway: "Git is not just for code backup; it is the fundamental collaboration protocol for modern software. Understanding branches, commits, and pull requests gives you direct visibility into engineering velocity and blockers.",
+  pmCallout: "As a PM, GitHub isn't just where code lives—it's your most honest source of truth. The issue tracker, pull requests, and commit history often tell you more about product health and team velocity than any roadmap document.",
+  body: [
+    {
+      kind: "h",
+      number: "1.1",
+      title: "What is version control",
+      subtitle: "Why tracking every change to every file is the foundation of all software work",
+    },
+    {
+      kind: "take",
+      text: "Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Without version control, engineers would have to manually save 'final_v2_real' copies of their codebase. "),
+        x("Version control systems (VCS) solve this by tracking the exact delta—every added or removed line—across the entire history of the project.", "This means if a new bug is introduced, you can perfectly 'rewind' the codebase to a state from an hour ago or a year ago.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "1.2",
+      title: "What is Git",
+      subtitle: "The distributed system that lets dozens of engineers edit the same codebase without chaos",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Git is the specific version control software that won the industry standard. "),
+        x("It is distributed, meaning every developer has a full, independent copy of the entire repository history on their local machine.", "This allows engineers to work offline, make experimental changes, and commit their work locally before syncing it back to the main server.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "1.3",
+      title: "Repositories, commits, and branches",
+      subtitle: "The three concepts that explain 90% of what engineers talk about",
+    },
+    {
+      kind: "why",
+      text: "If you don't know the difference between a branch and a commit, you can't understand why a feature is 'done' locally but not yet in production.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A "), x("repository (or 'repo')", "The root folder containing all the files and the entire history of the project."),
+        s(" is the project workspace. A "), x("commit", "A saved snapshot of changes. Think of it like a milestone or a save point in a video game."),
+        s(" is a permanent record of a change. And a "), x("branch", "A parallel, independent line of development."),
+        s(" allows an engineer to work on a new feature without affecting the main codebase (usually called 'main' or 'master').")
+      ]
+    },
+    {
+      kind: "ex",
+      title: "The Branching Model",
+      body: "Imagine writing a book. The 'main' branch is the published manuscript. When you want to add a chapter, you create a 'branch'—a duplicate copy. You write your drafts, make mistakes, and save milestones ('commits') on your branch. Once it's perfect, you merge your branch back into the main manuscript."
+    },
+    {
+      kind: "h",
+      number: "1.4",
+      title: "Pull requests and code review",
+      subtitle: "How changes get proposed, reviewed, and merged — and why PRs are a PM artefact too",
+    },
+    {
+      kind: "take",
+      text: "A Pull Request (PR) is a formal request to merge a branch into the main codebase. It acts as the gatekeeper for code quality.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Before an engineer's work goes live, they open a PR. This triggers a review process where other engineers inspect the code. "),
+        x("For PMs, PRs are incredibly valuable because they contain the 'why' behind a code change.", "Engineers often link PRs to ticket numbers (e.g., Jira/Linear) and discuss edge cases, technical debt, or scope adjustments directly in the PR comments.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "1.5",
+      title: "Merge conflicts and what causes them",
+      subtitle: "Why two engineers editing the same file creates a problem and how it gets resolved",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Because engineers work in parallel branches, sometimes two people edit the exact same line of code in different ways. "),
+        x("When they both try to merge their branches, Git doesn't know which version to keep.", "This is called a merge conflict. It is not an error; it is Git forcing a human to manually decide which code wins. Resolving conflicts can be tedious and is a common reason why a 'done' feature gets delayed.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "1.6",
+      title: "GitHub vs Git",
+      subtitle: "The platform vs the protocol — and why GitHub is where the work actually lives",
+    },
+    {
+      kind: "take",
+      text: "Git is the underlying tool that runs on laptops. GitHub is the cloud hosting service and collaboration UI built on top of Git.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Saying GitHub is Git is like saying Gmail is email. "),
+        x("GitHub provides the visual interface for Pull Requests, issues, and repository management.", "Other platforms like GitLab or Bitbucket do the same thing. While Git is the engine, GitHub is the dashboard where the team coordinates.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "1.7",
+      title: "Reading a repo as a PM",
+      subtitle: "What a README, commit history, and issue tracker tell you about a codebase's health",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("You don't need to read code to read a repository. The "), x("README", "The front page of a repository that explains what the project does, how to install it, and how to contribute."),
+        s(" tells you if the project is documented. The commit history tells you if the team works in small, frequent increments or massive, risky dumps. The issue tracker reveals the backlog of technical debt and user bugs.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "1.8",
+      title: "PM decision lens: using GitHub to understand your team's velocity",
+      subtitle: "Issues, PRs, and commit cadence as product signal",
+    },
+    {
+      kind: "why",
+      text: "Velocity isn't just a burndown chart in Jira. True engineering velocity is visible in how quickly PRs are opened, reviewed, and merged.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("If PRs sit open for days without review, your team has a bottleneck. If commits are infrequent but massive, your team is taking on high integration risk. "),
+        x("By looking directly at GitHub, you bypass the abstraction of project management tools.", "You can see exactly when work starts, where it stalls, and how collaboratively the team is operating.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "What is the primary difference between Git and GitHub?",
+      options: [
+        "Git is for front-end code; GitHub is for back-end code.",
+        "Git is the underlying version control protocol; GitHub is the cloud platform built around it.",
+        "Git is an older, deprecated version of GitHub."
+      ],
+      correct: 1,
+      correctFeedback: "Spot on. Git is the engine running locally, while GitHub provides the UI, cloud hosting, and collaboration tools like Pull Requests.",
+      wrongFeedback: "Remember the Gmail vs. Email analogy. One is the underlying technology, the other is a service built on top of it."
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-apis-rest",
+  number: 2,
+  shortTitle: "APIs & REST",
+  title: "APIs & REST",
+  readingMinutes: 18,
+  summary: "The plumbing of modern software — how products talk to each other.",
+  keyTakeaway: "APIs are the contracts that allow different software systems to communicate. Understanding how endpoints, methods, and webhooks work allows you to accurately scope integrations and anticipate latency or cost bottlenecks.",
+  pmCallout: "As a PM, every third-party integration is an API dependency. If you can't read API documentation, you can't validate whether a feature is feasible before committing it to a roadmap.",
+  body: [
+    {
+      kind: "h",
+      number: "2.1",
+      title: "What is an API",
+      subtitle: "The contract between two software systems — and why everything your product does runs through one",
+    },
+    {
+      kind: "take",
+      text: "An Application Programming Interface (API) is a set of rules that lets one piece of software talk to another. It defines what requests can be made, how to make them, and what responses to expect.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Think of an API like a waiter in a restaurant. You (the client) look at the menu (the documentation) and place an order. "),
+        x("The waiter takes the order to the kitchen (the server), gets your food, and brings it back.", "You don't need to know how the kitchen cooked the meal, you just need to know how to ask the waiter for it."),
+        s(" In software, your frontend app uses an API to ask your backend server for user data.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.2",
+      title: "What is REST",
+      subtitle: "The dominant API design style and the conventions that make it predictable",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("REST (Representational State Transfer) is not a technology; it's an architectural style. "),
+        x("A RESTful API organizes data into 'resources' (like users, orders, or posts).", "Because REST is highly standardized, an engineer who knows how to use Stripe's REST API can easily guess how to use Twilio's REST API."),
+        s(" It uses standard HTTP protocols, making it the bedrock of web communication.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.3",
+      title: "Endpoints, methods, and resources",
+      subtitle: "GET, POST, PUT, DELETE — what each one does and when it's used",
+    },
+    {
+      kind: "why",
+      text: "When an engineer says 'we need a new endpoint for this', they mean they have to build a new URL to expose a specific piece of functionality or data.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("An "), x("endpoint", "The specific URL where an API can be accessed. E.g., https://api.stripe.com/v1/customers"),
+        s(" represents a resource. The action you perform on that resource is dictated by the HTTP method: "),
+        x("GET", "Retrieves data. It should never change anything. Example: Fetching a user profile."),
+        s(" to read, "),
+        x("POST", "Creates new data. Example: Submitting a sign-up form."),
+        s(" to create, "),
+        x("PUT/PATCH", "Updates existing data. Example: Changing an account password."),
+        s(" to update, and "),
+        x("DELETE", "Removes data."),
+        s(" to remove.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.4",
+      title: "Request and response anatomy",
+      subtitle: "Headers, body, status codes — what's actually travelling over the wire",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Every API call consists of a Request and a Response. Both have a "),
+        x("Body", "The main payload of data. When you POST a new user, the Body contains their name and email, usually formatted as JSON."),
+        s(" containing the actual data, and "),
+        x("Headers", "Hidden metadata sent along with the request. This is where authentication tokens and data format preferences live."),
+        s(" containing metadata. When the server replies, it includes a "),
+        x("Status Code", "A 3-digit number summarizing what happened. 200s mean success. 400s mean the client messed up (like a bad password). 500s mean the server crashed."),
+        s(" to immediately signal success or failure.")
+      ]
+    },
+    {
+      kind: "ex",
+      title: "The 404 Error",
+      body: "You've seen '404 Not Found' on websites. This is actually a standard HTTP status code generated by an API. It literally means 'the endpoint or resource you requested doesn't exist on this server'."
+    },
+    {
+      kind: "h",
+      number: "2.5",
+      title: "Authentication in APIs",
+      subtitle: "API keys, OAuth, JWTs — why your product can't just call any API it wants",
+    },
+    {
+      kind: "take",
+      text: "APIs are gates to your database. Without authentication, anyone could read or delete your data.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Products authenticate API requests in a few ways. An "), x("API Key", "A long, secret string of characters. Think of it like a password for a computer instead of a human."),
+        s(" is a static secret passed in the header. "),
+        x("OAuth", "The protocol used when you see 'Sign in with Google'. It allows a third-party app to act on a user's behalf without seeing their password."),
+        s(" allows delegated access. And JWTs (JSON Web Tokens) are temporary passes given to users after they log in.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.6",
+      title: "Rate limits and quotas",
+      subtitle: "Why third-party APIs aren't free at scale — and how they break your product",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("No server has infinite capacity. To prevent abuse, API providers enforce "),
+        x("Rate Limits", "A cap on how many requests you can make in a given timeframe (e.g., 100 requests per minute)."),
+        s(". If your app exceeds this, the API returns a '429 Too Many Requests' error. As a PM, you must ensure your app gracefully handles rate limits by retrying later, rather than crashing for the user.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.7",
+      title: "Webhooks vs polling",
+      subtitle: "Push vs pull — why the difference matters for latency and infrastructure cost",
+    },
+    {
+      kind: "why",
+      text: "If you want real-time updates (like a Slack notification when a Stripe payment clears), polling is a terrible strategy. Webhooks are the solution.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Polling is like asking 'Are we there yet?' every 5 seconds. It wastes enormous amounts of server compute. A "),
+        x("Webhook", "A reverse API. Instead of you calling their server, you give them a URL, and their server POSTs data to your URL the moment an event happens."),
+        s(" is a push notification for servers. Instead of asking if a payment cleared, you wait for Stripe to proactively tell you it cleared.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.8",
+      title: "Reading API documentation as a PM",
+      subtitle: "What to look for before committing your team to a third-party integration",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Before adding a dependency to your roadmap, read the API docs. Look for three things: "),
+        x("Authentication methods", "Can your current infrastructure support it?"),
+        s(", "), x("Rate limits", "Will their caps break under your projected user volume?"),
+        s(", and "), x("Pagination", "If you request 10,000 records, does the API return them all at once (crashing your app) or does it neatly paginate them 100 at a time?"),
+        s(".")
+      ]
+    },
+    {
+      kind: "h",
+      number: "2.9",
+      title: "PM decision lens: API dependency as product risk",
+      subtitle: "Versioning, deprecation, and the vendor lock-in question",
+    },
+    {
+      kind: "take",
+      text: "Every API you integrate is a promise that you are now reliant on another company's uptime, pricing, and engineering decisions.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("APIs change. When a provider releases a new version, they will eventually "),
+        x("deprecate", "To officially stop supporting a feature or version, usually with a scheduled shutdown date."),
+        s(" the old one. This creates forced engineering work for your team just to keep existing features alive. A good PM minimizes third-party API dependencies unless they are core to the product's value proposition.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "Your application needs to know immediately when a user finishes a background video processing job on a third-party service. Which approach is most efficient?",
+      options: [
+        "Write a script that uses a GET request to poll the API every 3 seconds.",
+        "Set up a Webhook so the third-party service POSTs a payload to your server the moment the job completes.",
+        "Use a PUT request to override the job status locally."
+      ],
+      correct: 1,
+      correctFeedback: "Correct! A Webhook acts as a push notification, eliminating the wasted compute and latency delays of constant polling.",
+      wrongFeedback: "Polling (asking repeatedly) wastes massive amounts of server resources and API quota. Think about 'push' vs 'pull' methods."
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-python-basics",
+  number: 3,
+  shortTitle: "Python Basics",
+  title: "Python Basics",
+  readingMinutes: 20,
+  summary: "The language of data science, AI, and automation — what PMs need to read (not write) it.",
+  keyTakeaway: "You don't need to write Python to be an effective PM, but you do need to read it. Understanding basic syntax, logic, and package management allows you to unblock data science teams and anticipate dependency nightmares.",
+  pmCallout: "As a PM, a team's choice of Python libraries often becomes your product's boundary. If an engineer imports a library that can't scale or has an incompatible license, that's a product problem, not just an engineering problem.",
+  body: [
+    {
+      kind: "h",
+      number: "3.1",
+      title: "Why Python dominates AI and data work",
+      subtitle: "Libraries, readability, and the ecosystem that made it the default",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Python didn't win AI because it's the fastest language (it isn't). It won because of its "),
+        x("ecosystem", "A vast collection of pre-written libraries for math, data, and machine learning, built over two decades."),
+        s(" and its readability. Because Python looks almost like plain English, data scientists and researchers—who aren't always trained software engineers—adopted it to write complex math simply.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.2",
+      title: "Variables, types, and data structures",
+      subtitle: "Strings, integers, lists, dictionaries — the building blocks you'll see in every script",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("When reading code, look for how data is stored. A "), x("String", "Text enclosed in quotes. e.g., 'Hello world'"),
+        s(" is text. An "), x("Integer", "A whole number. e.g., 42"),
+        s(" is math. Engineers organize these into groups: a "), x("List", "An ordered sequence of items. e.g., [1, 2, 3]"),
+        s(" is a simple sequence, while a "), x("Dictionary", "A collection of key-value pairs. e.g., {'name': 'Alice', 'role': 'PM'}"),
+        s(" stores data with labels, much like JSON or a database row.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.3",
+      title: "Functions and logic",
+      subtitle: "If/else, loops, and functions — the patterns that make code readable once you know them",
+    },
+    {
+      kind: "take",
+      text: "Code is just logic wrapped in syntax. Once you strip away the punctuation, you can follow the business rules.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The three core structures are: "),
+        x("If/Else", "Conditional logic. 'If the user is logged in, show dashboard. Else, show login page.'"),
+        s(" which branches paths, "),
+        x("Loops (For/While)", "Repetition. 'For every user in this list, send an email.'"),
+        s(" which repeat actions, and "),
+        x("Functions", "Reusable blocks of code. Think of a function like a formula in Excel—you give it inputs, it does work, and gives you an output."),
+        s(". If you can spot these three patterns, you can read most Python scripts.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.4",
+      title: "Libraries and imports",
+      subtitle: "Why import pandas is magic — and what the library ecosystem means for build vs buy",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("At the top of nearly every Python file, you'll see lines starting with 'import'. "),
+        x("This is an engineer pulling in someone else's work.", "When an engineer writes 'import pandas', they instantly get thousands of lines of highly optimized code for analyzing spreadsheets, saving weeks of work."),
+        s(" The Python ecosystem means you rarely have to build math or data operations from scratch.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.5",
+      title: "Reading a Python script as a PM",
+      subtitle: "What to look for, what to ask about, and what you don't need to understand",
+    },
+    {
+      kind: "why",
+      text: "You don't need to critique the syntax of a Python script. Your job is to read the variable names, the 'if' statements, and the imports to ensure the business logic matches the requirements.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("When reviewing a PR, look at the top for "), x("imports", "Are we pulling in a massive new library just to parse a date?"),
+        s(". Look at the function names—do they describe the feature accurately? Look at the 'if/else' blocks to confirm all edge cases (like missing data or failed API calls) are being handled. Ignore the semicolons and brackets.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.6",
+      title: "pip and package management",
+      subtitle: "How dependencies are installed — and why 'it works on my machine' is an infrastructure problem",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Engineers download those magical libraries using a tool called "), x("pip", "The default package installer for Python."),
+        s(". However, Python is notoriously fragile with dependencies. If Engineer A uses pandas version 1.0 and Engineer B uses version 2.0, the code might break. "),
+        x("This is why package management is crucial.", "Teams use tools like 'requirements.txt' or 'Poetry' to strictly lock down version numbers so everyone is running the exact same environment.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.7",
+      title: "Python in the AI stack",
+      subtitle: "Where Python appears: data pipelines, model training, inference scripts, notebooks",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("In an AI product, Python is everywhere. It is used in "),
+        x("Notebooks", "Interactive coding environments (like Jupyter) where data scientists experiment visually."),
+        s(" for initial R&D. It's used in data pipelines to clean raw data. It's the language used to actually train the neural networks (via PyTorch or TensorFlow). And it's often the backend server language that serves the model to the end user.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "3.8",
+      title: "PM decision lens: when your team's Python choices become your product's constraints",
+      subtitle: "Library versions, tech debt, and migration costs",
+    },
+    {
+      kind: "take",
+      text: "Adopting an open-source Python library is a product commitment. You inherit its bugs, its license restrictions, and its maintenance schedule.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("If your data science team builds a prototype using a library that is abandoned by its creators, eventually that library will break. "),
+        x("Upgrading or replacing a core library can freeze your roadmap for months.", "As a PM, you must occasionally ask: 'Is this library actively maintained? Are we coupling our core architecture to a side project?'")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "Why is package management (like locking versions in requirements.txt) critical for a Python project?",
+      options: [
+        "It makes the Python code run 10x faster in production environments.",
+        "It ensures that every engineer and server runs the exact same versions of external libraries, preventing 'it works on my machine' bugs.",
+        "It automatically translates Python code into C++ for deployment."
+      ],
+      correct: 1,
+      correctFeedback: "Exactly. Python environments can be fragile. Locking down dependency versions guarantees that the environment is reproducible everywhere.",
+      wrongFeedback: "Package management has nothing to do with execution speed or translation. Think about what happens when you share code with someone else."
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-notebooks-colab",
+  number: 4,
+  shortTitle: "Notebooks & Colab",
+  title: "Notebooks & Colab",
+  readingMinutes: 15,
+  summary: "The PM's window into how data scientists actually work.",
+  keyTakeaway: "A working notebook is a prototype, not a product. The most dangerous assumption a PM can make is that a successful notebook experiment can be deployed to production in a weekend.",
+  pmCallout: "As a PM, understanding the 'notebook-to-production gap' is critical for accurate roadmap estimation. What takes a data scientist an afternoon in a notebook might take a data engineer a month to scale, secure, and deploy.",
+  body: [
+    {
+      kind: "h",
+      number: "4.1",
+      title: "What is a Jupyter notebook",
+      subtitle: "The cell-by-cell execution environment where most data work begins",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A "), x("Jupyter notebook", "An open-source web application that allows you to create and share documents that contain live code, equations, visualizations, and narrative text."),
+        s(" is the canvas for data science. Instead of writing a massive script and running it all at once, data scientists write code in 'cells'. They can execute one cell, see the output (like a graph or a data table), and then write the next cell based on those results.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "4.2",
+      title: "Why notebooks matter for PMs",
+      subtitle: "How reading a notebook tells you what your data team is actually discovering",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Notebooks interweave code with Markdown (text formatting). "),
+        x("This makes them powerful storytelling tools.", "A good data scientist won't just hand you a dashboard; they will hand you a notebook that walks through their hypothesis, the data cleaning steps, the charts proving their point, and their conclusions."),
+        s(" PMs should feel comfortable opening a notebook to read the narrative, even if they skip the Python code.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "4.3",
+      title: "What is Google Colab",
+      subtitle: "Notebooks in the browser, with free GPU — why it's the fastest way to prototype AI features",
+    },
+    {
+      kind: "take",
+      text: "Google Colab is effectively 'Google Docs for Jupyter notebooks'.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Setting up a local environment for AI is notoriously difficult. "), x("Google Colab", "A hosted Jupyter notebook service that requires no setup to use, while providing free access to computing resources including GPUs."),
+        s(" solves this by running the notebook entirely in the browser. Crucially, it provides free access to GPUs (Graphics Processing Units), which are required for training deep learning models. This makes it the default sandbox for prototyping new AI ideas quickly.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "4.4",
+      title: "The notebook workflow",
+      subtitle: "Exploration → cleaning → analysis → model — and why it rarely goes in that order",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("In theory, a notebook flows logically: load the data, clean it, build the model, output the results. "),
+        x("In reality, it's a messy loop.", "A data scientist will load data, realize it's broken, jump back to a cell to write a cleaning function, skip ahead to plot a graph, and then run a cell out of order."),
+        s(" This cell-based exploration is why notebooks are amazing for discovery, but terrible for structured engineering.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "4.5",
+      title: "Reproducibility problems with notebooks",
+      subtitle: "Why 'just run the notebook' is often harder than it sounds",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Because cells can be run out of order, the internal 'state' of the notebook can become tangled. "),
+        x("If a data scientist deletes a cell they ran earlier, the notebook might still work for them, but it will break for anyone else who tries to run it top-to-bottom.", "This 'hidden state' problem makes reproducing notebook results notoriously frustrating.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "4.6",
+      title: "Notebooks vs production code",
+      subtitle: "Why a working notebook is not a shipped feature — and the engineering work between them",
+    },
+    {
+      kind: "why",
+      text: "Never assume that because an AI model works flawlessly in a Colab notebook, it is ready to be integrated into your app.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A notebook is a prototype. To become a product, the code must be extracted, rewritten into structured software, hooked up to live databases, wrapped in an API, and deployed to a scalable cloud server. "),
+        x("A notebook runs on static, clean CSV files. Production code runs on live, messy, streaming data.", "This gap is where many AI projects fail.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "4.7",
+      title: "PM decision lens: the notebook-to-production gap",
+      subtitle: "What it takes to move from 'we proved it works' to 'users can use it'",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("When a data scientist says 'I got the model working!', your next question as a PM should be: "),
+        x("'How do we operationalize this?'", "This initiates the conversation about the infrastructure, latency constraints, and edge cases required to deploy the model safely."),
+        s(" You will often need to allocate time for a Backend or Data Engineer to translate the data scientist's notebook into robust production code.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "Your data scientist shows you a Google Colab notebook demonstrating a new recommendation algorithm that looks fantastic. What is the most accurate PM assessment of the feature's status?",
+      options: [
+        "The feature is ready for QA testing and can be shipped tomorrow.",
+        "The feature's feasibility is proven, but significant engineering work is required to translate the notebook into a scalable production API.",
+        "The notebook can be deployed directly as an API endpoint with no changes."
+      ],
+      correct: 1,
+      correctFeedback: "Correct. A notebook proves the math works, but it lacks the error handling, scalability, and live-data hooks required for a production feature.",
+      wrongFeedback: "Remember the 'notebook-to-production gap'. Code written in a cell-by-cell exploratory environment is rarely structured for live web traffic."
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-cloud",
+  number: 5,
+  shortTitle: "Cloud Infrastructure",
+  title: "Cloud (AWS / GCP / Azure)",
+  readingMinutes: 20,
+  summary: "Where your product actually runs — the infrastructure layer every PM needs to reason about.",
+  keyTakeaway: "Cloud computing transformed infrastructure from a capital expense into an operating expense. Knowing the difference between raw compute, managed AI services, and serverless functions helps you estimate architecture complexity and operational costs.",
+  pmCallout: "As a PM, you don't need to provision EC2 instances, but you do need to understand regions for data compliance, the true cost of 'serverless' at scale, and the strategic danger of deep vendor lock-in.",
+  body: [
+    {
+      kind: "h",
+      number: "5.1",
+      title: "What is cloud computing",
+      subtitle: "Renting compute, storage, and networking instead of owning it — and why everything moved there",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Before the cloud, companies bought physical servers, put them in a closet, and hoped they didn't catch fire. "),
+        x("Cloud computing", "The delivery of computing services over the Internet. You rent servers by the minute instead of buying them by the decade."),
+        s(" changed everything. It allowed startups to instantly spin up infrastructure and shut it down when they didn't need it, trading fixed upfront capital costs for flexible operational costs.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.2",
+      title: "The big three compared",
+      subtitle: "AWS, GCP, and Azure — their strengths, their ecosystems, and why your company picked one",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The market is dominated by three players. "),
+        x("AWS (Amazon Web Services)", "The oldest and largest. Massive ecosystem, complex UI, the default choice for most startups."),
+        s(" is the market leader. "),
+        x("Azure (Microsoft)", "Deeply integrated with Windows and Office 365, making it the favorite of large enterprise IT departments."),
+        s(" dominates enterprise. And "),
+        x("GCP (Google Cloud Platform)", "Known for excellent data, analytics, and AI/ML capabilities, though a smaller overall market share."),
+        s(" is beloved by data scientists for its data and AI tools. A company rarely switches once they commit.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.3",
+      title: "Compute services",
+      subtitle: "EC2, Cloud Run, Lambda — the spectrum from raw servers to serverless functions",
+    },
+    {
+      kind: "take",
+      text: "Compute is the brain of your application. The more control you want over the brain, the more maintenance it requires.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Compute comes in different flavors. You can rent a raw virtual machine (like AWS EC2), where you control everything but have to install security updates yourself. Alternatively, you can use "),
+        x("Serverless (e.g., AWS Lambda)", "A model where the cloud provider completely manages the server. You just upload your code, and it runs exactly when needed, billing you only for the milliseconds it executes."),
+        s(", which scales infinitely and requires zero maintenance, but can become extremely expensive at high volumes.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.4",
+      title: "Storage services",
+      subtitle: "S3, Cloud Storage, Blob — how your product stores and retrieves files, images, and model artefacts",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Not all data lives in a database. When a user uploads a profile picture, or when an engineer saves a massive 10GB AI model file, it goes into "),
+        x("Object Storage", "A highly scalable storage system designed to hold unstructured data like images, videos, backups, and ML models."),
+        s(". Services like AWS S3 or GCP Cloud Storage are essentially infinitely large, highly reliable hard drives in the sky.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.5",
+      title: "Managed AI services",
+      subtitle: "SageMaker, Vertex AI, Azure ML — when to use a cloud platform vs building your own ML pipeline",
+    },
+    {
+      kind: "why",
+      text: "Building an ML pipeline from scratch takes months. Managed AI services give your data scientists a pre-built factory so they can focus on the model, not the infrastructure.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Instead of stitching together compute and storage manually, cloud providers offer end-to-end platforms like AWS SageMaker or GCP Vertex AI. "),
+        x("These managed services handle the heavy lifting", "They provide hosted Jupyter notebooks, automated model training environments, and one-click API deployment."),
+        s(" so your team can deploy models faster, though they charge a premium for the convenience.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.6",
+      title: "Regions and availability zones",
+      subtitle: "Why geography matters for latency, compliance, and disaster recovery",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The cloud still lives in physical buildings. A "),
+        x("Region", "A specific geographic location, like 'us-east-1' (Virginia) or 'eu-central-1' (Frankfurt)."),
+        s(" dictates where your data physically sits. This is critical for two reasons: latency (a server in Tokyo will respond slowly to a user in New York) and compliance (European GDPR laws require European data to stay in Europe).")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.7",
+      title: "Cloud costs and how they scale",
+      subtitle: "Why AWS bills surprise teams — and what you as a PM can do to prevent it",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Cloud providers charge for compute time, storage space, and data egress (moving data out of their network). "),
+        x("AI models are uniquely expensive.", "They require massive storage for training data, expensive GPU compute to train, and constant CPU/GPU compute to serve predictions."),
+        s(" A PM must build cost monitoring into their product requirements to avoid a $50,000 surprise bill at the end of the month.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "5.8",
+      title: "PM decision lens: cloud vendor decisions as product decisions",
+      subtitle: "Lock-in, cost structure, and the compliance question",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Choosing to deeply integrate with proprietary cloud tools (like AWS DynamoDB or GCP BigQuery) allows you to move incredibly fast. "),
+        x("However, it creates vendor lock-in.", "If AWS raises their prices, you can't easily move to Azure because your code is written specifically for AWS systems. As a PM, you must weigh the speed of managed services against the long-term risk of being trapped.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "Your product needs to store thousands of high-resolution profile pictures uploaded by users. Which type of cloud service is best suited for this?",
+      options: [
+        "Compute (like AWS EC2)",
+        "Object Storage (like AWS S3)",
+        "Serverless functions (like AWS Lambda)"
+      ],
+      correct: 1,
+      correctFeedback: "Correct! Object Storage (S3/Cloud Storage) is designed exactly for unstructured data like images, videos, and large files.",
+      wrongFeedback: "Remember the difference between compute (doing work) and storage (holding files). Where do you put unstructured data?"
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-containers-docker",
+  number: 6,
+  shortTitle: "Containers & Docker",
+  title: "Containers & Docker",
+  readingMinutes: 18,
+  summary: "The packaging system that made 'it works on my machine' a solved problem.",
+  keyTakeaway: "Containers guarantee that software runs identically on a developer's laptop as it does on a production cloud server. This consistency is the prerequisite for modern, high-velocity engineering.",
+  pmCallout: "As a PM, understanding if your team uses containers or Kubernetes tells you a lot about their operational maturity. If they aren't using containers in 2026, you will inevitably face slow deployments and massive environment bugs.",
+  body: [
+    {
+      kind: "h",
+      number: "6.1",
+      title: "What is a container",
+      subtitle: "An isolated, portable unit of software that runs identically everywhere",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Historically, if you wrote code on a Mac and deployed it to a Linux server, it broke because the underlying operating systems were different. A "),
+        x("Container", "A standardized unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another."),
+        s(" solves this. It is a lightweight, standalone, executable package that includes everything needed to run an application: code, runtime, system tools, and libraries.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.2",
+      title: "What is Docker",
+      subtitle: "The tool that standardised how containers are built, shipped, and run",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Containers existed before Docker, but they were incredibly hard to use. "),
+        x("Docker", "A software platform that allows you to build, test, and deploy applications quickly using containers."),
+        s(" is the company and toolset that democratized containers. When an engineer says they are 'Dockerizing' an app, they mean they are packaging it into a container so it can run flawlessly anywhere Docker is installed.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.3",
+      title: "Images vs containers",
+      subtitle: "The blueprint vs the running instance — and why the distinction matters",
+    },
+    {
+      kind: "take",
+      text: "An Image is the static blueprint. A Container is the running house built from that blueprint.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("An "), x("Image", "A read-only template with instructions for creating a Docker container."),
+        s(" is a file you can download or share. When you actually execute that file, it becomes a running "),
+        x("Container", "The live, executing instance of an image."),
+        s(". You can start ten identical containers from a single image. If one crashes, you just throw it away and spin up a new one from the image.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.4",
+      title: "What is a Dockerfile",
+      subtitle: "The recipe that defines what goes into a container — and why PMs should be able to read one",
+    },
+    {
+      kind: "why",
+      text: "A Dockerfile is the ultimate source of truth for an application's dependencies.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A "), x("Dockerfile", "A text document that contains all the commands a user could call on the command line to assemble an image."),
+        s(" is literally a recipe. It looks like: 'Start with Linux, install Python 3.9, copy my code in, and run it.' As a PM, looking at a Dockerfile tells you exactly what operating system and languages your product secretly relies on.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.5",
+      title: "Container registries",
+      subtitle: "Docker Hub, ECR, Artifact Registry — where images are stored and versioned",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Once an image is built, it needs to be stored somewhere so the cloud servers can download it. A "),
+        x("Container Registry", "A specialized storage system (like Docker Hub, AWS ECR, or Google Artifact Registry) designed to host and version container images."),
+        s(" acts like an App Store for your engineering team's code. When a new version is ready, it is pushed to the registry, and the production servers pull the new image down to run it.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.6",
+      title: "What is Kubernetes",
+      subtitle: "Orchestrating many containers at scale — and when you need it vs when you don't",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("If you have one container, you just run Docker. If you have 500 containers running across 50 servers, you need an orchestrator. "),
+        x("Kubernetes (K8s)", "An open-source system for automating deployment, scaling, and management of containerized applications."),
+        s(" acts as the air traffic controller. If a server dies, Kubernetes automatically notices and restarts the containers on a healthy server. However, it is notoriously complex and often overkill for early-stage startups.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.7",
+      title: "Why containers matter for AI",
+      subtitle: "How model serving, batch inference, and data pipelines all run in containers",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("AI relies on incredibly specific versions of libraries (like PyTorch 2.1 vs 2.2) and specific hardware drivers (like NVIDIA CUDA). "),
+        x("Containers perfectly encapsulate this fragility.", "By putting the AI model and its exact math libraries inside a container, data scientists ensure the model behaves exactly the same in production as it did during training.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "6.8",
+      title: "PM decision lens: containerisation as a deployment and hiring decision",
+      subtitle: "What it signals about your team's operational maturity",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("If your team is not using containers, every deployment is a high-risk manual process, and onboarding new engineers takes weeks. "),
+        x("Choosing to adopt Kubernetes, however, is a massive hiring decision.", "It requires dedicated DevOps engineers to maintain. As a PM, you must ensure the team isn't adopting Kubernetes just for the resume-building hype when simple Docker containers would suffice.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "What is the relationship between a Docker Image and a Docker Container?",
+      options: [
+        "An Image is the running process; a Container is the static file used to share it.",
+        "They are two different names for the exact same thing.",
+        "An Image is the static blueprint; a Container is a live, running instance created from that blueprint."
+      ],
+      correct: 2,
+      correctFeedback: "Spot on! The Image is the file you store in a registry, and the Container is what actually executes on the server.",
+      wrongFeedback: "Think of architecture: one is the blueprint (static), the other is the house built from it (running)."
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-ci-cd-concepts",
+  number: 7,
+  shortTitle: "CI/CD Concepts",
+  title: "CI/CD Concepts",
+  readingMinutes: 18,
+  summary: "How software goes from a developer's laptop to your users — safely and repeatedly.",
+  keyTakeaway: "A reliable CI/CD pipeline is the heartbeat of a product team. If engineers are afraid to deploy, or if deployments take days of manual testing, your product roadmap will grind to a halt regardless of how fast you write code.",
+  pmCallout: "Feature flags are a PM's best friend. They separate the engineering act of 'deployment' from the product act of 'release', giving you total control over who sees what, and when.",
+  body: [
+    {
+      kind: "h",
+      number: "7.1",
+      title: "What is CI (Continuous Integration)",
+      subtitle: "Automatically testing every code change before it merges — and why it catches bugs early",
+    },
+    {
+      kind: "p",
+      parts: [
+        x("Continuous Integration (CI)", "The practice of merging all developers' working copies to a shared mainline several times a day, backed by automated builds and tests."),
+        s(" is the first half of the pipeline. Whenever an engineer opens a Pull Request, a CI server (like GitHub Actions or Jenkins) automatically builds the app and runs a suite of tests. If the tests fail, the code is blocked from merging. This prevents broken code from ever reaching the main codebase.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.2",
+      title: "What is CD (Continuous Delivery / Deployment)",
+      subtitle: "Automating the path from merged code to production",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Once code is merged, it needs to reach users. "),
+        x("Continuous Delivery", "An automated process where code is prepared for release to production, but requires a human to click 'Deploy'."),
+        s(" means the code is always ready to deploy. "),
+        x("Continuous Deployment", "A fully automated process where every merged code change goes directly to production users with zero human intervention."),
+        s(" takes it a step further: the moment a Pull Request is approved and merged, scripts automatically push the new code to the live servers without a human touching it.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.3",
+      title: "The CI/CD pipeline",
+      subtitle: "Build → test → deploy — the stages that every change moves through",
+    },
+    {
+      kind: "take",
+      text: "A pipeline is simply a script that runs other scripts in a specific order.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A standard pipeline looks like this: First, it "), x("Builds", "Compiling code and packaging it into a Docker container."),
+        s(" the application. Second, it runs "), x("Tests", "Automated scripts that verify the code works as expected."),
+        s(". Finally, if everything passes, it executes the "), x("Deploy", "Pushing the new container to the cloud servers (like AWS or GCP)."),
+        s(" step. If any step fails, the pipeline halts immediately, alerting the engineering team.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.4",
+      title: "What are automated tests",
+      subtitle: "Unit, integration, and end-to-end tests — what each layer catches and what it misses",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A CI pipeline is only as good as its tests. "),
+        x("Unit Tests", "Testing a single, isolated function. E.g., 'Does this function calculate tax correctly?'"),
+        s(" are fast but narrow. "),
+        x("Integration Tests", "Testing how multiple pieces work together. E.g., 'Can the tax function read from the database?'"),
+        s(" are slower but catch systemic issues. Finally, "),
+        x("End-to-End (E2E) Tests", "Automated browsers clicking through the UI like a real user. E.g., 'Can a user log in, add an item to the cart, and check out?'"),
+        s(" are the most realistic, but they are slow and brittle to maintain.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.5",
+      title: "Feature flags",
+      subtitle: "Shipping code without turning it on — the mechanism that separates deployment from release",
+    },
+    {
+      kind: "why",
+      text: "Never tie your marketing launch to an engineering deployment. Deploy on Tuesday, launch on Thursday.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A "), x("Feature Flag", "A remote switch (usually an if/else statement in the code linked to a dashboard) that can toggle a feature on or off in production instantly."),
+        s(" is a PM superpower. It allows engineers to deploy code to production while the feature remains invisible to users. This means you can deploy a risky feature on a Tuesday morning, test it internally, and then 'turn it on' for users on Thursday during a launch event.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.6",
+      title: "Rollbacks and rollouts",
+      subtitle: "How to undo a bad deployment and how to release to 1% of users first",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Even with great tests, bugs reach production. A "), x("Rollback", "Reverting the production servers to the previously known good version of the code."),
+        s(" is the emergency undo button. To minimize the blast radius of bugs, modern teams use phased rollouts (often called Canary Releases)—toggling a feature flag on for just 1% of users, monitoring error rates, and then slowly dialing it up to 100%.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.7",
+      title: "CI/CD for AI and ML",
+      subtitle: "Why model deployments are harder than code deployments — and what MLOps adds on top",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Standard CI/CD assumes that code is the only thing changing. But in AI, "),
+        x("the data and the model weights also change.", "A model might pass all tests, but if deployed with stale training data, it will perform terribly."),
+        s(" This requires a specialized pipeline called MLOps, which adds stages for automated model retraining, data validation, and monitoring for 'model drift' in production.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "7.8",
+      title: "PM decision lens: release velocity as a product strategy",
+      subtitle: "What a broken CI/CD pipeline costs you in speed and morale",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("If deployments require manual QA testers clicking through the app for two days, engineers will batch their changes into massive, risky monthly releases. "),
+        x("A strong CI/CD pipeline enables small, daily deployments.", "As a PM, advocating for engineering time to fix a broken pipeline is not just a technical favor—it is a direct investment in your ability to ship features faster and iterate safely.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "What is the primary benefit of using a Feature Flag?",
+      options: [
+        "It automatically writes end-to-end tests for new code.",
+        "It allows you to separate the engineering act of deploying code from the product act of releasing a feature to users.",
+        "It prevents merge conflicts in Git when multiple engineers work on the same file."
+      ],
+      correct: 1,
+      correctFeedback: "Exactly. Feature flags decouple deployment from release, allowing you to test code in production while it remains invisible to customers.",
+      wrongFeedback: "Feature flags don't write tests or solve Git conflicts. Think about how a PM might use a 'remote switch' to control visibility."
+    }
+  ],
+  examples: []
+},
+{
+  slug: "pm-dev-cost-latency",
+  number: 8,
+  shortTitle: "Cost & Latency",
+  title: "Cost & Latency Tradeoffs",
+  readingMinutes: 20,
+  summary: "The constraint every technical product decision lives inside.",
+  keyTakeaway: "Engineering is fundamentally about managing constraints. If you want a model to be faster, it will cost more money or reduce quality. As a PM, your primary job in technical architecture is deciding which corner of the cost-latency-quality triangle to sacrifice.",
+  pmCallout: "Never ship an AI feature without calculating the unit economics first. Because AI compute is expensive, a feature that is wildly successful with users can actually bankrupt the company if the cost per API call exceeds the revenue per user.",
+  body: [
+    {
+      kind: "h",
+      number: "8.1",
+      title: "The cost-latency-quality triangle",
+      subtitle: "Why you can optimise for two but not three — and who decides which two",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Every technical system is bound by the "),
+        x("Iron Triangle of Engineering", "The concept that Cost, Latency (Speed), and Quality (Accuracy) are in tension. You can optimize for two, but the third will suffer."),
+        s(". If you want a highly accurate AI model that responds in 100 milliseconds, it will require massive, expensive GPU compute (Cost suffers). If you want an accurate model that is cheap to run, users will wait 30 seconds for a response (Latency suffers). As a PM, it is your job—not the engineer's—to choose the tradeoff that fits the business model.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.2",
+      title: "What drives infrastructure cost",
+      subtitle: "Compute, memory, storage, network egress — the four dials on your cloud bill",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Cloud bills are opaque, but they generally boil down to four metrics. "),
+        x("Compute (CPU/GPU)", "The processors doing the actual work."),
+        s(" is the most expensive, especially in AI. "),
+        x("Memory (RAM)", "Short-term holding space for data being actively processed."),
+        s(" dictates how large of a model you can load. "),
+        x("Storage", "Long-term hard drive space."),
+        s(" is relatively cheap. Finally, "),
+        x("Egress", "The fee charged by cloud providers every time data leaves their network to go to a user or another cloud."),
+        s(" is the hidden tax that catches teams by surprise.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.3",
+      title: "What drives latency",
+      subtitle: "Network hops, model size, cold starts, queue depth — where the milliseconds actually go",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("When a user complains an app is 'slow', the delay is compounding across multiple steps. "),
+        x("Network Hops", "The physical distance the data travels. A request jumping from a phone in London to a server in Virginia and back takes at least 80ms due to the speed of light."),
+        s(" add baseline delay. For AI, the 'inference time' (the model thinking) dominates. And if using serverless architecture, you may hit a "),
+        x("Cold Start", "The delay caused by a cloud provider spinning up a new server from sleep mode to handle a sudden request."),
+        s(".")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.4",
+      title: "Caching as a product decision",
+      subtitle: "What to cache, for how long, and the consistency tradeoffs that follow",
+    },
+    {
+      kind: "take",
+      text: "The fastest and cheapest API call is the one you never have to make. That is the power of caching.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A "), x("Cache", "A temporary, ultra-fast storage layer that remembers the results of a recent request so it doesn't have to be recalculated."),
+        s(" drastically reduces both cost and latency. However, it introduces 'stale data'. If you cache a user's bank balance for 5 minutes to save money, they might not see a deposit immediately. Deciding how long data can be 'stale' is a core product decision.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.5",
+      title: "Async vs synchronous architecture",
+      subtitle: "When users need to wait vs when they can be notified later — and the UX implications",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("A "), x("Synchronous", "The client waits and blocks the UI until the server finishes the request and replies."),
+        s(" request forces the user to watch a loading spinner. If the AI model takes 10 seconds to generate an image, synchronous UI will frustrate the user. Instead, use an "),
+        x("Asynchronous", "The server immediately says 'I got the request' and frees up the UI. The result is delivered later via webhook, email, or a push notification."),
+        s(" architecture. The UX completely masks the latency.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.6",
+      title: "Cost at scale is non-linear",
+      subtitle: "Why a feature that costs $10/day at 1,000 users doesn't cost $10,000/day at 1,000,000",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Infrastructure doesn't scale linearly. At low volumes, you pay high overhead for managed services and baseline database costs. "),
+        x("As you scale, the cost per user drops.", "You can negotiate enterprise contracts, optimize your code, and utilize bulk compute discounts (like AWS Reserved Instances). However, bad architectural decisions (like an un-optimized database query) can flip this curve and cause costs to explode exponentially.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.7",
+      title: "Latency as a conversion metric",
+      subtitle: "The research on how response time affects engagement, trust, and drop-off",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Engineering views latency as a performance metric; PMs must view it as a conversion metric. "),
+        x("Amazon found every 100ms of latency cost them 1% in sales.", "Users subconsciously equate speed with reliability. If an AI chatbot types its answer instantly, users trust it more than one that hangs for 15 seconds, even if the slow answer is objectively more accurate.")
+      ]
+    },
+    {
+      kind: "h",
+      number: "8.8",
+      title: "PM decision lens: owning the cost model of your feature",
+      subtitle: "The unit economics spreadsheet every AI PM must build before launch",
+    },
+    {
+      kind: "why",
+      text: "If a user pays $10 a month for your SaaS, and they make 500 AI requests a month that cost $0.03 each in compute... you are losing $5 per user. You have built a wildly popular money-furnace.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Before writing a single Jira ticket for an AI feature, build a spreadsheet. "),
+        x("Calculate the Unit Economics.", "Estimate the token cost per request, the database cost, and multiply it by expected user behavior. If the cost exceeds the revenue, you must aggressively renegotiate the 'Iron Triangle'—caching more aggressively, using a smaller/cheaper model, or introducing latency by batching requests.")
+      ]
+    }
+  ],
+  quiz: [
+    {
+      kind: "mcq",
+      q: "Your team is building an AI image generator that takes 15 seconds to create a picture. Which architectural choice provides the best user experience?",
+      options: [
+        "A Synchronous architecture, forcing the user to wait on a loading spinner so they know it's working.",
+        "An Asynchronous architecture, immediately returning a 'We are painting your image' message and sending a push notification when it's done.",
+        "A Caching architecture that pre-generates every possible image."
+      ],
+      correct: 1,
+      correctFeedback: "Exactly. When latency cannot be avoided by compute optimization, you must mask it with asynchronous UX.",
+      wrongFeedback: "Waiting 15 seconds on a loading spinner is a terrible experience (Synchronous). And you cannot pre-generate 'every possible image' with AI (Caching)."
+    }
+  ],
+  examples: []
+},
 ];
 
 export const conceptBySlug = (slug: string): Concept | undefined =>
