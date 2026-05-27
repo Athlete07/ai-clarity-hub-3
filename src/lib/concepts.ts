@@ -9594,8 +9594,7 @@ export const concepts: Concept[] = [
         s("The pattern in mature AI products is "),
         x(
           "embeddings on the retrieval and classification edges, generation in the middle.",
-          "Embeddings narrow the search space from millions to dozens of relevant items, classify the request to route it to the right pipeline, and detect duplicates before storing anything. The generative model only handles the small remaining job: compose a coherent reply from the retrieved context. This architecture is 10-100× cheaper than 'send everything to GPT-4' and produces measurably better answers because the model sees only relevant context.",
-          "RAG (retrieval-augmented generation) is the canonical name for this pattern, but the underlying idea — embeddings find, generation talks — applies to almost every production AI feature that scales, regardless of whether it's branded as RAG.",
+          "Embeddings narrow the search space from millions to dozens of relevant items, classify the request to route it to the right pipeline, and detect duplicates before storing anything. The generative model only handles the small remaining job: compose a coherent reply from the retrieved context. This architecture is 10-100× cheaper than 'send everything to GPT-4' and produces measurably better answers because the model sees only relevant context. RAG (retrieval-augmented generation) is the canonical name for this pattern, but the underlying idea — embeddings find, generation talks — applies to almost every production AI feature that scales, regardless of whether it's branded as RAG.",
         ),
         s(" Pay the cheap models to filter; pay the expensive model only for the last mile."),
       ],
