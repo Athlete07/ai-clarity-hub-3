@@ -8325,6 +8325,773 @@ export const concepts: Concept[] = [
   ],
 },
 {
+  slug: "pm-llm-prompt-engineering-advanced",
+  number: 6,
+  shortTitle: "Prompt Engineering — Advanced",
+  title: "Prompt Engineering — Advanced",
+  readingMinutes: 35,
+  summary:
+    "The techniques that separate good AI products from great ones — chain-of-thought, zero-shot CoT, tree-of-thought, self-consistency, meta-prompting, ReAct, structured output, constitutional prompting, prompt chaining, and the PM lens on when advanced prompting replaces fine-tuning.",
+  keyTakeaway:
+    "Once you've shipped the basics, the next 10× in quality comes from how the model is asked to think, not which model you swap in. Reasoning prompts, structured outputs, and chained pipelines are the difference between a feature that demos well and one that survives production traffic. They are also, almost always, the optimisation to try before fine-tuning.",
+  pmCallout:
+    "As a PM: every non-trivial LLM feature should have an explicit answer to four questions — (1) does this task need step-by-step reasoning?, (2) does this task need a guaranteed schema?, (3) is this one prompt or a chain of prompts?, and (4) what are the safety constraints that must hold regardless of input? Advanced prompting is the toolbox for each of those decisions.",
+  body: [
+    // ============== 6.1 ==============
+    {
+      kind: "h",
+      number: "6.1",
+      title: "Chain-of-thought (CoT) prompting",
+      subtitle: "'Think step by step' — why asking the model to reason out loud improves accuracy",
+    },
+    {
+      kind: "take",
+      text: "Chain-of-thought prompting tells the model to show its working before giving the final answer. On any task that benefits from multi-step reasoning — maths, logic, planning, structured analysis — it lifts accuracy materially without changing the model.",
+    },
+    {
+      kind: "why",
+      text: "PMs who skip CoT on reasoning-heavy tasks are leaving free accuracy on the table. The cost is a few extra output tokens; the gain is the difference between a feature that works on demo inputs and one that works on real ones. It is the single cheapest quality lever in the toolbox.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The mechanism is mundane and useful: extra tokens give the model extra computation. "),
+        x(
+          "A transformer does a fixed amount of work per token generated. Forcing it to write out intermediate steps before the answer literally gives it more compute budget for the problem — and a working memory it can read back from. The 'reasoning' is real in the sense that the intermediate tokens condition the final answer, even if it's not reasoning in a human sense.",
+          "This is why CoT helps most on tasks where there is a chain of dependencies (each step uses the previous one) and helps least on tasks that are essentially pattern-match retrieval ('what's the capital of France'). The clearer the dependency chain, the bigger the CoT lift.",
+        ),
+        s(" More tokens before the answer = more thinking. That's the entire trick."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("CoT has two failure modes PMs need to know about. "),
+        x(
+          "First, the model can produce a plausible-looking chain that ends in the wrong answer — fluent reasoning is not correct reasoning. Second, the chain itself becomes part of the output, which can leak into user-facing surfaces, double your token cost, and increase latency noticeably. Production CoT usually means asking the model to think step by step internally and then return only the final answer, or post-processing the chain out of the response.",
+          "The chain is for the model, not the user, unless your product is explicitly a 'show your work' tool (a tutor, a calculator-with-explanation, a code-review bot). Conflating the two is how PMs ship features that triple latency without giving users anything in return.",
+        ),
+        s(" Use CoT to lift accuracy; hide the chain unless transparency is the feature."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("CoT only helps if the task actually requires reasoning. "),
+        x(
+          "On simple classification ('is this email spam'), CoT adds latency and cost with no accuracy lift. On multi-step word problems, structured extraction with computed fields, or any task where the model has to combine several pieces of input, the lift is large. The PM job is to identify which features fall in which bucket — usually by running both versions in eval and comparing.",
+          "A useful heuristic: if a human would naturally pause, write something down, and then answer, CoT will probably help. If a human would answer instantly, CoT is overhead.",
+        ),
+        s(" Match the prompt to the cognitive shape of the task, not to a fashion."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "OpenAI's o1 / o3 reasoning models — CoT baked into the model",
+      body: "OpenAI's o-series models internalise chain-of-thought: they spend significant 'reasoning tokens' before producing a final answer, and the API bills for those reasoning tokens even though the user never sees them. The product insight: a whole category of models now treats CoT as the default, not a prompt trick. PMs choosing between a frontier 'chat' model and a 'reasoning' model are really choosing whether they want the CoT cost paid by their prompt budget or by the model vendor's pricing.",
+    },
+    {
+      kind: "ex",
+      title: "Khan Academy's Khanmigo — CoT as the product surface",
+      body: "Khanmigo, Khan Academy's AI tutor, deliberately shows step-by-step reasoning to students rather than jumping to answers. The chain is the educational value. The lesson generalises: when 'show your work' is the user benefit (tutoring, code review, audit trails), surface the CoT; when only the answer matters, hide it.",
+    },
+    {
+      kind: "ex",
+      title: "Wolfram Alpha + LLM hybrids — CoT routed to specialised tools",
+      body: "Several products pair an LLM's chain-of-thought reasoning with a deterministic tool (Wolfram, a calculator, a SQL engine) for the actual computation. The CoT decides what to compute; the tool computes it. This avoids the 'fluent but wrong arithmetic' failure mode of pure-LLM CoT. The PM pattern: reach for CoT for planning and decomposition, reach for tools for exact answers.",
+    },
+
+    // ============== 6.2 ==============
+    {
+      kind: "h",
+      number: "6.2",
+      title: "Zero-shot CoT",
+      subtitle: "Why adding 'let's think step by step' to any prompt often dramatically improves it",
+    },
+    {
+      kind: "take",
+      text: "Zero-shot CoT is the discovery that simply appending 'Let's think step by step' to a prompt — with no examples of reasoning — triggers chain-of-thought behaviour and lifts accuracy on reasoning tasks. It is the lowest-effort, highest-ROI prompt change in the toolbox.",
+    },
+    {
+      kind: "why",
+      text: "Most PMs never try it, and most teams haven't audited which of their prompts would benefit. The fix is a single line of text. The downside is a small token-count increase. The upside on the right tasks is double-digit accuracy lifts.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The original 2022 paper (Kojima et al.) showed that adding a single phrase to the prompt — no examples, no special formatting — lifted GPT-3's accuracy on multi-step arithmetic from ~17% to ~78%. "),
+        x(
+          "That was a generational jump produced by seven words. It worked because the phrase nudges the model out of the 'give the answer immediately' attractor and into the 'show working' attractor — both of which exist in its training data, but the latter is conditional on prompts that look like reasoning problems.",
+          "On modern instruction-tuned models the absolute lifts are smaller (because the models already CoT by default on obvious reasoning tasks), but the principle holds: there are still many production prompts where adding an explicit 'think step by step' or 'reason through this carefully' phrase moves accuracy meaningfully.",
+        ),
+        s(" Seven words can be the difference between a 70% feature and a 90% feature. Always try them."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Zero-shot CoT works because of a subtle property of instruction-tuned models: they have learned that certain trigger phrases mean 'expand'. "),
+        x(
+          "'Step by step', 'work through this', 'reason carefully', 'first identify, then evaluate, then conclude' all activate longer, more decompositional outputs. PMs can use this for free — no examples, no schema changes, no model swap. The cost is the extra output tokens, which is usually trivial relative to the accuracy gain.",
+          "The flip side is that on tasks that don't benefit from reasoning ('translate to French', 'is this spam'), zero-shot CoT just adds latency. The cheap audit is: pick your prompts, add the phrase, run evals, keep it where it helps, remove it where it doesn't.",
+        ),
+        s(" A trigger phrase is a free A/B test. Run it."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Don't over-rely on zero-shot CoT for hard reasoning. "),
+        x(
+          "For genuinely hard multi-step problems — proofs, long-horizon planning, complex extraction — few-shot CoT (showing the model 2–3 worked examples of reasoning) consistently outperforms zero-shot CoT. The two are not in competition; they are a ladder. Start with zero-shot CoT, measure, then escalate to few-shot CoT or to a reasoning-class model if the lift is needed.",
+          "A practical pattern: ship zero-shot CoT in v1, build an eval that catches the failures, then upgrade to few-shot CoT only for the failure categories. This keeps your prompt small and your bill small until the data justifies more complexity.",
+        ),
+        s(" Zero-shot first, few-shot when the evals demand it, reasoning model when both plateau."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "The original 'Let's think step by step' paper — 17% → 78%",
+      body: "Kojima et al. (2022) reported that on the MultiArith benchmark, GPT-3's accuracy jumped from 17.7% to 78.7% just by appending 'Let's think step by step' to each prompt. No examples, no fine-tuning, no model change. The paper is foundational because it showed that latent reasoning capability could be unlocked by a trigger phrase — and quietly demonstrated how much of model 'intelligence' is locked behind specific prompt patterns.",
+    },
+    {
+      kind: "ex",
+      title: "Anthropic's Claude — 'think carefully' as a system-prompt convention",
+      body: "Anthropic's published Claude system prompts include phrasing along the lines of 'think carefully through the problem before responding' for tasks where reasoning matters. The convention has propagated to many third-party Claude integrations because the lift is measurable and the cost is one line. PMs building on Claude can adopt it directly.",
+    },
+    {
+      kind: "ex",
+      title: "Cursor's 'plan first, then code' prompting",
+      body: "Cursor's agent mode uses a zero-shot CoT pattern: 'First, plan the change. Then, implement it.' This single sentence noticeably improves multi-file edits because it forces the model to enumerate dependencies before touching any file. It is a worked example of zero-shot CoT applied to a production developer-tools surface.",
+    },
+
+    // ============== 6.3 ==============
+    {
+      kind: "h",
+      number: "6.3",
+      title: "Tree-of-thought (ToT)",
+      subtitle: "When the model explores multiple reasoning paths before committing to an answer",
+    },
+    {
+      kind: "take",
+      text: "Tree-of-thought prompts the model to generate multiple candidate reasoning paths, evaluate them, and pick the best one — instead of committing to the first chain that comes to mind. It trades cost and latency for accuracy on hard, multi-branch problems.",
+    },
+    {
+      kind: "why",
+      text: "ToT is overkill for most product features and exactly right for a few. PMs need to recognise which category they're in — using ToT everywhere blows your budget; ignoring it for hard problems caps your quality ceiling well below the competition's.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The core idea: a single chain-of-thought is one path through the problem space. "),
+        x(
+          "If the first step is wrong, every subsequent step compounds the error. Tree-of-thought generates several candidate first steps, evaluates them ('which of these is most promising?'), expands the best ones, and prunes the dead ends — essentially running a search over reasoning chains, with the model as both generator and evaluator.",
+          "This mirrors how humans tackle hard problems: brainstorm multiple approaches, sanity-check each, commit to the most promising. The model isn't doing anything magical; the prompt structure is just making sure it doesn't lock in on the first plausible path.",
+        ),
+        s(" ToT is search over CoT. The model explores the tree; the prompt drives the search."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("ToT is expensive. "),
+        x(
+          "A typical implementation makes several model calls per problem: generate N candidate steps, score them, expand the top K, repeat. That's 5–20× the token cost of a single CoT prompt and a corresponding latency hit. For interactive product surfaces, that's a non-starter. For batch jobs, planning tasks, or premium features where users explicitly wait for a 'thoughtful' answer, the economics often work.",
+          "The PM decision is rarely 'should we use ToT' but 'which 3% of our requests deserve ToT'. Routing logic — cheap CoT by default, ToT for flagged hard cases — is the production pattern.",
+        ),
+        s(" ToT is a premium tier, not a default. Route to it, don't enable it globally."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("ToT shines on problems with branching, backtracking, or combinatorial structure. "),
+        x(
+          "Planning ('what's the best 5-step plan to migrate this database'), puzzle-solving, multi-constraint scheduling, complex code refactors that touch many files, and any task where the first answer is often wrong but the right answer is reachable with a bit of search. It does not help on tasks that are essentially retrieval, classification, or single-step generation.",
+          "If your eval shows that the model's top-1 answer is poor but the right answer is in its top-5 with a different chain, you have a ToT-shaped problem. If top-1 is consistently good, you don't.",
+        ),
+        s(" Use ToT when the model knows the answer is in there somewhere but keeps committing to the wrong path."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "The original ToT paper — Game of 24",
+      body: "Yao et al. (2023) showed that GPT-4 solved only 4% of 'Game of 24' puzzles with vanilla CoT and 74% with tree-of-thought. The puzzles are small but combinatorial — exactly the shape ToT is designed for. PMs reading this should not conclude 'ToT is 18× better'; they should conclude 'ToT is 18× better on this specific puzzle class' and ask whether their feature has the same shape.",
+    },
+    {
+      kind: "ex",
+      title: "Devin and AutoGPT-style agents — implicit ToT in planning",
+      body: "Many autonomous coding agents (Devin, OpenDevin, SWE-agent) use ToT-style planning under the hood: enumerate possible approaches to a bug fix, score them by predicted likelihood of success, expand the best one. The cost is real (tens of dollars per task in some published demos), but the quality lift on hard, multi-file changes justifies it for the agent use case.",
+    },
+    {
+      kind: "ex",
+      title: "Notion's 'long-form draft' mode — bounded ToT for outlines",
+      body: "Notion AI's long-form draft generation uses a bounded ToT pattern for the outline stage: generate several candidate outlines, evaluate them against the user's brief, pick one, then expand. The expensive search happens once at outline time; the cheaper expansion happens per section. This is the canonical production pattern — concentrate the ToT budget where it matters and use plain generation everywhere else.",
+    },
+
+    // ============== 6.4 ==============
+    {
+      kind: "h",
+      number: "6.4",
+      title: "Self-consistency",
+      subtitle: "Running the same prompt multiple times and taking the majority answer",
+    },
+    {
+      kind: "take",
+      text: "Self-consistency runs the same CoT prompt N times with non-zero temperature, collects the answers, and returns the most common one. It is the simplest reliable way to make a non-deterministic model produce more deterministic outcomes on reasoning tasks.",
+    },
+    {
+      kind: "why",
+      text: "PMs who don't know about self-consistency tend to either accept the model's first answer (cheap, sometimes wrong) or fine-tune to fix it (expensive, slow). Self-consistency sits between them: predictable accuracy lift, predictable cost multiplier, no training.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The intuition is the wisdom of crowds applied to a single model. "),
+        x(
+          "With temperature > 0, the model samples different reasoning chains on each run. Most chains will reach the correct answer; a few will go astray in different directions. Majority voting on the final answers separates the signal (the correct answer that appears repeatedly) from the noise (wrong answers that vary). On benchmarks like GSM8K (grade-school maths), self-consistency reliably adds several points of accuracy on top of CoT.",
+          "It works because errors are uncorrelated across samples but the correct answer is the stable attractor. As N grows, the probability of the correct answer being the mode approaches 1 — at the cost of N× the tokens.",
+        ),
+        s(" Same model, same prompt, more samples, majority vote. That's the whole technique."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Self-consistency is the obvious move when you have a discrete answer. "),
+        x(
+          "Multiple-choice answers, integer outputs, classification labels, structured fields — anything where 'majority vote' is well-defined. It's much harder to apply to free-form generation, where there's no clean way to vote across five different paragraphs of prose. For free-form tasks, the cousin technique is 'generate N, ask the model to pick the best one' (a model-as-judge variant).",
+          "The discrete-answer case is where most of the published accuracy lifts come from. For free-form output, the gain is usually smaller and the cost harder to justify.",
+        ),
+        s(" Self-consistency is for discrete answers. For prose, use generate-and-pick."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The cost model is the part PMs underestimate. "),
+        x(
+          "N=5 means 5× the tokens, 5× the bill, and (worst case) 5× the latency unless you parallelise the calls. Many teams run self-consistency only on the long tail — cases where a cheap confidence signal flags the first answer as low-confidence, triggering a higher-N rerun. That captures most of the accuracy gain at a fraction of the cost.",
+          "The pattern shows up across product surfaces: cheap path for the easy 90%, expensive path with self-consistency for the hard 10%. The PM decision is where to set the threshold and how to monitor that the cheap path is actually serving the cases it should.",
+        ),
+        s(" Self-consistency is a tier, not a default. Trigger it on low-confidence cases."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "The original self-consistency paper — GSM8K accuracy lift",
+      body: "Wang et al. (2022) showed that on GSM8K, self-consistency with N=40 lifted CoT accuracy on PaLM-540B from ~57% to ~74%. Subsequent work showed diminishing returns past N=5 to N=10 for most tasks. The PM takeaway: a small N (3–5) captures most of the gain at modest cost; very large N is research, not product.",
+    },
+    {
+      kind: "ex",
+      title: "Stripe's Radar — voting across multiple model outputs",
+      body: "Stripe has discussed ensemble-style approaches in their fraud-detection systems, including taking multiple model passes on borderline transactions and combining the outputs. The exact mechanism differs from textbook self-consistency, but the spirit is the same — use multiple samples to discipline a probabilistic system into more reliable decisions on the hard cases that matter most.",
+    },
+    {
+      kind: "ex",
+      title: "Replit's Ghostwriter and code-completion ranking",
+      body: "Code-completion systems (Replit, Copilot, Cursor) sometimes generate multiple candidate completions and rank them — a self-consistency-flavoured pattern. The 'majority' becomes 'the suggestion most semantically similar to the others', which is a soft vote. It's a useful adaptation of self-consistency to a generative-text setting where strict majority voting doesn't apply.",
+    },
+
+    // ============== 6.5 ==============
+    {
+      kind: "h",
+      number: "6.5",
+      title: "Meta-prompting",
+      subtitle: "Using the model to write and improve its own prompts",
+    },
+    {
+      kind: "take",
+      text: "Meta-prompting is using a model to generate, critique, or refine prompts — for itself or for another model. Done well, it accelerates prompt iteration from days to minutes. Done badly, it produces prompts that look impressive and perform worse than the version they replaced.",
+    },
+    {
+      kind: "why",
+      text: "Most PMs write prompts by intuition and never measure. Meta-prompting forces an explicit loop: candidate prompt → eval → critique → revised prompt. The accountability is what makes it work, not the cleverness of the meta-prompt itself.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The basic pattern: write a prompt that takes the task description and produces a candidate prompt for that task. "),
+        x(
+          "Ask the model to consider edge cases, output format, common failure modes, and the persona that fits the use case. The output is a draft prompt you can run, evaluate, and iterate on. For straightforward tasks, the meta-prompted version is often competitive with what a careful human would produce in 30 minutes.",
+          "The win is speed and breadth — generating five candidate prompts in a minute and testing them all is far more productive than agonising over one prompt for an afternoon. The losses come from skipping the evaluation step and shipping whatever the meta-prompt produced.",
+        ),
+        s(" Meta-prompting is a draft generator, not a final answer. Evaluate or don't bother."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("More sophisticated meta-prompting closes the loop. "),
+        x(
+          "Run the candidate prompt against an eval set, feed the failures back to the model, ask it to revise the prompt to fix them, re-run. This is the loop used by tools like DSPy, PromptHub, and similar 'prompt optimisation' systems. With a strong eval set, the loop is genuinely effective — it can outperform what most engineers would produce by hand, on tasks where the eval signal is reliable.",
+          "Without a strong eval set, the loop optimises against vibes — the model 'improving' the prompt according to its own preferences, which may or may not match yours. The bottleneck of serious meta-prompting is the evaluation harness, not the meta-prompt.",
+        ),
+        s(" Meta-prompting amplifies your eval. A weak eval amplifies into a confidently wrong prompt."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The PM use case is less about replacing prompt engineers and more about closing the writer-evaluator gap. "),
+        x(
+          "PMs who can describe the task precisely but feel underqualified to 'write the prompt' can use meta-prompting to get a strong first draft. Engineers who can write prompts but don't want to spend a day iterating can use it to compress the loop. Either way, the unlock is removing the 'staring at the empty prompt' overhead so the team can spend its time on what matters — the eval set and the failure analysis.",
+          "The risk for PMs is treating meta-prompted output as authoritative. It isn't. It's a starting point that has to be earned into production via the same evaluation discipline as a human-written prompt.",
+        ),
+        s(" Use meta-prompting to start fast, not to finish."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "Anthropic's Prompt Generator in the Claude Console",
+      body: "Anthropic ships a 'prompt generator' tool in the Claude console: describe the task, get back a structured prompt with persona, instructions, examples, and output format. It's a productised meta-prompt. Many teams use it as a first draft, then iterate. The lesson for PMs: meta-prompting is now a standard vendor feature — there is no excuse for starting from a blank page.",
+    },
+    {
+      kind: "ex",
+      title: "DSPy — prompt optimisation as a programming model",
+      body: "DSPy (Stanford) treats prompts as parameters to be optimised against an eval set, with the model itself generating candidate prompts in the loop. Teams that have invested in evals report meaningful gains over hand-written prompts on tasks like multi-hop QA and structured extraction. The catch is the same as always: the eval set is the load-bearing component, and few teams have one good enough to fully unlock the technique.",
+    },
+    {
+      kind: "ex",
+      title: "OpenAI's 'meta-prompt' system-prompt template",
+      body: "OpenAI's developer documentation includes a meta-prompt template that generates well-structured system prompts from a task description. It encodes years of in-house prompt-engineering practice (persona, scope, examples, format, refusal patterns) into one bootstrap step. PMs setting up a new LLM feature should start from a template like this rather than from scratch — the baseline quality is high and the time saving is real.",
+    },
+
+    // ============== 6.6 ==============
+    {
+      kind: "h",
+      number: "6.6",
+      title: "ReAct prompting",
+      subtitle: "Reasoning + Acting — the foundation of how agents think",
+    },
+    {
+      kind: "take",
+      text: "ReAct interleaves reasoning ('what should I do?') with action ('call this tool') and observation ('here's the result'). It is the prompt structure that turns a chat model into an agent capable of using tools, browsing, and executing multi-step plans.",
+    },
+    {
+      kind: "why",
+      text: "Every 'AI agent' your team builds or evaluates is, under the hood, some variant of ReAct. PMs who don't understand the loop can't reason about why agents fail, where to add guardrails, or how to estimate cost and latency.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The ReAct loop is three repeating steps: Thought, Action, Observation. "),
+        x(
+          "The model writes a Thought ('I need to find the user's most recent order'), emits an Action ('call get_orders(user_id=42)'), the runtime executes the action and returns an Observation ('here are the 3 most recent orders'), and the model continues with the next Thought. The loop ends when the model emits a final-answer action. The whole transcript is one growing prompt the model sees on every step.",
+          "Critically, the model never executes anything itself — it only emits structured 'I want to do X' tokens. The runtime parses those, calls the actual tool, and feeds the result back into the prompt. The model is the planner; the runtime is the doer.",
+        ),
+        s(" Thought → Action → Observation → Thought → … . Every agent framework is a flavour of this."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("ReAct's strength is that it lets a static LLM access fresh information and side effects. "),
+        x(
+          "Web search, database queries, code execution, file I/O, third-party APIs — anything you wrap as a tool becomes part of the model's action space. The model's training-data cutoff stops being a hard limit because it can look things up. Its inability to do arithmetic stops mattering because it can call a calculator. The prompt is the orchestration layer.",
+          "Its weakness is that errors compound. If the model picks the wrong tool, the observation is misleading, the next thought is built on a false premise, and the loop drifts. Long ReAct trajectories (15+ steps) are particularly fragile and expensive.",
+        ),
+        s(" ReAct expands the model's surface area; it also expands its failure surface area."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Production ReAct demands ruthless tool-design discipline. "),
+        x(
+          "Tools should have narrow, well-named interfaces ('get_recent_orders(user_id)') not 'do_database_thing(query)'. Tool descriptions are part of the prompt and must be precise — the model picks tools by reading their docstrings. Side-effecting tools (send_email, charge_card, delete_file) need confirmation steps or human-in-the-loop gates because a hallucinated action call here is not a quality issue, it's an incident.",
+          "PMs should treat the tool catalogue as a product surface: which tools exist, what they're named, what they're scoped to, what they require confirmation for. That decides what the agent can and cannot do far more than the model choice does.",
+        ),
+        s(" The tool catalogue is the agent's product spec. Design it as one."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "The original ReAct paper — interleaving beats either alone",
+      body: "Yao et al. (2022) showed that interleaving reasoning and acting outperformed either chain-of-thought alone or action-only baselines on tasks like HotpotQA and ALFWorld. The paper is the origin point for the entire 'agent' product category; every framework that followed (LangChain, AutoGPT, OpenAI Assistants, function calling) is implementing a version of its loop.",
+    },
+    {
+      kind: "ex",
+      title: "OpenAI Function Calling / Tool Use — ReAct, productised",
+      body: "OpenAI's function-calling API is a structured implementation of ReAct: the developer declares tools with JSON Schema, the model emits structured tool calls, the developer's code executes them and returns results. The pattern has been adopted by every major model vendor (Anthropic, Google, Mistral). For PMs, this means ReAct is no longer a research technique — it's the default way to give a model access to your product's APIs.",
+    },
+    {
+      kind: "ex",
+      title: "Perplexity's search loop — narrow ReAct done well",
+      body: "Perplexity's answer flow is a tight ReAct loop with a small tool catalogue (search, fetch, summarise). The narrow scope is the discipline — by not handing the model 50 tools, the team keeps the loop short, the failure modes predictable, and the latency acceptable. The lesson generalises: ship the smallest tool catalogue that solves the use case, not the largest one you can imagine.",
+    },
+
+    // ============== 6.7 ==============
+    {
+      kind: "h",
+      number: "6.7",
+      title: "Structured output prompting",
+      subtitle: "Reliably extracting JSON, tables, and structured data from model responses",
+    },
+    {
+      kind: "take",
+      text: "Structured output prompting is how you get the model to return data your downstream code can parse — JSON, XML, a specific schema — reliably enough to ship. Modern vendor features (JSON mode, structured outputs, function calling) make this a solved problem on the happy path; getting it solved on the long tail is still PM work.",
+    },
+    {
+      kind: "why",
+      text: "Most LLM features fail in production not on the AI part but on the 'we asked for JSON and it returned `Sure! Here's the JSON:` followed by half-valid JSON' part. A robust structured output strategy is what turns a demo into a system.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The naive approach — 'return your answer as JSON' — fails about 5% of the time, which is catastrophic for any pipeline that runs millions of requests. "),
+        x(
+          "Failures take many shapes: trailing commas, missing quotes, prose wrapped around the JSON, an extra explanation appended after the closing brace, a hallucinated field name, a string where you expected a number. Each one breaks a different downstream parser, and the right fix depends on which failure dominates.",
+          "Decades of API design taught us that 'pretty close' is not a contract. The model's job is to produce data the next system can consume; anything less is incomplete, no matter how good the prose around it is.",
+        ),
+        s(" 'JSON-ish' is not JSON. The five percent failure is the production-breaking case."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The modern stack solves most of this at the vendor level. "),
+        x(
+          "OpenAI's Structured Outputs and Anthropic's tool-use JSON mode both constrain decoding to a JSON Schema — the model literally cannot emit tokens that would break the schema. This eliminates the 'invalid JSON' class of bugs entirely and is the right default for any new feature that needs structured output. The trade-off is a small latency overhead and slightly less natural prose if you ask for both prose and structure in the same response.",
+          "Constrained decoding doesn't fix semantic errors — the model can still return well-formed JSON with the wrong values. But the parse-failure class of bugs becomes a non-issue, which is a major reliability win.",
+        ),
+        s(" Use vendor-native structured outputs by default. Hand-rolling JSON prompts is legacy work."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Schema design is the part PMs own. "),
+        x(
+          "Field names should be unambiguous and stable (the schema is now part of the product contract). Enums should be exhaustive and include explicit 'other' or 'unknown' options. Required vs optional has real consequences — required fields force the model to invent something when the input doesn't support an answer, which often introduces the very hallucinations the schema was meant to prevent. Optional fields with a clear 'when to use this' description in the schema almost always behave better.",
+          "Schemas are how PMs specify what the AI feature actually is, in language both the model and the downstream system understand. That's a high-leverage place to spend product time.",
+        ),
+        s(" Schema design is product design. Treat it that way."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "OpenAI Structured Outputs — schema-constrained decoding",
+      body: "OpenAI's Structured Outputs feature guarantees that responses conform to a JSON Schema you provide. The model's decoder is constrained at the token level — invalid JSON simply can't be produced. Teams that adopted it after launch reported double-digit reductions in 'parsing error' bugs without touching the prompt. For any new structured-extraction feature, this should be the default starting point.",
+    },
+    {
+      kind: "ex",
+      title: "Anthropic's tool-use JSON — same idea, different vendor",
+      body: "Anthropic's tool-use feature serves a similar role: declare a JSON schema for a 'tool', and the model emits a guaranteed-valid JSON call to that tool. Many teams use tool definitions purely as a schema-enforcement mechanism, even when there's no real tool behind it. It's the canonical workaround for 'I want strict JSON without bolt-on retries'.",
+    },
+    {
+      kind: "ex",
+      title: "Instructor / Pydantic-AI / Zod-based wrappers",
+      body: "Open-source libraries like Instructor (Python) and Zod-based TypeScript wrappers add a layer of automatic retry, validation, and re-prompting around any model API. When validation fails, the library re-prompts the model with the validation error and asks it to fix the response. This pattern is the de-facto standard for shipping structured outputs against models or providers that don't have native schema enforcement.",
+    },
+
+    // ============== 6.8 ==============
+    {
+      kind: "h",
+      number: "6.8",
+      title: "Constitutional prompting",
+      subtitle: "Building safety and value alignment directly into the prompt layer",
+    },
+    {
+      kind: "take",
+      text: "Constitutional prompting encodes the values, rules, and refusal patterns the model should follow into a 'constitution' — a structured set of principles in the system prompt that the model consults before responding. It is the prompt-layer answer to 'how do we make this safe without retraining'.",
+    },
+    {
+      kind: "why",
+      text: "Every consumer-facing LLM feature ships with implicit values. PMs who don't pin them get the model's default values plus whatever the latest jailbreak community has figured out. Constitutional prompting is how you take ownership of that surface.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The name comes from Anthropic's Constitutional AI research, but the prompt technique is broader. "),
+        x(
+          "The pattern is: list the principles the model should follow ('be honest', 'do not help with illegal activity', 'cite sources for factual claims', 'refuse politely when asked for medical, legal, or financial advice'), and ask the model to check its draft response against the principles before returning it. The constitution can be 5 lines or 500; the discipline is making the principles explicit and testable.",
+          "This is different from a generic 'be helpful and safe' line. A real constitution names specific scenarios, specifies the desired behaviour, and gives examples of what compliance and violation look like. The specificity is what makes it actually constrain behaviour.",
+        ),
+        s(" A constitution is rules the model can self-check against. Vague rules don't constrain anything."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Constitutional prompting is a layer in a stack, not the whole stack. "),
+        x(
+          "It sits alongside model-level RLHF (which the vendor owns), retrieval scoping (what the model can see), tool-permission scoping (what the model can do), and output filters (what the user is allowed to receive). A good constitution makes the model want to do the right thing; the other layers ensure that even when it doesn't, the damage is bounded.",
+          "PMs who treat constitutional prompting as a single-point safety solution end up shipping features where one clever jailbreak takes the whole thing down. PMs who treat it as one layer among several ship features that degrade gracefully.",
+        ),
+        s(" Defence in depth. A constitution is one layer of armour, not the whole armour."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The product-specific part is where most of the value is. "),
+        x(
+          "A children's-education product's constitution looks very different from a security-research tool's. A medical-information feature has refusal patterns that a creative-writing app would never want. The PM job is to enumerate the scenarios that matter for this specific product — what should the model refuse, what should it hedge, what should it do confidently, what tone should each look like — and turn those into named principles.",
+          "Done well, the constitution becomes a living document that the legal, policy, and product teams can review together. Done badly, it's a one-liner ('be safe') that satisfies no one and constrains nothing.",
+        ),
+        s(" Your product's constitution is your product's values. Write it like you mean it."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "Anthropic's Constitutional AI — the research that named the technique",
+      body: "Anthropic's Constitutional AI work trained Claude using a 'constitution' — a set of principles the model uses to self-critique and revise its responses. The paper showed that explicit principles produced more reliable refusals and less harmful output than RLHF alone. The technique has since been adopted (with adaptations) across the industry, and the prompt-layer version PMs use in production is a direct descendant.",
+    },
+    {
+      kind: "ex",
+      title: "Inflection's Pi and the 'compassionate AI' constitution",
+      body: "Inflection's Pi assistant pinned a constitutional approach around emotional tone and non-judgemental responses. The principles were specific ('always validate the user's feelings before redirecting', 'never lecture') and shaped a recognisable product personality. The PM lesson: constitutional prompting is also a brand-tone tool, not just a safety tool.",
+    },
+    {
+      kind: "ex",
+      title: "Healthcare LLM features — refusal patterns as the product",
+      body: "Production healthcare LLM features (symptom checkers, mental-health support tools, medication-information bots) lean heavily on constitutional prompting to define the boundary between 'general health information' (allowed) and 'medical advice' (refused with an escalation). The constitution is reviewed by legal, clinical, and product teams jointly. This is the high-stakes end of the technique and a useful template for any regulated domain.",
+    },
+
+    // ============== 6.9 ==============
+    {
+      kind: "h",
+      number: "6.9",
+      title: "Prompt chaining",
+      subtitle: "Breaking complex tasks into sequential prompts — and when to use it",
+    },
+    {
+      kind: "take",
+      text: "Prompt chaining splits a complex task into a sequence of smaller prompts, each handling one step, with the output of one prompt becoming the input to the next. It is how PMs trade a single-prompt 'do everything' approach for a pipeline that can be evaluated, monitored, and improved one stage at a time.",
+    },
+    {
+      kind: "why",
+      text: "One mega-prompt that 'does the whole flow' is fast to build and impossible to maintain. A chain is more verbose but each stage is independently testable and replaceable. For any feature that survives past the prototype phase, the chain wins.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The pattern is straightforward: a complex task is decomposed into stages. "),
+        x(
+          "For example, a 'summarise this 50-page document into a structured brief' feature might chain: (1) extract key sections, (2) summarise each section, (3) extract entities and relationships, (4) compose the final brief from the section summaries and entities. Each stage has its own prompt, its own eval set, and its own failure modes. When the final output is wrong, you can localise the problem to a stage instead of staring at a 1,500-token prompt and guessing.",
+          "The cost is more tokens and more orchestration. The benefit is debuggability, modular improvement, and the ability to swap in a different model per stage (cheap model for extraction, expensive model for synthesis).",
+        ),
+        s(" Chains turn a black-box feature into a pipeline with measurable stages."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Chains are not free. "),
+        x(
+          "Each stage adds latency (typically serial, since each stage depends on the previous), adds cost (each call has its own input overhead), and introduces error compounding — if each stage is 90% accurate, four stages compound to ~66% end-to-end. The PM job is to decide which decomposition actually helps and which is just complexity for its own sake. A useful test: would a human do this task in distinct steps with hand-offs? If yes, chain it. If no, it's probably one prompt.",
+          "Caching, parallelisation where possible, and aggressive eval at each stage are the standard remedies. A chain without per-stage evals is a chain you can't safely modify.",
+        ),
+        s(" Chain when humans would chain. Single-prompt when humans would single-shot."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("When a chain grows past 4–5 stages, the right next step is usually an agent loop. "),
+        x(
+          "A static chain assumes the same sequence every time; an agent loop chooses the next step based on the previous observation. The line between 'long chain' and 'short agent' is blurry, and many production systems are formally agents but practically chains because the decision logic is heavily constrained. That's often the right design — agents are flexible but unpredictable; chains are rigid but reliable. Pick the level of dynamism the task actually needs.",
+          "PMs should be suspicious of agent loops introduced when a chain would do. The cost in unpredictability is real, and the benefit in flexibility is often illusory for tasks where the pipeline is well-known.",
+        ),
+        s(" Chains for known pipelines, agents for unknown ones. Don't confuse the two."),
+      ],
+    },
+    {
+      kind: "ex",
+      title: "Notion AI's long-form drafting — outline → expand → polish",
+      body: "Notion AI's long-form generation is an explicit three-stage chain: produce an outline, expand each section, polish the whole document. Each stage uses a tuned prompt, and the team can iterate on, say, the polish stage without touching the others. The product quality improvements over time have largely been per-stage prompt and model improvements, not whole-pipeline rewrites.",
+    },
+    {
+      kind: "ex",
+      title: "Klarna's customer service — classify → retrieve → respond → review",
+      body: "Klarna's AI customer-service assistant is a chain rather than a single prompt: classify the intent, retrieve the relevant policy and history, generate the response, then run a safety/policy review on the draft before sending. Each stage has its own metrics and its own ownership inside the team. The chain is what makes the system auditable, which is what makes it deployable at the scale they operate.",
+    },
+    {
+      kind: "ex",
+      title: "GitHub Copilot Workspace — plan → spec → code → test, chained",
+      body: "Copilot Workspace decomposes a feature request into a chained pipeline: understand the issue, propose a plan, generate the spec, generate the code, generate the tests. The user can intervene at each stage. The decomposition turns a vague 'AI implements a feature' demo into an editable, reviewable flow — and is the structural change that makes the product feel trustworthy rather than magical.",
+    },
+
+    // ============== 6.10 ==============
+    {
+      kind: "h",
+      number: "6.10",
+      title: "PM decision lens: when advanced prompting replaces fine-tuning",
+      subtitle: "The $0 optimisation before you spend $50k on training",
+    },
+    {
+      kind: "take",
+      text: "Before fine-tuning, exhaust advanced prompting. Few-shot, CoT, self-consistency, structured outputs, retrieval, and prompt chains together can close most of the quality gap teams reach for fine-tuning to fix — at a fraction of the cost, with none of the operational overhead, and with the option to switch models next quarter.",
+    },
+    {
+      kind: "why",
+      text: "Fine-tuning has real use cases. Most teams who jump to it haven't earned the right to — they've skipped the cheaper, faster, more reversible options. The PM job is to enforce that order: prompt engineering, then retrieval, then fine-tuning, in that sequence, with evidence at each step that the previous tier hit its ceiling.",
+    },
+    {
+      kind: "p",
+      parts: [
+        s("Fine-tuning is expensive and irreversible in important ways. "),
+        x(
+          "Costs include the training run itself, the data preparation (often the dominant cost), the eval harness, ongoing retraining as the base model evolves, and the operational complexity of hosting and versioning a custom model. The model you fine-tune today is the model you're maintaining in 18 months when the base has been deprecated twice — and the gains you got from fine-tuning may now be available from the new base model out of the box.",
+          "Advanced prompting has none of those properties. Worst case, you delete the prompt and try a different one in five minutes. That reversibility is a strategic advantage for any team that doesn't have certainty about which model they'll be on next year.",
+        ),
+        s(" Prompting is reversible. Fine-tuning is mortgage-shaped. Try the cheap option first."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The realistic ceiling of prompting is higher than most teams realise. "),
+        x(
+          "Few-shot examples handle most format and style problems. Chain-of-thought handles reasoning gaps. Self-consistency handles tail-end variance. Structured outputs handle parsing reliability. Retrieval (RAG) handles factuality and recency. Prompt chains handle complexity. Combined, these cover the vast majority of 'the model isn't good enough at X' complaints. Fine-tuning is for the residual — tasks where the model genuinely lacks the underlying capability or where you need a smaller, cheaper model to match a bigger one's behaviour.",
+          "A useful test: can you describe the gap in terms of 'the model doesn't have this knowledge' (RAG), 'the model doesn't follow this pattern' (few-shot), 'the model can't reason through this' (CoT or reasoning model), or 'the model is too expensive at this volume' (fine-tuning a small model to imitate a big one)? Only the last clearly warrants fine-tuning.",
+        ),
+        s(" Diagnose the gap precisely. Most gaps don't need fine-tuning."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("There are real cases for fine-tuning, and PMs should recognise them. "),
+        x(
+          "High-volume tasks where a cheap fine-tuned model can replace an expensive base model at equivalent quality. Domain-specific tasks where the vocabulary, style, or structure genuinely isn't in the base model's distribution. Latency-sensitive surfaces where the few-shot context budget is a problem. Compliance contexts where the prompt cannot be modified at runtime. In each of these, the cost-benefit pencils out and the operational overhead is justified — but the team should have receipts that prompting hit its ceiling first.",
+          "The 'we tried fine-tuning and it worked' anecdote is missing the comparison: would serious few-shot plus retrieval have worked too, at a tenth of the cost? Most teams never ran the comparison. The PM responsibility is to insist on it.",
+        ),
+        s(" Fine-tune when you have receipts that prompting hit its ceiling, not because it sounds more serious."),
+      ],
+    },
+    {
+      kind: "p",
+      parts: [
+        s("The full ladder, ordered by cost and reversibility: "),
+        x(
+          "(1) Better instruction. (2) Few-shot examples. (3) Zero-shot CoT. (4) Structured outputs. (5) Few-shot CoT. (6) Retrieval-augmented generation (RAG). (7) Prompt chaining. (8) Self-consistency on the hard tail. (9) Tree-of-thought for genuinely combinatorial problems. (10) Switch to a stronger or reasoning-class model. (11) Fine-tune. Rungs 1–9 cost engineer-time and tokens; rung 11 costs the items above plus training infrastructure plus ongoing model management.",
+          "Most production LLM features can stop at rung 5 or 6. Few need rung 10. Very few need rung 11. The PM job is to walk the ladder one rung at a time, with evals to prove each rung was insufficient before climbing to the next.",
+        ),
+        s(" Walk the ladder. Don't jump to the top because the bottom feels too simple."),
+      ],
+    },
+    {
+      kind: "diagram",
+      id: "prompting-vs-finetuning-ladder",
+      type: "flow",
+      title: "The prompt-before-fine-tune ladder",
+      caption:
+        "Better instruction → few-shot → zero-shot CoT → structured outputs → few-shot CoT → RAG → prompt chaining → self-consistency → tree-of-thought → stronger model → fine-tune. Evaluate at each rung. Climb only when the eval proves the rung beneath has hit its ceiling.",
+    },
+    {
+      kind: "ex",
+      title: "Klarna — production scale on prompting + retrieval, not fine-tuning",
+      body: "Klarna's customer-service assistant handles a huge volume of interactions and the team has publicly discussed a heavy investment in prompt engineering, retrieval, and chaining — not custom fine-tuning. The base model is a constant; the differentiator is the prompt stack and the retrieval layer. The implication: even at very large scale, the cheap end of the ladder can be enough.",
+    },
+    {
+      kind: "ex",
+      title: "Harvey AI — domain prompting plus RAG before any fine-tuning",
+      body: "Harvey, the legal AI startup, has discussed how much of its early product was high-quality prompting and retrieval over legal corpora, with fine-tuning introduced selectively where the gains were clearly measurable. The discipline of staying high on the ladder until forced down is a real competitive advantage in a regulated, fast-moving domain.",
+    },
+    {
+      kind: "ex",
+      title: "Replit's Ghostwriter — fine-tuning a small model to imitate a big one",
+      body: "Replit has discussed fine-tuning smaller, cheaper models to replicate the behaviour of larger ones on specific coding tasks where latency and per-call cost matter at scale. This is the canonical 'good fine-tune' — a clear cost-and-latency-driven case, with prompting already tuned, and a small fine-tune used surgically rather than as a substitute for prompt work.",
+    },
+  ],
+  examples: [],
+  quiz: [
+    {
+      q: "A PM owns a feature that extracts structured order data (customer, items, totals, dates) from forwarded supplier emails. The current implementation is a single zero-shot prompt that returns 'roughly JSON'. Production accuracy is 71% with frequent parse failures and the team is debating whether to fine-tune. What is the right next move?",
+      options: [
+        "Fine-tune a custom model on extracted-order pairs.",
+        "Adopt vendor-native structured outputs with a strict JSON Schema, add 3–5 few-shot examples covering the messy real-world emails (multi-currency, missing fields, multiple orders per email), and add a zero-shot CoT trigger so the model reasons about ambiguous fields before populating them.",
+        "Switch to a smaller model to save costs.",
+        "Add 'please return valid JSON' to the prompt and hope for the best.",
+      ],
+      correct: 1,
+      correctFeedback:
+        "Exactly. Schema-constrained decoding eliminates the parse-failure class entirely; few-shot examples teach the messy real-world patterns; zero-shot CoT helps on the ambiguous fields. This is rungs 2–4 of the ladder, exhausted before considering fine-tuning at rung 11.",
+      wrongFeedback:
+        "Fine-tuning before exhausting prompting is the canonical mistake of section 6.10. A smaller model makes things worse. 'Please return valid JSON' is folklore. The right answer combines structured outputs, few-shot, and CoT. Re-read sections 6.1, 6.4 (few-shot), 6.7, and 6.10.",
+    },
+    {
+      kind: "categorize",
+      q: "Sort each scenario into the prompting technique that is the best fit.",
+      categories: ["Chain-of-thought", "Self-consistency", "Tree-of-thought", "ReAct"],
+      items: [
+        { text: "Multi-step arithmetic word problems where the model needs to reason out the answer.", category: 0 },
+        { text: "A 'plan a 7-step database migration' task where the first plan is often wrong but a good plan is reachable with exploration.", category: 2 },
+        { text: "Grade-school maths problems where running the same prompt 5 times and taking the majority answer is acceptable cost.", category: 1 },
+        { text: "An assistant that needs to look up the weather, query an internal database, and email a customer.", category: 3 },
+        { text: "Classification into a custom 8-category taxonomy where the model needs to reason about edge cases before committing.", category: 0 },
+        { text: "An agent that interleaves searching, reading, summarising, and answering until the user's question is resolved.", category: 3 },
+      ],
+      correctFeedback:
+        "Right. CoT for reasoning that runs once. Self-consistency when you can afford N runs and need a stable discrete answer. ToT when the problem has search structure. ReAct when the model needs to use tools and observe results.",
+      wrongFeedback:
+        "Re-read sections 6.1, 6.3, 6.4, and 6.6. CoT = reason out loud, single pass. Self-consistency = N runs + majority vote. ToT = explore + evaluate + prune. ReAct = thought → action → observation loop with tools.",
+    },
+    {
+      kind: "order",
+      q: "Order the rungs of the 'prompt-before-fine-tune' ladder, cheapest and most reversible first.",
+      prompt: "Each rung should only be climbed once the previous one has demonstrably hit its ceiling.",
+      items: [
+        "Better instruction — clarify the system prompt, sharpen scope, add explicit prohibitions.",
+        "Few-shot examples — 3–5 worked input/output pairs covering the long tail.",
+        "Structured outputs — schema-constrained decoding for any feature that needs JSON.",
+        "Retrieval-augmented generation (RAG) — ground the model in your domain data.",
+        "Prompt chaining — decompose complex tasks into sequential, individually-evaluable stages.",
+        "Switch to a stronger or reasoning-class model.",
+        "Fine-tune a custom model.",
+      ],
+      correctFeedback:
+        "Exactly. Each rung is cheaper, faster, and more reversible than the one above it. Fine-tuning is the last resort, justified only by evidence that the rungs beneath hit their ceiling.",
+      wrongFeedback:
+        "Re-read section 6.10. The ordering principle is cost and reversibility, not sophistication. Fine-tuning at the bottom of the ladder is the most common production mistake.",
+    },
+    {
+      q: "A team adds 'Let's think step by step' to a customer-support classification prompt and sees accuracy go up 2 points on hard tickets — but P95 latency triples and the chain occasionally leaks into the agent reply. What's the right production pattern?",
+      options: [
+        "Roll back zero-shot CoT — the latency cost isn't worth it.",
+        "Keep the reasoning trigger but route the chain to an internal scratchpad: ask the model to reason step by step then return only the final label, hide the chain from the user, and consider triggering the CoT path only for low-confidence cases flagged by a cheap classifier upstream.",
+        "Ship as-is and let users see the chain — it builds trust.",
+        "Replace the model with a reasoning-class model on every request.",
+      ],
+      correct: 1,
+      correctFeedback:
+        "Exactly. CoT is for the model, not the user, unless 'show your work' is the feature. Hiding the chain and triggering CoT only on flagged cases captures the accuracy lift without paying the latency cost on every request.",
+      wrongFeedback:
+        "Rolling back loses the accuracy gain. Leaking the chain is a product regression. Always routing to a reasoning model is overspending. The production pattern is hidden CoT plus selective routing. Re-read sections 6.1 and 6.2.",
+    },
+    {
+      q: "A PM is briefed on an 'AI agent' the team is building that will, on user request, browse internal wikis, run SQL queries, and send Slack messages. The current design exposes 40 tools to the model. The first eval shows the agent picks the wrong tool ~25% of the time and occasionally fires destructive actions without confirmation. What's the structural fix?",
+      options: [
+        "Add 'please be careful' to the system prompt.",
+        "Cut the tool catalogue to the smallest set that solves the use case, give each remaining tool a narrow scope and a precise docstring (the model picks tools by reading these), require human-in-the-loop confirmation for any side-effecting action, and run a ReAct-trajectory eval that catches wrong-tool calls before they ship.",
+        "Fine-tune the model to pick tools better.",
+        "Switch to a different model vendor.",
+      ],
+      correct: 1,
+      correctFeedback:
+        "Right. ReAct quality is dominated by tool-catalogue design — narrow scopes, precise docstrings, and confirmation gates on destructive actions. A 40-tool catalogue is a product spec problem, not a model problem.",
+      wrongFeedback:
+        "'Please be careful' is folklore. Fine-tuning before fixing tool design is fixing the wrong layer. Vendor switching doesn't fix a 40-tool catalogue. Re-read section 6.6 — the tool catalogue is the agent's product spec.",
+    },
+    {
+      q: "A team ships a 'summarise a 50-page document into a structured brief' feature as a single 2,000-token mega-prompt. End-to-end quality is mediocre and nobody can tell where the failures come from. The PM proposes 'we just need a better prompt'. What's a stronger move?",
+      options: [
+        "Make the mega-prompt longer and more detailed.",
+        "Decompose the task into a chain — extract key sections, summarise each section, extract entities, compose the final brief — with an independent eval set and prompt per stage so failures can be localised, individual stages can be improved or model-swapped, and the whole pipeline becomes maintainable.",
+        "Fine-tune a model on document-to-brief pairs.",
+        "Lower the temperature to 0 and call it deterministic.",
+      ],
+      correct: 1,
+      correctFeedback:
+        "Exactly. Single mega-prompts are demo-shaped; chains are production-shaped. Per-stage evals make the pipeline diagnosable and improvable; per-stage prompts let you swap a cheap model into the extraction stage and an expensive one into synthesis.",
+      wrongFeedback:
+        "Longer prompts don't fix opaque pipelines. Fine-tuning bypasses the missing diagnosis. Temperature 0 doesn't fix architecture. The structural fix is prompt chaining with per-stage evals. Re-read section 6.9.",
+    },
+  ],
+},
+{
   slug: "pm-dev-git-github",
   number: 1,
   shortTitle: "Git & GitHub",
