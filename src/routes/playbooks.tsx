@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Nav, Footer } from "@/components/site-nav";
+import { ShareMenu } from "@/components/share-menu";
 import { useProgress } from "@/lib/storage";
 import { Briefcase, ArrowRight } from "lucide-react";
 import { PLAYBOOKS, type Playbook } from "@/lib/playbooks";
