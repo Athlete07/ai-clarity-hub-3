@@ -12,6 +12,7 @@ import {
 import { playbookForSlug, nextSlugInPlaybook, prevSlugInPlaybook } from "@/lib/playbooks";
 import { useProgress, useReadMode, useSectionsViewed, useSavedDepth, type ReadMode } from "@/lib/storage";
 import { Clock, Hand, Menu, X, Check, ChevronDown, BookOpen, Zap, Bookmark, BookmarkCheck } from "lucide-react";
+import { ShareMenu } from "@/components/share-menu";
 
 // Approx 220 words per minute; word counts derived from block kind.
 function blockWords(b: ConceptBodyBlock): number {
