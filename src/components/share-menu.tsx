@@ -71,7 +71,7 @@ export function ShareMenu({ title, summary, slug, variant = "pill" }: Props) {
         className={triggerCls}
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label="Share this chapter"
+        aria-label="Share this page"
       >
         <Share2 size={12} />
         Share
