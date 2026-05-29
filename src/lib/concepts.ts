@@ -11759,6 +11759,11 @@ export const concepts: Concept[] = [
       body: "Egress fees — the cost of moving data out of a cloud — are deliberately high (often $0.08-0.12 per GB) and create lock-in. A petabyte of data sitting in AWS S3 costs $80-120K to move to GCP. PMs negotiating cloud bills or planning multi-cloud strategies routinely under-estimate this; engineers usually know but assume someone else is tracking the cost.",
     },
     {
+      kind: "ex",
+      title: "Snowflake's storage-compute split as the new default",
+      body: "Snowflake's architectural win was separating storage (cheap, on S3) from compute (expensive, only when querying). The pattern has been copied by Databricks, BigQuery, and modern data platforms, because it lets customers store petabytes cheaply and pay for compute only when actually analysing. PMs scoping data products should expect this split; bundling them is a 2015-era design that prices you out of long-tail use cases.",
+    },
+    {
       kind: "h",
       number: "5.4",
       title: "Regions, availability zones, and why outages happen the way they do",
@@ -11798,11 +11803,6 @@ export const concepts: Concept[] = [
       kind: "ex",
       title: "The 2017 S3 outage that took down half the internet",
       body: "On 28 February 2017, an S3 outage in AWS's us-east-1 region took down Slack, Trello, Quora, and parts of Netflix for hours. The blast radius was so wide because most teams had implicitly assumed us-east-1 would always be up. Multi-region resilience was sold afterwards as table stakes; it had been table stakes the whole time, but the outage made it visible.",
-    },
-    {
-      kind: "ex",
-      title: "us-east-1 is special, and not in a good way",
-      body: "AWS's us-east-1 (Northern Virginia) is the oldest and largest region and disproportionately the source of major outages — partly because new services often launch there first. Experienced teams deliberately avoid making us-east-1 their primary region. The PM-useful fact: 'where in the cloud do we run?' has real availability implications, not just latency ones.",
     },
     {
       kind: "ex",
