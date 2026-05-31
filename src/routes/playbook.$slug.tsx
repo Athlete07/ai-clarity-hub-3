@@ -5,6 +5,8 @@ import { ExampleTabs } from "@/components/example-tabs";
 import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Quiz } from "@/components/quiz";
 import { DiagramBlock } from "@/components/diagrams";
+import { CreatorAttribution } from "@/components/creator-attribution";
+import { CREATOR } from "@/lib/creator";
 import {
   conceptBySlug,
   type ConceptBodyBlock,
@@ -94,7 +96,13 @@ export const Route = createFileRoute("/playbook/$slug")({
             "@type": "Article",
             headline: c.title,
             description: c.summary,
-            author: { "@type": "Organization", name: "FactorBeam" },
+            author: {
+              "@type": "Person",
+              name: CREATOR.name,
+              url: "/creator",
+              image: CREATOR.photo,
+              jobTitle: CREATOR.role,
+            },
             publisher: { "@type": "Organization", name: "FactorBeam" },
             mainEntityOfPage: `/playbook/${c.slug}`,
           }),
@@ -410,6 +418,11 @@ function ConceptPage() {
                 nextTitle={next?.shortTitle}
               />
             </section>
+
+            {/* Author attribution */}
+            <div className="mt-14">
+              <CreatorAttribution />
+            </div>
 
             {/* Bottom nav */}
             <div className="hairline-t mt-10 flex flex-wrap items-center justify-between gap-3 pt-5">
