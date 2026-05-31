@@ -419,6 +419,11 @@ function ConceptPage() {
               />
             </section>
 
+            {/* Author attribution */}
+            <div className="mt-14">
+              <CreatorAttribution />
+            </div>
+
             {/* Bottom nav */}
             <div className="hairline-t mt-10 flex flex-wrap items-center justify-between gap-3 pt-5">
               {prev ? (
