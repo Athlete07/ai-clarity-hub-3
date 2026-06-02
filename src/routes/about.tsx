@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/site-nav";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, MessageSquareText } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
