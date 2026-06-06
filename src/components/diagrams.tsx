@@ -26,6 +26,360 @@ export function DiagramBlock({ block }: { block: Extract<ConceptBodyBlock, { kin
         {block.id === "ch2-training-loop" && <TrainingLoopFlow />}
         {block.id === "ch2-epochs-nested" && <EpochsNested />}
         {block.id === "ch2-fitting-comparison" && <FittingComparison />}
+
+        {block.id === "ch1-git-flow" && <GitFlow />}
+        {block.id === "ch2-api-flow" && <ApiFlow />}
+        {block.id === "ch3-python-stack" && <PythonStack />}
+        {block.id === "ch4-notebook-lifecycle" && <NotebookLifecycle />}
+        {block.id === "ch5-runtime-spectrum" && <RuntimeSpectrum />}
+        {block.id === "ch6-orchestration" && <OrchestrationTree />}
+        {block.id === "ch7-deploy-flow" && <DeployFlow />}
+        {block.id === "ch8-cost-latency-frontier" && <CostLatencyFrontier />}
+      </div>
+    </div>
+  );
+}
+
+function StepRow({
+  steps,
+  highlightLast = true,
+}: {
+  steps: { title: string; desc: string }[];
+  highlightLast?: boolean;
+}) {
+  return (
+    <div className="flex w-full min-w-min max-w-[900px] flex-col items-center gap-3 sm:flex-row sm:flex-wrap">
+      {steps.map((step, i) => {
+        const isLast = i === steps.length - 1;
+        const accent = highlightLast && isLast;
+        return (
+          <div key={i} className="flex items-center gap-3">
+            <div
+              className={`flex h-[92px] w-[140px] flex-col items-center justify-center rounded-lg border p-3 text-center shadow-sm ${
+                accent
+                  ? "border-purple bg-purple-light/50 text-purple-dark"
+                  : "border-border bg-muted/10 text-foreground"
+              }`}
+            >
+              <span className="text-[12px] font-medium leading-tight">{step.title}</span>
+              <span
+                className={`mt-1 text-[10px] leading-tight ${accent ? "text-purple-dark/80" : "text-muted-foreground"}`}
+              >
+                {step.desc}
+              </span>
+            </div>
+            {!isLast && (
+              <ArrowRight size={16} className="rotate-90 text-muted-foreground/50 sm:rotate-0" />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function GitFlow() {
+  return (
+    <StepRow
+      steps={[
+        { title: "Local commits", desc: "On a feature branch" },
+        { title: "Push to remote", desc: "Branch lives on GitHub" },
+        { title: "Open PR", desc: "Description + reviewers" },
+        { title: "Review + CI", desc: "Tests, lint, approval" },
+        { title: "Merge to main", desc: "Squash or merge commit" },
+        { title: "Deploy", desc: "CD pipeline to prod" },
+      ]}
+    />
+  );
+}
+
+function ApiFlow() {
+  return (
+    <div className="flex w-full max-w-[820px] flex-col items-stretch gap-4">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="rounded-lg border border-border bg-muted/10 p-4 shadow-sm">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+            Client request
+          </div>
+          <ul className="mt-2 space-y-1 text-[12px] text-foreground">
+            <li>Method (GET / POST)</li>
+            <li>URL + path params</li>
+            <li>Headers (auth, type)</li>
+            <li>Body (JSON payload)</li>
+          </ul>
+        </div>
+        <div className="flex items-center justify-center rounded-lg border border-dashed border-border bg-muted/20 p-4 text-center">
+          <div>
+            <Activity size={18} className="mx-auto text-muted-foreground" />
+            <div className="mt-2 text-[12px] font-medium text-foreground">Server</div>
+            <div className="text-[11px] text-muted-foreground">
+              Auth, validate, process, query DB
+            </div>
+          </div>
+        </div>
+        <div className="rounded-lg border border-purple bg-purple-light/40 p-4 shadow-sm">
+          <div className="text-[11px] font-semibold uppercase tracking-wider text-purple-dark">
+            Server response
+          </div>
+          <ul className="mt-2 space-y-1 text-[12px] text-purple-dark">
+            <li>Status code (200 / 4xx / 5xx)</li>
+            <li>Headers (cache, rate limit)</li>
+            <li>Body (data, error, meta)</li>
+          </ul>
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-2 text-[11px] text-muted-foreground">
+        <ArrowRight size={12} /> Request <ArrowRight size={12} /> Server work{" "}
+        <ArrowRight size={12} /> Response
+      </div>
+    </div>
+  );
+}
+
+function PythonStack() {
+  return (
+    <div className="relative mx-auto w-full max-w-[520px]">
+      <div className="rounded-xl border border-border bg-muted/10 p-5 pt-8">
+        <div className="absolute left-6 top-4 text-[13px] font-bold text-foreground/80">
+          Your model code (Python)
+        </div>
+        <div className="mb-4 mt-1 pl-1 text-[11px] text-muted-foreground">
+          model.fit(...), prompt templates, training loops — the part you read.
+        </div>
+
+        <div className="relative rounded-lg border border-border bg-muted/20 p-5 pt-8">
+          <div className="absolute left-5 top-3 text-[13px] font-bold text-foreground">
+            Frameworks: PyTorch / TensorFlow / JAX
+          </div>
+          <div className="mb-4 mt-1 pl-1 text-[11px] text-muted-foreground">
+            Tensor ops, autograd, model abstractions — Python on top, C++ underneath.
+          </div>
+
+          <div className="relative rounded-lg border border-border bg-muted/30 p-5 pt-8">
+            <div className="absolute left-5 top-3 text-[13px] font-bold text-foreground">
+              CUDA / cuDNN / optimised C++ kernels
+            </div>
+            <div className="mb-4 mt-1 pl-1 text-[11px] text-muted-foreground">
+              The hot loops that actually move floats around.
+            </div>
+
+            <div className="relative rounded-md border border-purple bg-purple-light/40 p-5 pt-8 shadow-sm">
+              <div className="absolute left-4 top-3 text-[13px] font-bold text-purple-dark">
+                GPU drivers + hardware (NVIDIA / TPU)
+              </div>
+              <div className="mt-1 pl-1 text-[11px] text-purple-dark/80">
+                Where the FLOPs and the cloud bill actually happen.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function NotebookLifecycle() {
+  return (
+    <StepRow
+      steps={[
+        { title: "Notebook", desc: "Exploration, charts, ad-hoc" },
+        { title: ".py modules", desc: "Extract reusable logic" },
+        { title: "Tested code", desc: "Unit tests + linting" },
+        { title: "Deployed service", desc: "Versioned, monitored" },
+      ]}
+    />
+  );
+}
+
+function RuntimeSpectrum() {
+  const cards = [
+    {
+      label: "Virtual machines",
+      accent: false,
+      cost: "Flat cost, 24/7",
+      best: "Steady, predictable load",
+      pain: "Pay for idle capacity",
+    },
+    {
+      label: "Containers",
+      accent: true,
+      cost: "Scales with traffic",
+      best: "Most web + API workloads",
+      pain: "Needs orchestration",
+    },
+    {
+      label: "Serverless",
+      accent: false,
+      cost: "Pay per invocation",
+      best: "Spiky, low-volume jobs",
+      pain: "Expensive at sustained scale",
+    },
+  ];
+  return (
+    <div className="flex w-full flex-col gap-4 lg:flex-row">
+      {cards.map((c) => (
+        <div
+          key={c.label}
+          className={`flex-1 rounded-xl border p-5 ${
+            c.accent ? "border-purple bg-purple-light/20" : "border-border bg-transparent"
+          }`}
+        >
+          <div
+            className={`mb-3 text-[12px] font-semibold uppercase tracking-wider ${
+              c.accent ? "text-purple-dark" : "text-muted-foreground"
+            }`}
+          >
+            {c.label}
+          </div>
+          <div
+            className={`rounded border p-4 text-[13px] shadow-sm ${
+              c.accent ? "border-purple bg-purple-light/50" : "border-border bg-card"
+            }`}
+          >
+            <div className={`font-medium ${c.accent ? "text-purple-dark" : "text-foreground"}`}>
+              {c.cost}
+            </div>
+            <div
+              className={`mt-2 text-[12px] ${c.accent ? "text-purple-dark/80" : "text-muted-foreground"}`}
+            >
+              Best for: {c.best}
+            </div>
+            <div
+              className={`mt-1 text-[12px] ${c.accent ? "text-purple-dark/80" : "text-muted-foreground"}`}
+            >
+              Watch out: {c.pain}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function OrchestrationTree() {
+  const layers = [
+    { title: "One container", desc: "Runs a single process in isolation" },
+    { title: "Service", desc: "Many identical containers behind a load balancer" },
+    { title: "Application", desc: "Multiple services talking over the network" },
+    { title: "Orchestrator (Kubernetes)", desc: "Schedules, restarts, scales, routes traffic" },
+  ];
+  return (
+    <div className="mx-auto flex w-full max-w-[580px] flex-col gap-2">
+      {layers.map((l, i) => {
+        const isLast = i === layers.length - 1;
+        return (
+          <div key={l.title} className="flex flex-col gap-1">
+            <div
+              className={`flex items-center gap-3 rounded-lg border p-3 shadow-sm ${
+                isLast
+                  ? "border-purple bg-purple-light/50 text-purple-dark"
+                  : "border-border bg-muted/10 text-foreground"
+              }`}
+              style={{ marginLeft: `${i * 18}px` }}
+            >
+              <Box
+                size={16}
+                className={isLast ? "text-purple-dark" : "text-muted-foreground"}
+              />
+              <div>
+                <div className="text-[13px] font-medium leading-tight">{l.title}</div>
+                <div
+                  className={`text-[11px] leading-tight ${
+                    isLast ? "text-purple-dark/80" : "text-muted-foreground"
+                  }`}
+                >
+                  {l.desc}
+                </div>
+              </div>
+            </div>
+            {!isLast && (
+              <div
+                className="text-[12px] text-muted-foreground/50"
+                style={{ marginLeft: `${i * 18 + 18}px` }}
+              >
+                ↓
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function DeployFlow() {
+  return (
+    <StepRow
+      steps={[
+        { title: "PR opened", desc: "Diff + description" },
+        { title: "CI", desc: "Lint, tests, build" },
+        { title: "Review", desc: "Approval gate" },
+        { title: "Merge to main", desc: "Trigger CD" },
+        { title: "Staging", desc: "Automated checks" },
+        { title: "Canary", desc: "1–5% of traffic" },
+        { title: "100% rollout", desc: "Monitor + rollback ready" },
+      ]}
+    />
+  );
+}
+
+function CostLatencyFrontier() {
+  return (
+    <div className="mx-auto w-full max-w-[640px]">
+      <div className="relative h-[300px] rounded-xl border border-border bg-muted/10 p-4">
+        <div className="absolute bottom-7 left-12 right-6 border-t border-border" />
+        <div className="absolute bottom-7 left-12 top-4 border-l border-border" />
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-wider text-muted-foreground">
+          Latency / cost per call →
+        </div>
+        <div className="absolute left-1 top-1/2 -translate-y-1/2 -rotate-90 text-[10px] uppercase tracking-wider text-muted-foreground">
+          ← Quality / capability
+        </div>
+
+        <FrontierPoint left="22%" bottom="24%" label="Small model" sub="Fast, cheap, narrow" />
+        <FrontierPoint left="46%" bottom="50%" label="Mid + RAG" sub="Balanced default" accent />
+        <FrontierPoint left="72%" bottom="72%" label="Frontier model" sub="Slow, costly, broad" />
+        <FrontierPoint left="80%" bottom="42%" label="Fine-tuned small" sub="Specialised win" />
+      </div>
+      <div className="mt-3 text-center text-[11px] text-muted-foreground">
+        Mature products route different requests to different points on this curve.
+      </div>
+    </div>
+  );
+}
+
+function FrontierPoint({
+  left,
+  bottom,
+  label,
+  sub,
+  accent,
+}: {
+  left: string;
+  bottom: string;
+  label: string;
+  sub: string;
+  accent?: boolean;
+}) {
+  return (
+    <div
+      className="absolute flex flex-col items-center"
+      style={{ left, bottom, transform: "translate(-50%, 50%)" }}
+    >
+      <div
+        className={`h-3 w-3 rounded-full border ${
+          accent ? "border-purple-dark bg-purple" : "border-border bg-card"
+        }`}
+      />
+      <div
+        className={`mt-1 whitespace-nowrap rounded border px-2 py-1 text-[10px] shadow-sm ${
+          accent
+            ? "border-purple bg-purple-light/60 text-purple-dark"
+            : "border-border bg-card text-foreground"
+        }`}
+      >
+        <div className="font-medium leading-tight">{label}</div>
+        <div className="leading-tight opacity-75">{sub}</div>
       </div>
     </div>
   );
