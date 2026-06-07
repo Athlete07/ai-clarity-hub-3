@@ -71,12 +71,6 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
               Playbooks
             </Link>
             <Link
-              to="/games"
-              className="rounded-md px-3 py-2.5 text-[14px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              Games
-            </Link>
-            <Link
               to="/about"
               className="rounded-md px-3 py-2.5 text-[14px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
@@ -131,12 +125,6 @@ export function Nav({ slim = false }: { slim?: boolean }) {
               className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
             >
               Playbooks
-            </Link>
-            <Link
-              to="/games"
-              className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Games
             </Link>
             <Link
               to="/about"
