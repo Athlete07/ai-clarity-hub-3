@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Logo } from "@/components/site-nav";
 import {
-  GAMES,
   getGame,
   useHighScore,
   recordScore,
@@ -791,5 +790,3 @@ function PostGame({
   );
 }
 
-// Avoid TS unused-var if GAMES not referenced
-void GAMES;
