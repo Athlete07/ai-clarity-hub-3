@@ -1,3 +1,4 @@
+import { canonicalChapterSlug } from "./chapter-slug-migrations";
 import { pb4Concepts } from "./concepts-pb4";
 import { pb5Concepts } from "./concepts-pb5";
 import { pb6Concepts } from "./concepts-pb6";
@@ -783,7 +784,7 @@ export const concepts: Concept[] = [
     ],
   },
   {
-    slug: "pm-how-models-learn",
+    slug: "how-models-learn",
     number: 2,
     shortTitle: "How Models Learn",
     title: "How Models Learn",
@@ -1517,7 +1518,7 @@ export const concepts: Concept[] = [
     ],
   },
   {
-    slug: "pm-training-vs-inference",
+    slug: "training-vs-inference",
     number: 3,
     shortTitle: "Training vs Inference",
     title: "Training vs Inference — Two completely different operations with very different costs",
@@ -2321,7 +2322,7 @@ export const concepts: Concept[] = [
     examples: [],
   },
   {
-  slug: "pm-data-and-labels",
+  slug: "data-and-labels",
   number: 4,
   shortTitle: "Data & Labels",
   title: "Data & Labels — Why your data strategy is your AI strategy",
@@ -3120,7 +3121,7 @@ export const concepts: Concept[] = [
   examples: []
 },
 {
-  slug: "pm-probability-and-confidence",
+  slug: "probability-and-confidence",
   number: 5,
   shortTitle: "Probability & Confidence",
   title: "Probability & Confidence — Why AI outputs aren't answers — they're bets",
@@ -3691,7 +3692,7 @@ export const concepts: Concept[] = [
   examples: []
 },
 {
-  slug: "pm-model-evaluation",
+  slug: "model-evaluation",
   number: 6,
   shortTitle: "Model Evaluation",
   title: "Model Evaluation — Why \"accuracy\" alone will mislead you every time",
@@ -4488,7 +4489,7 @@ export const concepts: Concept[] = [
   examples: []
 },
 {
-  slug: "pm-bias-and-hallucination",
+  slug: "bias-and-hallucination",
   number: 7,
   shortTitle: "Bias & Hallucination",
   title: "Bias & Hallucination — The two failure modes that will define your AI PM career",
@@ -5287,7 +5288,7 @@ export const concepts: Concept[] = [
   examples: []
 },
 {
-  slug: "pm-llm-tokenization",
+  slug: "tokenization",
   number: 1,
   shortTitle: "Tokenization",
   title: "Tokenization",
@@ -5807,7 +5808,7 @@ export const concepts: Concept[] = [
   ],
 },
 {
-  slug: "pm-llm-transformers-attention",
+  slug: "transformers-and-attention",
   number: 2,
   shortTitle: "Transformers & Attention",
   title: "Transformers & Attention",
@@ -6411,7 +6412,7 @@ export const concepts: Concept[] = [
   ],
 },
 {
-  slug: "pm-llm-context-windows",
+  slug: "context-windows",
   number: 3,
   shortTitle: "Context Windows",
   title: "Context Windows",
@@ -7015,7 +7016,7 @@ export const concepts: Concept[] = [
   ],
 },
 {
-  slug: "pm-llm-temperature-sampling",
+  slug: "temperature-and-sampling",
   number: 4,
   shortTitle: "Temperature & Sampling",
   title: "Temperature & Sampling",
@@ -7642,7 +7643,7 @@ export const concepts: Concept[] = [
   ],
 },
 {
-  slug: "pm-llm-prompt-engineering-foundations",
+  slug: "prompt-engineering-foundations",
   number: 5,
   shortTitle: "Prompt Engineering — Foundations",
   title: "Prompt Engineering — Foundations",
@@ -8332,7 +8333,7 @@ export const concepts: Concept[] = [
   ],
 },
 {
-  slug: "pm-llm-prompt-engineering-advanced",
+  slug: "prompt-engineering-advanced",
   number: 6,
   shortTitle: "Prompt Engineering — Advanced",
   title: "Prompt Engineering — Advanced",
@@ -9099,7 +9100,7 @@ export const concepts: Concept[] = [
   ],
 },
 {
-  slug: "pm-llm-embeddings",
+  slug: "embeddings",
   number: 7,
   shortTitle: "Embeddings",
   title: "Embeddings",
@@ -9719,7 +9720,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-git-github",
+  slug: "git-and-github",
   number: 1,
   shortTitle: "Git & GitHub",
   title: "Git & GitHub",
@@ -10211,7 +10212,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-apis-rest",
+  slug: "apis-and-rest",
   number: 2,
   shortTitle: "APIs & REST",
   title: "APIs & REST",
@@ -10759,7 +10760,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-python-basics",
+  slug: "python-basics",
   number: 3,
   shortTitle: "Python Basics",
   title: "Python Basics",
@@ -11199,7 +11200,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-notebooks-colab",
+  slug: "notebooks-and-colab",
   number: 4,
   shortTitle: "Notebooks & Colab",
   title: "Notebooks & Colab",
@@ -11618,7 +11619,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-cloud",
+  slug: "cloud-computing",
   number: 5,
   shortTitle: "Cloud (AWS / GCP / Azure)",
   title: "Cloud (AWS / GCP / Azure)",
@@ -12061,7 +12062,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-containers-docker",
+  slug: "containers-and-docker",
   number: 6,
   shortTitle: "Containers & Docker",
   title: "Containers & Docker",
@@ -12475,7 +12476,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-ci-cd-concepts",
+  slug: "ci-cd-concepts",
   number: 7,
   shortTitle: "CI/CD",
   title: "CI/CD concepts",
@@ -12915,7 +12916,7 @@ export const concepts: Concept[] = [
   examples: [],
 },
 {
-  slug: "pm-dev-cost-latency",
+  slug: "cost-and-latency",
   number: 8,
   shortTitle: "Cost & Latency",
   title: "Cost & latency tradeoffs",
@@ -13358,8 +13359,10 @@ export const concepts: Concept[] = [
   ...pb9Concepts,
 ];
 
-export const conceptBySlug = (slug: string): Concept | undefined =>
-  concepts.find((c) => c.slug === slug);
+export const conceptBySlug = (slug: string): Concept | undefined => {
+  const canonical = canonicalChapterSlug(slug);
+  return concepts.find((c) => c.slug === canonical);
+};
 
 
 

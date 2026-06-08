@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter06MlopsPipelines = buildChapter({
-  slug: "pb5-mlops-pipelines",
+  slug: "mlops-pipelines",
   number: 6,
   shortTitle: "MLOps Pipelines",
   title: "MLOps Pipelines",

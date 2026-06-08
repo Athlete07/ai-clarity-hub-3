@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter08AgentReliability = buildChapter({
-  slug: "pb6-agent-reliability",
+  slug: "agent-reliability",
   number: 8,
   shortTitle: "Agent Reliability",
   title: "Agent Reliability & Failure Modes",

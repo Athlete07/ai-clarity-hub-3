@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter08CanaryShadowDeployments = buildChapter({
-  slug: "pb5-canary-shadow-deployments",
+  slug: "canary-and-shadow-deployments",
   number: 8,
   shortTitle: "Canary & Shadow",
   title: "Canary & Shadow Deployments",

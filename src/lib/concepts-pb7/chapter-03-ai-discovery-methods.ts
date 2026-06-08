@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter03AiDiscoveryMethods = buildChapter({
-  slug: "pb7-ai-discovery-methods",
+  slug: "ai-discovery-methods",
   number: 3,
   shortTitle: "AI Discovery",
   title: "AI Discovery Methods",

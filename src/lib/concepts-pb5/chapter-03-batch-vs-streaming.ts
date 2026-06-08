@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter03BatchVsStreaming = buildChapter({
-  slug: "pb5-batch-vs-streaming",
+  slug: "batch-vs-streaming",
   number: 3,
   shortTitle: "Batch vs Streaming",
   title: "Batch vs Streaming Inference",

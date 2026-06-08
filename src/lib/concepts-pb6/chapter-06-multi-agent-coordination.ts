@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter06MultiAgentCoordination = buildChapter({
-  slug: "pb6-multi-agent-coordination",
+  slug: "multi-agent-coordination",
   number: 6,
   shortTitle: "Multi-agent Coordination",
   title: "Multi-agent Coordination & Supervision",

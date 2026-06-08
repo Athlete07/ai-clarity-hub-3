@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter05AiSafetyEthicsRegulation = buildChapter({
-  slug: "pb7-ai-safety-ethics-regulation",
+  slug: "ai-safety-ethics-regulation",
   number: 5,
   shortTitle: "AI Safety, Ethics & Regulation",
   title: "AI Safety, Ethics & Regulation",

@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter02VectorDatabases = buildChapter({
-  slug: "pb4-vector-databases",
+  slug: "vector-databases",
   number: 2,
   shortTitle: "Vector Databases",
   title: "Vector Databases",

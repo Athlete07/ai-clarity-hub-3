@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter05VoiceInterfaces = buildChapter({
-  slug: "pb8-voice-interfaces",
+  slug: "voice-interfaces",
   number: 5,
   shortTitle: "Voice Interfaces",
   title: "Voice Interfaces",

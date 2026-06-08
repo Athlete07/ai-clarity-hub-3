@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter08GuardrailsSafety = buildChapter({
-  slug: "pb4-guardrails-safety",
+  slug: "guardrails-and-safety",
   number: 8,
   shortTitle: "Guardrails & Safety",
   title: "Guardrails & Safety",

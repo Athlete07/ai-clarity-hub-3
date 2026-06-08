@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter09HumanInTheLoop = buildChapter({
-  slug: "pb6-human-in-the-loop",
+  slug: "human-in-the-loop",
   number: 9,
   shortTitle: "Human-in-the-Loop",
   title: "Human-in-the-Loop Design",

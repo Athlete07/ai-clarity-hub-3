@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter07RoadmapAiFeatures = buildChapter({
-  slug: "pb7-roadmap-ai-features",
+  slug: "roadmap-for-ai-features",
   number: 7,
   shortTitle: "Roadmap AI Features",
   title: "Roadmap for AI Features",

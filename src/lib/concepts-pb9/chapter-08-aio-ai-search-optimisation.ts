@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter08AioAiSearchOptimisation = buildChapter({
-  slug: "pb9-aio-ai-search-optimisation",
+  slug: "aio-ai-search-optimisation",
   number: 8,
   shortTitle: "AIO",
   title: "AIO — AI Search Optimisation",

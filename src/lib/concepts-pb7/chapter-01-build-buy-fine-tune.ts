@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter01BuildBuyFineTune = buildChapter({
-  slug: "pb7-build-buy-fine-tune",
+  slug: "build-buy-fine-tune",
   number: 1,
   shortTitle: "Build vs Buy vs Fine-tune",
   title: "Build vs Buy vs Fine-tune",

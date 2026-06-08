@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter07ModelVersioning = buildChapter({
-  slug: "pb5-model-versioning",
+  slug: "model-versioning",
   number: 7,
   shortTitle: "Model Versioning",
   title: "Model Versioning",

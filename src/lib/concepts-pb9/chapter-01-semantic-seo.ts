@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter01SemanticSeo = buildChapter({
-  slug: "pb9-semantic-seo",
+  slug: "semantic-seo",
   number: 1,
   shortTitle: "Semantic SEO",
   title: "Semantic SEO",

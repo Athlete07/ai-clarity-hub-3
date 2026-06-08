@@ -11,12 +11,14 @@ import { Link } from "@tanstack/react-router";
 export function Quiz({
   questions,
   onComplete,
-  nextSlug,
+  nextChapterSlug,
+  nextPlaybookId,
   nextTitle,
 }: {
   questions: QuizQuestion[];
   onComplete: () => void;
-  nextSlug?: string;
+  nextChapterSlug?: string;
+  nextPlaybookId?: string;
   nextTitle?: string;
 }) {
   const [current, setCurrent] = useState(0);
@@ -59,10 +61,10 @@ export function Quiz({
           <p className="mx-auto mt-1 max-w-md text-[13px] text-muted-foreground">
             Nicely done. You can move on, or come back to re-read anytime.
           </p>
-          {nextSlug && (
+          {nextChapterSlug && nextPlaybookId && (
             <Link
-              to="/playbook/$slug"
-              params={{ slug: nextSlug }}
+              to="/playbooks/$playbookId/$chapterSlug"
+              params={{ playbookId: nextPlaybookId, chapterSlug: nextChapterSlug }}
               className="mt-6 inline-flex items-center gap-1.5 rounded-md bg-purple px-4 py-2 text-[13px] font-medium text-white hover:bg-purple-dark"
             >
               Next: {nextTitle} <ArrowRight size={14} />

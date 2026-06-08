@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter07SearchIntentMapping = buildChapter({
-  slug: "pb9-search-intent-mapping",
+  slug: "search-intent-mapping",
   number: 7,
   shortTitle: "Search Intent",
   title: "Search Intent Mapping",

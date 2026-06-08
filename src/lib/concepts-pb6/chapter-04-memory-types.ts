@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter04MemoryTypes = buildChapter({
-  slug: "pb6-memory-types",
+  slug: "memory-types",
   number: 4,
   shortTitle: "Memory Types",
   title: "Memory Types",

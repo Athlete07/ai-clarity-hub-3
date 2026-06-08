@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect, useRouter } from "@tanstack/react-router";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Nav, Footer } from "@/components/site-nav";
 import { ExampleTabs } from "@/components/example-tabs";
@@ -11,7 +11,17 @@ import {
   conceptBySlug,
   type ConceptBodyBlock,
 } from "@/lib/concepts";
-import { playbookForSlug, nextSlugInPlaybook, prevSlugInPlaybook } from "@/lib/playbooks";
+import { canonicalChapterSlug } from "@/lib/chapter-slug-migrations";
+import {
+  playbookForSlug,
+  nextSlugInPlaybook,
+  prevSlugInPlaybook,
+  playbookById,
+  chapterPath,
+  canonicalPlaybookId,
+  isChapterInPlaybook,
+  type PlaybookId,
+} from "@/lib/playbooks";
 import { useProgress, useReadMode, useSectionsViewed, useSavedDepth, type ReadMode } from "@/lib/storage";
 import { Clock, Hand, Menu, X, Check, ChevronDown, BookOpen, Zap, Bookmark, BookmarkCheck } from "lucide-react";
 import { ShareMenu } from "@/components/share-menu";
@@ -67,14 +77,43 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createFileRoute("/playbooks/$playbookId/$chapterSlug")({
+  beforeLoad: ({ params }) => {
+    const canonicalSlug = canonicalChapterSlug(params.chapterSlug);
+    const playbookId = canonicalPlaybookId(params.playbookId);
+
+    if (params.playbookId !== playbookId || params.chapterSlug !== canonicalSlug) {
+      const pb = playbookForSlug(canonicalSlug);
+      if (!pb) throw notFound();
+      throw redirect({
+        to: "/playbooks/$playbookId/$chapterSlug",
+        params: { playbookId: pb.id, chapterSlug: canonicalSlug },
+        replace: true,
+      });
+    }
+
+    if (!isChapterInPlaybook(playbookId, canonicalSlug)) {
+      const pb = playbookForSlug(canonicalSlug);
+      if (!pb) throw notFound();
+      throw redirect({
+        to: "/playbooks/$playbookId/$chapterSlug",
+        params: { playbookId: pb.id, chapterSlug: canonicalSlug },
+        replace: true,
+      });
+    }
+  },
   loader: ({ params }) => {
-    const concept = conceptBySlug(params.slug);
+    const playbookId = canonicalPlaybookId(params.playbookId);
+    const chapterSlug = canonicalChapterSlug(params.chapterSlug);
+    if (!isChapterInPlaybook(playbookId, chapterSlug)) throw notFound();
+    const concept = conceptBySlug(chapterSlug);
     if (!concept) throw notFound();
-    return { concept };
+    return { concept, playbookId };
   },
   head: ({ loaderData }) => {
     const c = loaderData?.concept;
-    if (!c) return { meta: [{ title: "Chapter — FactorBeam" }] };
+    const playbookId = loaderData?.playbookId;
+    if (!c || !playbookId) return { meta: [{ title: "Chapter — FactorBeam" }] };
+    const canonical = chapterPath(playbookId, c.slug);
     const shortTitle = c.shortTitle ?? c.title;
     const metaTitle = `${shortTitle} — FactorBeam`;
     return {
@@ -83,11 +122,11 @@ export const Route = createFileRoute("/playbooks/$playbookId/$chapterSlug")({
         { name: "description", content: c.summary },
         { property: "og:title", content: metaTitle },
         { property: "og:description", content: c.summary },
-        { property: "og:url", content: `/playbook/${c.slug}` },
+        { property: "og:url", content: canonical },
         { property: "og:type", content: "article" },
         { property: "og:site_name", content: "FactorBeam" },
       ],
-      links: [{ rel: "canonical", href: `/playbook/${c.slug}` }],
+      links: [{ rel: "canonical", href: canonical }],
       scripts: [
         {
           type: "application/ld+json",
@@ -108,7 +147,7 @@ export const Route = createFileRoute("/playbooks/$playbookId/$chapterSlug")({
               name: CREATOR.name,
               url: "/creator",
             },
-            mainEntityOfPage: `/playbook/${c.slug}`,
+            mainEntityOfPage: canonical,
           }),
         },
       ],
@@ -118,8 +157,8 @@ export const Route = createFileRoute("/playbooks/$playbookId/$chapterSlug")({
     <div className="flex min-h-screen items-center justify-center text-center">
       <div>
         <h1 className="text-2xl font-medium">Concept not found</h1>
-        <Link to="/playbook" className="mt-3 inline-block text-purple hover:underline">
-          ← Back to playbook
+        <Link to="/playbooks" className="mt-3 inline-block text-purple hover:underline">
+          ← Back to playbooks
         </Link>
       </div>
     </div>
@@ -151,8 +190,9 @@ type RenderItem =
   | { type: "depth"; blocks: ConceptBodyBlock[]; sectionNum: string; sectionTitle: string };
 
 function ConceptPage() {
-  const { concept } = Route.useLoaderData() as {
+  const { concept, playbookId } = Route.useLoaderData() as {
     concept: NonNullable<ReturnType<typeof conceptBySlug>>;
+    playbookId: PlaybookId;
   };
   const { progress, markDone, markInProgress } = useProgress();
   const [readMode, setReadMode] = useReadMode();
@@ -245,7 +285,7 @@ function ConceptPage() {
     markInProgress(concept.slug);
   }, [concept.slug, markInProgress]);
 
-  const playbook = playbookForSlug(concept.slug);
+  const playbook = playbookById(playbookId) ?? playbookForSlug(concept.slug);
   const playbookSlugs = playbook?.sequence.map((c) => c.slug) ?? [concept.slug];
   const doneCount = playbookSlugs.filter((s) => progress[s] === "done").length;
   const pct = Math.round((doneCount / playbookSlugs.length) * 100);
@@ -292,6 +332,7 @@ function ConceptPage() {
         {/* Sidebar */}
         <Sidebar
           currentSlug={concept.slug}
+          playbookId={playbookId}
           open={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
         />
@@ -315,7 +356,12 @@ function ConceptPage() {
               <span className="opacity-50">·</span>
               <span>{Object.keys(sectionMinutes).length} sections</span>
               <span className="ml-auto">
-                <ShareMenu title={concept.title} summary={concept.summary} slug={concept.slug} />
+                <ShareMenu
+                  title={concept.title}
+                  summary={concept.summary}
+                  playbookId={playbookId}
+                  chapterSlug={concept.slug}
+                />
               </span>
             </div>
 
@@ -418,7 +464,8 @@ function ConceptPage() {
               <Quiz
                 questions={concept.quiz}
                 onComplete={() => markDone(concept.slug)}
-                nextSlug={next?.slug}
+                nextPlaybookId={next ? playbookId : undefined}
+                nextChapterSlug={next?.slug}
                 nextTitle={next?.shortTitle}
               />
             </section>
@@ -432,8 +479,8 @@ function ConceptPage() {
             <div className="hairline-t mt-10 flex flex-wrap items-center justify-between gap-3 pt-5">
               {prev ? (
                 <Link
-                  to="/playbook/$slug"
-                  params={{ slug: prev.slug }}
+                  to="/playbooks/$playbookId/$chapterSlug"
+                  params={{ playbookId, chapterSlug: prev.slug }}
                   className="hairline rounded-md px-3 py-2 text-[13px] text-foreground hover:bg-muted"
                 >
                   ← {prev.shortTitle}
@@ -453,8 +500,8 @@ function ConceptPage() {
               {next ? (
                 <div className="group relative inline-block">
                   <Link
-                    to="/playbook/$slug"
-                    params={{ slug: next.slug }}
+                    to="/playbooks/$playbookId/$chapterSlug"
+                    params={{ playbookId, chapterSlug: next.slug }}
                     className={`rounded-md px-3 py-2 text-[13px] font-medium inline-block ${
                       progress[concept.slug] === "done"
                         ? "bg-purple text-white hover:bg-purple-dark"
@@ -471,10 +518,10 @@ function ConceptPage() {
                 </div>
               ) : (
                 <Link
-                  to="/playbook"
+                  to="/playbooks"
                   className="rounded-md bg-purple px-3 py-2 text-[13px] font-medium text-white hover:bg-purple-dark"
                 >
-                  Back to playbook
+                  Back to playbooks
                 </Link>
               )}
             </div>
@@ -728,10 +775,12 @@ function DepthFold({
 
 function Sidebar({
   currentSlug,
+  playbookId,
   open,
   onClose,
 }: {
   currentSlug: string;
+  playbookId: PlaybookId;
   open: boolean;
   onClose: () => void;
 }) {
@@ -759,7 +808,7 @@ function Sidebar({
     };
   }, []);
 
-  const playbook = playbookForSlug(currentSlug);
+  const playbook = playbookById(playbookId) ?? playbookForSlug(currentSlug);
   const items = (playbook?.sequence ?? []).map((s) => {
     const c = conceptBySlug(s.slug);
     return { slug: s.slug, shortTitle: c?.shortTitle ?? s.slug };
@@ -782,8 +831,8 @@ function Sidebar({
           return (
             <li key={c.slug} className="flex flex-col">
               <Link
-                to="/playbook/$slug"
-                params={{ slug: c.slug }}
+                to="/playbooks/$playbookId/$chapterSlug"
+                params={{ playbookId, chapterSlug: c.slug }}
                 onClick={onClose}
                 className={`flex items-center gap-3 rounded-md px-2.5 py-2 text-[13px] transition-colors ${
                   isCurrent

@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter03ChunkingRetrieval = buildChapter({
-  slug: "pb4-chunking-retrieval",
+  slug: "chunking-and-retrieval",
   number: 3,
   shortTitle: "Chunking & Retrieval",
   title: "Chunking & Retrieval",

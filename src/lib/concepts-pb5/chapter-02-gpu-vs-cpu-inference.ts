@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter02GpuVsCpuInference = buildChapter({
-  slug: "pb5-gpu-vs-cpu-inference",
+  slug: "gpu-vs-cpu-inference",
   number: 2,
   shortTitle: "GPU vs CPU",
   title: "GPU vs CPU Inference",

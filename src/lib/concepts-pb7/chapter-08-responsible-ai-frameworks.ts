@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter08ResponsibleAiFrameworks = buildChapter({
-  slug: "pb7-responsible-ai-frameworks",
+  slug: "responsible-ai-frameworks",
   number: 8,
   shortTitle: "Responsible AI Frameworks",
   title: "Responsible AI Frameworks",

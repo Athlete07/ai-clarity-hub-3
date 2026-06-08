@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter09ObservabilityTracing = buildChapter({
-  slug: "pb4-observability-tracing",
+  slug: "observability-and-tracing",
   number: 9,
   shortTitle: "Observability & Tracing",
   title: "Observability & Tracing",

@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { LEGACY_CHAPTER_SLUGS } from "./chapter-slug-migrations";
 
 const PROGRESS_KEY = "factorbeam:progress";
 const GLOSSARY_KEY = "factorbeam:glossary";
@@ -43,11 +44,51 @@ export type StreakState = {
 
 const isBrowser = () => typeof window !== "undefined";
 
+function migrateSlugKeys<T extends Record<string, unknown>>(data: T): T {
+  let changed = false;
+  const next = { ...data } as T;
+  for (const [oldSlug, newSlug] of Object.entries(LEGACY_CHAPTER_SLUGS)) {
+    if (oldSlug in next && !(newSlug in next)) {
+      (next as Record<string, unknown>)[newSlug] = next[oldSlug as keyof T];
+      delete (next as Record<string, unknown>)[oldSlug];
+      changed = true;
+    } else if (oldSlug in next) {
+      delete (next as Record<string, unknown>)[oldSlug];
+      changed = true;
+    }
+  }
+  return changed ? next : data;
+}
+
+function migrateProgress(progress: Progress): Progress {
+  return migrateSlugKeys(progress);
+}
+
+function migrateSectionsViewed(all: Record<string, string[]>): Record<string, string[]> {
+  return migrateSlugKeys(all);
+}
+
+function migrateSavedDepth(items: SavedDepth[]): SavedDepth[] {
+  return items.map((item) => ({
+    ...item,
+    slug: LEGACY_CHAPTER_SLUGS[item.slug] ?? item.slug,
+  }));
+}
+
 function readJson<T>(key: string, fallback: T): T {
   if (!isBrowser()) return fallback;
   try {
     const raw = window.localStorage.getItem(key);
-    return raw ? (JSON.parse(raw) as T) : fallback;
+    if (!raw) return fallback;
+    let parsed = JSON.parse(raw) as T;
+    if (key === PROGRESS_KEY) {
+      parsed = migrateProgress(parsed as Progress) as T;
+    } else if (key === SECTIONS_VIEWED_KEY) {
+      parsed = migrateSectionsViewed(parsed as Record<string, string[]>) as T;
+    } else if (key === SAVED_DEPTH_KEY) {
+      parsed = migrateSavedDepth(parsed as SavedDepth[]) as T;
+    }
+    return parsed;
   } catch {
     return fallback;
   }

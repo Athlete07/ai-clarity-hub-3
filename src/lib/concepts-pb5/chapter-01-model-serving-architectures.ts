@@ -59,7 +59,7 @@ const section13 = buildSection({
 });
 
 export const chapter01ModelServingArchitectures = buildChapter({
-  slug: "pb5-model-serving-architectures",
+  slug: "model-serving-architectures",
   number: 1,
   shortTitle: "Model Serving",
   title: "Model Serving Architectures",

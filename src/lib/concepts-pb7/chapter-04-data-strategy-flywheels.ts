@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter04DataStrategyFlywheels = buildChapter({
-  slug: "pb7-data-strategy-flywheels",
+  slug: "data-strategy-flywheels",
   number: 4,
   shortTitle: "Data Strategy & Flywheels",
   title: "Data Strategy & Flywheels",

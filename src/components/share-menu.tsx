@@ -1,24 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 import { Share2, Link as LinkIcon, Check, Twitter, Linkedin, Mail } from "lucide-react";
+import { chapterPath, chapterRouteParams, type PlaybookId } from "@/lib/playbooks";
 
 type Props = {
   title: string;
   summary: string;
   slug?: string;
+  playbookId?: PlaybookId;
+  chapterSlug?: string;
   url?: string;
   variant?: "pill" | "ghost" | "icon";
 };
 
-export function ShareMenu({ title, summary, slug, url: urlProp, variant = "pill" }: Props) {
+export function ShareMenu({
+  title,
+  summary,
+  slug,
+  playbookId,
+  chapterSlug,
+  url: urlProp,
+  variant = "pill",
+}: Props) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
+  const resolvedChapterSlug = chapterSlug ?? slug;
+  const route =
+    playbookId && resolvedChapterSlug
+      ? { playbookId, chapterSlug: resolvedChapterSlug }
+      : resolvedChapterSlug
+        ? chapterRouteParams(resolvedChapterSlug)
+        : undefined;
+  const path = route ? chapterPath(route.playbookId, route.chapterSlug) : "/";
+
   const url =
     urlProp ??
-    (typeof window !== "undefined"
-      ? `${window.location.origin}/playbook/${slug}`
-      : `/playbook/${slug}`);
+    (typeof window !== "undefined" ? `${window.location.origin}${path}` : path);
   const shareText = `${title} — ${summary}`;
 
   useEffect(() => {
@@ -38,7 +56,6 @@ export function ShareMenu({ title, summary, slug, url: urlProp, variant = "pill"
   }, [open]);
 
   const handleClick = async () => {
-    // Native share on mobile / supported browsers
     if (typeof navigator !== "undefined" && "share" in navigator && /Mobi|Android/i.test(navigator.userAgent)) {
       try {
         await navigator.share({ title, text: summary, url });

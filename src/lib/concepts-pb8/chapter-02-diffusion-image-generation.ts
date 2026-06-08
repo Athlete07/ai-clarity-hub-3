@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter02DiffusionImageGeneration = buildChapter({
-  slug: "pb8-diffusion-image-generation",
+  slug: "diffusion-image-generation",
   number: 2,
   shortTitle: "Diffusion & Image Gen",
   title: "Diffusion Models & Image Generation",

@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter06ContentArchitecture = buildChapter({
-  slug: "pb9-content-architecture",
+  slug: "content-architecture",
   number: 6,
   shortTitle: "Content Architecture",
   title: "Content Architecture",

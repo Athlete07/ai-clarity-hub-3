@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter09LatencyCostQuality = buildChapter({
-  slug: "pb5-latency-cost-quality-triangle",
+  slug: "latency-cost-quality-triangle",
   number: 9,
   shortTitle: "Latency/Cost/Quality",
   title: "The Latency / Cost / Quality Triangle",

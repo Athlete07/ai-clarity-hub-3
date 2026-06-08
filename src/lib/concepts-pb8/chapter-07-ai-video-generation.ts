@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter07AiVideoGeneration = buildChapter({
-  slug: "pb8-ai-video-generation",
+  slug: "ai-video-generation",
   number: 7,
   shortTitle: "AI Video Generation",
   title: "AI Video Generation",

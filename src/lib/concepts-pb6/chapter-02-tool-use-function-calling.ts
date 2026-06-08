@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter02ToolUseFunctionCalling = buildChapter({
-  slug: "pb6-tool-use-function-calling",
+  slug: "tool-use-and-function-calling",
   number: 2,
   shortTitle: "Tool Use",
   title: "Tool Use & Function Calling",

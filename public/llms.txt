@@ -12,5 +12,12 @@ FactorBeam is a free reading site that teaches how modern AI actually works — 
 
 ## Playbooks
 
-- [AI Foundations for PMs](/playbook/ai-vs-ml-vs-deep-learning): Technical fast-track on models, training vs inference, evaluation, bias and hallucination.
-- [LLMs, Models & Prompting](/playbook/pm-llm-tokenization): Tokenization, transformers and attention, context windows, prompting, fine-tuning vs RAG.
+- [AI Foundations for PMs](/playbooks/pm-foundations/ai-vs-ml-vs-deep-learning): Technical fast-track on models, training vs inference, evaluation, bias and hallucination.
+- [LLMs, Models & Prompting](/playbooks/pm-llms-prompting/tokenization): Tokenization, transformers and attention, context windows, prompting, fine-tuning vs RAG.
+- [Developer Toolchain for PMs](/playbooks/pm-dev-toolchain/git-and-github): APIs, Python, notebooks, cloud, containers, CI/CD, and cost/latency tradeoffs.
+- [AI Systems Design](/playbooks/ai-systems-design/rag-architecture): RAG, vector databases, chunking, reranking, LangChain, fine-tuning, evals, guardrails, observability.
+- [AI Infrastructure & Deployment](/playbooks/ai-infrastructure-deployment/model-serving-architectures): Serving architectures, GPU vs CPU, batch vs streaming, quantisation, MLOps, deployments.
+- [Agents & Multi-agent Systems](/playbooks/agents-multi-agent-systems/agent-fundamentals): Tool use, ReAct, memory, LangGraph, multi-agent coordination, MCP, reliability.
+- [AI Product Strategy & Decisions](/playbooks/ai-product-strategy-decisions/build-buy-fine-tune): Build vs buy, metrics, discovery, data strategy, safety, PRDs, roadmaps.
+- [Multimodal & Emerging AI](/playbooks/multimodal-emerging-ai/vision-transformers): Vision, diffusion, speech, video, voice interfaces, on-device AI, emerging frontiers.
+- [SEO & Content Strategy for AI](/playbooks/seo-content-strategy-ai/semantic-seo): Semantic SEO, topic clusters, AI overviews, structured data, entity SEO, AIO.

@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter09EmergingAiFrontier = buildChapter({
-  slug: "pb8-emerging-ai-frontier",
+  slug: "emerging-ai-frontier",
   number: 9,
   shortTitle: "Emerging AI",
   title: "What's Coming — World Models, Reasoning Models & Beyond",

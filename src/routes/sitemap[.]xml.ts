@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { PLAYBOOKS } from "@/lib/playbooks";
+import { PLAYBOOKS, chapterPath } from "@/lib/playbooks";
 
 // TODO: replace with your project URL once a project name or custom domain is set.
 const BASE_URL = "";
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/about", changefreq: "monthly", priority: "0.5" },
           ...PLAYBOOKS.flatMap((p) =>
             p.sequence.map((c) => ({
-              path: `/playbook/${c.slug}`,
+              path: chapterPath(p.id, c.slug),
               changefreq: "monthly" as const,
               priority: "0.8",
             })),

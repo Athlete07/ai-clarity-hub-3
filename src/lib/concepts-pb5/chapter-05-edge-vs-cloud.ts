@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter05EdgeVsCloud = buildChapter({
-  slug: "pb5-edge-vs-cloud",
+  slug: "edge-vs-cloud",
   number: 5,
   shortTitle: "Edge vs Cloud",
   title: "Edge vs Cloud",

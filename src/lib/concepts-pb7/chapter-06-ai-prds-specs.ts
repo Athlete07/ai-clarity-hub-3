@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter06AiPrdsSpecs = buildChapter({
-  slug: "pb7-ai-prds-specs",
+  slug: "ai-prds-and-specs",
   number: 6,
   shortTitle: "AI PRDs & Specs",
   title: "AI PRDs & Specs",

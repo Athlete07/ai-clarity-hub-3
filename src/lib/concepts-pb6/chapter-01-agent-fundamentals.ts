@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter01AgentFundamentals = buildChapter({
-  slug: "pb6-agent-fundamentals",
+  slug: "agent-fundamentals",
   number: 1,
   shortTitle: "Agent Fundamentals",
   title: "Agent Fundamentals & Architectures",

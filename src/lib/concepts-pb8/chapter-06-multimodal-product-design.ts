@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter06MultimodalProductDesign = buildChapter({
-  slug: "pb8-multimodal-product-design",
+  slug: "multimodal-product-design",
   number: 6,
   shortTitle: "Multimodal Design",
   title: "Multimodal Product Design Patterns",

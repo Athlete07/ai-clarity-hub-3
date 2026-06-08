@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter07McpProtocol = buildChapter({
-  slug: "pb6-mcp-protocol",
+  slug: "mcp-protocol",
   number: 7,
   shortTitle: "MCP Protocol",
   title: "MCP Protocol",

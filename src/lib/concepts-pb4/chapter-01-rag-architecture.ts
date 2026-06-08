@@ -59,7 +59,7 @@ const section12 = buildSection({
 });
 
 export const chapter01RagArchitecture = buildChapter({
-  slug: "pb4-rag-architecture",
+  slug: "rag-architecture",
   number: 1,
   shortTitle: "RAG Architecture",
   title: "RAG Architecture",

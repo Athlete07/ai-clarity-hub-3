@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter02AiMetricsDepth = buildChapter({
-  slug: "pb7-ai-metrics-depth",
+  slug: "ai-metrics-depth",
   number: 2,
   shortTitle: "AI Metrics Depth",
   title: "AI Metrics Depth",

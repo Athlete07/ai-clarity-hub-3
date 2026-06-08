@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter08OnDeviceAi = buildChapter({
-  slug: "pb8-on-device-ai",
+  slug: "on-device-ai",
   number: 8,
   shortTitle: "On-Device AI",
   title: "On-Device AI",

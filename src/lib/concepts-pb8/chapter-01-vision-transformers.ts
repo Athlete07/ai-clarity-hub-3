@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter01VisionTransformers = buildChapter({
-  slug: "pb8-vision-transformers",
+  slug: "vision-transformers",
   number: 1,
   shortTitle: "Vision Transformers",
   title: "Vision Transformers (ViT)",

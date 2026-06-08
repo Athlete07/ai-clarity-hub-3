@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter04Reranking = buildChapter({
-  slug: "pb4-reranking",
+  slug: "reranking",
   number: 4,
   shortTitle: "Reranking",
   title: "Reranking",

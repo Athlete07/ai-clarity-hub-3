@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter05LangchainOrchestration = buildChapter({
-  slug: "pb4-langchain-orchestration",
+  slug: "langchain-orchestration",
   number: 5,
   shortTitle: "LangChain Orchestration",
   title: "LangChain Orchestration",

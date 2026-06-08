@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter05EntityBasedSeo = buildChapter({
-  slug: "pb9-entity-based-seo",
+  slug: "entity-based-seo",
   number: 5,
   shortTitle: "Entity SEO",
   title: "Entity-Based SEO",

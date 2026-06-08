@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter03SpeechToTextTts = buildChapter({
-  slug: "pb8-speech-to-text-tts",
+  slug: "speech-to-text-and-tts",
   number: 3,
   shortTitle: "Speech & TTS",
   title: "Speech-to-Text & TTS",

@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter04QuantisationDistillation = buildChapter({
-  slug: "pb5-quantisation-distillation",
+  slug: "quantisation-and-distillation",
   number: 4,
   shortTitle: "Quantisation & Distillation",
   title: "Quantisation & Distillation",

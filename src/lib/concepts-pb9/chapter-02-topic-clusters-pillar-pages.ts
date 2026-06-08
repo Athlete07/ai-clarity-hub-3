@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter02TopicClustersPillarPages = buildChapter({
-  slug: "pb9-topic-clusters-pillar-pages",
+  slug: "topic-clusters-and-pillar-pages",
   number: 2,
   shortTitle: "Topic Clusters",
   title: "Topic Clusters & Pillar Pages",

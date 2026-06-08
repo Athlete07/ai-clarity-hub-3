@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter03ReactPlanningPatterns = buildChapter({
-  slug: "pb6-react-planning-patterns",
+  slug: "react-and-planning-patterns",
   number: 3,
   shortTitle: "ReAct & Planning",
   title: "ReAct & Planning Patterns",

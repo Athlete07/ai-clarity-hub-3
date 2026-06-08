@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/site-nav";
 import { FaqItem } from "@/components/faq-item";
 import { useProgress } from "@/lib/storage";
-import { PLAYBOOKS } from "@/lib/playbooks";
+import { PLAYBOOKS, chapterRouteParams } from "@/lib/playbooks";
 import { conceptBySlug } from "@/lib/concepts";
 import {
   ArrowRight,
@@ -88,6 +88,7 @@ function Home() {
   const inProgressSlug = allSlugs.find((slug) => progress[slug] === "in-progress");
   const firstSlug = PLAYBOOKS[0]?.sequence[0]?.slug;
   const resumeSlug = inProgressSlug ?? allSlugs.find((s) => progress[s] !== "done") ?? firstSlug;
+  const resumeParams = resumeSlug ? chapterRouteParams(resumeSlug) : undefined;
   const ctaLabel = doneCount === 0 ? "Start reading" : "Resume reading";
 
   return (
@@ -112,14 +113,16 @@ function Home() {
             </p>
 
             <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center">
-              <Link
-                to="/playbook/$slug"
-                params={{ slug: resumeSlug ?? "what-is-a-model" }}
-                className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
-              >
-                {ctaLabel}
-                <ArrowRight size={15} />
-              </Link>
+              {resumeParams ? (
+                <Link
+                  to="/playbooks/$playbookId/$chapterSlug"
+                  params={resumeParams}
+                  className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
+                >
+                  {ctaLabel}
+                  <ArrowRight size={15} />
+                </Link>
+              ) : null}
               <Link
                 to="/playbooks"
                 className="inline-flex items-center justify-center px-2 py-3 text-[14px] font-medium text-foreground/80 transition-colors hover:text-foreground"
@@ -156,16 +159,19 @@ function Home() {
               const nextSlug =
                 p.sequence.find((s) => progress[s.slug] !== "done")?.slug ??
                 p.sequence[0]?.slug;
+              const nextParams = nextSlug ? chapterRouteParams(nextSlug) : undefined;
               const firstThree = p.sequence
                 .slice(0, 3)
                 .map((s) => conceptBySlug(s.slug))
                 .filter(Boolean);
 
+              if (!nextParams) return null;
+
               return (
                 <Link
                   key={p.id}
-                  to="/playbook/$slug"
-                  params={{ slug: nextSlug ?? "what-is-a-model" }}
+                  to="/playbooks/$playbookId/$chapterSlug"
+                  params={nextParams}
                   className="group hairline relative flex flex-col rounded-2xl bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-purple/40 hover:shadow-[0_12px_40px_-12px_rgba(83,74,183,0.18)] sm:p-6"
                 >
                   <div className="flex items-center gap-2">

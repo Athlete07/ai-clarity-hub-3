@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter05LanggraphDeepDive = buildChapter({
-  slug: "pb6-langgraph-deep-dive",
+  slug: "langgraph-deep-dive",
   number: 5,
   shortTitle: "LangGraph Deep Dive",
   title: "LangGraph Deep Dive",

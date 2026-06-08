@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter06FineTuningDeepDive = buildChapter({
-  slug: "pb4-fine-tuning-deep-dive",
+  slug: "fine-tuning-deep-dive",
   number: 6,
   shortTitle: "Fine-Tuning Deep Dive",
   title: "Fine-Tuning Deep Dive",

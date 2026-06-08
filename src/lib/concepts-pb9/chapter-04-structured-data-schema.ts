@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter04StructuredDataSchema = buildChapter({
-  slug: "pb9-structured-data-schema",
+  slug: "structured-data-and-schema",
   number: 4,
   shortTitle: "Structured Data",
   title: "Structured Data & Schema",

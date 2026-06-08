@@ -1,7 +1,7 @@
 import { buildChapter, buildSection, s, x } from "../concepts-pb4-helpers";
 
 export const chapter07EvalsBenchmarks = buildChapter({
-  slug: "pb4-evals-benchmarks",
+  slug: "evals-and-benchmarks",
   number: 7,
   shortTitle: "Evals & Benchmarks",
   title: "Evals & Benchmarks",
