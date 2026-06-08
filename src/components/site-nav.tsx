@@ -6,6 +6,8 @@ import { CookiePreferencesLink } from "@/components/cookie-consent";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import * as React from "react";
 
+const CONTACT_EMAIL = "hello@factorbeam.dev";
+
 function ThemeToggle() {
   const { theme, toggle, mounted } = useTheme();
   const isDark = theme === "dark";
@@ -76,20 +78,25 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
             >
               About
             </Link>
-            <Link
-              to="/creator"
-              className="rounded-md px-3 py-2.5 text-[14px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              Creator
-            </Link>
-            <Link
-              to="/contact"
-              className="rounded-md px-3 py-2.5 text-[14px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              Contact
-            </Link>
           </nav>
-          <div className="mt-auto hairline-t p-4">
+          <div className="mt-auto hairline-t p-4 space-y-3">
+            <div className="flex flex-col gap-1">
+              <span className="px-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/70">
+                Company
+              </span>
+              <Link
+                to="/creator"
+                className="rounded-md px-3 py-2 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                Creator
+              </Link>
+              <Link
+                to="/contact"
+                className="rounded-md px-3 py-2 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                Contact
+              </Link>
+            </div>
             <CookiePreferencesLink />
           </div>
         </div>
@@ -132,18 +139,6 @@ export function Nav({ slim = false }: { slim?: boolean }) {
             >
               About
             </Link>
-            <Link
-              to="/creator"
-              className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Creator
-            </Link>
-            <Link
-              to="/contact"
-              className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Contact
-            </Link>
           </nav>
         )}
 
@@ -162,25 +157,76 @@ export function Nav({ slim = false }: { slim?: boolean }) {
   );
 }
 
+function FooterColumn({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/70">
+        {title}
+      </p>
+      <ul className="mt-3 space-y-2">{children}</ul>
+    </div>
+  );
+}
+
+function FooterLink({
+  to,
+  children,
+  href,
+}: {
+  to?: "/playbooks" | "/about" | "/creator" | "/contact" | "/privacy-policy" | "/terms-of-service";
+  href?: string;
+  children: React.ReactNode;
+}) {
+  const className = "text-[13px] text-muted-foreground transition-colors hover:text-foreground";
+  if (href) {
+    return (
+      <li>
+        <a href={href} className={className}>
+          {children}
+        </a>
+      </li>
+    );
+  }
+  return (
+    <li>
+      <Link to={to!} className={className}>
+        {children}
+      </Link>
+    </li>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="hairline-t mt-24 py-6">
-      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-2 px-6 text-[12px] text-muted-foreground sm:flex-row sm:items-center">
-        <span>FactorBeam · 2026</span>
-        <div className="flex flex-wrap items-center gap-4">
-          <Link
-            to="/privacy-policy"
-            className="hover:text-foreground transition-colors"
-          >
-            Privacy
-          </Link>
-          <Link
-            to="/terms-of-service"
-            className="hover:text-foreground transition-colors"
-          >
-            Terms
-          </Link>
-          <CookiePreferencesLink />
+    <footer className="hairline-t mt-24">
+      <div className="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+        <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
+          <FooterColumn title="Product">
+            <FooterLink to="/playbooks">Playbooks</FooterLink>
+            <FooterLink to="/about">About</FooterLink>
+          </FooterColumn>
+          <FooterColumn title="Company">
+            <FooterLink to="/creator">Creator</FooterLink>
+            <FooterLink to="/contact">Contact</FooterLink>
+            <FooterLink href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</FooterLink>
+          </FooterColumn>
+          <FooterColumn title="Legal">
+            <FooterLink to="/privacy-policy">Privacy</FooterLink>
+            <FooterLink to="/terms-of-service">Terms</FooterLink>
+            <li>
+              <CookiePreferencesLink />
+            </li>
+          </FooterColumn>
+        </div>
+
+        <div className="hairline-t mt-10 flex flex-col gap-2 pt-8 text-[12px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <span>FactorBeam · 2026</span>
           <span>Built for curious minds, not engineers.</span>
         </div>
       </div>
