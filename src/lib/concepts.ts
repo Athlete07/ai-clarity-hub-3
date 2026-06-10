@@ -5,6 +5,14 @@ import { pb6Concepts } from "./concepts-pb6";
 import { pb7Concepts } from "./concepts-pb7";
 import { pb8Concepts } from "./concepts-pb8";
 import { pb9Concepts } from "./concepts-pb9";
+import { founderConcepts } from "./concepts-founder";
+import { pb2Concepts as founderPb2Concepts } from "./concepts-founder-pb2";
+import { pb3Concepts as founderPb3Concepts } from "./concepts-founder-pb3";
+import { pb4Concepts as founderPb4Concepts } from "./concepts-founder-pb4";
+import { pb5Concepts as founderPb5Concepts } from "./concepts-founder-pb5";
+import { founderPb6Concepts } from "./concepts-founder-pb6";
+import { founderPb7Concepts } from "./concepts-founder-pb7";
+import { founderPb8Concepts } from "./concepts-founder-pb8";
 
 export type ExplainSpan = { text: string; explain: string };
 export type ConceptBodyBlock =
@@ -13357,6 +13365,14 @@ export const concepts: Concept[] = [
   ...pb7Concepts,
   ...pb8Concepts,
   ...pb9Concepts,
+  ...founderConcepts,
+  ...founderPb2Concepts,
+  ...founderPb3Concepts,
+  ...founderPb4Concepts,
+  ...founderPb5Concepts,
+  ...founderPb6Concepts,
+  ...founderPb7Concepts,
+  ...founderPb8Concepts,
 ];
 
 export const conceptBySlug = (slug: string): Concept | undefined => {
