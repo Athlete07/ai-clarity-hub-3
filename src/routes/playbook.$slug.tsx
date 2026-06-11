@@ -1,16 +1,16 @@
 import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { canonicalChapterSlug } from "@/lib/chapter-slug-migrations";
-import { playbookForSlug } from "@/lib/playbooks";
+import { executiveKbForSlug } from "@/lib/executive-kb";
 
-/** Redirect legacy /playbook/{slug} URLs to canonical /playbooks/{playbookId}/{chapterSlug}. */
+/** Legacy /playbook/{slug} → /executive-kb/{kbId}/{chapterSlug} */
 export const Route = createFileRoute("/playbook/$slug")({
   beforeLoad: ({ params }) => {
     const canonical = canonicalChapterSlug(params.slug);
-    const pb = playbookForSlug(canonical);
-    if (!pb) throw notFound();
+    const kb = executiveKbForSlug(canonical);
+    if (!kb) throw notFound();
     throw redirect({
-      to: "/playbooks/$playbookId/$chapterSlug",
-      params: { playbookId: pb.id, chapterSlug: canonical },
+      to: "/executive-kb/$kbId/$chapterSlug",
+      params: { kbId: kb.id, chapterSlug: canonical },
       replace: true,
     });
   },

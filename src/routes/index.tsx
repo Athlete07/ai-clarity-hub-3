@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/site-nav";
 import { FaqItem } from "@/components/faq-item";
 import { useProgress } from "@/lib/storage";
-import { PLAYBOOKS, chapterRouteParams, formatPlaybookLabel } from "@/lib/playbooks";
+import { EXECUTIVE_KBS, chapterRouteParams, formatExecutiveKbLabel } from "@/lib/executive-kb";
 import { conceptBySlug } from "@/lib/concepts";
 import {
   ArrowRight,
@@ -17,17 +17,17 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FactorBeam — AI playbooks for product managers" },
+      { title: "FactorBeam — Executive KB for product leaders" },
       {
         name: "description",
         content:
-          "Plain-English AI playbooks for product managers. Highlight anything confusing and get an instant explanation. Free, no signup.",
+          "Plain-English Executive KB for product managers and founders. Highlight anything confusing and get an instant explanation. Free, no signup.",
       },
-      { property: "og:title", content: "FactorBeam — AI playbooks for product managers" },
+      { property: "og:title", content: "FactorBeam — Executive KB for product leaders" },
       {
         property: "og:description",
         content:
-          "Plain-English AI playbooks for product managers. Highlight anything confusing and get an instant explanation.",
+          "Plain-English Executive KB for product leaders. Highlight anything confusing and get an instant explanation.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -83,10 +83,10 @@ export const Route = createFileRoute("/")({
 function Home() {
   const { progress } = useProgress();
 
-  const allSlugs = PLAYBOOKS.flatMap((p) => p.sequence.map((s) => s.slug));
+  const allSlugs = EXECUTIVE_KBS.flatMap((p) => p.sequence.map((s) => s.slug));
   const doneCount = allSlugs.filter((slug) => progress[slug] === "done").length;
   const inProgressSlug = allSlugs.find((slug) => progress[slug] === "in-progress");
-  const firstSlug = PLAYBOOKS[0]?.sequence[0]?.slug;
+  const firstSlug = EXECUTIVE_KBS[0]?.sequence[0]?.slug;
   const resumeSlug = inProgressSlug ?? allSlugs.find((s) => progress[s] !== "done") ?? firstSlug;
   const resumeParams = resumeSlug ? chapterRouteParams(resumeSlug) : undefined;
   const ctaLabel = doneCount === 0 ? "Start reading" : "Resume reading";
@@ -103,7 +103,7 @@ function Home() {
 
           <div className="mx-auto max-w-[780px] px-5 pt-16 pb-16 text-center sm:px-6 sm:pt-28 sm:pb-24">
             <h1 className="text-[36px] font-medium leading-[1.08] tracking-[-0.025em] sm:text-[60px] sm:leading-[1.02]">
-              AI playbooks for people who{" "}
+              Executive KB for people who{" "}
               <span className="text-purple">ship products</span>.
             </h1>
 
@@ -115,7 +115,7 @@ function Home() {
             <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:mt-10 sm:flex-row sm:items-center">
               {resumeParams ? (
                 <Link
-                  to="/playbooks/$playbookId/$chapterSlug"
+                  to="/executive-kb/$kbId/$chapterSlug"
                   params={resumeParams}
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
                 >
@@ -124,26 +124,26 @@ function Home() {
                 </Link>
               ) : null}
               <Link
-                to="/playbooks"
+                to="/executive-kb"
                 className="inline-flex items-center justify-center px-2 py-3 text-[14px] font-medium text-foreground/80 transition-colors hover:text-foreground"
               >
-                Browse all playbooks →
+                Browse Executive KB →
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ── Playbooks showcase (the product) ─────────────────────── */}
+        {/* ── Executive KB showcase (the product) ─────────────────────── */}
         <section className="mx-auto max-w-6xl px-5 pt-8 sm:px-6 sm:pt-12">
           <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
             <div>
-              <p className="section-label">The playbooks</p>
+              <p className="section-label">Executive KB</p>
               <h2 className="mt-2 text-[26px] font-medium tracking-tight sm:text-[32px]">
                 Sequenced like a course. Skimmable like a doc.
               </h2>
             </div>
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="text-[13px] font-medium text-purple hover:underline"
             >
               View all →
@@ -151,7 +151,7 @@ function Home() {
           </div>
 
           <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5">
-            {PLAYBOOKS.map((p) => {
+            {EXECUTIVE_KBS.map((p) => {
               const pDone = p.sequence.filter((s) => progress[s.slug] === "done").length;
               const pPct = p.sequence.length
                 ? Math.round((pDone / p.sequence.length) * 100)
@@ -170,13 +170,13 @@ function Home() {
               return (
                 <Link
                   key={p.id}
-                  to="/playbooks/$playbookId/$chapterSlug"
+                  to="/executive-kb/$kbId/$chapterSlug"
                   params={nextParams}
                   className="group hairline relative flex flex-col rounded-2xl bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-purple/40 hover:shadow-[0_12px_40px_-12px_rgba(83,74,183,0.18)] sm:p-6"
                 >
                   <div className="flex items-center gap-2">
                     <span className="rounded-full bg-purple-light px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-purple-dark">
-                      {formatPlaybookLabel(p.order)}
+                      {formatExecutiveKbLabel(p.order)}
                     </span>
                     <span className="text-[11px] text-muted-foreground">
                       {p.difficulty} · ~{p.readingMinutes} min
@@ -284,7 +284,7 @@ function Home() {
           </h2>
           <p className="mx-auto mt-4 max-w-[520px] text-[14.5px] leading-relaxed text-muted-foreground sm:text-[15.5px]">
             If you write specs, talk to engineers about models, or evaluate AI vendors —
-            this is for you. Playbooks for founders, designers and engineering leaders
+            this is for you. Executive KB for founders, designers and engineering leaders
             are in the works.
           </p>
         </section>

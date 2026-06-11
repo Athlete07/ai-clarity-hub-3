@@ -10,13 +10,13 @@ export const Route = createFileRoute("/terms-of-service")({
       {
         name: "description",
         content:
-          "FactorBeam's Terms of Service. Read the rules for using this website, its playbooks, and content.",
+          "FactorBeam's Terms of Service. Read the rules for using this website, its Executive KB, and content.",
       },
       { property: "og:title", content: "Terms of Service — FactorBeam" },
       {
         property: "og:description",
         content:
-          "Rules for using FactorBeam's website, playbooks, and content.",
+          "Rules for using FactorBeam's website, Executive KB, and content.",
       },
       { property: "og:url", content: "/terms-of-service" },
       { property: "og:type", content: "website" },
@@ -57,9 +57,9 @@ function TermsOfService() {
             {/* Overview */}
             <PolicySection icon={FileText} title="Overview">
               <p>
-                FactorBeam is a free educational website and open playbook project,
+                FactorBeam is a free educational website and open Executive KB project,
                 operated by {CREATOR.name}. These Terms of Service (&quot;Terms&quot;)
-                govern your access to and use of FactorBeam — the website, playbooks,
+                govern your access to and use of FactorBeam — the website, Executive KB,
                 quizzes, and all related content (collectively, the &quot;Service&quot;).
                 By using the Service, you agree to these Terms. If you do not agree,
                 please do not use the Service.
@@ -95,7 +95,7 @@ function TermsOfService() {
             {/* Content usage */}
             <PolicySection icon={FileText} title="Content & intellectual property">
               <p>
-                All playbooks, text, diagrams, quizzes, and code examples on
+                All Executive KB content, text, diagrams, quizzes, and code examples on
                 FactorBeam are original work published on the site unless otherwise noted,
                 and are protected by copyright and other intellectual-property laws.
               </p>
@@ -114,7 +114,7 @@ function TermsOfService() {
                 <li>Republish, redistribute, or sell FactorBeam content in whole or in substantial part</li>
                 <li>Remove copyright notices or author attribution</li>
                 <li>Use FactorBeam content to train machine-learning models without written permission</li>
-                <li>Create derivative works (e.g., courses, books, paid newsletters) based on the playbooks without a licence</li>
+                <li>Create derivative works (e.g., courses, books, paid newsletters) based on the Executive KB without a licence</li>
                 <li>Scrape, mirror, or systematically download the site</li>
               </ul>
             </PolicySection>
@@ -189,7 +189,7 @@ function TermsOfService() {
                 will be corrected.
               </p>
               <p>
-                The playbooks reflect the author&apos;s best understanding of AI and
+                The Executive KB reflects the author&apos;s best understanding of AI and
                 product-management concepts at the time of writing, but the field evolves
                 rapidly. No guarantee is made that any strategy, technique, or example
                 will produce specific results in your context.
@@ -264,16 +264,16 @@ function TermsOfService() {
         <section className="mx-auto max-w-[720px] px-5 pb-32 sm:px-6">
           <div className="text-center hairline bg-card p-10 sm:p-14 rounded-2xl flex flex-col items-center">
             <h2 className="text-[26px] sm:text-[32px] font-medium tracking-tight mb-3">
-              Back to the playbooks.
+              Back to Executive KB.
             </h2>
             <p className="mb-8 text-[14.5px] text-muted-foreground sm:text-[15.5px]">
               Free. No signup. Start reading in the next 60 seconds.
             </p>
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
             >
-              Browse the playbooks
+              Browse Executive KB
               <ArrowRight size={15} />
             </Link>
           </div>

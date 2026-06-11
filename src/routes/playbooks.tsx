@@ -1,10 +1,11 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
 
-/** Layout route so chapter pages (/playbooks/:id/:slug) render via Outlet. */
+/** Legacy /playbooks layout — child routes redirect to /executive-kb. */
 export const Route = createFileRoute("/playbooks")({
-  component: PlaybooksLayout,
+  beforeLoad: ({ location }) => {
+    if (location.pathname === "/playbooks") {
+      throw redirect({ to: "/executive-kb", replace: true });
+    }
+  },
+  component: () => <Outlet />,
 });
-
-function PlaybooksLayout() {
-  return <Outlet />;
-}

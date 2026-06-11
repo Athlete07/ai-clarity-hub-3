@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/site-nav";
 import { Linkedin, Twitter, Github, Globe, Mail, ArrowRight } from "lucide-react";
+import { AuthorPortrait } from "@/components/author-portrait";
 import { CREATOR } from "@/lib/creator";
 
 export const Route = createFileRoute("/creator")({
@@ -75,16 +76,7 @@ function CreatorPage() {
           <div className="mx-auto max-w-[880px] px-5 pt-16 pb-10 sm:px-6 sm:pt-24 sm:pb-14">
             <div className="section-label mb-6">Author</div>
             <div className="flex flex-col items-start gap-8 sm:flex-row sm:items-center sm:gap-10">
-              <div className="shrink-0">
-                <img
-                  src={CREATOR.photo}
-                  alt={`Portrait of ${CREATOR.name}, ${CREATOR.role}`}
-                  width={160}
-                  height={160}
-                  loading="eager"
-                  className="h-32 w-32 rounded-2xl object-cover hairline sm:h-40 sm:w-40"
-                />
-              </div>
+              <AuthorPortrait size="hero" className="rounded-2xl" priority />
               <div>
                 <h1 className="text-[32px] font-medium leading-[1.05] tracking-[-0.02em] sm:text-[44px]">
                   {CREATOR.name}
@@ -169,13 +161,13 @@ function CreatorPage() {
               Read what I've been writing.
             </h2>
             <p className="mt-3 text-[14.5px] text-muted-foreground sm:text-[15.5px]">
-              Every playbook is researched, structured, and edited in public.
+              Every Executive KB chapter is researched, structured, and edited in public.
             </p>
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="mt-7 inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
             >
-              Browse the playbooks
+              Browse Executive KB
               <ArrowRight size={15} />
             </Link>
           </div>

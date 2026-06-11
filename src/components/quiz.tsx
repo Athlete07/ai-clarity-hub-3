@@ -12,13 +12,13 @@ export function Quiz({
   questions,
   onComplete,
   nextChapterSlug,
-  nextPlaybookId,
+  nextKbId,
   nextTitle,
 }: {
   questions: QuizQuestion[];
   onComplete: () => void;
   nextChapterSlug?: string;
-  nextPlaybookId?: string;
+  nextKbId?: string;
   nextTitle?: string;
 }) {
   const [current, setCurrent] = useState(0);
@@ -61,10 +61,10 @@ export function Quiz({
           <p className="mx-auto mt-1 max-w-md text-[13px] text-muted-foreground">
             Nicely done. You can move on, or come back to re-read anytime.
           </p>
-          {nextChapterSlug && nextPlaybookId && (
+          {nextChapterSlug && nextKbId && (
             <Link
-              to="/playbooks/$playbookId/$chapterSlug"
-              params={{ playbookId: nextPlaybookId, chapterSlug: nextChapterSlug }}
+              to="/executive-kb/$kbId/$chapterSlug"
+              params={{ kbId: nextKbId, chapterSlug: nextChapterSlug }}
               className="mt-6 inline-flex items-center gap-1.5 rounded-md bg-purple px-4 py-2 text-[13px] font-medium text-white hover:bg-purple-dark"
             >
               Next: {nextTitle} <ArrowRight size={14} />

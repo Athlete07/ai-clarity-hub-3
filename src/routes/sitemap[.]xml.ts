@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { PLAYBOOKS, chapterPath } from "@/lib/playbooks";
+import { EXECUTIVE_KBS, chapterPath } from "@/lib/executive-kb";
+import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 
 // TODO: replace with your project URL once a project name or custom domain is set.
 const BASE_URL = "";
@@ -15,11 +16,12 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
+        const allKbs = [...EXECUTIVE_KBS, ...FOUNDER_EXECUTIVE_KBS];
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/playbooks", changefreq: "weekly", priority: "0.9" },
+          { path: "/executive-kb", changefreq: "weekly", priority: "0.9" },
           { path: "/about", changefreq: "monthly", priority: "0.5" },
-          ...PLAYBOOKS.flatMap((p) =>
+          ...allKbs.flatMap((p) =>
             p.sequence.map((c) => ({
               path: chapterPath(p.id, c.slug),
               changefreq: "monthly" as const,

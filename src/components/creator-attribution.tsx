@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { AuthorPortrait } from "@/components/author-portrait";
 import { CREATOR } from "@/lib/creator";
 
 function AuthorByline({ className = "text-[13px]" }: { className?: string }) {
@@ -21,36 +22,24 @@ function AuthorByline({ className = "text-[13px]" }: { className?: string }) {
 }
 
 /**
- * Author attribution for chapter pages.
- * Compact byline by default; a slightly expanded card on the first chapter of each playbook only.
+ * Author attribution for chapter pages — same flex card on every chapter.
  */
-export function CreatorAttribution({ expanded = false }: { expanded?: boolean }) {
-  if (expanded) {
-    return (
-      <div className="hairline flex items-start gap-5 rounded-xl bg-card/60 p-5 sm:gap-6 sm:p-6">
-        <Link
-          to="/creator"
-          aria-label={`View ${CREATOR.name}'s profile`}
-          className="shrink-0 transition-opacity hover:opacity-90"
-        >
-          <img
-            src={CREATOR.photo}
-            alt={`Portrait of ${CREATOR.name}`}
-            width={96}
-            height={96}
-            loading="lazy"
-            className="h-20 w-20 rounded-xl object-cover hairline sm:h-24 sm:w-24"
-          />
-        </Link>
-        <div className="min-w-0 pt-0.5">
-          <AuthorByline className="text-[15px] sm:text-[16px]" />
-          <p className="mt-2 text-[13px] leading-relaxed text-foreground/75 sm:text-[14px]">
-            {CREATOR.shortBio}
-          </p>
-        </div>
+export function CreatorAttribution() {
+  return (
+    <div className="hairline flex items-center gap-5 rounded-xl bg-card/60 p-5 sm:gap-6 sm:p-6">
+      <Link
+        to="/creator"
+        aria-label={`View ${CREATOR.name}'s profile`}
+        className="transition-opacity hover:opacity-90"
+      >
+        <AuthorPortrait size="card" />
+      </Link>
+      <div className="min-w-0">
+        <AuthorByline className="text-[15px] sm:text-[16px]" />
+        <p className="mt-2 text-[13px] leading-relaxed text-foreground/75 sm:text-[14px]">
+          {CREATOR.shortBio}
+        </p>
       </div>
-    );
-  }
-
-  return <AuthorByline />;
+    </div>
+  );
 }

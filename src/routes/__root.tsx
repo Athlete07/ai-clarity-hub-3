@@ -75,11 +75,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FactorBeam — AI playbooks for product managers" },
+      { title: "FactorBeam — Executive KB for product leaders" },
       {
         name: "description",
         content:
-          "Plain-English AI playbooks for product managers. Highlight any sentence to get an instant, in-place explanation. Free, no signup.",
+          "Plain-English Executive KB for product leaders. Highlight any sentence to get an instant, in-place explanation. Free, no signup.",
       },
       { name: "author", content: CREATOR.name },
       { property: "og:site_name", content: "FactorBeam" },
@@ -99,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: "FactorBeam",
-          description: "Plain-English AI playbooks for product managers.",
+          description: "Plain-English Executive KB for product leaders.",
           author: {
             "@type": "Person",
             name: CREATOR.name,

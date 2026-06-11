@@ -1,7 +1,7 @@
-import type { Playbook } from "./playbooks";
-import { withTrackOrder } from "./playbooks";
+import type { ExecutiveKb } from "./executive-kb";
+import { withTrackOrder } from "./executive-kb";
 
-const FOUNDER_PLAYBOOKS_DATA: Omit<Playbook, "order">[] = [
+const FOUNDER_EXECUTIVE_KBS_DATA: Omit<ExecutiveKb, "order">[] = [
   {
     id: "ai-fundamentals-for-founders",
     title: "AI Fundamentals for Founders",
@@ -359,4 +359,4 @@ const FOUNDER_PLAYBOOKS_DATA: Omit<Playbook, "order">[] = [
   },
 ];
 
-export const FOUNDER_PLAYBOOKS: Playbook[] = withTrackOrder(FOUNDER_PLAYBOOKS_DATA);
+export const FOUNDER_EXECUTIVE_KBS: ExecutiveKb[] = withTrackOrder(FOUNDER_EXECUTIVE_KBS_DATA);

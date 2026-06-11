@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Share2, Link as LinkIcon, Check, Twitter, Linkedin, Mail } from "lucide-react";
-import { chapterPath, chapterRouteParams, type PlaybookId } from "@/lib/playbooks";
+import { chapterPath, chapterRouteParams, type ExecutiveKbId } from "@/lib/executive-kb";
 
 type Props = {
   title: string;
   summary: string;
   slug?: string;
-  playbookId?: PlaybookId;
+  kbId?: ExecutiveKbId;
   chapterSlug?: string;
   url?: string;
   variant?: "pill" | "ghost" | "icon";
@@ -16,7 +16,7 @@ export function ShareMenu({
   title,
   summary,
   slug,
-  playbookId,
+  kbId,
   chapterSlug,
   url: urlProp,
   variant = "pill",
@@ -27,12 +27,12 @@ export function ShareMenu({
 
   const resolvedChapterSlug = chapterSlug ?? slug;
   const route =
-    playbookId && resolvedChapterSlug
-      ? { playbookId, chapterSlug: resolvedChapterSlug }
+    kbId && resolvedChapterSlug
+      ? { kbId, chapterSlug: resolvedChapterSlug }
       : resolvedChapterSlug
         ? chapterRouteParams(resolvedChapterSlug)
         : undefined;
-  const path = route ? chapterPath(route.playbookId, route.chapterSlug) : "/";
+  const path = route ? chapterPath(route.kbId, route.chapterSlug) : "/";
 
   const url =
     urlProp ??

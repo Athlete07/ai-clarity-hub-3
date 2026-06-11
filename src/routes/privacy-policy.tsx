@@ -109,7 +109,7 @@ function PrivacyPolicy() {
                 </li>
                 <li>
                   <strong>Analytics</strong> — anonymous usage statistics to understand
-                  which playbooks are most helpful. Only active if you grant consent.
+                  which Executive KB sections are most helpful. Only active if you grant consent.
                 </li>
                 <li>
                   <strong>Advertising</strong> — personalised ads via Google AdSense.
@@ -191,7 +191,7 @@ function PrivacyPolicy() {
               <ul>
                 <li>Operate and secure the website</li>
                 <li>Remember your preferences (theme, reading progress)</li>
-                <li>Analyse aggregate usage to improve playbooks</li>
+                <li>Analyse aggregate usage to improve the Executive KB</li>
                 <li>Serve ads when you have given consent</li>
                 <li>Respond to your messages and feedback</li>
               </ul>
@@ -266,10 +266,10 @@ function PrivacyPolicy() {
               Your data stays yours. Only what you consent to is used.
             </p>
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
             >
-              Browse the playbooks
+              Browse Executive KB
               <ArrowRight size={15} />
             </Link>
           </div>

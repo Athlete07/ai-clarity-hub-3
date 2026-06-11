@@ -67,16 +67,10 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
           </div>
           <nav className="flex flex-col gap-1 p-3">
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="rounded-md px-3 py-2.5 text-[14px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
-              Playbooks
-            </Link>
-            <Link
-              to="/games"
-              className="rounded-md px-3 py-2.5 text-[14px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              Games
+              Executive KB
             </Link>
             <Link
               to="/about"
@@ -123,10 +117,10 @@ export function Nav({ slim = false }: { slim?: boolean }) {
           <Logo />
           {slim && (
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="hidden text-[13px] text-muted-foreground hover:text-foreground sm:inline"
             >
-              ← Playbooks
+              ← Executive KB
             </Link>
           )}
         </div>
@@ -134,16 +128,10 @@ export function Nav({ slim = false }: { slim?: boolean }) {
         {!slim && (
           <nav className="hidden items-center gap-7 md:flex">
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
             >
-              Playbooks
-            </Link>
-            <Link
-              to="/games"
-              className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Games
+              Executive KB
             </Link>
             <Link
               to="/about"
@@ -191,7 +179,7 @@ function FooterLink({
   children,
   href,
 }: {
-  to?: "/playbooks" | "/about" | "/creator" | "/contact" | "/privacy-policy" | "/terms-of-service";
+  to?: "/executive-kb" | "/about" | "/creator" | "/contact" | "/privacy-policy" | "/terms-of-service" | "/games";
   href?: string;
   children: React.ReactNode;
 }) {
@@ -220,8 +208,16 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
           <FooterColumn title="Product">
-            <FooterLink to="/playbooks">Playbooks</FooterLink>
+            <FooterLink to="/executive-kb">Executive KB</FooterLink>
             <FooterLink to="/about">About</FooterLink>
+            <FooterLink to="/games">
+              <span className="inline-flex items-center gap-2">
+                Games
+                <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  Beta
+                </span>
+              </span>
+            </FooterLink>
           </FooterColumn>
           <FooterColumn title="Connect">
             <FooterLink to="/creator">Author</FooterLink>

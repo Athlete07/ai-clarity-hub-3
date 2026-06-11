@@ -10,13 +10,13 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "FactorBeam is an open playbook that translates AI complexity into product strategy. Built for PMs, founders, and operators who need to ship, not research.",
+          "FactorBeam is an open Executive KB that translates AI complexity into product strategy. Built for PMs, founders, and operators who need to ship, not research.",
       },
       { property: "og:title", content: "About — FactorBeam" },
       {
         property: "og:description",
         content:
-          "An open playbook that translates AI complexity into product strategy.",
+          "An open Executive KB that translates AI complexity into product strategy.",
       },
       { property: "og:url", content: "/about" },
       { property: "og:type", content: "website" },
@@ -39,7 +39,7 @@ function About() {
 
           <div className="mx-auto max-w-[800px] px-5 pt-16 pb-16 text-center sm:px-6 sm:pt-28 sm:pb-24">
             <h1 className="text-[36px] font-medium leading-[1.08] tracking-[-0.025em] sm:text-[60px] sm:leading-[1.02]">
-              An open playbook for<br />
+              An open Executive KB for<br />
               product-minded <span className="text-purple">builders</span>.
             </h1>
           </div>
@@ -58,23 +58,23 @@ function About() {
           </p>
         </section>
 
-        {/* ── What the Playbook Is ────────────────────────────────── */}
+        {/* ── What Executive KB Is ────────────────────────────────── */}
         <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-6 sm:pb-32">
           <div className="mb-10 text-center">
-            <div className="section-label mb-3">What the playbook is</div>
+            <div className="section-label mb-3">What Executive KB is</div>
             <h2 className="text-[24px] font-medium tracking-tight sm:text-[30px]">
               Structured, sequenced, and built to be used.
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
-            {/* Card 1 — Modular playbooks */}
+            {/* Card 1 — Modular Executive KB */}
             <div className="hairline bg-card p-6 sm:p-8 rounded-2xl flex flex-col justify-between sm:col-span-2 transition-all hover:-translate-y-0.5 hover:border-purple/40 hover:shadow-[0_12px_40px_-12px_rgba(83,74,183,0.18)]">
-              <div className="section-label mb-8">01 // Playbook structure</div>
+              <div className="section-label mb-8">01 // Executive KB structure</div>
               <div>
-                <h3 className="text-[20px] sm:text-[24px] font-medium tracking-tight mb-2">Playbooks, not blog posts.</h3>
+                <h3 className="text-[20px] sm:text-[24px] font-medium tracking-tight mb-2">Executive KB, not blog posts.</h3>
                 <p className="text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed max-w-[600px]">
-                  Each playbook is a sequenced set of chapters that build on each other. You start with foundations and progress to advanced concepts — no jumping between scattered articles. Every playbook has a clear difficulty level and estimated reading time so you know what you're signing up for.
+                  Each Executive KB is a sequenced set of chapters that build on each other. You start with foundations and progress to advanced concepts — no jumping between scattered articles. Every KB has a clear difficulty level and estimated reading time so you know what you're signing up for.
                 </p>
               </div>
             </div>
@@ -118,7 +118,7 @@ function About() {
               <div>
                 <h3 className="text-[18px] sm:text-[20px] font-medium tracking-tight mb-2">Reading streaks and progress.</h3>
                 <p className="text-[14px] sm:text-[15px] text-muted-foreground leading-relaxed">
-                  Your progress is saved locally as you move through chapters. Build a reading streak, pick up exactly where you left off, and see your completion percentage across every playbook.
+                  Your progress is saved locally as you move through chapters. Build a reading streak, pick up exactly where you left off, and see your completion percentage across every Executive KB.
                 </p>
               </div>
             </div>
@@ -139,13 +139,13 @@ function About() {
               Every chapter starts with a single question: <em>"Would a non-technical PM feel confident defending this in a roadmap review?"</em> If the answer is no, it gets rewritten.
             </p>
             <p>
-              The playbooks avoid filler. No long histories of AI research, no celebrity founder stories, no hype about AGI timelines. Every paragraph exists to make you a sharper product decision-maker.
+              The Executive KB avoids filler. No long histories of AI research, no celebrity founder stories, no hype about AGI timelines. Every paragraph exists to make you a sharper product decision-maker.
             </p>
             <p>
               Concepts are introduced with a real product scenario, explained in plain language, and reinforced with three examples from different domains — consumer, B2B, and infrastructure. This cross-domain repetition is deliberate: it trains pattern recognition, not memorization.
             </p>
             <p>
-              The playbooks are living documents. As models, APIs, and best practices evolve, chapters are updated. What's accurate today may need a footnote tomorrow — and corrections from readers are welcome.
+              The Executive KB is a living document. As models, APIs, and best practices evolve, chapters are updated. What's accurate today may need a footnote tomorrow — and corrections from readers are welcome.
             </p>
             <p>{CREATOR.aiDisclosure}</p>
           </div>
@@ -154,13 +154,13 @@ function About() {
         {/* ── Footer CTA ──────────────────────────────────────────── */}
         <section className="mx-auto max-w-[680px] px-5 pb-32 sm:px-6">
           <div className="text-center hairline bg-card p-10 sm:p-14 rounded-2xl flex flex-col items-center">
-            <h2 className="text-[26px] sm:text-[32px] font-medium tracking-tight mb-3">The playbook is open.</h2>
+            <h2 className="text-[26px] sm:text-[32px] font-medium tracking-tight mb-3">Executive KB is open.</h2>
             <p className="text-[14.5px] sm:text-[15.5px] text-muted-foreground mb-8">Free. No signup. Start reading in the next 60 seconds.</p>
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
             >
-              Browse the playbooks
+              Browse Executive KB
               <ArrowRight size={15} />
             </Link>
           </div>

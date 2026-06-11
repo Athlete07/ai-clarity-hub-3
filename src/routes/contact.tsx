@@ -48,7 +48,7 @@ const REASONS = [
   {
     icon: Lightbulb,
     title: "Topic idea",
-    detail: "A concept you wish the playbook covered.",
+    detail: "A concept you wish the Executive KB covered.",
   },
   {
     icon: Bug,
@@ -227,7 +227,7 @@ function Contact() {
             <div className="section-label mb-3">Include when you can</div>
             <ul className="grid gap-2.5 sm:grid-cols-2">
               {[
-                "Playbook and chapter name",
+                "Executive KB and chapter name",
                 "What confused you or felt off",
                 "How you'd rephrase or fix it",
                 "Screenshots for visual bugs",
@@ -273,17 +273,17 @@ function Contact() {
         <section className="mx-auto max-w-[720px] px-5 pb-32 sm:px-6">
           <div className="flex flex-col items-center rounded-2xl hairline bg-card p-10 text-center sm:p-14">
             <h2 className="mb-3 text-[26px] font-medium tracking-tight sm:text-[32px]">
-              Many answers are already in the playbook
+              Many answers are already in the Executive KB
             </h2>
             <p className="mb-8 max-w-[420px] text-[14.5px] text-muted-foreground sm:text-[15.5px]">
               Before you write, skim the index — you might find what you need in under
               a minute.
             </p>
             <Link
-              to="/playbooks"
+              to="/executive-kb"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-purple px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-purple-dark"
             >
-              Browse playbooks
+              Browse Executive KB
               <ArrowRight size={15} />
             </Link>
           </div>

@@ -1,9 +1,9 @@
-// Single source of truth for playbook → chapter sequences.
-// Both the playbooks listing page and the chapter reader use this.
-// Keeping chapters scoped to their playbook prevents cross-playbook bleed
+// Single source of truth for Executive KB → chapter sequences.
+// Both the Executive KB listing page and the chapter reader use this.
+// Keeping chapters scoped to their KB prevents cross-KB bleed
 // in sidebar, prev/next nav, progress %, and chapter numbering.
 
-export type PlaybookId =
+export type ExecutiveKbId =
   | "pm-foundations"
   | "pm-llms-prompting"
   | "pm-dev-toolchain"
@@ -22,13 +22,13 @@ export type PlaybookId =
   | "ai-risk-governance-founders"
   | "scaling-ai-product";
 
-export type PlaybookChapter = {
+export type ExecutiveKbChapter = {
   slug: string;
   note: string;
 };
 
-export type Playbook = {
-  id: PlaybookId;
+export type ExecutiveKb = {
+  id: ExecutiveKbId;
   /** 1-based sequence within this role track (PM or Founder). */
   order: number;
   title: string;
@@ -37,20 +37,22 @@ export type Playbook = {
   difficulty: "Beginner" | "Intermediate" | "Advanced";
   readingMinutes: number;
   topics: string[];
-  sequence: PlaybookChapter[];
+  sequence: ExecutiveKbChapter[];
 };
 
 /** Assign 1-based order from array position — single source of truth for track sequencing. */
-export function withTrackOrder<T extends Omit<Playbook, "order">>(playbooks: T[]): Playbook[] {
-  return playbooks.map((p, i) => ({ ...p, order: i + 1 }));
+export function withTrackOrder<T extends Omit<ExecutiveKb, "order">>(
+  executiveKbs: T[],
+): ExecutiveKb[] {
+  return executiveKbs.map((p, i) => ({ ...p, order: i + 1 }));
 }
 
-/** Display label for a playbook within its role track, e.g. "Playbook 01". */
-export function formatPlaybookLabel(order: number): string {
-  return `Playbook ${String(order).padStart(2, "0")}`;
+/** Display label for an Executive KB within its role track, e.g. "Executive KB 01". */
+export function formatExecutiveKbLabel(order: number): string {
+  return `Executive KB ${String(order).padStart(2, "0")}`;
 }
 
-const PM_PLAYBOOKS: Omit<Playbook, "order">[] = [
+const PM_EXECUTIVE_KBS: Omit<ExecutiveKb, "order">[] = [
   {
     id: "pm-foundations",
     title: "AI Foundations for PMs",
@@ -532,13 +534,13 @@ const PM_PLAYBOOKS: Omit<Playbook, "order">[] = [
   },
 ];
 
-export const PLAYBOOKS: Playbook[] = withTrackOrder(PM_PLAYBOOKS);
+export const EXECUTIVE_KBS: ExecutiveKb[] = withTrackOrder(PM_EXECUTIVE_KBS);
 
 import { canonicalChapterSlug } from "./chapter-slug-migrations";
-import { FOUNDER_PLAYBOOKS } from "./playbooks-founder";
+import { FOUNDER_EXECUTIVE_KBS } from "./executive-kb-founder";
 
-/** Legacy playbook URL segments → canonical playbook id (no pb-N- prefix). */
-export const LEGACY_PLAYBOOK_IDS: Record<string, PlaybookId> = {
+/** Legacy URL segments → canonical Executive KB id (no pb-N- prefix). */
+export const LEGACY_EXECUTIVE_KB_IDS: Record<string, ExecutiveKbId> = {
   "pb-4-ai-systems-design": "ai-systems-design",
   "pb-5-ai-infrastructure-deployment": "ai-infrastructure-deployment",
   "pb-6-agents-multi-agent-systems": "agents-multi-agent-systems",
@@ -547,55 +549,58 @@ export const LEGACY_PLAYBOOK_IDS: Record<string, PlaybookId> = {
   "pb-9-seo-content-strategy-ai": "seo-content-strategy-ai",
 };
 
-export function canonicalPlaybookId(id: string): PlaybookId {
-  return (LEGACY_PLAYBOOK_IDS[id] ?? id) as PlaybookId;
+export function canonicalExecutiveKbId(id: string): ExecutiveKbId {
+  return (LEGACY_EXECUTIVE_KB_IDS[id] ?? id) as ExecutiveKbId;
 }
 
-export const playbookForSlug = (slug: string): Playbook | undefined => {
+export const executiveKbForSlug = (slug: string): ExecutiveKb | undefined => {
   const canonical = canonicalChapterSlug(slug);
-  return PLAYBOOKS.find((p) => p.sequence.some((c) => c.slug === canonical));
-};
-
-export const playbookById = (id: string): Playbook | undefined => {
-  const canonical = canonicalPlaybookId(id);
   return (
-    PLAYBOOKS.find((p) => p.id === canonical) ??
-    FOUNDER_PLAYBOOKS.find((p) => p.id === canonical)
+    EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical)) ??
+    FOUNDER_EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical))
   );
 };
 
-/** Canonical chapter URL: /playbooks/{playbookId}/{chapterSlug} */
-export function chapterPath(playbookId: string, chapterSlug: string): string {
-  return `/playbooks/${canonicalPlaybookId(playbookId)}/${canonicalChapterSlug(chapterSlug)}`;
+export const executiveKbById = (id: string): ExecutiveKb | undefined => {
+  const canonical = canonicalExecutiveKbId(id);
+  return (
+    EXECUTIVE_KBS.find((p) => p.id === canonical) ??
+    FOUNDER_EXECUTIVE_KBS.find((p) => p.id === canonical)
+  );
+};
+
+/** Canonical chapter URL: /executive-kb/{kbId}/{chapterSlug} */
+export function chapterPath(kbId: string, chapterSlug: string): string {
+  return `/executive-kb/${canonicalExecutiveKbId(kbId)}/${canonicalChapterSlug(chapterSlug)}`;
 }
 
 export function chapterRouteParams(
   chapterSlug: string,
-): { playbookId: PlaybookId; chapterSlug: string } | undefined {
+): { kbId: ExecutiveKbId; chapterSlug: string } | undefined {
   const canonical = canonicalChapterSlug(chapterSlug);
-  const pb = playbookForSlug(canonical);
-  if (!pb) return undefined;
-  return { playbookId: pb.id, chapterSlug: canonical };
+  const kb = executiveKbForSlug(canonical);
+  if (!kb) return undefined;
+  return { kbId: kb.id, chapterSlug: canonical };
 }
 
-export function isChapterInPlaybook(playbookId: string, chapterSlug: string): boolean {
-  const pb = playbookById(playbookId);
+export function isChapterInExecutiveKb(kbId: string, chapterSlug: string): boolean {
+  const kb = executiveKbById(kbId);
   const canonical = canonicalChapterSlug(chapterSlug);
-  return pb?.sequence.some((c) => c.slug === canonical) ?? false;
+  return kb?.sequence.some((c) => c.slug === canonical) ?? false;
 }
 
-export const nextSlugInPlaybook = (slug: string): string | undefined => {
+export const nextSlugInExecutiveKb = (slug: string): string | undefined => {
   const canonical = canonicalChapterSlug(slug);
-  const pb = playbookForSlug(canonical);
-  if (!pb) return undefined;
-  const i = pb.sequence.findIndex((c) => c.slug === canonical);
-  return i >= 0 && i < pb.sequence.length - 1 ? pb.sequence[i + 1].slug : undefined;
+  const kb = executiveKbForSlug(canonical);
+  if (!kb) return undefined;
+  const i = kb.sequence.findIndex((c) => c.slug === canonical);
+  return i >= 0 && i < kb.sequence.length - 1 ? kb.sequence[i + 1].slug : undefined;
 };
 
-export const prevSlugInPlaybook = (slug: string): string | undefined => {
+export const prevSlugInExecutiveKb = (slug: string): string | undefined => {
   const canonical = canonicalChapterSlug(slug);
-  const pb = playbookForSlug(canonical);
-  if (!pb) return undefined;
-  const i = pb.sequence.findIndex((c) => c.slug === canonical);
-  return i > 0 ? pb.sequence[i - 1].slug : undefined;
+  const kb = executiveKbForSlug(canonical);
+  if (!kb) return undefined;
+  const i = kb.sequence.findIndex((c) => c.slug === canonical);
+  return i > 0 ? kb.sequence[i - 1].slug : undefined;
 };

@@ -15,14 +15,17 @@ import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as PlaybooksRouteImport } from './routes/playbooks'
 import { Route as PlaybookRouteImport } from './routes/playbook'
 import { Route as GamesRouteImport } from './routes/games'
+import { Route as ExecutiveKbRouteImport } from './routes/executive-kb'
 import { Route as CreatorRouteImport } from './routes/creator'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlaybooksIndexRouteImport } from './routes/playbooks.index'
+import { Route as ExecutiveKbIndexRouteImport } from './routes/executive-kb.index'
 import { Route as PlaybookSlugRouteImport } from './routes/playbook.$slug'
 import { Route as GamesAgentOverseerRouteImport } from './routes/games_.agent-overseer'
 import { Route as PlaybooksPlaybookIdChapterSlugRouteImport } from './routes/playbooks.$playbookId.$chapterSlug'
+import { Route as ExecutiveKbKbIdChapterSlugRouteImport } from './routes/executive-kb.$kbId.$chapterSlug'
 
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
@@ -54,6 +57,11 @@ const GamesRoute = GamesRouteImport.update({
   path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExecutiveKbRoute = ExecutiveKbRouteImport.update({
+  id: '/executive-kb',
+  path: '/executive-kb',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CreatorRoute = CreatorRouteImport.update({
   id: '/creator',
   path: '/creator',
@@ -79,6 +87,11 @@ const PlaybooksIndexRoute = PlaybooksIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PlaybooksRoute,
 } as any)
+const ExecutiveKbIndexRoute = ExecutiveKbIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ExecutiveKbRoute,
+} as any)
 const PlaybookSlugRoute = PlaybookSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -95,12 +108,19 @@ const PlaybooksPlaybookIdChapterSlugRoute =
     path: '/$playbookId/$chapterSlug',
     getParentRoute: () => PlaybooksRoute,
   } as any)
+const ExecutiveKbKbIdChapterSlugRoute =
+  ExecutiveKbKbIdChapterSlugRouteImport.update({
+    id: '/$kbId/$chapterSlug',
+    path: '/$kbId/$chapterSlug',
+    getParentRoute: () => ExecutiveKbRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
+  '/executive-kb': typeof ExecutiveKbRouteWithChildren
   '/games': typeof GamesRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/playbooks': typeof PlaybooksRouteWithChildren
@@ -109,7 +129,9 @@ export interface FileRoutesByFullPath {
   '/terms-of-service': typeof TermsOfServiceRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
+  '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
 }
 export interface FileRoutesByTo {
@@ -124,7 +146,9 @@ export interface FileRoutesByTo {
   '/terms-of-service': typeof TermsOfServiceRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
+  '/executive-kb': typeof ExecutiveKbIndexRoute
   '/playbooks': typeof PlaybooksIndexRoute
+  '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
 }
 export interface FileRoutesById {
@@ -133,6 +157,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
+  '/executive-kb': typeof ExecutiveKbRouteWithChildren
   '/games': typeof GamesRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/playbooks': typeof PlaybooksRouteWithChildren
@@ -141,7 +166,9 @@ export interface FileRoutesById {
   '/terms-of-service': typeof TermsOfServiceRoute
   '/games_/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
+  '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
 }
 export interface FileRouteTypes {
@@ -151,6 +178,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/creator'
+    | '/executive-kb'
     | '/games'
     | '/playbook'
     | '/playbooks'
@@ -159,7 +187,9 @@ export interface FileRouteTypes {
     | '/terms-of-service'
     | '/games/agent-overseer'
     | '/playbook/$slug'
+    | '/executive-kb/'
     | '/playbooks/'
+    | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -174,7 +204,9 @@ export interface FileRouteTypes {
     | '/terms-of-service'
     | '/games/agent-overseer'
     | '/playbook/$slug'
+    | '/executive-kb'
     | '/playbooks'
+    | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
   id:
     | '__root__'
@@ -182,6 +214,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/creator'
+    | '/executive-kb'
     | '/games'
     | '/playbook'
     | '/playbooks'
@@ -190,7 +223,9 @@ export interface FileRouteTypes {
     | '/terms-of-service'
     | '/games_/agent-overseer'
     | '/playbook/$slug'
+    | '/executive-kb/'
     | '/playbooks/'
+    | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
   fileRoutesById: FileRoutesById
 }
@@ -199,6 +234,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CreatorRoute: typeof CreatorRoute
+  ExecutiveKbRoute: typeof ExecutiveKbRouteWithChildren
   GamesRoute: typeof GamesRoute
   PlaybookRoute: typeof PlaybookRouteWithChildren
   PlaybooksRoute: typeof PlaybooksRouteWithChildren
@@ -252,6 +288,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/executive-kb': {
+      id: '/executive-kb'
+      path: '/executive-kb'
+      fullPath: '/executive-kb'
+      preLoaderRoute: typeof ExecutiveKbRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/creator': {
       id: '/creator'
       path: '/creator'
@@ -287,6 +330,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybooksIndexRouteImport
       parentRoute: typeof PlaybooksRoute
     }
+    '/executive-kb/': {
+      id: '/executive-kb/'
+      path: '/'
+      fullPath: '/executive-kb/'
+      preLoaderRoute: typeof ExecutiveKbIndexRouteImport
+      parentRoute: typeof ExecutiveKbRoute
+    }
     '/playbook/$slug': {
       id: '/playbook/$slug'
       path: '/$slug'
@@ -308,8 +358,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybooksPlaybookIdChapterSlugRouteImport
       parentRoute: typeof PlaybooksRoute
     }
+    '/executive-kb/$kbId/$chapterSlug': {
+      id: '/executive-kb/$kbId/$chapterSlug'
+      path: '/$kbId/$chapterSlug'
+      fullPath: '/executive-kb/$kbId/$chapterSlug'
+      preLoaderRoute: typeof ExecutiveKbKbIdChapterSlugRouteImport
+      parentRoute: typeof ExecutiveKbRoute
+    }
   }
 }
+
+interface ExecutiveKbRouteChildren {
+  ExecutiveKbIndexRoute: typeof ExecutiveKbIndexRoute
+  ExecutiveKbKbIdChapterSlugRoute: typeof ExecutiveKbKbIdChapterSlugRoute
+}
+
+const ExecutiveKbRouteChildren: ExecutiveKbRouteChildren = {
+  ExecutiveKbIndexRoute: ExecutiveKbIndexRoute,
+  ExecutiveKbKbIdChapterSlugRoute: ExecutiveKbKbIdChapterSlugRoute,
+}
+
+const ExecutiveKbRouteWithChildren = ExecutiveKbRoute._addFileChildren(
+  ExecutiveKbRouteChildren,
+)
 
 interface PlaybookRouteChildren {
   PlaybookSlugRoute: typeof PlaybookSlugRoute
@@ -342,6 +413,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CreatorRoute: CreatorRoute,
+  ExecutiveKbRoute: ExecutiveKbRouteWithChildren,
   GamesRoute: GamesRoute,
   PlaybookRoute: PlaybookRouteWithChildren,
   PlaybooksRoute: PlaybooksRouteWithChildren,
