@@ -26,6 +26,7 @@ import { Route as ExecutiveKbIndexRouteImport } from './routes/executive-kb.inde
 import { Route as SimulationsAgentOverseerRouteImport } from './routes/simulations_.agent-overseer'
 import { Route as PlaybookSlugRouteImport } from './routes/playbook.$slug'
 import { Route as GamesAgentOverseerRouteImport } from './routes/games_.agent-overseer'
+import { Route as ExecutiveKbTrackRouteImport } from './routes/executive-kb.$track'
 import { Route as PlaybooksPlaybookIdChapterSlugRouteImport } from './routes/playbooks.$playbookId.$chapterSlug'
 import { Route as ExecutiveKbKbIdChapterSlugRouteImport } from './routes/executive-kb.$kbId.$chapterSlug'
 
@@ -115,6 +116,11 @@ const GamesAgentOverseerRoute = GamesAgentOverseerRouteImport.update({
   path: '/games/agent-overseer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExecutiveKbTrackRoute = ExecutiveKbTrackRouteImport.update({
+  id: '/$track',
+  path: '/$track',
+  getParentRoute: () => ExecutiveKbRoute,
+} as any)
 const PlaybooksPlaybookIdChapterSlugRoute =
   PlaybooksPlaybookIdChapterSlugRouteImport.update({
     id: '/$playbookId/$chapterSlug',
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games_/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations_/agent-overseer': typeof SimulationsAgentOverseerRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/executive-kb/$track'
     | '/games/agent-overseer'
     | '/playbook/$slug'
     | '/simulations/agent-overseer'
@@ -224,6 +234,7 @@ export interface FileRouteTypes {
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/executive-kb/$track'
     | '/games/agent-overseer'
     | '/playbook/$slug'
     | '/simulations/agent-overseer'
@@ -245,6 +256,7 @@ export interface FileRouteTypes {
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/executive-kb/$track'
     | '/games_/agent-overseer'
     | '/playbook/$slug'
     | '/simulations_/agent-overseer'
@@ -392,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GamesAgentOverseerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/executive-kb/$track': {
+      id: '/executive-kb/$track'
+      path: '/$track'
+      fullPath: '/executive-kb/$track'
+      preLoaderRoute: typeof ExecutiveKbTrackRouteImport
+      parentRoute: typeof ExecutiveKbRoute
+    }
     '/playbooks/$playbookId/$chapterSlug': {
       id: '/playbooks/$playbookId/$chapterSlug'
       path: '/$playbookId/$chapterSlug'
@@ -410,11 +429,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface ExecutiveKbRouteChildren {
+  ExecutiveKbTrackRoute: typeof ExecutiveKbTrackRoute
   ExecutiveKbIndexRoute: typeof ExecutiveKbIndexRoute
   ExecutiveKbKbIdChapterSlugRoute: typeof ExecutiveKbKbIdChapterSlugRoute
 }
 
 const ExecutiveKbRouteChildren: ExecutiveKbRouteChildren = {
+  ExecutiveKbTrackRoute: ExecutiveKbTrackRoute,
   ExecutiveKbIndexRoute: ExecutiveKbIndexRoute,
   ExecutiveKbKbIdChapterSlugRoute: ExecutiveKbKbIdChapterSlugRoute,
 }

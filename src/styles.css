@@ -368,3 +368,13 @@
   color: var(--color-foreground);
   font-weight: 500;
 }
+
+/* Chapter reader */
+.chapter-article {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.chapter-article p {
+  color: color-mix(in oklch, var(--foreground) 92%, transparent);
+}

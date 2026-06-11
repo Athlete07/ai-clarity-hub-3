@@ -11,6 +11,7 @@ import {
 } from "@/lib/executive-kb";
 import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
+import { executiveKbTrackSearch } from "@/lib/executive-kb-track";
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 import { FEATURED_GAME } from "@/lib/simulations";
 import {
@@ -268,6 +269,7 @@ function Home() {
                 <Link
                   key={role.id}
                   to="/executive-kb"
+                  search={executiveKbTrackSearch(role.id)}
                   className={`group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover sm:p-7 ${theme.hoverBorder} animate-fade-in-up`}
                   style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
                 >

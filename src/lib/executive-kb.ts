@@ -623,3 +623,11 @@ export const prevSlugInExecutiveKb = (slug: string): string | undefined => {
   const i = kb.sequence.findIndex((c) => c.slug === canonical);
   return i > 0 ? kb.sequence[i - 1].slug : undefined;
 };
+
+/** Role track for a given Executive KB id. */
+export function executiveKbTrackForId(id: string): ExecutiveKbTrack {
+  const canonical = canonicalExecutiveKbId(id);
+  if (FOUNDER_EXECUTIVE_KBS.some((p) => p.id === canonical)) return "founder";
+  if (BUSINESS_LEADER_EXECUTIVE_KBS.some((p) => p.id === canonical)) return "business-leader";
+  return "pm";
+}

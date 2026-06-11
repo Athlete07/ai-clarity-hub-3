@@ -1,9 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Nav, Footer } from "@/components/site-nav";
 import { ShareMenu } from "@/components/share-menu";
 import { useProgress } from "@/lib/storage";
-import { ArrowRight } from "lucide-react";
+import {
+  dismissTrackBanner,
+  executiveKbSearchSchema,
+  executiveKbTrackSearch,
+  isTrackBannerDismissed,
+  readStoredRole,
+  writeStoredRole,
+} from "@/lib/executive-kb-track";
+import { ArrowRight, BookOpen, CheckCircle2, X } from "lucide-react";
 import {
   EXECUTIVE_KBS,
   formatExecutiveKbLabel,
@@ -14,6 +22,7 @@ import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leade
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 
 export const Route = createFileRoute("/executive-kb/")({
+  validateSearch: (search) => executiveKbSearchSchema.parse(search),
   head: () => ({
     meta: [
       { title: "Executive KB — AI knowledge for product leaders — FactorBeam" },
@@ -22,7 +31,10 @@ export const Route = createFileRoute("/executive-kb/")({
         content:
           "Browse every FactorBeam Executive KB. Plain-English AI chapters sequenced for product managers, founders, and business leaders — pick the KB that matches the gap in your work.",
       },
-      { property: "og:title", content: "Executive KB — AI knowledge for product leaders — FactorBeam" },
+      {
+        property: "og:title",
+        content: "Executive KB — AI knowledge for product leaders — FactorBeam",
+      },
       {
         property: "og:description",
         content:
@@ -42,299 +54,375 @@ const EXECUTIVE_KBS_BY_ROLE: Record<RoleId, ExecutiveKb[]> = {
   "business-leader": BUSINESS_LEADER_EXECUTIVE_KBS,
 };
 
-const ROLE_KEY = "factorbeam_selected_role";
+const ALL_KBS = [...EXECUTIVE_KBS, ...FOUNDER_EXECUTIVE_KBS, ...BUSINESS_LEADER_EXECUTIVE_KBS];
+const TOTAL_CHAPTERS = ALL_KBS.reduce((n, kb) => n + kb.sequence.length, 0);
 
 function ExecutiveKbPage() {
-  const [role, setRole] = useState<RoleId | null>(null);
+  const { track: trackFromUrl } = Route.useSearch();
+  const navigate = useNavigate();
+  const [role, setRole] = useState<RoleId | null>(trackFromUrl ?? null);
+  const [showTrackBanner, setShowTrackBanner] = useState(false);
   const { progress } = useProgress();
 
+  // URL ?track= wins; else restore from localStorage and sync URL for shareable links.
   useEffect(() => {
-    try {
-      const saved = window.localStorage.getItem(ROLE_KEY) as RoleId | null;
-      if (saved && EXECUTIVE_KBS_BY_ROLE[saved]) {
-        setRole(saved);
-      }
-    } catch {
-      // ignore
+    if (trackFromUrl) {
+      setRole(trackFromUrl);
+      writeStoredRole(trackFromUrl);
+      return;
     }
+
+    const saved = readStoredRole();
+    if (saved && EXECUTIVE_KBS_BY_ROLE[saved]) {
+      setRole(saved);
+      navigate({
+        to: "/executive-kb",
+        search: executiveKbTrackSearch(saved),
+        replace: true,
+      });
+      return;
+    }
+
+    setRole(null);
+  }, [trackFromUrl, navigate]);
+
+  useEffect(() => {
+    setShowTrackBanner(!isTrackBannerDismissed());
   }, []);
 
   const selectRole = (id: RoleId) => {
     setRole(id);
-    try {
-      window.localStorage.setItem(ROLE_KEY, id);
-    } catch {
-      // ignore
-    }
+    writeStoredRole(id);
+    navigate({
+      to: "/executive-kb",
+      search: executiveKbTrackSearch(id),
+    });
+  };
+
+  const handleDismissBanner = () => {
+    dismissTrackBanner();
+    setShowTrackBanner(false);
   };
 
   const executiveKbs = role ? EXECUTIVE_KBS_BY_ROLE[role] || [] : [];
+  const activeRole = role ? ROLES.find((r) => r.id === role) : null;
 
   return (
     <>
       <Nav />
-      <main className="mx-auto max-w-[720px] px-6 pt-16 pb-24">
-        {role === null ? (
-          /* State A: Unselected */
-          <div className="animate-fade-in-up relative">
-            {/* Ambient Background Mesh Glows */}
-            <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -z-20 w-[280px] h-[280px] rounded-full bg-purple-light/35 blur-[80px] dark:bg-purple-light/5 pointer-events-none mesh-glow-1" />
-            <div className="absolute top-1/3 right-1/4 -translate-y-1/2 -z-20 w-[240px] h-[240px] rounded-full bg-blue-bg/40 blur-[80px] dark:bg-blue-bg/5 pointer-events-none mesh-glow-2" />
+      {role === null && showTrackBanner ? (
+        <div
+          role="status"
+          className="border-b border-purple/15 bg-purple-light/50 dark:bg-purple-light/10"
+        >
+          <div className="mx-auto flex max-w-6xl items-start justify-between gap-4 px-5 py-3 sm:items-center sm:px-6">
+            <p className="text-[13px] leading-snug text-purple-dark dark:text-purple sm:text-[14px]">
+              Pick your track above to see chapters framed for your role.
+            </p>
+            <button
+              type="button"
+              onClick={handleDismissBanner}
+              aria-label="Dismiss"
+              className="shrink-0 rounded-md p-1.5 text-purple-dark/70 transition-colors hover:bg-purple-light hover:text-purple-dark dark:text-purple/70 dark:hover:text-purple"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+      ) : null}
+      <main className="overflow-x-hidden">
+        {/* ── Hero ───────────────────────────────────────────────── */}
+        <section className="relative home-hero-mesh">
+          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+            <div className="mesh-glow-1 absolute -top-32 left-1/4 h-[400px] w-[400px] rounded-full bg-purple-light/35 blur-[120px] dark:bg-purple-light/8" />
+            <div className="mesh-glow-2 absolute right-0 bottom-0 h-[320px] w-[320px] rounded-full bg-blue-bg/40 blur-[100px] dark:bg-blue-bg/10" />
+          </div>
 
-            {/* Intro */}
-            <div className="text-center relative z-10">
-              <h1 className="text-[32px] font-medium leading-tight text-foreground">
-                AI concepts, sequenced for your role
-              </h1>
-              <p className="mt-3 text-[16px] text-muted-foreground">
-                Same AI concepts, sequenced for how you actually work. Choose your role to begin.
-              </p>
+          <div className="mx-auto max-w-6xl px-5 pt-14 pb-12 sm:px-6 sm:pt-20 sm:pb-16">
+            <p className="section-label">Executive KB</p>
+            <h1 className="mt-3 max-w-2xl text-[36px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[48px]">
+              AI concepts,{" "}
+              <span className="text-purple">sequenced for your role.</span>
+            </h1>
+            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-muted-foreground sm:text-[17px]">
+              {role
+                ? `${executiveKbs.length} Executive KBs with plain-English chapters and quizzes — framed for ${activeRole?.title}s.`
+                : "Same AI concepts, framed for how you actually work. Select your role to browse sequenced chapters."}
+            </p>
+
+            <div className="mt-8">
+              <p className="section-label mb-3">Your track</p>
+              <RoleTrackPills role={role} onSelect={selectRole} />
             </div>
+          </div>
+        </section>
 
-            {/* Role Selectors Grid */}
-            <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 relative z-10">
-              {ROLES.map((r, index) => {
+        {/* ── Stats ──────────────────────────────────────────────── */}
+        <section className="border-y border-border/80 bg-muted/30">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-border/60 sm:grid-cols-4">
+            <StatCell value={String(ALL_KBS.length)} label="Executive KBs" />
+            <StatCell value="3" label="Role tracks" />
+            <StatCell value={`${TOTAL_CHAPTERS}+`} label="Chapters" />
+            <StatCell value="$0" label="Forever" />
+          </div>
+        </section>
+
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-16">
+          {role === null ? (
+            <>
+              <p className="section-label mb-6">Compare tracks</p>
+              <div className="grid gap-4 lg:grid-cols-3">
+              {ROLES.map((r, i) => {
                 const Icon = r.icon;
-                const roleTheme = ROLE_THEMES[r.id];
+                const rTheme = ROLE_THEMES[r.id];
+                const kbCount = EXECUTIVE_KBS_BY_ROLE[r.id].length;
                 return (
                   <button
                     key={r.id}
                     type="button"
                     onClick={() => selectRole(r.id)}
-                    className={`relative rounded-xl p-4 text-left bg-card hairline transition-all hover:scale-[1.02] hover:shadow-card-hover cursor-pointer animate-fade-in-up duration-300 ${roleTheme.hoverBorder}`}
-                    style={{
-                      minHeight: 44,
-                      animationDelay: `${index * 100}ms`,
-                      animationFillMode: "both",
-                    }}
+                    className={`group relative rounded-2xl border border-border bg-card p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover sm:p-7 ${rTheme.hoverBorder} animate-fade-in-up`}
+                    style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
                   >
-                    <div className="flex items-center gap-3">
-                      <div
-                        className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${roleTheme.iconBox}`}
-                      >
-                        <Icon size={16} />
-                      </div>
-                      <h3 className="text-[14px] font-semibold text-foreground">{r.title}</h3>
-                    </div>
-                    <p className="mt-2 text-[12px] text-muted-foreground leading-snug">
-                      {r.description}
-                    </p>
-                    {r.popular && (
-                      <span className="absolute top-2 right-2 rounded-full bg-purple px-1.5 py-0.5 text-[9px] font-semibold text-primary-foreground">
+                    {r.popular ? (
+                      <span className="absolute right-5 top-5 rounded-full bg-purple-light px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-purple-dark">
                         Popular
                       </span>
-                    )}
+                    ) : null}
+                    <div
+                      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${rTheme.iconBox}`}
+                    >
+                      <Icon size={20} />
+                    </div>
+                    <h2 className="mt-5 text-[18px] font-medium tracking-tight">{r.title}</h2>
+                    <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+                      {r.description}
+                    </p>
+                    <div className="mt-6 flex items-center justify-between">
+                      <span className="text-[12px] text-muted-foreground">
+                        {kbCount} Executive KBs
+                      </span>
+                      <span
+                        className={`inline-flex items-center gap-1 text-[13px] font-medium ${rTheme.textHover.replace("group-hover/card:", "group-hover:")}`}
+                      >
+                        Browse track
+                        <ArrowRight size={14} className="transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    </div>
                   </button>
                 );
               })}
-            </div>
-          </div>
-        ) : (
-          /* State B: Active Role Selected */
-          <div className="animate-fade-in-down">
-            {/* Compact Header & Horizontal Selector Pills */}
-            <div className="text-center">
-              <h1 className="text-[24px] font-medium leading-tight text-foreground">
-                AI concepts, sequenced for your role
-              </h1>
-
-              <div className="mt-4 flex flex-wrap justify-center gap-2">
-                {ROLES.map((r) => {
-                  const Icon = r.icon;
-                  const active = r.id === role;
-                  const theme = ROLE_THEMES[r.id];
-                  return (
-                    <button
-                      key={r.id}
-                      type="button"
-                      onClick={() => selectRole(r.id)}
-                      aria-pressed={active}
-                      className={`px-3 py-1.5 rounded-full text-[12px] font-semibold transition-all border flex items-center gap-1.5 cursor-pointer ${
-                        active
-                          ? theme.pillActive
-                          : "bg-muted/40 hover:bg-muted text-muted-foreground border-border/40"
-                      }`}
-                    >
-                      <span
-                        className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded ${
-                          active ? "text-primary-foreground" : theme.iconBox
-                        }`}
-                      >
-                        <Icon size={10} />
-                      </span>
-                      {r.title}
-                    </button>
-                  );
-                })}
               </div>
-            </div>
-
-            {/* Executive KB vertical stack */}
-            <div className="mt-10 flex flex-col gap-4">
-              <div className="flex items-center justify-between pl-1 pr-1">
-                <h2 className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">
-                  Executive KB
+            </>
+          ) : (
+            <div>
+              <div className="mb-8">
+                <p className="section-label">Library</p>
+                <h2 className="mt-2 text-[22px] font-medium tracking-tight sm:text-[26px]">
+                  {activeRole?.title} Executive KBs
                 </h2>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setRole(null);
-                    try {
-                      window.localStorage.removeItem(ROLE_KEY);
-                    } catch {
-                      // ignore
-                    }
-                  }}
-                  className="text-[11px] text-purple hover:underline font-medium cursor-pointer"
-                >
-                  View all roles
-                </button>
               </div>
               {executiveKbs.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-border/60 bg-muted/20 px-6 py-12 text-center">
-                  <p className="text-[15px] font-medium text-foreground">No Executive KB yet</p>
-                  <p className="mx-auto mt-2 max-w-[360px] text-[13px] leading-relaxed text-muted-foreground">
-                    {ROLES.find((r) => r.id === role)?.title} Executive KB entries are on the way.
-                    Switch to Product Manager or Founder/CEO to browse what&apos;s available today.
+                <div className="rounded-2xl border border-dashed border-border bg-muted/20 px-8 py-16 text-center">
+                  <BookOpen size={28} className="mx-auto text-muted-foreground/50" />
+                  <p className="mt-4 text-[17px] font-medium">No Executive KB yet</p>
+                  <p className="mx-auto mt-2 max-w-md text-[14px] leading-relaxed text-muted-foreground">
+                    {activeRole?.title} entries are on the way. Switch to another track to
+                    browse what&apos;s available today.
                   </p>
                 </div>
               ) : (
-              executiveKbs.map((p, index) => {
-                const moduleCount = p.sequence.length || p.topics.length;
-                const pDoneCount = p.sequence.filter((s) => progress[s.slug] === "done").length;
-                const pPct = p.sequence.length
-                  ? Math.round((pDoneCount / p.sequence.length) * 100)
-                  : 0;
-                const theme = ROLE_THEMES[role];
-                const nextIncompleteSlug =
-                  p.sequence.find((s) => progress[s.slug] !== "done")?.slug || p.sequence[0]?.slug;
-
-                return (
-                  <div
-                    key={p.id}
-                    className={`rounded-2xl border p-4 sm:p-5 bg-card relative transition-all duration-300 border-border/60 ${theme.cardHover} animate-fade-in-up`}
-                    style={{
-                      animationDelay: `${index * 120}ms`,
-                      animationFillMode: "both",
-                    }}
-                  >
-                    {/* Glow backplate effect */}
-                    <div
-                      className={`absolute inset-0 -z-10 rounded-2xl bg-gradient-to-tr ${theme.glow} to-transparent blur-xl pointer-events-none opacity-50 dark:opacity-100`}
+                <div className="grid gap-4 lg:grid-cols-2">
+                  {executiveKbs.map((kb, index) => (
+                    <KbCard
+                      key={kb.id}
+                      kb={kb}
+                      role={role}
+                      progress={progress}
+                      index={index}
                     />
-
-                    {/* Absolute CTA button */}
-                    {p.sequence.length > 0 ? (
-                      <Link
-                        to="/executive-kb/$kbId/$chapterSlug"
-                        params={{ kbId: p.id, chapterSlug: nextIncompleteSlug as string }}
-                        className={`absolute top-4 right-4 sm:top-5 sm:right-5 inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg px-3.5 py-1.5 text-[11px] font-semibold text-primary-foreground transition-all hover:opacity-90 ${theme.progress}`}
-                      >
-                        {pPct === 0 ? (
-                          <>
-                            Start <ArrowRight size={12} />
-                          </>
-                        ) : pPct === 100 ? (
-                          "Review"
-                        ) : (
-                          "Resume"
-                        )}
-                      </Link>
-                    ) : (
-                      <span
-                        className="absolute top-4 right-4 inline-flex cursor-not-allowed items-center justify-center gap-1.5 rounded-lg bg-muted px-3.5 py-1.5 text-[11px] font-semibold text-muted-foreground sm:top-5 sm:right-5"
-                      >
-                        Coming Soon
-                      </span>
-                    )}
-
-                    <div className="flex flex-col gap-2.5">
-                      {/* Metadata row: chips + share (no extra footer row) */}
-                      <div className="flex items-center gap-2 pr-[120px] sm:pr-[140px]">
-                        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-2">
-                          <span
-                            className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${theme.badge}`}
-                          >
-                            {formatExecutiveKbLabel(role, p.order)}
-                          </span>
-                          <span
-                            className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${theme.badge}`}
-                          >
-                            {p.difficulty}
-                          </span>
-                          <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                            ~{p.readingMinutes} min read
-                          </span>
-                          <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
-                            {moduleCount} Modules
-                          </span>
-                        </div>
-                        {p.sequence.length > 0 && (
-                          <ShareMenu
-                            title={p.title}
-                            summary={p.description}
-                            kbId={p.id}
-                            chapterSlug={nextIncompleteSlug}
-                            variant="icon"
-                          />
-                        )}
-                      </div>
-
-                      {/* Title & Description */}
-                      <div>
-                        <div className="flex flex-wrap items-center gap-3 pr-[120px] sm:pr-[140px]">
-                          <h3 className="text-[17px] font-bold text-foreground tracking-tight">
-                            {p.title}
-                          </h3>
-                          {pPct > 0 && (
-                            <div className="flex items-center gap-2">
-                              <div className="h-1 w-16 overflow-hidden rounded-full bg-muted shrink-0">
-                                <div
-                                  className={`h-full transition-all duration-500 rounded-full ${theme.progress}`}
-                                  style={{ width: `${pPct}%` }}
-                                />
-                              </div>
-                              <span className="text-[10px] text-muted-foreground font-medium whitespace-nowrap">
-                                {pPct}%
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                        {p.subtitle && (
-                          <p className="mt-1 text-[12px] font-medium text-muted-foreground">
-                            {p.subtitle}
-                          </p>
-                        )}
-                        <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
-                          {p.description}
-                        </p>
-                      </div>
-
-                      {/* Topics Covered */}
-                      <div className="flex flex-wrap gap-1.5 items-center">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground shrink-0 mr-1">
-                          Topics:
-                        </span>
-                        {p.topics.map((topic) => (
-                          <span
-                            key={topic}
-                            className="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-medium bg-muted/40 text-muted-foreground border border-border/60"
-                          >
-                            {topic}
-                          </span>
-                        ))}
-                      </div>
-
-                    </div>
-                  </div>
-                );
-              })
+                  ))}
+                </div>
               )}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </main>
       <Footer />
     </>
+  );
+}
+
+function RoleTrackPills({
+  role,
+  onSelect,
+}: {
+  role: RoleId | null;
+  onSelect: (id: RoleId) => void;
+}) {
+  return (
+    <div
+      className="flex flex-wrap gap-2"
+      role="group"
+      aria-label="Choose your role track"
+    >
+      {ROLES.map((r) => {
+        const Icon = r.icon;
+        const active = r.id === role;
+        const rTheme = ROLE_THEMES[r.id];
+        return (
+          <button
+            key={r.id}
+            type="button"
+            onClick={() => onSelect(r.id)}
+            aria-pressed={active}
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-[13px] font-semibold transition-all sm:px-5 ${
+              active
+                ? rTheme.pillActive
+                : "border-border bg-card text-muted-foreground shadow-sm hover:border-border/80 hover:text-foreground"
+            }`}
+          >
+            <Icon size={15} aria-hidden />
+            {r.title}
+            {r.popular && !active ? (
+              <span className="rounded bg-purple-light px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-purple-dark">
+                Popular
+              </span>
+            ) : null}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function StatCell({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="px-5 py-8 text-center sm:px-6 sm:py-10">
+      <p className="home-stat-value text-[28px] font-medium tracking-tight text-foreground sm:text-[32px]">
+        {value}
+      </p>
+      <p className="mt-1.5 text-[12px] font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function KbCard({
+  kb,
+  role,
+  progress,
+  index,
+}: {
+  kb: ExecutiveKb;
+  role: RoleId;
+  progress: Record<string, "in-progress" | "done" | undefined>;
+  index: number;
+}) {
+  const theme = ROLE_THEMES[role];
+  const moduleCount = kb.sequence.length || kb.topics.length;
+  const doneCount = kb.sequence.filter((s) => progress[s.slug] === "done").length;
+  const pct = kb.sequence.length ? Math.round((doneCount / kb.sequence.length) * 100) : 0;
+  const nextSlug =
+    kb.sequence.find((s) => progress[s.slug] !== "done")?.slug ?? kb.sequence[0]?.slug;
+  const hasChapters = kb.sequence.length > 0;
+
+  return (
+    <article
+      className={`group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-brand sm:p-7 ${theme.cardHover} animate-fade-in-up`}
+      style={{ animationDelay: `${index * 60}ms`, animationFillMode: "both" }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span
+            className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${theme.badge}`}
+          >
+            {formatExecutiveKbLabel(role, kb.order)}
+          </span>
+          <span className="rounded-full bg-muted px-2.5 py-0.5 text-[10px] font-medium text-muted-foreground">
+            {kb.difficulty}
+          </span>
+        </div>
+        {hasChapters ? (
+          <ShareMenu
+            title={kb.title}
+            summary={kb.description}
+            kbId={kb.id}
+            chapterSlug={nextSlug}
+            variant="icon"
+          />
+        ) : null}
+      </div>
+
+      <h3 className="mt-4 text-[19px] font-medium tracking-tight text-foreground sm:text-[20px]">
+        {kb.title}
+      </h3>
+      {kb.subtitle ? (
+        <p className="mt-1.5 text-[13px] font-medium text-muted-foreground">{kb.subtitle}</p>
+      ) : null}
+      <p className="mt-3 flex-1 text-[14px] leading-relaxed text-muted-foreground">
+        {kb.description}
+      </p>
+
+      <div className="mt-4 flex flex-wrap gap-1.5">
+        {kb.topics.slice(0, 4).map((topic) => (
+          <span
+            key={topic}
+            className="rounded-full border border-border/60 bg-muted/30 px-2.5 py-0.5 text-[11px] text-muted-foreground"
+          >
+            {topic}
+          </span>
+        ))}
+        {kb.topics.length > 4 ? (
+          <span className="px-1 text-[11px] text-muted-foreground">
+            +{kb.topics.length - 4}
+          </span>
+        ) : null}
+      </div>
+
+      <div className="mt-6 flex items-center gap-4 border-t border-border/60 pt-5">
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+            <span>
+              ~{kb.readingMinutes} min · {moduleCount} chapters
+            </span>
+            {pct > 0 ? <span>{pct}%</span> : null}
+          </div>
+          {pct > 0 ? (
+            <div className="mt-2 h-1 overflow-hidden rounded-full bg-muted">
+              <div
+                className={`h-full rounded-full transition-all ${theme.progress}`}
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          ) : null}
+        </div>
+
+        {hasChapters && nextSlug ? (
+          <Link
+            to="/executive-kb/$kbId/$chapterSlug"
+            params={{ kbId: kb.id, chapterSlug: nextSlug }}
+            className={`inline-flex shrink-0 items-center gap-1.5 rounded-lg px-4 py-2 text-[12px] font-semibold text-primary-foreground transition-opacity hover:opacity-90 ${theme.progress}`}
+          >
+            {pct === 0 ? (
+              <>
+                Start <ArrowRight size={13} />
+              </>
+            ) : pct === 100 ? (
+              <>
+                <CheckCircle2 size={13} /> Review
+              </>
+            ) : (
+              "Resume"
+            )}
+          </Link>
+        ) : (
+          <span className="shrink-0 rounded-lg bg-muted px-4 py-2 text-[12px] font-semibold text-muted-foreground">
+            Coming soon
+          </span>
+        )}
+      </div>
+    </article>
   );
 }
