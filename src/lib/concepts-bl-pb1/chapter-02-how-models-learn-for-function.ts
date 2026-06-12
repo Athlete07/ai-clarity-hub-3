@@ -156,9 +156,9 @@ export const chapter02BlHowModelsLearnForFunction = buildChapter({
       kind: "diagram",
       id: "ch2-training-loop",
       type: "flow",
-      title: "The Training Loop",
+      title: "Training Data is Destiny",
       caption:
-        "Forward pass → loss → backpropagation → weight update. Understanding this loop explains why training is CapEx, not a feature toggle.",
+        "A model can only perform well on patterns that were present in its training data. Training data determines capability ceilings, failure modes, demographic…",
     }),
     buildSection({
       number: "2.4",
@@ -255,11 +255,11 @@ export const chapter02BlHowModelsLearnForFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch2-fitting-comparison",
+      id: "bl-pb1-ch02-2-5-fine-tuning-making-a-general-model-specific",
       type: "comparison",
-      title: "The Fitting Spectrum",
+      title: "Fine-Tuning — Making a General Model Specific",
       caption:
-        "Underfitting, optimal fit, and overfitting — why pilot accuracy does not guarantee production performance.",
+        "Fine-tuning takes a pre-trained general model and continues training it on domain-specific data to improve performance in a target area. Most 'custom AI'…",
     }),
     buildSection({
       number: "2.6",

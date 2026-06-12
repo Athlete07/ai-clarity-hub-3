@@ -59,13 +59,13 @@ const section31 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
+      kind: "diagram",
     id: "ch3-ai-stack",
     type: "flow",
-    title: "The AI Infrastructure Stack",
+    title: "The AI infrastructure stack",
     caption:
-      "Foundation models, retrieval, orchestration, serving, and observability — five layers where early choices compound into cost, portability, and debuggability.",
-  },
+        "The AI stack has five layers founders must map: foundation models (intelligence), retrieval/vector stores (knowledge), orchestration (prompt chains, agents,…",
+    },
 );
 
 export const chapter03AiInfrastructureStack = buildChapter({

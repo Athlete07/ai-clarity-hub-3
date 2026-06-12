@@ -60,11 +60,11 @@ export const chapter10BlEthicalAiPolicyDesign = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch10-10-1-why-most-ethical-ai-policies-fail",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "Why Most Ethical AI Policies Fail",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Most organisational AI ethics statements fail for five reasons: they are too abstract to apply to specific decisions, they have no enforcement mechanism,…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -114,11 +114,11 @@ export const chapter10BlEthicalAiPolicyDesign = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch10-10-2-the-three-tier-policy-architecture",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Three-Tier Policy Architecture",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Ethical AI policy requires three tiers: principles define what you stand for, standards translate principles into specific rules, and procedures embed…",
     }),
     buildSection({
       number: "10.3",

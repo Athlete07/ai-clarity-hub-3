@@ -61,11 +61,11 @@ export const chapter03FounderEvaluatingAiVendors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "founder-pb6-ch03-3-1-the-ai-vendor-landscape-a-founder-s-map",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "The AI vendor landscape — a founder's map",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "The AI vendor landscape has four layers: foundation model APIs (OpenAI, Anthropic, Google, Mistral), infrastructure (vector DBs, labelling, observability,…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03FounderEvaluatingAiVendors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb6-ch03-3-2-what-a-rigorous-ai-vendor-evaluation-looks-l",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "What a rigorous AI vendor evaluation looks like",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Rigorous evaluation has three tracks running in parallel: technical (your data, your edge cases, your latency requirements), commercial (TCO at 3× volume,…",
     }),
     buildSection({
       number: "3.3",

@@ -69,11 +69,11 @@ export const chapter07BiasHallucinationLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-ch07-7-1-what-is-model-bias",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "What is model bias",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Model bias is systematic unequal performance across demographic or structural groups — the model works well for the majority and fails for minorities. It is…",
     }),
     buildSection({
       number: "7.2",
@@ -186,11 +186,11 @@ export const chapter07BiasHallucinationLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-risk-governance",
+      id: "founder-ch07-7-3-types-of-bias-to-know",
       type: "flow",
-      title: "AI Risk Management Flow",
+      title: "Types of bias to know",
       caption:
-        "Inventory use cases, classify risk, implement controls, monitor incidents — the founder's minimum viable governance path.",
+        "Bias enters through four distinct vectors: representation (missing groups), measurement (flawed labels), aggregation (one model for different populations),…",
     }),
     buildSection({
       number: "7.4",

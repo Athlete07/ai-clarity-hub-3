@@ -51,11 +51,18 @@ export function renderErrorPage(): string {
       .primary { background: var(--primary); color: var(--primary-foreground); }
       .primary:hover { background: var(--primary-hover); }
       .secondary { background: var(--background); color: var(--foreground); border-color: var(--border); }
+      .logo-light { display: block; margin: 0 auto 1.25rem; width: auto; height: 72px; }
+      .logo-dark { display: none; margin: 0 auto 1.25rem; width: auto; height: 72px; }
+      @media (prefers-color-scheme: dark) {
+        .logo-light { display: none; }
+        .logo-dark { display: block; }
+      }
     </style>
   </head>
   <body>
     <div class="card">
-      <img src="/logo-mark.svg" alt="FactorBeam" width="48" height="48" style="margin:0 auto 1rem;display:block;" />
+      <img class="logo-light" src="/factorbeam-logo-light.png" alt="FactorBeam" />
+      <img class="logo-dark" src="/factorbeam-logo-dark.png" alt="FactorBeam" />
       <h1>This page didn't load</h1>
       <p>Something went wrong on our end. You can try refreshing or head back home.</p>
       <div class="actions">

@@ -60,11 +60,11 @@ export const chapter04BlHardVsSoftRoiAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch04-4-1-defining-hard-roi-in-the-ai-context",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Defining hard ROI in the AI context",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "Hard AI ROI meets three criteria: it is directly traceable to a specific financial line, the baseline is documented before deployment, and the change in…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -114,11 +114,11 @@ export const chapter04BlHardVsSoftRoiAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch04-4-2-defining-soft-roi-and-strategic-value",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Defining soft ROI and strategic value",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Soft AI ROI includes: employee experience and retention, decision quality improvement, brand and customer trust, speed of decision-making, and strategic…",
     }),
     buildSection({
       number: "4.3",

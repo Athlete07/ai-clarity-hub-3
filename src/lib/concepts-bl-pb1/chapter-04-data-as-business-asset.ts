@@ -109,9 +109,9 @@ export const chapter04BlDataAsBusinessAsset = buildChapter({
       kind: "diagram",
       id: "ch2-data-flywheel",
       type: "flow",
-      title: "The Data Flywheel",
+      title: "Five Dimensions of Data Value",
       caption:
-        "Usage generates data; data improves models; better models drive adoption. Leaders who own data strategy own AI differentiation.",
+        "Data value for AI is determined by five dimensions: volume (how much), velocity (how current), variety (how diverse), veracity (how accurate), and value…",
     }),
     buildSection({
       number: "4.3",
@@ -208,11 +208,11 @@ export const chapter04BlDataAsBusinessAsset = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "bl-pb1-ch04-4-4-data-quality-is-a-leadership-decision",
       type: "nested",
-      title: "Data as Strategic Asset",
+      title: "Data Quality is a Leadership Decision",
       caption:
-        "Proprietary, labelled, current, domain-specific data is the durable moat when algorithms commoditize.",
+        "Data quality is a leadership decision, not a technical problem. Poor data quality persists because organisations do not make someone accountable for it, do…",
     }),
     buildSection({
       number: "4.5",

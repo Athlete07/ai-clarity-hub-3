@@ -3,6 +3,7 @@ import type {} from "@tanstack/react-start";
 import { EXECUTIVE_KBS, chapterPath } from "@/lib/executive-kb";
 import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
+import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
 
 // TODO: replace with your project URL once a project name or custom domain is set.
 const BASE_URL = "";
@@ -17,7 +18,12 @@ export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const allKbs = [...EXECUTIVE_KBS, ...FOUNDER_EXECUTIVE_KBS, ...BUSINESS_LEADER_EXECUTIVE_KBS];
+        const allKbs = [
+          ...EXECUTIVE_KBS,
+          ...FOUNDER_EXECUTIVE_KBS,
+          ...BUSINESS_LEADER_EXECUTIVE_KBS,
+          ...MARKETER_EXECUTIVE_KBS,
+        ];
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/executive-kb", changefreq: "weekly", priority: "0.9" },

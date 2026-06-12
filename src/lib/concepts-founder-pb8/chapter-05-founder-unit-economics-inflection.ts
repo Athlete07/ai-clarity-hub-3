@@ -61,11 +61,11 @@ export const chapter05FounderUnitEconomicsInflection = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-scaling-inflection",
+      id: "founder-pb8-ch05-5-1-the-four-unit-economics-inflection-points-in",
       type: "flow",
-      title: "Scaling Inflection Points",
+      title: "The four unit economics inflection points in AI product scaling",
       caption:
-        "Cost and architecture choices compound at each order-of-magnitude in usage.",
+        "AI products hit four predictable inflection points: (1) API volume unlocks negotiation leverage, (2) usage crosses build-vs-buy threshold for self-hosting,…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05FounderUnitEconomicsInflection = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb8-ch05-5-2-the-model-negotiation-threshold",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The model negotiation threshold",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "API negotiation leverage typically begins at meaningful committed volume — often hundreds of millions of tokens monthly or equivalent spend tiers. Approach…",
     }),
     buildSection({
       number: "5.3",

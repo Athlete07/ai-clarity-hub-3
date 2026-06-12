@@ -61,11 +61,11 @@ export const chapter02FounderModelPerformanceAtScale = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-scaling-inflection",
+      id: "founder-pb8-ch02-2-1-why-model-performance-degrades-at-scale",
       type: "flow",
-      title: "Scaling Inflection Points",
+      title: "Why model performance degrades at scale",
       caption:
-        "Cost and architecture choices compound at each order-of-magnitude in usage.",
+        "Model performance degrades at scale because production traffic is not your test set. New user segments, novel inputs, adversarial behaviour, and…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02FounderModelPerformanceAtScale = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb8-ch02-2-2-distribution-shift-the-silent-killer",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Distribution shift — the silent killer",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Distribution shift is the gradual or sudden divergence between training/eval data and production traffic. It is silent because aggregate metrics can look…",
     }),
     buildSection({
       number: "2.3",

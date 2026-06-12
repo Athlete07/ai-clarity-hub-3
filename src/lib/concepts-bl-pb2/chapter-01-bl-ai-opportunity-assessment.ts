@@ -108,11 +108,11 @@ export const chapter01BlAiOpportunityAssessment = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
-      type: "flow",
-      title: "AI Initiative Execution Path",
+      id: "bl-pb2-ch01-1-2-the-value-feasibility-matrix",
+      type: "comparison",
+      title: "The Value-Feasibility Matrix",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "Plot every AI opportunity on two axes: business value (revenue, cost, risk) and AI feasibility (data availability, task structure, vendor maturity).…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -162,11 +162,11 @@ export const chapter01BlAiOpportunityAssessment = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb2-ch01-1-3-process-mapping-for-ai",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Process Mapping for AI",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI acts on processes. Before any AI evaluation, map the end-to-end process at sufficient fidelity to see: where decisions happen, what information those…",
     }),
     buildSection({
       number: "1.4",

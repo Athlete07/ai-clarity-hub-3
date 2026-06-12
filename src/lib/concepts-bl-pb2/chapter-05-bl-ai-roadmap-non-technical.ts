@@ -69,11 +69,11 @@ export const chapter05BlAiRoadmapNonTechnical = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb2-ch05-5-1-why-ai-roadmaps-are-different-from-software-",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why AI Roadmaps Are Different from Software Roadmaps",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Software roadmaps sequence features. AI roadmaps sequence capability bets — and capability bets depend on data foundations, model performance, and human…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -123,11 +123,11 @@ export const chapter05BlAiRoadmapNonTechnical = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch05-5-2-the-initiative-lifecycle",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Initiative Lifecycle",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Every AI initiative moves through six phases: problem definition, data assessment, design and build, pilot, production deployment, and steady-state…",
     }),
     buildSection({
       number: "5.3",

@@ -61,11 +61,11 @@ export const chapter03FounderDataQualityAtScale = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-scaling-inflection",
+      id: "founder-pb8-ch03-3-1-why-data-quality-degrades-as-you-scale",
       type: "flow",
-      title: "Scaling Inflection Points",
+      title: "Why data quality degrades as you scale",
       caption:
-        "Cost and architecture choices compound at each order-of-magnitude in usage.",
+        "Data quality degrades at scale because volume amplifies noise. More users generate more edge cases, more labelling errors, more adversarial inputs, and more…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03FounderDataQualityAtScale = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb8-ch03-3-2-training-data-contamination",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Training data contamination",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Training data contamination occurs when incorrect, adversarial, biased, or out-of-policy examples enter fine-tuning or retraining pipelines — degrading…",
     }),
     buildSection({
       number: "3.3",

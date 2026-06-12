@@ -61,11 +61,11 @@ export const chapter02FindingAiWedge = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-pb3-ch02-2-1-what-is-a-wedge-in-an-ai-context",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "What is a wedge in an AI context",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "A wedge is not your TAM slide — it is the single workflow where removing AI collapses the value proposition. Incremental improvements (10% faster) get…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02FindingAiWedge = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb3-ch02-2-2-how-to-identify-your-wedge",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "How to identify your wedge",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Wedge discovery is workflow archaeology: map jobs, measure frequency and pain, score AI-solvability, and interview for willingness-to-pay on the…",
     }),
     buildSection({
       number: "2.3",

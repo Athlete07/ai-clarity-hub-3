@@ -60,11 +60,11 @@ export const chapter05BlMinimumViableAiGovernance = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-risk-governance",
+      id: "bl-pb6-ch05-5-1-why-most-ai-governance-fails",
       type: "flow",
-      title: "AI Risk Management Flow",
+      title: "Why Most AI Governance Fails",
       caption:
-        "Inventory → classify → control → monitor → report. The governance sequence regulators and boards expect.",
+        "Most AI governance programmes fail not because they are technically wrong but because they are too complex, too slow, too ownership-fragmented, or too…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -114,11 +114,11 @@ export const chapter05BlMinimumViableAiGovernance = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch05-5-2-component-one-the-ai-inventory",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "Component One: The AI Inventory",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "The AI inventory is the foundation of all AI governance. Without a complete inventory, you cannot classify risk, assign accountability, or apply governance…",
     }),
     buildSection({
       number: "5.3",

@@ -60,11 +60,11 @@ export const chapter08BlAiLandscapeVendorStructure = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb1-ch08-8-1-the-ai-value-chain",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "The AI Value Chain",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "The AI value chain runs from compute hardware through foundation model training, cloud API distribution, and application software to end-user deployment.…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -114,11 +114,11 @@ export const chapter08BlAiLandscapeVendorStructure = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch8-cost-latency-frontier",
+      id: "bl-pb1-ch08-8-2-foundation-model-providers",
       type: "comparison",
-      title: "Model Tier Trade-offs",
+      title: "Foundation Model Providers",
       caption:
-        "Frontier, mid-tier, and small models sit on a cost-latency-quality curve. Procurement should match tier to use case, not default to largest.",
+        "Five to ten organisations train and maintain the foundation models that power most enterprise AI. Their pricing, model deprecation decisions, access terms,…",
     }),
     buildSection({
       number: "8.3",

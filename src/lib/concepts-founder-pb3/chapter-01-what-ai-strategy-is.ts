@@ -61,11 +61,11 @@ export const chapter01WhatAiStrategyIs = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-pb3-ch01-1-1-the-difference-between-an-ai-feature-list-an",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "The difference between an AI feature list and an AI strategy",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "A feature list answers 'what will we build?' An AI strategy answers 'why will we win, and what must be true for that to happen?' Founders who present…",
     }),
     buildSection({
       number: "1.2",
@@ -162,11 +162,11 @@ export const chapter01WhatAiStrategyIs = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-pb3-ch01-1-3-why-most-startup-ai-strategies-are-just-prod",
       type: "flow",
-      title: "AI Strategy Execution Path",
+      title: "Why most startup AI strategies are just product roadmaps",
       caption:
-        "Assess → prioritise → pilot → scale → embed. Strategy without this sequence is a slide deck, not a company capability.",
+        "Roadmaps feel safe because they are controllable. Strategy feels dangerous because it commits you to bets that might be wrong. Most 'AI strategies' are…",
     }),
     buildSection({
       number: "1.4",

@@ -61,11 +61,11 @@ export const chapter03BlDueDiligenceAiVendors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch03-3-1-the-five-dimensions-of-ai-vendor-due-diligen",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "The five dimensions of AI vendor due diligence",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "Standard software due diligence covers financial stability, security certification, and service continuity. AI due diligence adds five dimensions: model…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03BlDueDiligenceAiVendors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch03-3-2-financial-and-operational-stability-checks",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Financial and operational stability checks",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI vendor financial stability is more volatile than traditional software because the market is consolidating rapidly. A vendor with excellent technology and…",
     }),
     buildSection({
       number: "3.3",

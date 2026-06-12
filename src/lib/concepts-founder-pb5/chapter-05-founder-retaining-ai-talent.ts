@@ -61,11 +61,11 @@ export const chapter05FounderRetainingAiTalent = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "founder-pb5-ch05-5-1-why-ai-talent-leaves-startups",
       type: "flow",
-      title: "AI Talent Strategy",
+      title: "Why AI talent leaves startups",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "Real reasons: better comp, harder technical problems elsewhere, lack of career path, founder technical illiteracy blocking decisions, burnout from…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05FounderRetainingAiTalent = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb5-ch05-5-2-technical-challenge-as-retention",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Technical challenge as retention",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Assign problems that stretch: new architectures, proprietary data challenges, scale milestones. Rotate engineers off pure maintenance quarterly. Celebrate…",
     }),
     buildSection({
       number: "5.3",

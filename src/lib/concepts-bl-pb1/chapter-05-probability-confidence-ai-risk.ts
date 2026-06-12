@@ -60,11 +60,11 @@ export const chapter05BlProbabilityConfidenceAiRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-risk-governance",
+      id: "bl-pb1-ch05-5-1-ai-outputs-are-probabilities-not-facts",
       type: "flow",
-      title: "AI Risk Management Flow",
+      title: "AI Outputs Are Probabilities, Not Facts",
       caption:
-        "Inventory → classify → control → monitor → report. The governance sequence regulators and boards expect.",
+        "Machine learning models do not look up facts or reason to conclusions. They produce probability distributions over possible outputs and return the most…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -114,11 +114,11 @@ export const chapter05BlProbabilityConfidenceAiRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb1-ch05-5-2-confidence-scores-what-they-mean-and-what-th",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "Confidence Scores — What They Mean and What They Don't",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Confidence scores are not probability of correctness — they are the model's self-assessment of its output, which may be well-calibrated or poorly…",
     }),
     buildSection({
       number: "5.3",

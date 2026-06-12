@@ -61,11 +61,11 @@ export const chapter05BlContractTermsAiLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch05-5-1-why-ai-contracts-are-different-from-software",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "Why AI contracts are different from software contracts",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "Software contracts govern access to a deterministic system: the software does what it is programmed to do, and bugs are fixed. AI contracts govern access to…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05BlContractTermsAiLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch05-5-2-model-performance-warranty-and-accuracy-thre",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Model performance warranty and accuracy thresholds",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A model performance warranty is an AI contract's most important provision and its most commonly absent one. Without a performance warranty, the vendor has…",
     }),
     buildSection({
       number: "5.3",

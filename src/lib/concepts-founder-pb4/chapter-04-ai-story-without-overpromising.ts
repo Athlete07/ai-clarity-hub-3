@@ -61,11 +61,11 @@ export const chapter04AiStoryWithoutOverpromising = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-vc-diligence-stack",
+      id: "founder-pb4-ch04-4-1-why-ai-founders-overpromise-and-the-long-ter",
       type: "flow",
-      title: "Investor Diligence Stack",
+      title: "Why AI founders overpromise — and the long-term cost",
       caption:
-        "Team → data moat → unit economics → timing → risk. The five lenses on every AI term sheet.",
+        "Founders overpromise because demos are optimistic, competition is fierce, and AI capabilities sound magical until they fail in production. The long-term…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04AiStoryWithoutOverpromising = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb4-ch04-4-2-the-components-of-a-credible-ai-narrative",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The components of a credible AI narrative",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A credible AI narrative has five components: the problem worth solving, the proprietary data advantage, the feedback loop that compounds, the defensibility…",
     }),
     buildSection({
       number: "4.3",

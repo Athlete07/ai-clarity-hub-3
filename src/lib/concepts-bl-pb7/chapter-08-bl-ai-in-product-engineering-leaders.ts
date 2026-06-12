@@ -60,11 +60,11 @@ export const chapter08BlAiInProductEngineeringLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch08-8-1-the-product-and-engineering-ai-landscape",
       type: "comparison",
-      title: "AI by Function",
+      title: "The Product and Engineering AI Landscape",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "Product and engineering leaders face two simultaneous AI transformations: AI as a development tool (which changes how teams work) and AI as a product…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -114,11 +114,11 @@ export const chapter08BlAiInProductEngineeringLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch08-8-2-ai-assisted-engineering-productivity-without",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI-Assisted Engineering — Productivity Without Technical Debt",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI code generation delivers real productivity gains — but requires governance to prevent it from accelerating the creation of low-quality, insecure, or…",
     }),
     buildSection({
       number: "8.3",

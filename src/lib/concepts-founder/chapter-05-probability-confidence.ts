@@ -61,11 +61,11 @@ export const chapter05ProbabilityConfidence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-ch05-5-1-ai-outputs-are-probability-distributions-not",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "AI outputs are probability distributions, not facts",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI models never truly know an answer — they calculate the probability that an output is statistically appropriate. Every generation is a bet sampled from a…",
     }),
     buildSection({
       number: "5.2",
@@ -209,11 +209,11 @@ export const chapter05ProbabilityConfidence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch1-paradigm-shift",
+      id: "founder-ch05-5-4-overconfident-models",
       type: "comparison",
-      title: "Deterministic Rules vs Probabilistic Outputs",
+      title: "Overconfident models",
       caption:
-        "Traditional software returns the same answer every time; ML returns confidence scores. Product and legal design must account for uncertainty.",
+        "Modern neural networks default to extreme overconfidence — hallucinating false information with absolute mathematical certainty. Models do not naturally say…",
     }),
     buildSection({
       number: "5.5",

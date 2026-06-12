@@ -61,11 +61,11 @@ export const chapter03FounderFirstAiHire = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-pb5-ch03-3-1-when-to-make-your-first-ai-hire",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "When to make your first AI hire",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Hire when AI is committed to the core product roadmap, the founder cannot prototype further, and delaying blocks revenue or fundraising — not when investors…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03FounderFirstAiHire = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
-      type: "flow",
-      title: "Evaluation Framework",
+      id: "founder-pb5-ch03-3-2-generalist-ai-engineer-vs-specialist",
+      type: "comparison",
+      title: "Generalist AI engineer vs specialist",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "First hire must: build features, set up basic evals and monitoring, and talk to customers about failure modes. Specialist researchers, pure MLOps, or narrow…",
     }),
     buildSection({
       number: "3.3",

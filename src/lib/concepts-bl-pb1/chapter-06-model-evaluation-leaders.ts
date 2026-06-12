@@ -60,11 +60,11 @@ export const chapter06BlModelEvaluationLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-vc-diligence-stack",
+      id: "bl-pb1-ch06-6-1-why-accuracy-is-the-wrong-metric",
       type: "flow",
-      title: "Investor Diligence Stack",
+      title: "Why Accuracy Is the Wrong Metric",
       caption:
-        "Team → data moat → unit economics → timing → risk. The five lenses on every AI term sheet.",
+        "Overall accuracy — the percentage of cases the model gets right — is easy to compute and easy to game. It is the least useful evaluation metric for most…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -114,11 +114,11 @@ export const chapter06BlModelEvaluationLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb1-ch06-6-2-precision-and-recall-in-business-language",
       type: "flow",
-      title: "Evaluation Before Launch",
+      title: "Precision and Recall in Business Language",
       caption:
-        "Golden sets, ship gates, and drift monitoring — the minimum evaluation discipline business leaders should require from vendors.",
+        "Precision answers: of the cases the AI flagged, what fraction were correct? Recall answers: of all the cases that should have been flagged, what fraction…",
     }),
     buildSection({
       number: "6.3",

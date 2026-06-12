@@ -60,11 +60,11 @@ export const chapter06BlAiInCustomerService = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch06-6-1-the-customer-service-ai-landscape",
       type: "comparison",
-      title: "AI by Function",
+      title: "The Customer Service AI Landscape",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "Customer service AI delivers value when applied to high-volume, well-defined service interactions. It damages the customer relationship when applied to…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -114,11 +114,11 @@ export const chapter06BlAiInCustomerService = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch06-6-2-conversational-ai-and-chatbots",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Conversational AI and Chatbots",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Conversational AI that is honest about its capabilities, maintains appropriate scope, and escalates gracefully builds customer trust faster than AI that…",
     }),
     buildSection({
       number: "6.3",

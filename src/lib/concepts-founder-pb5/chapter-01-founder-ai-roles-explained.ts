@@ -303,11 +303,11 @@ export const chapter01FounderAiRolesExplained = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "founder-pb5-ch01-1-6-ai-research-scientist-only-for-late-stage-co",
       type: "flow",
-      title: "AI Hiring Sequence by Stage",
+      title: "AI Research Scientist — only for late-stage companies",
       caption:
-        "Define your bet → hire the right first role → prove the loop → specialise. Hire for today's problem, not Series B's org chart.",
+        "Research Scientists push the frontier: new architectures, novel training methods, publishable results. Unless training custom foundation models is your…",
     }),
     buildSection({
       number: "1.7",

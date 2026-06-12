@@ -60,11 +60,11 @@ export const chapter08BlBoardReportingAiRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch08-8-1-why-boards-need-ai-risk-oversight",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "Why Boards Need AI Risk Oversight",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Board oversight of AI risk is not a voluntary governance enhancement — it is increasingly required by regulators, expected by institutional investors, and…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -114,11 +114,11 @@ export const chapter08BlBoardReportingAiRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch08-8-2-what-boards-need-to-understand-about-ai-risk",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "What Boards Need to Understand About AI Risk",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Board members do not need to understand AI model architecture — they need to understand AI risk at the level required for governance decisions: what the…",
     }),
     buildSection({
       number: "8.3",

@@ -61,11 +61,11 @@ export const chapter05StressTestingAiStrategy = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-pb3-ch05-5-1-why-founders-need-to-attack-their-own-strate",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "Why founders need to attack their own strategy",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "Competitors will argue your wedge is thin, your data moat is imaginary, and your provider will subsume you — at every deal and in every investor meeting you…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05StressTestingAiStrategy = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb3-ch05-5-2-the-three-killer-questions-for-any-ai-strate",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The three killer questions for any AI strategy",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Every AI strategy must survive three questions: commoditised capability, missing data moat, incumbent/native feature. If you have no good answer to any one,…",
     }),
     buildSection({
       number: "5.3",

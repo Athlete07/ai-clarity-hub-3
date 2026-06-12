@@ -60,11 +60,11 @@ export const chapter02BlGdprAiProjects = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch02-2-1-gdpr-and-ai-why-they-are-inseparable",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "GDPR and AI — Why They Are Inseparable",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "GDPR applies to any processing of personal data relating to EU residents, and most enterprise AI systems process personal data at some stage — in training,…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -114,11 +114,11 @@ export const chapter02BlGdprAiProjects = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch02-2-2-lawful-basis-for-ai-processing",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Lawful Basis for AI Processing",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Every AI processing activity on personal data requires a lawful basis. For most enterprise AI, the appropriate bases are legitimate interests (with a…",
     }),
     buildSection({
       number: "2.3",

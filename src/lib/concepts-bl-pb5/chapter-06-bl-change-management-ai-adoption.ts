@@ -60,11 +60,11 @@ export const chapter06BlChangeManagementAiAdoption = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb5-ch06-6-1-why-ai-change-management-is-different",
       type: "flow",
-      title: "AI Change Management",
+      title: "Why AI change management is different",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI adoption triggers four dynamics that standard change management frameworks are not fully designed for: pervasive job security anxiety that affects people…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -114,11 +114,11 @@ export const chapter06BlChangeManagementAiAdoption = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb5-ch06-6-2-the-adkar-model-applied-to-ai-adoption",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The ADKAR model applied to AI adoption",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "ADKAR — Awareness, Desire, Knowledge, Ability, Reinforcement — is the most validated individual change model for enterprise adoption programmes. Applied to…",
     }),
     buildSection({
       number: "6.3",

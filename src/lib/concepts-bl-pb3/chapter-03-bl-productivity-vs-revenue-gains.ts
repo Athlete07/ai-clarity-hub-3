@@ -60,11 +60,11 @@ export const chapter03BlProductivityVsRevenueGains = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb3-ch03-3-1-why-productivity-and-revenue-roi-need-differ",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why productivity and revenue ROI need different models",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Productivity gains reduce inputs for the same output — or increase output for the same inputs. Revenue gains increase the top line. They have different…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -114,11 +114,11 @@ export const chapter03BlProductivityVsRevenueGains = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch03-3-2-measuring-productivity-gains-precisely",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Measuring productivity gains precisely",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Productivity measurement requires four steps: measure the baseline task time, measure the AI-assisted task time, calculate time saved, then verify that the…",
     }),
     buildSection({
       number: "3.3",

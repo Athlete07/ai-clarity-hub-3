@@ -108,11 +108,11 @@ export const chapter05AiCulture = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "founder-pb2-ch05-5-2-experimentation-as-a-core-operating-principl",
       type: "flow",
-      title: "Building AI Culture",
+      title: "Experimentation as a core operating principle",
       caption:
-        "Sponsor → communicate honestly → train → empower champions → measure adoption. Culture is how strategy becomes behaviour.",
+        "AI products require hypothesis-driven experiments: model A vs B, prompt variants, retrieval configs — each with eval criteria and rollback. Shipping 'the AI…",
     }),
     sectionWithDiagram({
       number: "5.3",
@@ -164,9 +164,9 @@ export const chapter05AiCulture = buildChapter({
       kind: "diagram",
       id: "ch2-data-flywheel",
       type: "flow",
-      title: "The Data Flywheel",
+      title: "Failure tolerance in AI development",
       caption:
-        "Usage → signal → better model → better product → more usage.",
+        "Most model and prompt experiments will not beat baseline — that is the nature of probabilistic systems. Culture must reward well-designed failures with fast…",
     }),
     buildSection({
       number: "5.4",

@@ -60,11 +60,11 @@ export const chapter05BlBuildingAiCentreExcellence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb5-ch05-5-1-what-a-centre-of-excellence-actually-does",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "What a Centre of Excellence actually does",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "An AI Centre of Excellence creates value through four activities: establishing shared standards that prevent every function from making the same governance…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -114,11 +114,11 @@ export const chapter05BlBuildingAiCentreExcellence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
-      type: "flow",
-      title: "Evaluation Framework",
+      id: "bl-pb5-ch05-5-2-centralise-vs-federate-coe-governance-models",
+      type: "comparison",
+      title: "Centralise vs federate: CoE governance models",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI CoE governance exists on a spectrum from fully centralised (CoE owns and builds all AI) to fully federated (CoE provides standards; functions build…",
     }),
     buildSection({
       number: "5.3",

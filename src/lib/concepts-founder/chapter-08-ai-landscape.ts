@@ -124,11 +124,11 @@ export const chapter08AiLandscape = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch8-cost-latency-frontier",
+      id: "founder-ch08-8-2-foundation-model-providers",
       type: "comparison",
-      title: "The Cost-Latency-Quality Frontier",
+      title: "Foundation model providers",
       caption:
-        "Frontier models sit at one corner; small fast models at another. Mature products route different requests to different points on this curve.",
+        "Foundation model providers are the new cloud platforms — they set pricing, capability ceilings, rate limits, and policy boundaries for millions of…",
     }),
     sectionWithDiagram({
       number: "8.3",
@@ -186,11 +186,11 @@ export const chapter08AiLandscape = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-ch08-8-3-inference-hosting-and-tooling",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Inference, hosting, and tooling",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Between foundation models and applications sits a growing tooling layer: vector databases, retrieval pipelines, agent orchestration, evaluation frameworks,…",
     }),
     buildSection({
       number: "8.4",

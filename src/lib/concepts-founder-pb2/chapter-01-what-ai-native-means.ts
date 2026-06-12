@@ -59,13 +59,13 @@ const section16 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
+      kind: "diagram",
     id: "ch1-feedback-loop",
     type: "flow",
-    title: "The Feedback Loop Business Model",
+    title: "The feedback loop business model",
     caption:
-      "Usage generates signal, signal improves the model, a better model drives retention — the only AI business model that compounds without linear engineering headcount.",
-  },
+        "AI-native companies do not sell static software — they sell a system that improves with every user action. If usage does not generate training signal that…",
+    },
 );
 
 export const chapter01WhatAiNativeMeans = buildChapter({
@@ -131,9 +131,9 @@ export const chapter01WhatAiNativeMeans = buildChapter({
       kind: "diagram",
       id: "founder-ai-native-spectrum",
       type: "nested",
-      title: "AI-Native vs AI-Powered vs AI-Washed",
+      title: "AI-native vs AI-powered vs AI-washed",
       caption:
-        "Three tiers with different valuations, defensibility, and hiring plans. Honest placement determines your fundraising narrative.",
+        "AI-native: remove the model and the company does not exist. AI-powered: AI materially improves a product that survives without it. AI-washed: marketing…",
     }),
     buildSection({
       number: "1.2",

@@ -60,11 +60,11 @@ export const chapter07BlAiLiteracyProgrammeDesign = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "bl-pb5-ch07-7-1-why-generic-ai-training-programmes-fail",
       type: "flow",
-      title: "AI Talent Strategy",
+      title: "Why generic AI training programmes fail",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "Generic AI training programmes fail for four predictable reasons: they are designed by AI enthusiasts for a neutral audience (producing content that is too…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -114,11 +114,11 @@ export const chapter07BlAiLiteracyProgrammeDesign = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb5-ch07-7-2-three-tiers-of-ai-literacy",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Three tiers of AI literacy",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI literacy exists at three tiers with distinct learning objectives, programme designs, and time investments. Tier 1 (Awareness): employees understand AI's…",
     }),
     buildSection({
       number: "7.3",

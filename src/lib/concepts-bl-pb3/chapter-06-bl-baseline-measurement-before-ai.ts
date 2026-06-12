@@ -60,11 +60,11 @@ export const chapter06BlBaselineMeasurementBeforeAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch06-6-1-why-baselines-determine-business-case-credib",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Why baselines determine business case credibility",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "A weak or missing baseline destroys ROI credibility in three ways: it allows cherry-picking of the most favourable pre-deployment comparison point, it…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -114,11 +114,11 @@ export const chapter06BlBaselineMeasurementBeforeAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch06-6-2-what-to-measure-before-deploying-ai",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "What to measure before deploying AI",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A complete AI baseline covers five metric categories: process performance (speed, volume, quality), cost (per transaction, per hour, per error), human…",
     }),
     buildSection({
       number: "6.3",

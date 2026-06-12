@@ -60,11 +60,11 @@ export const chapter02BlCostBenefitFrameworkAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb3-ch02-2-1-the-full-cost-inventory-for-ai-projects",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The full cost inventory for AI projects",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI project cost inventory has eight categories: software licensing, implementation and integration, data preparation, infrastructure, change management,…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -114,11 +114,11 @@ export const chapter02BlCostBenefitFrameworkAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
-      type: "flow",
-      title: "Evaluation Framework",
+      id: "bl-pb3-ch02-2-2-one-time-vs-recurring-costs-building-the-mul",
+      type: "comparison",
+      title: "One-time vs recurring costs: building the multi-year model",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Presenting AI costs as a single year-one figure systematically misrepresents the investment. The correct model separates one-time costs (implementation,…",
     }),
     buildSection({
       number: "2.3",

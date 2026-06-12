@@ -61,11 +61,11 @@ export const chapter03BlCommunicatingAiHonestly = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch03-3-1-the-cost-of-ai-overcommunication-and-underco",
       type: "flow",
-      title: "AI Change Management",
+      title: "The cost of AI overcommunication and undercommunication",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI overcommunication — overstating capability, projecting certainty about outcomes that are not yet proven, claiming competitive dominance before evidence…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03BlCommunicatingAiHonestly = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch03-3-2-structuring-the-initial-ai-announcement",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Structuring the initial AI announcement",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "The initial AI announcement sets the tone for the entire programme's communication relationship with the organisation. Done well, it creates psychological…",
     }),
     buildSection({
       number: "3.3",

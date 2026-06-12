@@ -61,11 +61,11 @@ export const chapter04DataCompetitiveAdvantage = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-ch04-4-1-why-data-is-the-only-durable-moat-in-ai",
       type: "nested",
-      title: "The Data Moat Stack",
+      title: "Why data is the only durable moat in AI",
       caption:
-        "Distribution generates proprietary data; data trains models competitors cannot replicate. Algorithms commoditize — signal compounds.",
+        "In a world of commoditized foundation models and cheap API access, proprietary data — user behaviour, domain corrections, longitudinal outcomes — is the…",
     }),
     buildSection({
       number: "4.2",
@@ -164,9 +164,9 @@ export const chapter04DataCompetitiveAdvantage = buildChapter({
       kind: "diagram",
       id: "ch2-data-flywheel",
       type: "flow",
-      title: "The Data Flywheel",
+      title: "The data flywheel — and whether you actually have one",
       caption:
-        "More usage → more signal → better model → better product → more usage. Investors fund this loop when it is real, not imagined.",
+        "A data flywheel is the loop where product usage generates training signal, improves the model, improves the product, and drives more usage. Many founders…",
     }),
     buildSection({
       number: "4.4",

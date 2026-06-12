@@ -4,7 +4,7 @@ import type { RoleId } from "@/lib/role-themes";
 export const ROLE_STORAGE_KEY = "factorbeam_selected_role";
 export const TRACK_BANNER_DISMISSED_KEY = "factorbeam_track_banner_dismissed";
 
-const ROLE_IDS = ["pm", "founder", "business-leader"] as const satisfies readonly RoleId[];
+const ROLE_IDS = ["pm", "founder", "business-leader", "marketer"] as const satisfies readonly RoleId[];
 
 /** URL path aliases → canonical role id (e.g. /executive-kb/leader). */
 const TRACK_PATH_ALIASES: Record<string, RoleId> = {
@@ -12,6 +12,8 @@ const TRACK_PATH_ALIASES: Record<string, RoleId> = {
   founder: "founder",
   "business-leader": "business-leader",
   leader: "business-leader",
+  marketer: "marketer",
+  marketing: "marketer",
 };
 
 export const executiveKbSearchSchema = z.object({

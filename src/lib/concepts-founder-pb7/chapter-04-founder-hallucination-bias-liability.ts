@@ -61,11 +61,11 @@ export const chapter04FounderHallucinationBiasLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-pb7-ch04-4-1-when-hallucination-becomes-legal-liability",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "When hallucination becomes legal liability",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Hallucination becomes legal liability when AI outputs influence consequential decisions — legal advice, medical guidance, financial recommendations,…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04FounderHallucinationBiasLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb7-ch04-4-2-real-cases-what-has-happened-to-companies-al",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Real cases — what has happened to companies already",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI liability is not theoretical. Companies have faced FTC settlements, tribunal liability, EEOC investigations, class action exploration, regulatory fines,…",
     }),
     buildSection({
       number: "4.3",

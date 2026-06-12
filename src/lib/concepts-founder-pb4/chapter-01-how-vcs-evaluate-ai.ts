@@ -108,11 +108,11 @@ export const chapter01HowVcsEvaluateAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-vc-diligence-stack",
+      id: "founder-pb4-ch01-1-2-what-vcs-look-for-that-most-founders-don-t-t",
       type: "flow",
-      title: "How VCs Evaluate AI Startups",
+      title: "What VCs look for that most founders don't talk about",
       caption:
-        "Team, data moat, unit economics, market timing, risk surface — the five diligence lenses on every AI term sheet.",
+        "Founders pitch product and team. Investors diligence data strategy, feedback loop design, and model dependency risk. The gap between what you emphasise and…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -162,11 +162,11 @@ export const chapter01HowVcsEvaluateAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-vc-diligence-stack",
+      id: "founder-pb4-ch01-1-3-the-questions-every-serious-ai-investor-will",
       type: "flow",
-      title: "Investor Diligence Stack",
+      title: "The questions every serious AI investor will ask",
       caption:
-        "Team → data moat → unit economics → timing → risk. The five lenses on every AI term sheet.",
+        "Serious AI investors skip technology tourism. They ask about data provenance, improvement velocity, unit economics at scale, failure modes, and what happens…",
     }),
     buildSection({
       number: "1.4",

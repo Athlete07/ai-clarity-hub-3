@@ -61,11 +61,11 @@ export const chapter09BlAvoidingAiInitiativeFailure = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb2-ch09-9-1-the-ai-initiative-failure-rate",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The AI Initiative Failure Rate",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Enterprise AI initiative failure rates of 70-80% are well-documented and consistent across industries. The primary causes are not model performance or…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -115,11 +115,11 @@ export const chapter09BlAvoidingAiInitiativeFailure = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch09-9-2-the-pilot-trap",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Pilot Trap",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "The pilot trap is when an AI initiative succeeds in a controlled, resourced, monitored pilot environment and then fails to replicate that success in…",
     }),
     buildSection({
       number: "9.3",

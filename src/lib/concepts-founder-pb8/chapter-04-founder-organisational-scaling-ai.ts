@@ -61,11 +61,11 @@ export const chapter04FounderOrganisationalScalingAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-scaling-inflection",
+      id: "founder-pb8-ch04-4-1-the-ai-team-structure-that-works-at-10-peopl",
       type: "flow",
-      title: "Scaling Inflection Points",
+      title: "The AI team structure that works at 10 people and fails at 50",
       caption:
-        "Cost and architecture choices compound at each order-of-magnitude in usage.",
+        "At 10 people, a centralised AI team with direct founder access ships fast. At 50, the same structure creates bottlenecks, context loss, and misaligned…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04FounderOrganisationalScalingAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb8-ch04-4-2-when-to-move-from-a-centralised-ai-team-to-e",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "When to move from a centralised AI team to embedded AI engineers",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Move toward embedded AI engineers when you have multiple distinct AI product surfaces, domain-specific model requirements, and a central team that cannot…",
     }),
     buildSection({
       number: "4.3",

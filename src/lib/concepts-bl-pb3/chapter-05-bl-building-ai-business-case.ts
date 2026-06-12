@@ -60,11 +60,11 @@ export const chapter05BlBuildingAiBusinessCase = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch05-5-1-structure-of-a-winning-ai-business-case",
       type: "flow",
-      title: "Building the AI Business Case",
+      title: "Structure of a winning AI business case",
       caption:
-        "Measure before, pilot with gates, attribute after — the CFO's required sequence for AI investment approval.",
+        "A winning AI business case has seven components in a specific order: executive summary, problem statement, options analysis, recommended solution, financial…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -114,11 +114,11 @@ export const chapter05BlBuildingAiBusinessCase = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch05-5-2-stakeholder-mapping-for-the-business-case",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Stakeholder mapping for the business case",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "Every AI business case goes through multiple decision-makers with different frames: the CEO cares about strategic fit; the CFO cares about financial rigour;…",
     }),
     buildSection({
       number: "5.3",

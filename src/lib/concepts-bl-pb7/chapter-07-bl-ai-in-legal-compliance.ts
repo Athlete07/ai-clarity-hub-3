@@ -60,11 +60,11 @@ export const chapter07BlAiInLegalCompliance = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb7-ch07-7-1-the-legal-and-compliance-ai-landscape",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "The Legal and Compliance AI Landscape",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Legal AI delivers efficiency in high-volume, knowledge-intensive tasks — contract review, regulatory research, due diligence. It creates liability when…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -114,11 +114,11 @@ export const chapter07BlAiInLegalCompliance = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch07-7-2-ai-in-contract-management-and-review",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI in Contract Management and Review",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI contract review — extracting, categorising, and flagging key clauses across large contract portfolios — is the highest-ROI legal AI deployment for most…",
     }),
     buildSection({
       number: "7.3",

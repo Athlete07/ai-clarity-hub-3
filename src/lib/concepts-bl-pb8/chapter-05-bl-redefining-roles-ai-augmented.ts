@@ -61,11 +61,11 @@ export const chapter05BlRedefiningRolesAiAugmented = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
-      type: "flow",
-      title: "AI Talent Strategy",
+      id: "bl-pb8-ch05-5-1-the-augmentation-versus-replacement-spectrum",
+      type: "comparison",
+      title: "The augmentation versus replacement spectrum",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "AI does not universally augment or replace — it augments some dimensions of every role and replaces other dimensions. Understanding where each role sits on…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05BlRedefiningRolesAiAugmented = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch05-5-2-role-anatomy-what-ai-can-do-versus-what-huma",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Role anatomy: what AI can do versus what humans must do",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Human advantage in AI-augmented roles does not lie in doing tasks faster or more accurately than AI — AI usually wins on speed and accuracy for well-defined…",
     }),
     buildSection({
       number: "5.3",

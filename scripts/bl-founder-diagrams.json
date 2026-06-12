@@ -1,0 +1,1654 @@
+[
+  {
+    "id": "ch1-dl-flow",
+    "type": "flow",
+    "title": "What is Deep Learning",
+    "caption": "Deep learning is the subset of ML that cracked language, vision, and speech — and it is also the most expensive, least explainable, and most API-dependent…",
+    "file": "concepts-founder/chapter-01-ai-vs-ml-vs-deep-learning.ts"
+  },
+  {
+    "id": "ch1-ai-hierarchy",
+    "type": "nested",
+    "title": "The nested hierarchy",
+    "caption": "AI ⊃ ML ⊃ Deep Learning. Every deep learning system is machine learning; every ML system is AI. The reverse is never true. Founders who hold this precisely…",
+    "file": "concepts-founder/chapter-01-ai-vs-ml-vs-deep-learning.ts"
+  },
+  {
+    "id": "bl-pb1-ch01-1-5-rules-based-vs-learned-systems",
+    "type": "comparison",
+    "title": "Rules-Based vs Learned Systems",
+    "caption": "If the vendor could have written the behaviour as a list of if-then rules, it is not machine learning — regardless of the marketing. Rules scale with…",
+    "file": "concepts-bl-pb1/chapter-01-ai-vs-ml-vs-dl-business-lens.ts"
+  },
+  {
+    "id": "ch2-training-loop",
+    "type": "flow",
+    "title": "Parameters and weights",
+    "caption": "Parameters — also called weights — are the individual numbers inside a model that control how input signals are amplified or suppressed. More parameters…",
+    "file": "concepts-founder/chapter-02-how-models-learn.ts"
+  },
+  {
+    "id": "bl-pb1-ch02-2-5-fine-tuning-making-a-general-model-specific",
+    "type": "comparison",
+    "title": "Fine-Tuning — Making a General Model Specific",
+    "caption": "Fine-tuning takes a pre-trained general model and continues training it on domain-specific data to improve performance in a target area. Most 'custom AI'…",
+    "file": "concepts-bl-pb1/chapter-02-how-models-learn-for-function.ts"
+  },
+  {
+    "id": "founder-training-inference-split",
+    "type": "comparison",
+    "title": "Training cost",
+    "caption": "Training is the massive offline investment that produces a frozen model: GPU clusters, months of calendar time, and irrecoverable spend if the run fails. It…",
+    "file": "concepts-founder/chapter-03-training-vs-inference.ts"
+  },
+  {
+    "id": "founder-unit-economics-trap",
+    "type": "flow",
+    "title": "The unit economics trap",
+    "caption": "The unit economics trap is shipping an AI feature customers love whose inference cost per user exceeds the revenue that user generates. Viral adoption makes…",
+    "file": "concepts-founder/chapter-03-training-vs-inference.ts"
+  },
+  {
+    "id": "ch2-data-flywheel",
+    "type": "flow",
+    "title": "Failure tolerance in AI development",
+    "caption": "Most model and prompt experiments will not beat baseline — that is the nature of probabilistic systems. Culture must reward well-designed failures with fast…",
+    "file": "concepts-founder-pb2/chapter-05-ai-culture.ts"
+  },
+  {
+    "id": "bl-pb1-ch04-4-4-data-quality-is-a-leadership-decision",
+    "type": "nested",
+    "title": "Data Quality is a Leadership Decision",
+    "caption": "Data quality is a leadership decision, not a technical problem. Poor data quality persists because organisations do not make someone accountable for it, do…",
+    "file": "concepts-bl-pb1/chapter-04-data-as-business-asset.ts"
+  },
+  {
+    "id": "bl-pb1-ch05-5-1-ai-outputs-are-probabilities-not-facts",
+    "type": "flow",
+    "title": "AI Outputs Are Probabilities, Not Facts",
+    "caption": "Machine learning models do not look up facts or reason to conclusions. They produce probability distributions over possible outputs and return the most…",
+    "file": "concepts-bl-pb1/chapter-05-probability-confidence-ai-risk.ts"
+  },
+  {
+    "id": "bl-pb1-ch05-5-2-confidence-scores-what-they-mean-and-what-th",
+    "type": "nested",
+    "title": "Confidence Scores — What They Mean and What They Don't",
+    "caption": "Confidence scores are not probability of correctness — they are the model's self-assessment of its output, which may be well-calibrated or poorly…",
+    "file": "concepts-bl-pb1/chapter-05-probability-confidence-ai-risk.ts"
+  },
+  {
+    "id": "bl-pb1-ch06-6-1-why-accuracy-is-the-wrong-metric",
+    "type": "flow",
+    "title": "Why Accuracy Is the Wrong Metric",
+    "caption": "Overall accuracy — the percentage of cases the model gets right — is easy to compute and easy to game. It is the least useful evaluation metric for most…",
+    "file": "concepts-bl-pb1/chapter-06-model-evaluation-leaders.ts"
+  },
+  {
+    "id": "bl-pb1-ch06-6-2-precision-and-recall-in-business-language",
+    "type": "flow",
+    "title": "Precision and Recall in Business Language",
+    "caption": "Precision answers: of the cases the AI flagged, what fraction were correct? Recall answers: of all the cases that should have been flagged, what fraction…",
+    "file": "concepts-bl-pb1/chapter-06-model-evaluation-leaders.ts"
+  },
+  {
+    "id": "bl-pb1-ch07-7-1-what-ai-bias-means-for-business-leaders",
+    "type": "flow",
+    "title": "What AI Bias Means for Business Leaders",
+    "caption": "AI bias means the AI system produces systematically different outcomes for different groups in ways that are unfair, harmful, or illegal. It is not…",
+    "file": "concepts-bl-pb1/chapter-07-bias-hallucination-liability.ts"
+  },
+  {
+    "id": "bl-pb1-ch07-7-2-how-bias-enters-ai-systems",
+    "type": "flow",
+    "title": "How Bias Enters AI Systems",
+    "caption": "AI bias enters through four pathways: historical data bias, measurement bias, label bias, and sampling bias. Each pathway has a different source, a…",
+    "file": "concepts-bl-pb1/chapter-07-bias-hallucination-liability.ts"
+  },
+  {
+    "id": "bl-pb1-ch08-8-1-the-ai-value-chain",
+    "type": "flow",
+    "title": "The AI Value Chain",
+    "caption": "The AI value chain runs from compute hardware through foundation model training, cloud API distribution, and application software to end-user deployment.…",
+    "file": "concepts-bl-pb1/chapter-08-ai-landscape-vendor-structure.ts"
+  },
+  {
+    "id": "bl-pb1-ch08-8-2-foundation-model-providers",
+    "type": "comparison",
+    "title": "Foundation Model Providers",
+    "caption": "Five to ten organisations train and maintain the foundation models that power most enterprise AI. Their pricing, model deprecation decisions, access terms,…",
+    "file": "concepts-bl-pb1/chapter-08-ai-landscape-vendor-structure.ts"
+  },
+  {
+    "id": "bl-pb2-ch01-1-2-the-value-feasibility-matrix",
+    "type": "comparison",
+    "title": "The Value-Feasibility Matrix",
+    "caption": "Plot every AI opportunity on two axes: business value (revenue, cost, risk) and AI feasibility (data availability, task structure, vendor maturity).…",
+    "file": "concepts-bl-pb2/chapter-01-bl-ai-opportunity-assessment.ts"
+  },
+  {
+    "id": "bl-pb2-ch01-1-3-process-mapping-for-ai",
+    "type": "flow",
+    "title": "Process Mapping for AI",
+    "caption": "AI acts on processes. Before any AI evaluation, map the end-to-end process at sufficient fidelity to see: where decisions happen, what information those…",
+    "file": "concepts-bl-pb2/chapter-01-bl-ai-opportunity-assessment.ts"
+  },
+  {
+    "id": "bl-pb2-ch02-2-1-the-three-categories-of-ai-use-cases",
+    "type": "flow",
+    "title": "The Three Categories of AI Use Cases",
+    "caption": "Every AI use case in a business context belongs to one of three archetypes: automation (AI replaces a human action), augmentation (AI improves a human…",
+    "file": "concepts-bl-pb2/chapter-02-bl-identifying-ai-use-cases.ts"
+  },
+  {
+    "id": "bl-pb2-ch02-2-2-running-discovery-workshops-that-work",
+    "type": "flow",
+    "title": "Running Discovery Workshops That Work",
+    "caption": "A discovery workshop is a structured conversation, not a brainstorm. The facilitator's job is to extract problem statements from business unit leaders and…",
+    "file": "concepts-bl-pb2/chapter-02-bl-identifying-ai-use-cases.ts"
+  },
+  {
+    "id": "bl-pb2-ch03-3-1-why-ai-roi-is-hard",
+    "type": "flow",
+    "title": "Why AI ROI Is Hard",
+    "caption": "AI investment sits between R&D and operational technology — it carries uncertainty profiles that conventional NPV models were not designed for. Benefit…",
+    "file": "concepts-bl-pb2/chapter-03-bl-prioritising-ai-by-roi.ts"
+  },
+  {
+    "id": "bl-pb2-ch03-3-2-building-a-scoring-model",
+    "type": "flow",
+    "title": "Building a Scoring Model",
+    "caption": "A scoring model forces explicit trade-off decisions before anyone is invested in a specific initiative. It replaces opinion-based prioritisation with…",
+    "file": "concepts-bl-pb2/chapter-03-bl-prioritising-ai-by-roi.ts"
+  },
+  {
+    "id": "founder-build-buy-partner",
+    "type": "tree",
+    "title": "When building is the right answer",
+    "caption": "Build when the model is the moat — exclusive labelled data, regulatory barriers to third parties, unit economics that flip below API pricing at your volume,…",
+    "file": "concepts-founder-pb6/chapter-01-founder-build-buy-partner-framework.ts"
+  },
+  {
+    "id": "bl-pb2-ch04-4-2-the-true-cost-of-building",
+    "type": "flow",
+    "title": "The True Cost of Building",
+    "caption": "Internal build estimates consistently undercount four cost categories: opportunity cost of engineering talent, the ongoing maintenance burden, the MLOps…",
+    "file": "concepts-bl-pb2/chapter-04-bl-build-buy-partner.ts"
+  },
+  {
+    "id": "bl-pb2-ch05-5-1-why-ai-roadmaps-are-different-from-software-",
+    "type": "flow",
+    "title": "Why AI Roadmaps Are Different from Software Roadmaps",
+    "caption": "Software roadmaps sequence features. AI roadmaps sequence capability bets — and capability bets depend on data foundations, model performance, and human…",
+    "file": "concepts-bl-pb2/chapter-05-bl-ai-roadmap-non-technical.ts"
+  },
+  {
+    "id": "bl-pb2-ch05-5-2-the-initiative-lifecycle",
+    "type": "flow",
+    "title": "The Initiative Lifecycle",
+    "caption": "Every AI initiative moves through six phases: problem definition, data assessment, design and build, pilot, production deployment, and steady-state…",
+    "file": "concepts-bl-pb2/chapter-05-bl-ai-roadmap-non-technical.ts"
+  },
+  {
+    "id": "bl-pb2-ch06-6-1-why-ai-programmes-fail-to-connect-to-strateg",
+    "type": "nested",
+    "title": "Why AI Programmes Fail to Connect to Strategy",
+    "caption": "AI programmes drift from strategy through four recurring patterns: technology-first investment that starts with capability rather than strategic need;…",
+    "file": "concepts-bl-pb2/chapter-06-bl-aligning-ai-business-strategy.ts"
+  },
+  {
+    "id": "bl-pb2-ch06-6-2-mapping-ai-to-strategic-priorities",
+    "type": "flow",
+    "title": "Mapping AI to Strategic Priorities",
+    "caption": "Every AI initiative in your portfolio must trace to a stated strategic priority. The tracing exercise — explicitly connecting initiative to priority to…",
+    "file": "concepts-bl-pb2/chapter-06-bl-aligning-ai-business-strategy.ts"
+  },
+  {
+    "id": "bl-pb2-ch07-7-1-why-quick-wins-matter",
+    "type": "flow",
+    "title": "Why Quick Wins Matter",
+    "caption": "Quick wins matter because they are the only evidence that an AI programme is producing value before long-term bets mature. In the absence of evidence,…",
+    "file": "concepts-bl-pb2/chapter-07-bl-quick-wins-vs-long-term.ts"
+  },
+  {
+    "id": "bl-pb2-ch07-7-2-what-makes-a-good-quick-win",
+    "type": "flow",
+    "title": "What Makes a Good Quick Win",
+    "caption": "Not every small, fast AI deployment is a good quick win. A good quick win is measurably valuable, credibly attributable to AI (not a concurrent process…",
+    "file": "concepts-bl-pb2/chapter-07-bl-quick-wins-vs-long-term.ts"
+  },
+  {
+    "id": "bl-pb2-ch08-8-1-what-the-board-actually-wants",
+    "type": "nested",
+    "title": "What the Board Actually Wants",
+    "caption": "Board members evaluating AI investment are asking four questions: Is this the right strategic bet given what we know about the competitive environment? Is…",
+    "file": "concepts-bl-pb2/chapter-08-bl-ai-strategy-board-presentation.ts"
+  },
+  {
+    "id": "bl-pb2-ch08-8-2-presentation-structure",
+    "type": "flow",
+    "title": "Presentation Structure",
+    "caption": "The most effective AI board presentation has six sections in a specific sequence: strategic context (why now), competitive imperative (why we must act),…",
+    "file": "concepts-bl-pb2/chapter-08-bl-ai-strategy-board-presentation.ts"
+  },
+  {
+    "id": "bl-pb2-ch09-9-1-the-ai-initiative-failure-rate",
+    "type": "flow",
+    "title": "The AI Initiative Failure Rate",
+    "caption": "Enterprise AI initiative failure rates of 70-80% are well-documented and consistent across industries. The primary causes are not model performance or…",
+    "file": "concepts-bl-pb2/chapter-09-bl-avoiding-ai-initiative-failure.ts"
+  },
+  {
+    "id": "bl-pb2-ch09-9-2-the-pilot-trap",
+    "type": "flow",
+    "title": "The Pilot Trap",
+    "caption": "The pilot trap is when an AI initiative succeeds in a controlled, resourced, monitored pilot environment and then fails to replicate that success in…",
+    "file": "concepts-bl-pb2/chapter-09-bl-avoiding-ai-initiative-failure.ts"
+  },
+  {
+    "id": "bl-pb2-ch10-10-1-why-ai-needs-a-faster-review-cadence",
+    "type": "nested",
+    "title": "Why AI Needs a Faster Review Cadence",
+    "caption": "Annual review cadence is designed for stable investment programmes — infrastructure, real estate, long-term capital equipment. AI investment is not stable:…",
+    "file": "concepts-bl-pb2/chapter-10-bl-ai-strategy-review-cadence.ts"
+  },
+  {
+    "id": "bl-pb2-ch10-10-2-the-quarterly-review",
+    "type": "flow",
+    "title": "The Quarterly Review",
+    "caption": "The quarterly review is the primary governance event for an AI programme: it is where gate decisions are made, portfolio balance is assessed, vendor and…",
+    "file": "concepts-bl-pb2/chapter-10-bl-ai-strategy-review-cadence.ts"
+  },
+  {
+    "id": "bl-pb2-ch11-11-1-why-ai-investment-is-inherently-political",
+    "type": "flow",
+    "title": "Why AI Investment Is Inherently Political",
+    "caption": "AI investment is politically charged because it threatens established power structures, creates winners and losers within organisations, requires…",
+    "file": "concepts-bl-pb2/chapter-11-bl-stakeholder-management-ai-politics.ts"
+  },
+  {
+    "id": "bl-pb2-ch11-11-2-building-the-stakeholder-map",
+    "type": "flow",
+    "title": "Building the Stakeholder Map",
+    "caption": "A stakeholder map for an AI programme identifies: who has formal authority over investment decisions, who has informal influence over those with authority,…",
+    "file": "concepts-bl-pb2/chapter-11-bl-stakeholder-management-ai-politics.ts"
+  },
+  {
+    "id": "bl-pb3-ch01-1-2-the-four-categories-of-ai-value",
+    "type": "flow",
+    "title": "The four categories of AI value",
+    "caption": "AI value falls into four categories: cost reduction, productivity gain, revenue growth, and risk reduction. Each requires a different measurement approach,…",
+    "file": "concepts-bl-pb3/chapter-01-bl-measuring-ai-roi.ts"
+  },
+  {
+    "id": "bl-pb3-ch01-1-3-measurement-frameworks-before-after-control-",
+    "type": "flow",
+    "title": "Measurement frameworks: before/after, control groups, and attribution models",
+    "caption": "Before/after measurement is cheap and often misleading. Control groups are expensive and often impractical. Attribution models are always imperfect and…",
+    "file": "concepts-bl-pb3/chapter-01-bl-measuring-ai-roi.ts"
+  },
+  {
+    "id": "bl-pb3-ch02-2-1-the-full-cost-inventory-for-ai-projects",
+    "type": "flow",
+    "title": "The full cost inventory for AI projects",
+    "caption": "AI project cost inventory has eight categories: software licensing, implementation and integration, data preparation, infrastructure, change management,…",
+    "file": "concepts-bl-pb3/chapter-02-bl-cost-benefit-framework-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch02-2-2-one-time-vs-recurring-costs-building-the-mul",
+    "type": "comparison",
+    "title": "One-time vs recurring costs: building the multi-year model",
+    "caption": "Presenting AI costs as a single year-one figure systematically misrepresents the investment. The correct model separates one-time costs (implementation,…",
+    "file": "concepts-bl-pb3/chapter-02-bl-cost-benefit-framework-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch03-3-1-why-productivity-and-revenue-roi-need-differ",
+    "type": "flow",
+    "title": "Why productivity and revenue ROI need different models",
+    "caption": "Productivity gains reduce inputs for the same output — or increase output for the same inputs. Revenue gains increase the top line. They have different…",
+    "file": "concepts-bl-pb3/chapter-03-bl-productivity-vs-revenue-gains.ts"
+  },
+  {
+    "id": "bl-pb3-ch03-3-2-measuring-productivity-gains-precisely",
+    "type": "flow",
+    "title": "Measuring productivity gains precisely",
+    "caption": "Productivity measurement requires four steps: measure the baseline task time, measure the AI-assisted task time, calculate time saved, then verify that the…",
+    "file": "concepts-bl-pb3/chapter-03-bl-productivity-vs-revenue-gains.ts"
+  },
+  {
+    "id": "bl-pb3-ch04-4-1-defining-hard-roi-in-the-ai-context",
+    "type": "flow",
+    "title": "Defining hard ROI in the AI context",
+    "caption": "Hard AI ROI meets three criteria: it is directly traceable to a specific financial line, the baseline is documented before deployment, and the change in…",
+    "file": "concepts-bl-pb3/chapter-04-bl-hard-vs-soft-roi-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch04-4-2-defining-soft-roi-and-strategic-value",
+    "type": "flow",
+    "title": "Defining soft ROI and strategic value",
+    "caption": "Soft AI ROI includes: employee experience and retention, decision quality improvement, brand and customer trust, speed of decision-making, and strategic…",
+    "file": "concepts-bl-pb3/chapter-04-bl-hard-vs-soft-roi-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch05-5-1-structure-of-a-winning-ai-business-case",
+    "type": "flow",
+    "title": "Structure of a winning AI business case",
+    "caption": "A winning AI business case has seven components in a specific order: executive summary, problem statement, options analysis, recommended solution, financial…",
+    "file": "concepts-bl-pb3/chapter-05-bl-building-ai-business-case.ts"
+  },
+  {
+    "id": "bl-pb3-ch05-5-2-stakeholder-mapping-for-the-business-case",
+    "type": "flow",
+    "title": "Stakeholder mapping for the business case",
+    "caption": "Every AI business case goes through multiple decision-makers with different frames: the CEO cares about strategic fit; the CFO cares about financial rigour;…",
+    "file": "concepts-bl-pb3/chapter-05-bl-building-ai-business-case.ts"
+  },
+  {
+    "id": "bl-pb3-ch06-6-1-why-baselines-determine-business-case-credib",
+    "type": "flow",
+    "title": "Why baselines determine business case credibility",
+    "caption": "A weak or missing baseline destroys ROI credibility in three ways: it allows cherry-picking of the most favourable pre-deployment comparison point, it…",
+    "file": "concepts-bl-pb3/chapter-06-bl-baseline-measurement-before-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch06-6-2-what-to-measure-before-deploying-ai",
+    "type": "flow",
+    "title": "What to measure before deploying AI",
+    "caption": "A complete AI baseline covers five metric categories: process performance (speed, volume, quality), cost (per transaction, per hour, per error), human…",
+    "file": "concepts-bl-pb3/chapter-06-bl-baseline-measurement-before-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch07-7-1-why-attribution-is-the-hardest-ai-roi-proble",
+    "type": "flow",
+    "title": "Why attribution is the hardest AI ROI problem",
+    "caption": "AI attribution is structurally harder than standard investment attribution for three reasons: AI works simultaneously with other changes (confounding), AI…",
+    "file": "concepts-bl-pb3/chapter-07-bl-attribution-problem-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch07-7-2-types-of-attribution-challenges",
+    "type": "flow",
+    "title": "Types of attribution challenges",
+    "caption": "Attribution challenges fall into five patterns: concurrent improvement (other changes happening at the same time), selection bias (the people or processes…",
+    "file": "concepts-bl-pb3/chapter-07-bl-attribution-problem-ai.ts"
+  },
+  {
+    "id": "bl-pb3-ch08-8-1-how-to-size-an-ai-investment-correctly",
+    "type": "flow",
+    "title": "How to size an AI investment correctly",
+    "caption": "AI investment size is determined by four inputs: the value of the problem being solved (the ceiling), organisational absorptive capacity (the practical…",
+    "file": "concepts-bl-pb3/chapter-08-bl-ai-investment-sizing.ts"
+  },
+  {
+    "id": "bl-pb3-ch08-8-2-portfolio-approach-to-ai-investments",
+    "type": "flow",
+    "title": "Portfolio approach to AI investments",
+    "caption": "Managing AI as a portfolio rather than as a collection of independent projects produces better resource allocation, better risk diversification, and better…",
+    "file": "concepts-bl-pb3/chapter-08-bl-ai-investment-sizing.ts"
+  },
+  {
+    "id": "bl-pb3-ch09-9-1-how-cfos-think-about-ai-investments",
+    "type": "flow",
+    "title": "How CFOs think about AI investments",
+    "caption": "CFOs evaluate AI investments through four questions: Is the financial model rigorous and conservative? What is the worst credible outcome? How does this…",
+    "file": "concepts-bl-pb3/chapter-09-bl-presenting-ai-roi-cfo.ts"
+  },
+  {
+    "id": "bl-pb3-ch09-9-2-the-financial-language-of-ai-roi",
+    "type": "flow",
+    "title": "The financial language of AI ROI",
+    "caption": "CFOs lose confidence when AI sponsors use imprecise financial language — or when they use financial terminology incorrectly. Mastering ten financial terms…",
+    "file": "concepts-bl-pb3/chapter-09-bl-presenting-ai-roi-cfo.ts"
+  },
+  {
+    "id": "bl-pb3-ch10-10-1-why-post-deployment-tracking-fails",
+    "type": "flow",
+    "title": "Why post-deployment tracking fails",
+    "caption": "Post-deployment AI ROI tracking fails for five structural reasons: tracking starts too late, the wrong metrics are tracked, reporting goes to the wrong…",
+    "file": "concepts-bl-pb3/chapter-10-bl-tracking-roi-post-deployment.ts"
+  },
+  {
+    "id": "bl-pb3-ch10-10-2-setting-up-the-roi-tracking-infrastructure",
+    "type": "flow",
+    "title": "Setting up the ROI tracking infrastructure",
+    "caption": "ROI tracking infrastructure has three components: a data pipeline that collects and processes the right signals, a dashboard that presents them in an…",
+    "file": "concepts-bl-pb3/chapter-10-bl-tracking-roi-post-deployment.ts"
+  },
+  {
+    "id": "bl-pb4-ch01-1-2-the-eight-ai-vendor-categories-by-function",
+    "type": "flow",
+    "title": "The eight AI vendor categories by function",
+    "caption": "Eight functional categories account for 90% of enterprise AI spend: sales intelligence, marketing personalisation, finance automation, HR analytics,…",
+    "file": "concepts-bl-pb4/chapter-01-bl-ai-vendor-landscape-by-function.ts"
+  },
+  {
+    "id": "bl-pb4-ch01-1-3-horizontal-platforms-vs-vertical-point-solut",
+    "type": "comparison",
+    "title": "Horizontal platforms vs vertical point solutions",
+    "caption": "Horizontal AI platforms offer broad capability and single-vendor simplicity. Vertical point solutions offer depth, faster time-to-value, and lower…",
+    "file": "concepts-bl-pb4/chapter-01-bl-ai-vendor-landscape-by-function.ts"
+  },
+  {
+    "id": "bl-pb4-ch02-2-1-why-standard-rfps-fail-for-ai-vendors",
+    "type": "flow",
+    "title": "Why standard RFPs fail for AI vendors",
+    "caption": "Standard RFPs assume vendors can describe their capabilities in writing, that written descriptions are comparable across vendors, and that reference checks…",
+    "file": "concepts-bl-pb4/chapter-02-bl-rfp-process-ai-vendors.ts"
+  },
+  {
+    "id": "bl-pb4-ch02-2-2-the-ai-rfp-structure-three-stages",
+    "type": "flow",
+    "title": "The AI RFP structure: three stages",
+    "caption": "An AI RFP runs in three sequential stages: a written functional brief that vendors respond to, a live capability demonstration, and a structured pilot…",
+    "file": "concepts-bl-pb4/chapter-02-bl-rfp-process-ai-vendors.ts"
+  },
+  {
+    "id": "bl-pb4-ch03-3-1-the-five-dimensions-of-ai-vendor-due-diligen",
+    "type": "flow",
+    "title": "The five dimensions of AI vendor due diligence",
+    "caption": "Standard software due diligence covers financial stability, security certification, and service continuity. AI due diligence adds five dimensions: model…",
+    "file": "concepts-bl-pb4/chapter-03-bl-due-diligence-ai-vendors.ts"
+  },
+  {
+    "id": "bl-pb4-ch03-3-2-financial-and-operational-stability-checks",
+    "type": "flow",
+    "title": "Financial and operational stability checks",
+    "caption": "AI vendor financial stability is more volatile than traditional software because the market is consolidating rapidly. A vendor with excellent technology and…",
+    "file": "concepts-bl-pb4/chapter-03-bl-due-diligence-ai-vendors.ts"
+  },
+  {
+    "id": "bl-pb4-ch04-4-1-the-demo-to-production-gap",
+    "type": "flow",
+    "title": "The demo-to-production gap",
+    "caption": "AI vendor demos are designed to show the model at its best: curated data, optimal prompts, pre-loaded context, and a test environment tuned for the demo…",
+    "file": "concepts-bl-pb4/chapter-04-bl-red-flags-ai-vendor-pitches.ts"
+  },
+  {
+    "id": "bl-pb4-ch04-4-2-benchmark-manipulation-and-statistical-red-f",
+    "type": "flow",
+    "title": "Benchmark manipulation and statistical red flags",
+    "caption": "AI vendor benchmarks are almost universally presented in the most favourable possible light: cherry-picked tasks, optimal configurations, proprietary…",
+    "file": "concepts-bl-pb4/chapter-04-bl-red-flags-ai-vendor-pitches.ts"
+  },
+  {
+    "id": "bl-pb4-ch05-5-1-why-ai-contracts-are-different-from-software",
+    "type": "flow",
+    "title": "Why AI contracts are different from software contracts",
+    "caption": "Software contracts govern access to a deterministic system: the software does what it is programmed to do, and bugs are fixed. AI contracts govern access to…",
+    "file": "concepts-bl-pb4/chapter-05-bl-contract-terms-ai-leaders.ts"
+  },
+  {
+    "id": "bl-pb4-ch05-5-2-model-performance-warranty-and-accuracy-thre",
+    "type": "flow",
+    "title": "Model performance warranty and accuracy thresholds",
+    "caption": "A model performance warranty is an AI contract's most important provision and its most commonly absent one. Without a performance warranty, the vendor has…",
+    "file": "concepts-bl-pb4/chapter-05-bl-contract-terms-ai-leaders.ts"
+  },
+  {
+    "id": "bl-pb4-ch06-6-1-why-standard-slas-fail-for-ai-products",
+    "type": "flow",
+    "title": "Why standard SLAs fail for AI products",
+    "caption": "Standard SLAs measure availability (is the system up?), response time (how fast does it respond?), and support tiers (how quickly does the vendor respond to…",
+    "file": "concepts-bl-pb4/chapter-06-bl-sla-standards-ai-products.ts"
+  },
+  {
+    "id": "bl-pb4-ch06-6-2-accuracy-sla-metrics-thresholds-and-measurem",
+    "type": "flow",
+    "title": "Accuracy SLA: metrics, thresholds, and measurement",
+    "caption": "An accuracy SLA requires four elements: the metric (F1 score, precision, recall, MAPE, or agreement rate), the threshold (minimum acceptable value), the…",
+    "file": "concepts-bl-pb4/chapter-06-bl-sla-standards-ai-products.ts"
+  },
+  {
+    "id": "bl-pb4-ch07-7-1-how-ai-changes-the-gdpr-landscape",
+    "type": "flow",
+    "title": "How AI changes the GDPR landscape",
+    "caption": "Three AI-specific GDPR obligations do not exist in standard software contracts: automated decision-making under Article 22 (when AI makes decisions about…",
+    "file": "concepts-bl-pb4/chapter-07-bl-data-privacy-clauses-ai.ts"
+  },
+  {
+    "id": "bl-pb4-ch07-7-2-the-data-processing-agreement-for-ai-vendors",
+    "type": "flow",
+    "title": "The Data Processing Agreement for AI vendors",
+    "caption": "Article 28 GDPR requires a data processing agreement with every vendor who processes personal data on your behalf. For AI vendors, the DPA must cover…",
+    "file": "concepts-bl-pb4/chapter-07-bl-data-privacy-clauses-ai.ts"
+  },
+  {
+    "id": "bl-pb4-ch08-8-1-the-four-levels-of-ai-vendor-lock-in",
+    "type": "flow",
+    "title": "The four levels of AI vendor lock-in",
+    "caption": "AI lock-in operates at four levels that compound over time: data lock-in (data in proprietary formats or stored exclusively with the vendor), model lock-in…",
+    "file": "concepts-bl-pb4/chapter-08-bl-vendor-lock-in-risk.ts"
+  },
+  {
+    "id": "bl-pb4-ch08-8-2-assessing-lock-in-risk-before-contract-signa",
+    "type": "flow",
+    "title": "Assessing lock-in risk before contract signature",
+    "caption": "Lock-in risk assessment before contract signature converts an abstract risk into a quantified exit cost estimate. A business leader who knows their…",
+    "file": "concepts-bl-pb4/chapter-08-bl-vendor-lock-in-risk.ts"
+  },
+  {
+    "id": "bl-pb4-ch09-9-1-what-a-pilot-is-and-what-it-is-not",
+    "type": "flow",
+    "title": "What a pilot is and what it is not",
+    "caption": "A pilot is a structured experiment: defined scope, pre-agreed success criteria, fixed timeline, and a mandatory go/no-go decision at the end. An extended…",
+    "file": "concepts-bl-pb4/chapter-09-bl-pilot-design-success-criteria.ts"
+  },
+  {
+    "id": "bl-pb4-ch09-9-2-defining-success-criteria-before-the-pilot-b",
+    "type": "flow",
+    "title": "Defining success criteria before the pilot begins",
+    "caption": "Success criteria written before a pilot begins are the commitment that makes the pilot evidence-based. Success criteria written after a pilot begins are a…",
+    "file": "concepts-bl-pb4/chapter-09-bl-pilot-design-success-criteria.ts"
+  },
+  {
+    "id": "bl-pb4-ch10-10-1-why-pilot-success-does-not-guarantee-enterp",
+    "type": "flow",
+    "title": "Why pilot success does not guarantee enterprise success",
+    "caption": "Pilot success and enterprise success are different outcomes driven by different variables. Six failure modes account for most AI enterprise scaling…",
+    "file": "concepts-bl-pb4/chapter-10-bl-scaling-pilot-enterprise.ts"
+  },
+  {
+    "id": "bl-pb4-ch10-10-2-technical-scaling-infrastructure-integratio",
+    "type": "flow",
+    "title": "Technical scaling: infrastructure, integration, and performance at volume",
+    "caption": "Technical scaling from pilot to enterprise requires three infrastructure changes that pilots rarely reveal: compute and API capacity to handle enterprise…",
+    "file": "concepts-bl-pb4/chapter-10-bl-scaling-pilot-enterprise.ts"
+  },
+  {
+    "id": "bl-pb5-ch01-1-2-the-four-dimensions-of-ai-literacy",
+    "type": "flow",
+    "title": "The four dimensions of AI literacy",
+    "caption": "AI literacy is not a single competency — it is a profile across four dimensions, and each dimension requires a different type of intervention. Conflating…",
+    "file": "concepts-bl-pb5/chapter-01-bl-ai-skills-gap-assessment.ts"
+  },
+  {
+    "id": "bl-pb5-ch01-1-3-skills-gap-assessment-methods-and-tools",
+    "type": "flow",
+    "title": "Skills gap assessment methods and tools",
+    "caption": "A skills gap assessment uses four complementary methods: self-report surveys for scale and speed, role-capability analyses for precision, tool usage audits…",
+    "file": "concepts-bl-pb5/chapter-01-bl-ai-skills-gap-assessment.ts"
+  },
+  {
+    "id": "bl-pb5-ch02-2-1-the-upskill-vs-hire-decision-framework",
+    "type": "comparison",
+    "title": "The upskill vs hire decision framework",
+    "caption": "The upskill vs hire decision should be driven by four variables: the type of capability gap (new knowledge, new skill, or entirely new role), the time…",
+    "file": "concepts-bl-pb5/chapter-02-bl-upskilling-vs-hiring-ai.ts"
+  },
+  {
+    "id": "bl-pb5-ch02-2-2-when-upskilling-is-the-right-answer",
+    "type": "flow",
+    "title": "When upskilling is the right answer",
+    "caption": "Upskilling outperforms hiring when the gap is in working knowledge or practitioner skill (not specialist technical roles), when the deployment timeline…",
+    "file": "concepts-bl-pb5/chapter-02-bl-upskilling-vs-hiring-ai.ts"
+  },
+  {
+    "id": "bl-pb5-ch03-3-1-the-new-ai-roles-every-function-leader-needs",
+    "type": "flow",
+    "title": "The new AI roles every function leader needs to know",
+    "caption": "AI is not just changing what functions do — it is changing what roles functions need. Understanding the new role landscape is a function leader's…",
+    "file": "concepts-bl-pb5/chapter-03-bl-ai-roles-function-leaders.ts"
+  },
+  {
+    "id": "bl-pb5-ch03-3-2-prompt-engineers-and-ai-workflow-designers",
+    "type": "flow",
+    "title": "Prompt engineers and AI workflow designers",
+    "caption": "Prompt engineers and AI workflow designers are the roles most directly responsible for the quality of AI output in a business function. Prompt engineers…",
+    "file": "concepts-bl-pb5/chapter-03-bl-ai-roles-function-leaders.ts"
+  },
+  {
+    "id": "bl-pb5-ch04-4-1-what-ai-engineers-actually-do",
+    "type": "flow",
+    "title": "What AI engineers actually do",
+    "caption": "AI engineers do four things: they prepare and manage data pipelines (data engineering), they select and configure AI models for specific tasks (model…",
+    "file": "concepts-bl-pb5/chapter-04-bl-working-with-ai-engineers.ts"
+  },
+  {
+    "id": "bl-pb5-ch04-4-2-the-language-barrier-translating-business-ne",
+    "type": "flow",
+    "title": "The language barrier: translating business need to technical spec",
+    "caption": "AI engineers cannot build what they cannot specify. Business requirements written in outcomes language ('improve customer satisfaction', 'reduce fraud')…",
+    "file": "concepts-bl-pb5/chapter-04-bl-working-with-ai-engineers.ts"
+  },
+  {
+    "id": "bl-pb5-ch05-5-1-what-a-centre-of-excellence-actually-does",
+    "type": "flow",
+    "title": "What a Centre of Excellence actually does",
+    "caption": "An AI Centre of Excellence creates value through four activities: establishing shared standards that prevent every function from making the same governance…",
+    "file": "concepts-bl-pb5/chapter-05-bl-building-ai-centre-excellence.ts"
+  },
+  {
+    "id": "bl-pb5-ch05-5-2-centralise-vs-federate-coe-governance-models",
+    "type": "comparison",
+    "title": "Centralise vs federate: CoE governance models",
+    "caption": "AI CoE governance exists on a spectrum from fully centralised (CoE owns and builds all AI) to fully federated (CoE provides standards; functions build…",
+    "file": "concepts-bl-pb5/chapter-05-bl-building-ai-centre-excellence.ts"
+  },
+  {
+    "id": "bl-pb5-ch06-6-1-why-ai-change-management-is-different",
+    "type": "flow",
+    "title": "Why AI change management is different",
+    "caption": "AI adoption triggers four dynamics that standard change management frameworks are not fully designed for: pervasive job security anxiety that affects people…",
+    "file": "concepts-bl-pb5/chapter-06-bl-change-management-ai-adoption.ts"
+  },
+  {
+    "id": "bl-pb5-ch06-6-2-the-adkar-model-applied-to-ai-adoption",
+    "type": "flow",
+    "title": "The ADKAR model applied to AI adoption",
+    "caption": "ADKAR — Awareness, Desire, Knowledge, Ability, Reinforcement — is the most validated individual change model for enterprise adoption programmes. Applied to…",
+    "file": "concepts-bl-pb5/chapter-06-bl-change-management-ai-adoption.ts"
+  },
+  {
+    "id": "bl-pb5-ch07-7-1-why-generic-ai-training-programmes-fail",
+    "type": "flow",
+    "title": "Why generic AI training programmes fail",
+    "caption": "Generic AI training programmes fail for four predictable reasons: they are designed by AI enthusiasts for a neutral audience (producing content that is too…",
+    "file": "concepts-bl-pb5/chapter-07-bl-ai-literacy-programme-design.ts"
+  },
+  {
+    "id": "bl-pb5-ch07-7-2-three-tiers-of-ai-literacy",
+    "type": "flow",
+    "title": "Three tiers of AI literacy",
+    "caption": "AI literacy exists at three tiers with distinct learning objectives, programme designs, and time investments. Tier 1 (Awareness): employees understand AI's…",
+    "file": "concepts-bl-pb5/chapter-07-bl-ai-literacy-programme-design.ts"
+  },
+  {
+    "id": "bl-pb5-ch08-8-1-why-most-ai-adoption-metrics-are-vanity-metr",
+    "type": "flow",
+    "title": "Why most AI adoption metrics are vanity metrics",
+    "caption": "Vanity metrics are metrics that can improve without any improvement in business outcomes. In AI adoption, the classic vanity metrics are: number of users…",
+    "file": "concepts-bl-pb5/chapter-08-bl-measuring-ai-adoption-teams.ts"
+  },
+  {
+    "id": "bl-pb5-ch08-8-2-four-categories-of-meaningful-ai-adoption-me",
+    "type": "flow",
+    "title": "Four categories of meaningful AI adoption metrics",
+    "caption": "Meaningful AI adoption metrics fall into four categories that together describe the full adoption journey: usage depth (how extensively AI is being used in…",
+    "file": "concepts-bl-pb5/chapter-08-bl-measuring-ai-adoption-teams.ts"
+  },
+  {
+    "id": "bl-pb5-ch09-9-1-the-sources-of-ai-resistance-in-organisation",
+    "type": "flow",
+    "title": "The sources of AI resistance in organisations",
+    "caption": "AI resistance originates from three sources that require different responses: fear (job security, status loss, uncertainty), capability (inability to use AI…",
+    "file": "concepts-bl-pb5/chapter-09-bl-resistance-to-ai.ts"
+  },
+  {
+    "id": "bl-pb5-ch09-9-2-fear-based-vs-capability-based-resistance",
+    "type": "comparison",
+    "title": "Fear-based vs capability-based resistance",
+    "caption": "Distinguishing fear-based from capability-based resistance requires a structured diagnostic conversation, not assumption. The two types often look identical…",
+    "file": "concepts-bl-pb5/chapter-09-bl-resistance-to-ai.ts"
+  },
+  {
+    "id": "bl-pb5-ch10-10-1-what-an-ai-champion-network-is-and-why-it-w",
+    "type": "flow",
+    "title": "What an AI champion network is and why it works",
+    "caption": "An AI champion network formalises what happens organically in every AI adoption programme — a small number of enthusiastic, capable employees who help their…",
+    "file": "concepts-bl-pb5/chapter-10-bl-ai-champion-network.ts"
+  },
+  {
+    "id": "bl-pb5-ch10-10-2-identifying-and-recruiting-ai-champions",
+    "type": "flow",
+    "title": "Identifying and recruiting AI champions",
+    "caption": "Champion selection is the most consequential design decision in a champion network — more important than training content, governance structure, or support…",
+    "file": "concepts-bl-pb5/chapter-10-bl-ai-champion-network.ts"
+  },
+  {
+    "id": "bl-pb6-ch01-1-2-the-four-tier-risk-classification",
+    "type": "flow",
+    "title": "The Four-Tier Risk Classification",
+    "caption": "The EU AI Act classifies AI systems into four tiers with fundamentally different compliance obligations. Classifying your portfolio accurately before…",
+    "file": "concepts-bl-pb6/chapter-01-bl-eu-ai-act-by-function.ts"
+  },
+  {
+    "id": "bl-pb6-ch01-1-3-high-risk-ai-what-compliance-actually-requir",
+    "type": "nested",
+    "title": "High-Risk AI — What Compliance Actually Requires",
+    "caption": "High-risk AI systems under the EU AI Act require six mandatory compliance obligations before deployment: risk management system, data governance, technical…",
+    "file": "concepts-bl-pb6/chapter-01-bl-eu-ai-act-by-function.ts"
+  },
+  {
+    "id": "bl-pb6-ch02-2-1-gdpr-and-ai-why-they-are-inseparable",
+    "type": "nested",
+    "title": "GDPR and AI — Why They Are Inseparable",
+    "caption": "GDPR applies to any processing of personal data relating to EU residents, and most enterprise AI systems process personal data at some stage — in training,…",
+    "file": "concepts-bl-pb6/chapter-02-bl-gdpr-ai-projects.ts"
+  },
+  {
+    "id": "bl-pb6-ch02-2-2-lawful-basis-for-ai-processing",
+    "type": "flow",
+    "title": "Lawful Basis for AI Processing",
+    "caption": "Every AI processing activity on personal data requires a lawful basis. For most enterprise AI, the appropriate bases are legitimate interests (with a…",
+    "file": "concepts-bl-pb6/chapter-02-bl-gdpr-ai-projects.ts"
+  },
+  {
+    "id": "bl-pb6-ch03-3-1-what-ai-bias-is-and-what-it-is-not",
+    "type": "flow",
+    "title": "What AI Bias Is — and What It Is Not",
+    "caption": "Statistical bias (model inaccuracy or over-representation in training data) and discriminatory bias (systematic unfair outcomes for protected groups) are…",
+    "file": "concepts-bl-pb6/chapter-03-bl-bias-discrimination-liability.ts"
+  },
+  {
+    "id": "bl-pb6-ch03-3-2-sources-of-bias-in-ai-systems",
+    "type": "flow",
+    "title": "Sources of Bias in AI Systems",
+    "caption": "Bias enters AI systems at multiple stages: biased training data, biased feature selection, biased labelling, biased problem framing, and feedback loops that…",
+    "file": "concepts-bl-pb6/chapter-03-bl-bias-discrimination-liability.ts"
+  },
+  {
+    "id": "bl-pb6-ch04-4-1-what-explainability-means-for-business-leade",
+    "type": "nested",
+    "title": "What Explainability Means for Business Leaders",
+    "caption": "Explainability in AI means being able to communicate, in terms meaningful to a non-technical person, why a specific AI system produced a specific output.…",
+    "file": "concepts-bl-pb6/chapter-04-bl-ai-audit-explainability.ts"
+  },
+  {
+    "id": "bl-pb6-ch04-4-2-the-legal-explainability-requirements",
+    "type": "flow",
+    "title": "The Legal Explainability Requirements",
+    "caption": "Three distinct legal frameworks create explainability obligations for business leaders: GDPR Article 22 (right to explanation for automated decisions), EU…",
+    "file": "concepts-bl-pb6/chapter-04-bl-ai-audit-explainability.ts"
+  },
+  {
+    "id": "bl-pb6-ch05-5-1-why-most-ai-governance-fails",
+    "type": "flow",
+    "title": "Why Most AI Governance Fails",
+    "caption": "Most AI governance programmes fail not because they are technically wrong but because they are too complex, too slow, too ownership-fragmented, or too…",
+    "file": "concepts-bl-pb6/chapter-05-bl-minimum-viable-ai-governance.ts"
+  },
+  {
+    "id": "bl-pb6-ch05-5-2-component-one-the-ai-inventory",
+    "type": "nested",
+    "title": "Component One: The AI Inventory",
+    "caption": "The AI inventory is the foundation of all AI governance. Without a complete inventory, you cannot classify risk, assign accountability, or apply governance…",
+    "file": "concepts-bl-pb6/chapter-05-bl-minimum-viable-ai-governance.ts"
+  },
+  {
+    "id": "bl-pb6-ch06-6-1-what-makes-ai-risk-different",
+    "type": "nested",
+    "title": "What Makes AI Risk Different",
+    "caption": "AI risks are not fully captured by standard enterprise risk frameworks. The distinctive characteristics of AI risk — opacity (you cannot fully inspect the…",
+    "file": "concepts-bl-pb6/chapter-06-bl-ai-risk-register.ts"
+  },
+  {
+    "id": "bl-pb6-ch06-6-2-the-six-ai-risk-categories",
+    "type": "flow",
+    "title": "The Six AI Risk Categories",
+    "caption": "A complete AI risk register must cover six categories: technical and model risk, data risk, bias and discrimination risk, regulatory and compliance risk,…",
+    "file": "concepts-bl-pb6/chapter-06-bl-ai-risk-register.ts"
+  },
+  {
+    "id": "bl-pb6-ch07-7-1-why-third-party-ai-risk-is-different",
+    "type": "nested",
+    "title": "Why Third-Party AI Risk Is Different",
+    "caption": "Standard vendor risk management covers service availability, data security, and financial stability. Third-party AI risk adds four AI-specific dimensions:…",
+    "file": "concepts-bl-pb6/chapter-07-bl-third-party-ai-risk.ts"
+  },
+  {
+    "id": "bl-pb6-ch07-7-2-third-party-ai-due-diligence",
+    "type": "flow",
+    "title": "Third-Party AI Due Diligence",
+    "caption": "Third-party AI due diligence requires seven questions beyond standard software procurement assessment: training data provenance, bias testing results,…",
+    "file": "concepts-bl-pb6/chapter-07-bl-third-party-ai-risk.ts"
+  },
+  {
+    "id": "bl-pb6-ch08-8-1-why-boards-need-ai-risk-oversight",
+    "type": "nested",
+    "title": "Why Boards Need AI Risk Oversight",
+    "caption": "Board oversight of AI risk is not a voluntary governance enhancement — it is increasingly required by regulators, expected by institutional investors, and…",
+    "file": "concepts-bl-pb6/chapter-08-bl-board-reporting-ai-risk.ts"
+  },
+  {
+    "id": "bl-pb6-ch08-8-2-what-boards-need-to-understand-about-ai-risk",
+    "type": "flow",
+    "title": "What Boards Need to Understand About AI Risk",
+    "caption": "Board members do not need to understand AI model architecture — they need to understand AI risk at the level required for governance decisions: what the…",
+    "file": "concepts-bl-pb6/chapter-08-bl-board-reporting-ai-risk.ts"
+  },
+  {
+    "id": "bl-pb6-ch09-9-1-how-ai-incidents-differ-from-standard-it-inc",
+    "type": "nested",
+    "title": "How AI Incidents Differ From Standard IT Incidents",
+    "caption": "AI incidents differ from standard IT incidents in four ways: they are often silent (no error generated), they are often slow (performance degrades…",
+    "file": "concepts-bl-pb6/chapter-09-bl-incident-response-ai-failures.ts"
+  },
+  {
+    "id": "bl-pb6-ch09-9-2-ai-incident-classification",
+    "type": "flow",
+    "title": "AI Incident Classification",
+    "caption": "AI incident classification determines everything: how quickly you respond, who you escalate to, whether you halt the system, and whether you must notify…",
+    "file": "concepts-bl-pb6/chapter-09-bl-incident-response-ai-failures.ts"
+  },
+  {
+    "id": "bl-pb6-ch10-10-1-why-most-ethical-ai-policies-fail",
+    "type": "nested",
+    "title": "Why Most Ethical AI Policies Fail",
+    "caption": "Most organisational AI ethics statements fail for five reasons: they are too abstract to apply to specific decisions, they have no enforcement mechanism,…",
+    "file": "concepts-bl-pb6/chapter-10-bl-ethical-ai-policy-design.ts"
+  },
+  {
+    "id": "bl-pb6-ch10-10-2-the-three-tier-policy-architecture",
+    "type": "flow",
+    "title": "The Three-Tier Policy Architecture",
+    "caption": "Ethical AI policy requires three tiers: principles define what you stand for, standards translate principles into specific rules, and procedures embed…",
+    "file": "concepts-bl-pb6/chapter-10-bl-ethical-ai-policy-design.ts"
+  },
+  {
+    "id": "bl-pb7-ch01-1-2-ai-powered-forecasting-and-fp-a",
+    "type": "flow",
+    "title": "AI-Powered Forecasting and FP&A",
+    "caption": "ML forecasting is the single highest-value AI application for most finance functions. It replaces assumption-heavy spreadsheet models with data-driven…",
+    "file": "concepts-bl-pb7/chapter-01-bl-ai-in-finance-cfo-office.ts"
+  },
+  {
+    "id": "bl-pb7-ch01-1-3-ai-in-audit-and-internal-controls",
+    "type": "comparison",
+    "title": "AI in Audit and Internal Controls",
+    "caption": "AI shifts audit from periodic sampling to continuous transaction monitoring, catching anomalies that a sample-based approach structurally misses. The CFO's…",
+    "file": "concepts-bl-pb7/chapter-01-bl-ai-in-finance-cfo-office.ts"
+  },
+  {
+    "id": "bl-pb7-ch02-2-1-the-hr-ai-landscape-opportunity-and-obligati",
+    "type": "comparison",
+    "title": "The HR AI Landscape — Opportunity and Obligation",
+    "caption": "HR AI is not a single category — it is a spectrum from high-volume, low-stakes process automation to high-stakes decisions about people's careers and…",
+    "file": "concepts-bl-pb7/chapter-02-bl-ai-in-hr-people-function.ts"
+  },
+  {
+    "id": "bl-pb7-ch02-2-2-ai-in-talent-acquisition",
+    "type": "flow",
+    "title": "AI in Talent Acquisition",
+    "caption": "AI in talent acquisition delivers measurable efficiency — 50–70% reduction in screening time in high-volume contexts. The governance requirement is matching…",
+    "file": "concepts-bl-pb7/chapter-02-bl-ai-in-hr-people-function.ts"
+  },
+  {
+    "id": "bl-pb7-ch03-3-1-the-marketing-ai-landscape-in-2026",
+    "type": "comparison",
+    "title": "The Marketing AI Landscape in 2026",
+    "caption": "Marketing AI is not a single tool — it is a stack that spans content generation, audience intelligence, campaign optimisation, and customer journey…",
+    "file": "concepts-bl-pb7/chapter-03-bl-ai-in-marketing-growth.ts"
+  },
+  {
+    "id": "bl-pb7-ch03-3-2-ai-in-content-creation-and-brand",
+    "type": "flow",
+    "title": "AI in Content Creation and Brand",
+    "caption": "AI content tools can increase marketing content output by 3–10x while reducing production costs by 50–70%. The governance requirement is maintaining brand…",
+    "file": "concepts-bl-pb7/chapter-03-bl-ai-in-marketing-growth.ts"
+  },
+  {
+    "id": "bl-pb7-ch04-4-1-the-sales-ai-landscape-what-drives-revenue",
+    "type": "comparison",
+    "title": "The Sales AI Landscape — What Drives Revenue",
+    "caption": "Sales AI delivers revenue impact in three zones: pipeline quality (better leads), forecast accuracy (better decisions), and rep productivity (better time…",
+    "file": "concepts-bl-pb7/chapter-04-bl-ai-in-sales-revenue.ts"
+  },
+  {
+    "id": "bl-pb7-ch04-4-2-ai-in-lead-generation-and-prospecting",
+    "type": "flow",
+    "title": "AI in Lead Generation and Prospecting",
+    "caption": "AI prospecting tools that identify buyers showing active purchase intent signals — rather than matching an ICP demographic profile — produce materially…",
+    "file": "concepts-bl-pb7/chapter-04-bl-ai-in-sales-revenue.ts"
+  },
+  {
+    "id": "bl-pb7-ch05-5-1-the-operations-ai-landscape",
+    "type": "comparison",
+    "title": "The Operations AI Landscape",
+    "caption": "Operations AI delivers the highest ROI in the enterprise when applied to high-frequency, high-volume decision processes — demand forecasting, inventory…",
+    "file": "concepts-bl-pb7/chapter-05-bl-ai-in-operations-supply-chain.ts"
+  },
+  {
+    "id": "bl-pb7-ch05-5-2-ai-in-demand-forecasting-and-inventory",
+    "type": "flow",
+    "title": "AI in Demand Forecasting and Inventory",
+    "caption": "AI demand forecasting reduces forecast error by 20–50% compared to manual or statistical methods in most deployment contexts. The resulting inventory…",
+    "file": "concepts-bl-pb7/chapter-05-bl-ai-in-operations-supply-chain.ts"
+  },
+  {
+    "id": "bl-pb7-ch06-6-1-the-customer-service-ai-landscape",
+    "type": "comparison",
+    "title": "The Customer Service AI Landscape",
+    "caption": "Customer service AI delivers value when applied to high-volume, well-defined service interactions. It damages the customer relationship when applied to…",
+    "file": "concepts-bl-pb7/chapter-06-bl-ai-in-customer-service.ts"
+  },
+  {
+    "id": "bl-pb7-ch06-6-2-conversational-ai-and-chatbots",
+    "type": "flow",
+    "title": "Conversational AI and Chatbots",
+    "caption": "Conversational AI that is honest about its capabilities, maintains appropriate scope, and escalates gracefully builds customer trust faster than AI that…",
+    "file": "concepts-bl-pb7/chapter-06-bl-ai-in-customer-service.ts"
+  },
+  {
+    "id": "bl-pb7-ch07-7-1-the-legal-and-compliance-ai-landscape",
+    "type": "nested",
+    "title": "The Legal and Compliance AI Landscape",
+    "caption": "Legal AI delivers efficiency in high-volume, knowledge-intensive tasks — contract review, regulatory research, due diligence. It creates liability when…",
+    "file": "concepts-bl-pb7/chapter-07-bl-ai-in-legal-compliance.ts"
+  },
+  {
+    "id": "bl-pb7-ch07-7-2-ai-in-contract-management-and-review",
+    "type": "flow",
+    "title": "AI in Contract Management and Review",
+    "caption": "AI contract review — extracting, categorising, and flagging key clauses across large contract portfolios — is the highest-ROI legal AI deployment for most…",
+    "file": "concepts-bl-pb7/chapter-07-bl-ai-in-legal-compliance.ts"
+  },
+  {
+    "id": "bl-pb7-ch08-8-1-the-product-and-engineering-ai-landscape",
+    "type": "comparison",
+    "title": "The Product and Engineering AI Landscape",
+    "caption": "Product and engineering leaders face two simultaneous AI transformations: AI as a development tool (which changes how teams work) and AI as a product…",
+    "file": "concepts-bl-pb7/chapter-08-bl-ai-in-product-engineering-leaders.ts"
+  },
+  {
+    "id": "bl-pb7-ch08-8-2-ai-assisted-engineering-productivity-without",
+    "type": "flow",
+    "title": "AI-Assisted Engineering — Productivity Without Technical Debt",
+    "caption": "AI code generation delivers real productivity gains — but requires governance to prevent it from accelerating the creation of low-quality, insecure, or…",
+    "file": "concepts-bl-pb7/chapter-08-bl-ai-in-product-engineering-leaders.ts"
+  },
+  {
+    "id": "bl-pb7-ch09-9-1-why-ai-creates-cross-functional-dependencies",
+    "type": "flow",
+    "title": "Why AI Creates Cross-Functional Dependencies",
+    "caption": "AI deployments create dependencies between functions that conventional software implementations do not — because AI value is proportional to data quality…",
+    "file": "concepts-bl-pb7/chapter-09-bl-cross-functional-ai-dependencies.ts"
+  },
+  {
+    "id": "bl-pb7-ch09-9-2-shared-data-infrastructure-and-the-customer-",
+    "type": "flow",
+    "title": "Shared Data Infrastructure and the Customer Data Foundation",
+    "caption": "Customer data is the foundation of AI deployments across Marketing, Sales, Customer Service, Finance, and Product simultaneously. Building and governing a…",
+    "file": "concepts-bl-pb7/chapter-09-bl-cross-functional-ai-dependencies.ts"
+  },
+  {
+    "id": "bl-pb7-ch10-10-1-why-ai-transformation-measurement-fails",
+    "type": "flow",
+    "title": "Why AI Transformation Measurement Fails",
+    "caption": "AI transformation measurement fails for four predictable reasons: no baseline measurement before deployment, activity metrics substituted for outcome…",
+    "file": "concepts-bl-pb7/chapter-10-bl-measuring-transformation-progress.ts"
+  },
+  {
+    "id": "bl-pb7-ch10-10-2-measuring-ai-roi-by-function",
+    "type": "flow",
+    "title": "Measuring AI ROI by Function",
+    "caption": "AI ROI metrics are function-specific — the right metric for Finance AI is not the right metric for Marketing AI. Business leaders who define…",
+    "file": "concepts-bl-pb7/chapter-10-bl-measuring-transformation-progress.ts"
+  },
+  {
+    "id": "bl-pb8-ch01-1-2-why-leadership-misalignment-kills-ai-project",
+    "type": "flow",
+    "title": "Why leadership misalignment kills AI projects",
+    "caption": "Leadership misalignment on AI transformation is not a personality conflict — it is a structural failure of goal-setting. When executives hold incompatible…",
+    "file": "concepts-bl-pb8/chapter-01-bl-why-ai-transformations-fail.ts"
+  },
+  {
+    "id": "bl-pb8-ch01-1-3-the-technology-first-trap",
+    "type": "flow",
+    "title": "The technology-first trap",
+    "caption": "Technology-first AI deployment gives people a powerful tool in a workflow that was not designed to use it. The result is predictable: the tool generates…",
+    "file": "concepts-bl-pb8/chapter-01-bl-why-ai-transformations-fail.ts"
+  },
+  {
+    "id": "bl-pb8-ch02-2-1-why-ai-change-is-different-from-past-technol",
+    "type": "flow",
+    "title": "Why AI change is different from past technology change",
+    "caption": "AI change differs from ERP, CRM, and cloud migration change in three fundamental ways: it changes what decisions humans are authorised to make, it renders…",
+    "file": "concepts-bl-pb8/chapter-02-bl-change-management-framework-ai.ts"
+  },
+  {
+    "id": "bl-pb8-ch02-2-2-the-three-horizon-ai-change-model",
+    "type": "flow",
+    "title": "The three-horizon AI change model",
+    "caption": "AI transformation cannot be managed as a single change event or a series of unconnected deployments. It requires a three-horizon model: Horizon 1 (0–12…",
+    "file": "concepts-bl-pb8/chapter-02-bl-change-management-framework-ai.ts"
+  },
+  {
+    "id": "bl-pb8-ch03-3-1-the-cost-of-ai-overcommunication-and-underco",
+    "type": "flow",
+    "title": "The cost of AI overcommunication and undercommunication",
+    "caption": "AI overcommunication — overstating capability, projecting certainty about outcomes that are not yet proven, claiming competitive dominance before evidence…",
+    "file": "concepts-bl-pb8/chapter-03-bl-communicating-ai-honestly.ts"
+  },
+  {
+    "id": "bl-pb8-ch03-3-2-structuring-the-initial-ai-announcement",
+    "type": "flow",
+    "title": "Structuring the initial AI announcement",
+    "caption": "The initial AI announcement sets the tone for the entire programme's communication relationship with the organisation. Done well, it creates psychological…",
+    "file": "concepts-bl-pb8/chapter-03-bl-communicating-ai-honestly.ts"
+  },
+  {
+    "id": "bl-pb8-ch04-4-1-understanding-where-resistance-actually-come",
+    "type": "flow",
+    "title": "Understanding where resistance actually comes from",
+    "caption": "AI resistance has five distinct root sources: job security fear, professional identity threat, competence anxiety, trust deficit in leadership, and genuine…",
+    "file": "concepts-bl-pb8/chapter-04-bl-managing-fear-resistance.ts"
+  },
+  {
+    "id": "bl-pb8-ch04-4-2-the-fear-spectrum-in-ai-transformation",
+    "type": "comparison",
+    "title": "The fear spectrum in AI transformation",
+    "caption": "AI fears exist on a spectrum from existential (AI will make my career obsolete permanently) to practical (AI will change my current task and I might make…",
+    "file": "concepts-bl-pb8/chapter-04-bl-managing-fear-resistance.ts"
+  },
+  {
+    "id": "bl-pb8-ch05-5-1-the-augmentation-versus-replacement-spectrum",
+    "type": "comparison",
+    "title": "The augmentation versus replacement spectrum",
+    "caption": "AI does not universally augment or replace — it augments some dimensions of every role and replaces other dimensions. Understanding where each role sits on…",
+    "file": "concepts-bl-pb8/chapter-05-bl-redefining-roles-ai-augmented.ts"
+  },
+  {
+    "id": "bl-pb8-ch05-5-2-role-anatomy-what-ai-can-do-versus-what-huma",
+    "type": "flow",
+    "title": "Role anatomy: what AI can do versus what humans must do",
+    "caption": "Human advantage in AI-augmented roles does not lie in doing tasks faster or more accurately than AI — AI usually wins on speed and accuracy for well-defined…",
+    "file": "concepts-bl-pb8/chapter-05-bl-redefining-roles-ai-augmented.ts"
+  },
+  {
+    "id": "bl-pb8-ch06-6-1-the-strategic-workforce-planning-imperative",
+    "type": "flow",
+    "title": "The strategic workforce planning imperative",
+    "caption": "AI workforce planning that begins after AI deployment has already changed the workforce need is remediation, not planning. The planning horizon for AI…",
+    "file": "concepts-bl-pb8/chapter-06-bl-ai-workforce-planning.ts"
+  },
+  {
+    "id": "bl-pb8-ch06-6-2-skills-inventory-for-an-ai-augmented-organis",
+    "type": "flow",
+    "title": "Skills inventory for an AI-augmented organisation",
+    "caption": "A skills inventory is not a training needs assessment — it is a strategic view of the organisation's human capability portfolio. In an AI-augmented…",
+    "file": "concepts-bl-pb8/chapter-06-bl-ai-workforce-planning.ts"
+  },
+  {
+    "id": "bl-pb8-ch07-7-1-why-psychological-safety-is-the-prerequisite",
+    "type": "flow",
+    "title": "Why psychological safety is the prerequisite for AI adoption",
+    "caption": "AI adoption failure in psychologically unsafe teams looks like resistance, disengagement, or incompetence — but is actually rational self-protection. In a…",
+    "file": "concepts-bl-pb8/chapter-07-bl-psychological-safety-ai.ts"
+  },
+  {
+    "id": "bl-pb8-ch07-7-2-how-ai-erodes-psychological-safety-and-how-t",
+    "type": "flow",
+    "title": "How AI erodes psychological safety — and how to prevent it",
+    "caption": "AI deployment can damage psychological safety in five specific ways: transparency about performance differential (AI makes some workers look less capable in…",
+    "file": "concepts-bl-pb8/chapter-07-bl-psychological-safety-ai.ts"
+  },
+  {
+    "id": "bl-pb8-ch08-8-1-why-leader-behaviour-is-the-strongest-adopti",
+    "type": "flow",
+    "title": "Why leader behaviour is the strongest adoption signal",
+    "caption": "Research on organisational change consistently shows that employee behaviour follows leader behaviour more reliably than it follows leader communication. In…",
+    "file": "concepts-bl-pb8/chapter-08-bl-leading-by-example-ai.ts"
+  },
+  {
+    "id": "bl-pb8-ch08-8-2-visible-ai-use-by-leaders",
+    "type": "flow",
+    "title": "Visible AI use by leaders",
+    "caption": "Visible AI use is not about showing off AI capability — it is about normalising AI as a natural part of how leaders work. The most effective visible AI use…",
+    "file": "concepts-bl-pb8/chapter-08-bl-leading-by-example-ai.ts"
+  },
+  {
+    "id": "bl-pb8-ch09-9-1-why-milestone-frameworks-prevent-transformat",
+    "type": "flow",
+    "title": "Why milestone frameworks prevent transformation drift",
+    "caption": "Without milestone frameworks, AI transformation programmes drift in two characteristic patterns: perpetual piloting (the organisation runs successful pilots…",
+    "file": "concepts-bl-pb8/chapter-09-bl-ai-transformation-milestones.ts"
+  },
+  {
+    "id": "bl-pb8-ch09-9-2-the-five-stages-of-enterprise-ai-transformat",
+    "type": "flow",
+    "title": "The five stages of enterprise AI transformation",
+    "caption": "Enterprise AI transformation follows five stages: Stage 1 (Readiness and Foundation), Stage 2 (First Pilots and Learning), Stage 3 (Scaling Proof Points),…",
+    "file": "concepts-bl-pb8/chapter-09-bl-ai-transformation-milestones.ts"
+  },
+  {
+    "id": "bl-pb8-ch10-10-1-the-momentum-trap-why-ai-transformations-st",
+    "type": "flow",
+    "title": "The momentum trap: why AI transformations stall after year one",
+    "caption": "Year one AI momentum is driven by novelty, visible quick wins, and concentrated leadership attention. Year two momentum must be driven by institutional…",
+    "file": "concepts-bl-pb8/chapter-10-bl-sustaining-ai-momentum.ts"
+  },
+  {
+    "id": "bl-pb8-ch10-10-2-building-institutional-ai-memory",
+    "type": "flow",
+    "title": "Building institutional AI memory",
+    "caption": "Institutional AI memory is the organisation's accumulated knowledge about what works, what does not work, and why — preserved in systems and practices that…",
+    "file": "concepts-bl-pb8/chapter-10-bl-sustaining-ai-momentum.ts"
+  },
+  {
+    "id": "founder-ch01-1-5-rule-based-systems-vs-learned-systems",
+    "type": "comparison",
+    "title": "Rule-based systems vs learned systems",
+    "caption": "If you could write the behaviour as a list of if-statements, it is not machine learning — regardless of the slide deck. Rules scale with engineering…",
+    "file": "concepts-founder/chapter-01-ai-vs-ml-vs-deep-learning.ts"
+  },
+  {
+    "id": "ch2-epochs-nested",
+    "type": "nested",
+    "title": "Parameters and weights",
+    "caption": "Parameters — also called weights — are the individual numbers inside a model that control how input signals are amplified or suppressed. More parameters…",
+    "file": "concepts-founder/chapter-02-how-models-learn.ts"
+  },
+  {
+    "id": "founder-ch02-2-2-parameters-and-weights",
+    "type": "comparison",
+    "title": "Parameters and weights",
+    "caption": "Parameters — also called weights — are the individual numbers inside a model that control how input signals are amplified or suppressed. More parameters…",
+    "file": "concepts-founder/chapter-02-how-models-learn.ts"
+  },
+  {
+    "id": "founder-api-vs-own",
+    "type": "comparison",
+    "title": "API dependency vs model ownership",
+    "caption": "API dependency means paying retail per-token prices with zero infrastructure overhead. Model ownership means renting GPUs 24/7 and hiring ML ops — but…",
+    "file": "concepts-founder/chapter-03-training-vs-inference.ts"
+  },
+  {
+    "id": "founder-inference-optimisation",
+    "type": "flow",
+    "title": "Cost optimisation levers",
+    "caption": "Inference cost is not fixed. Caching, model routing, prompt compression, batching, and distillation can cut COGS 40–80% without killing the feature — if you…",
+    "file": "concepts-founder/chapter-03-training-vs-inference.ts"
+  },
+  {
+    "id": "founder-ch04-4-1-why-data-is-the-only-durable-moat-in-ai",
+    "type": "nested",
+    "title": "Why data is the only durable moat in AI",
+    "caption": "In a world of commoditized foundation models and cheap API access, proprietary data — user behaviour, domain corrections, longitudinal outcomes — is the…",
+    "file": "concepts-founder/chapter-04-data-competitive-advantage.ts"
+  },
+  {
+    "id": "founder-ch05-5-1-ai-outputs-are-probability-distributions-not",
+    "type": "flow",
+    "title": "AI outputs are probability distributions, not facts",
+    "caption": "AI models never truly know an answer — they calculate the probability that an output is statistically appropriate. Every generation is a bet sampled from a…",
+    "file": "concepts-founder/chapter-05-probability-confidence.ts"
+  },
+  {
+    "id": "founder-ch05-5-4-overconfident-models",
+    "type": "comparison",
+    "title": "Overconfident models",
+    "caption": "Modern neural networks default to extreme overconfidence — hallucinating false information with absolute mathematical certainty. Models do not naturally say…",
+    "file": "concepts-founder/chapter-05-probability-confidence.ts"
+  },
+  {
+    "id": "founder-ch06-6-2-precision-vs-recall-a-business-decision-disg",
+    "type": "comparison",
+    "title": "Precision vs recall — a business decision disguised as a technical one",
+    "caption": "Precision asks: when the model speaks, can we trust it? Recall asks: when something important happens, did we catch it? You cannot maximize both at once.…",
+    "file": "concepts-founder/chapter-06-model-evaluation.ts"
+  },
+  {
+    "id": "founder-ch06-6-5-evaluation-in-production-what-to-measure-aft",
+    "type": "comparison",
+    "title": "Evaluation in production — what to measure after you ship",
+    "caption": "Production evaluation asks whether the AI is making the business healthier — not whether the model still scores well on a frozen CSV. Founders need a short…",
+    "file": "concepts-founder/chapter-06-model-evaluation.ts"
+  },
+  {
+    "id": "founder-ch07-7-1-what-is-model-bias",
+    "type": "flow",
+    "title": "What is model bias",
+    "caption": "Model bias is systematic unequal performance across demographic or structural groups — the model works well for the majority and fails for minorities. It is…",
+    "file": "concepts-founder/chapter-07-bias-hallucination-liability.ts"
+  },
+  {
+    "id": "founder-ch07-7-3-types-of-bias-to-know",
+    "type": "flow",
+    "title": "Types of bias to know",
+    "caption": "Bias enters through four distinct vectors: representation (missing groups), measurement (flawed labels), aggregation (one model for different populations),…",
+    "file": "concepts-founder/chapter-07-bias-hallucination-liability.ts"
+  },
+  {
+    "id": "founder-ch08-8-2-foundation-model-providers",
+    "type": "comparison",
+    "title": "Foundation model providers",
+    "caption": "Foundation model providers are the new cloud platforms — they set pricing, capability ceilings, rate limits, and policy boundaries for millions of…",
+    "file": "concepts-founder/chapter-08-ai-landscape.ts"
+  },
+  {
+    "id": "founder-ch08-8-3-inference-hosting-and-tooling",
+    "type": "flow",
+    "title": "Inference, hosting, and tooling",
+    "caption": "Between foundation models and applications sits a growing tooling layer: vector databases, retrieval pipelines, agent orchestration, evaluation frameworks,…",
+    "file": "concepts-founder/chapter-08-ai-landscape.ts"
+  },
+  {
+    "id": "ch1-feedback-loop",
+    "type": "flow",
+    "title": "The feedback loop business model",
+    "caption": "AI-native companies do not sell static software — they sell a system that improves with every user action. If usage does not generate training signal that…",
+    "file": "concepts-founder-pb2/chapter-01-what-ai-native-means.ts"
+  },
+  {
+    "id": "founder-ai-native-spectrum",
+    "type": "nested",
+    "title": "AI-native vs AI-powered vs AI-washed",
+    "caption": "AI-native: remove the model and the company does not exist. AI-powered: AI materially improves a product that survives without it. AI-washed: marketing…",
+    "file": "concepts-founder-pb2/chapter-01-what-ai-native-means.ts"
+  },
+  {
+    "id": "ch3-ai-stack",
+    "type": "flow",
+    "title": "The AI infrastructure stack",
+    "caption": "The AI stack has five layers founders must map: foundation models (intelligence), retrieval/vector stores (knowledge), orchestration (prompt chains, agents,…",
+    "file": "concepts-founder-pb2/chapter-03-ai-infrastructure-stack.ts"
+  },
+  {
+    "id": "ch4-feedback-cycle",
+    "type": "flow",
+    "title": "What a feedback loop is in an AI product",
+    "caption": "A feedback loop is a closed system: the product generates predictions, users react, reactions become labelled data, data improves the model, and the…",
+    "file": "concepts-founder-pb2/chapter-04-building-feedback-loop.ts"
+  },
+  {
+    "id": "founder-pb2-ch05-5-2-experimentation-as-a-core-operating-principl",
+    "type": "flow",
+    "title": "Experimentation as a core operating principle",
+    "caption": "AI products require hypothesis-driven experiments: model A vs B, prompt variants, retrieval configs — each with eval criteria and rollback. Shipping 'the AI…",
+    "file": "concepts-founder-pb2/chapter-05-ai-culture.ts"
+  },
+  {
+    "id": "founder-pb3-ch01-1-1-the-difference-between-an-ai-feature-list-an",
+    "type": "nested",
+    "title": "The difference between an AI feature list and an AI strategy",
+    "caption": "A feature list answers 'what will we build?' An AI strategy answers 'why will we win, and what must be true for that to happen?' Founders who present…",
+    "file": "concepts-founder-pb3/chapter-01-what-ai-strategy-is.ts"
+  },
+  {
+    "id": "founder-pb3-ch01-1-3-why-most-startup-ai-strategies-are-just-prod",
+    "type": "flow",
+    "title": "Why most startup AI strategies are just product roadmaps",
+    "caption": "Roadmaps feel safe because they are controllable. Strategy feels dangerous because it commits you to bets that might be wrong. Most 'AI strategies' are…",
+    "file": "concepts-founder-pb3/chapter-01-what-ai-strategy-is.ts"
+  },
+  {
+    "id": "founder-pb3-ch02-2-1-what-is-a-wedge-in-an-ai-context",
+    "type": "nested",
+    "title": "What is a wedge in an AI context",
+    "caption": "A wedge is not your TAM slide — it is the single workflow where removing AI collapses the value proposition. Incremental improvements (10% faster) get…",
+    "file": "concepts-founder-pb3/chapter-02-finding-ai-wedge.ts"
+  },
+  {
+    "id": "founder-pb3-ch02-2-2-how-to-identify-your-wedge",
+    "type": "flow",
+    "title": "How to identify your wedge",
+    "caption": "Wedge discovery is workflow archaeology: map jobs, measure frequency and pain, score AI-solvability, and interview for willingness-to-pay on the…",
+    "file": "concepts-founder-pb3/chapter-02-finding-ai-wedge.ts"
+  },
+  {
+    "id": "founder-pb3-ch03-3-2-the-five-real-moats-in-ai-businesses",
+    "type": "nested",
+    "title": "The five real moats in AI businesses",
+    "caption": "Durable AI companies combine at least one primary moat from the five: data others cannot get, distribution others cannot buy cheaply, switching costs others…",
+    "file": "concepts-founder-pb3/chapter-03-ai-competitive-moats.ts"
+  },
+  {
+    "id": "founder-pb3-ch03-3-3-data-moats-the-strongest-and-the-slowest",
+    "type": "nested",
+    "title": "Data moats — the strongest and the slowest",
+    "caption": "Data moats require volume, label quality, exclusivity, and time — which is exactly why they work. Fast moats get copied; slow moats reward patience and…",
+    "file": "concepts-founder-pb3/chapter-03-ai-competitive-moats.ts"
+  },
+  {
+    "id": "founder-pb3-ch04-4-1-the-ai-value-chain-where-the-money-flows-and",
+    "type": "nested",
+    "title": "The AI value chain — where the money flows and where it doesn't",
+    "caption": "Foundation models capture platform economics and R&D scale. Infrastructure captures serving, retrieval, and observability rents. Applications capture…",
+    "file": "concepts-founder-pb3/chapter-04-ai-market-structure.ts"
+  },
+  {
+    "id": "founder-pb3-ch04-4-2-why-the-application-layer-is-both-the-opport",
+    "type": "flow",
+    "title": "Why the application layer is both the opportunity and the danger zone",
+    "caption": "Applications touch budgets and outcomes — where customers pay. They also sit in the crosshairs of suites and foundation providers adding features.…",
+    "file": "concepts-founder-pb3/chapter-04-ai-market-structure.ts"
+  },
+  {
+    "id": "founder-pb3-ch05-5-1-why-founders-need-to-attack-their-own-strate",
+    "type": "nested",
+    "title": "Why founders need to attack their own strategy",
+    "caption": "Competitors will argue your wedge is thin, your data moat is imaginary, and your provider will subsume you — at every deal and in every investor meeting you…",
+    "file": "concepts-founder-pb3/chapter-05-stress-testing-ai-strategy.ts"
+  },
+  {
+    "id": "founder-pb3-ch05-5-2-the-three-killer-questions-for-any-ai-strate",
+    "type": "flow",
+    "title": "The three killer questions for any AI strategy",
+    "caption": "Every AI strategy must survive three questions: commoditised capability, missing data moat, incumbent/native feature. If you have no good answer to any one,…",
+    "file": "concepts-founder-pb3/chapter-05-stress-testing-ai-strategy.ts"
+  },
+  {
+    "id": "founder-pb4-ch01-1-2-what-vcs-look-for-that-most-founders-don-t-t",
+    "type": "flow",
+    "title": "What VCs look for that most founders don't talk about",
+    "caption": "Founders pitch product and team. Investors diligence data strategy, feedback loop design, and model dependency risk. The gap between what you emphasise and…",
+    "file": "concepts-founder-pb4/chapter-01-how-vcs-evaluate-ai.ts"
+  },
+  {
+    "id": "founder-pb4-ch01-1-3-the-questions-every-serious-ai-investor-will",
+    "type": "flow",
+    "title": "The questions every serious AI investor will ask",
+    "caption": "Serious AI investors skip technology tourism. They ask about data provenance, improvement velocity, unit economics at scale, failure modes, and what happens…",
+    "file": "concepts-founder-pb4/chapter-01-how-vcs-evaluate-ai.ts"
+  },
+  {
+    "id": "founder-pb4-ch02-2-1-what-the-ai-premium-actually-is",
+    "type": "flow",
+    "title": "What the AI premium actually is",
+    "caption": "The AI premium is not a label — it is an additional valuation multiple investors assign when they believe your architecture compounds defensibility faster…",
+    "file": "concepts-founder-pb4/chapter-02-ai-valuation-premium.ts"
+  },
+  {
+    "id": "founder-funding-valuation",
+    "type": "comparison",
+    "title": "What does not justify the premium",
+    "caption": "API access, chatbot features, fine-tuning on public data, and 'AI-first' branding do not justify premium multiples. Investors have seen thousands of…",
+    "file": "concepts-founder-pb4/chapter-02-ai-valuation-premium.ts"
+  },
+  {
+    "id": "founder-pb4-ch03-3-1-why-standard-saas-metrics-are-insufficient-f",
+    "type": "flow",
+    "title": "Why standard SaaS metrics are insufficient for AI companies",
+    "caption": "MRR, NRR, and CAC payback are necessary but insufficient for AI companies. Investors need leading indicators that the product compounds — not just grows.…",
+    "file": "concepts-founder-pb4/chapter-03-ai-metrics-investors.ts"
+  },
+  {
+    "id": "founder-pb4-ch03-3-2-model-improvement-rate",
+    "type": "flow",
+    "title": "Model improvement rate",
+    "caption": "Model improvement rate measures whether your product intelligence compounds over time — via held-out eval scores, production quality metrics, and override…",
+    "file": "concepts-founder-pb4/chapter-03-ai-metrics-investors.ts"
+  },
+  {
+    "id": "founder-pb4-ch04-4-1-why-ai-founders-overpromise-and-the-long-ter",
+    "type": "flow",
+    "title": "Why AI founders overpromise — and the long-term cost",
+    "caption": "Founders overpromise because demos are optimistic, competition is fierce, and AI capabilities sound magical until they fail in production. The long-term…",
+    "file": "concepts-founder-pb4/chapter-04-ai-story-without-overpromising.ts"
+  },
+  {
+    "id": "founder-pb4-ch04-4-2-the-components-of-a-credible-ai-narrative",
+    "type": "flow",
+    "title": "The components of a credible AI narrative",
+    "caption": "A credible AI narrative has five components: the problem worth solving, the proprietary data advantage, the feedback loop that compounds, the defensibility…",
+    "file": "concepts-founder-pb4/chapter-04-ai-story-without-overpromising.ts"
+  },
+  {
+    "id": "founder-pb4-ch05-5-1-technical-due-diligence-for-ai-companies-wha",
+    "type": "flow",
+    "title": "Technical due diligence for AI companies — what investors hire firms to find",
+    "caption": "Technical diligence examines architecture reality vs pitch claims: model stack, eval rigour, loop implementation, infrastructure costs at scale, and whether…",
+    "file": "concepts-founder-pb4/chapter-05-ai-due-diligence.ts"
+  },
+  {
+    "id": "founder-pb4-ch05-5-2-data-due-diligence-the-questions-about-your-",
+    "type": "flow",
+    "title": "Data due diligence — the questions about your data you must be able to answer",
+    "caption": "Data diligence asks: provenance, ownership, consent, exclusivity, quality, labelling methodology, and deletion rights. Weak answers unwind the data moat…",
+    "file": "concepts-founder-pb4/chapter-05-ai-due-diligence.ts"
+  },
+  {
+    "id": "founder-ai-roles-map",
+    "type": "comparison",
+    "title": "ML Engineer vs AI Engineer vs Data Scientist",
+    "caption": "Three roles, three skill sets, three budgets. Role clarity is the first filter in a brutal AI talent market.",
+    "file": "concepts-founder-pb5/chapter-01-founder-ai-roles-explained.ts"
+  },
+  {
+    "id": "founder-pb5-ch01-1-6-ai-research-scientist-only-for-late-stage-co",
+    "type": "flow",
+    "title": "AI Research Scientist — only for late-stage companies",
+    "caption": "Research Scientists push the frontier: new architectures, novel training methods, publishable results. Unless training custom foundation models is your…",
+    "file": "concepts-founder-pb5/chapter-01-founder-ai-roles-explained.ts"
+  },
+  {
+    "id": "founder-pb5-ch02-2-1-the-ai-talent-market-in-2025",
+    "type": "flow",
+    "title": "The AI talent market in 2025",
+    "caption": "Top AI talent competes with OpenAI, Google, Anthropic, and well-funded startups offering $300K–$500K+ total comp. You win on problem, equity upside, and…",
+    "file": "concepts-founder-pb5/chapter-02-founder-hiring-ai-talent.ts"
+  },
+  {
+    "id": "founder-pb5-ch02-2-2-how-to-evaluate-ai-candidates-as-a-non-techn",
+    "type": "flow",
+    "title": "How to evaluate AI candidates as a non-technical founder",
+    "caption": "You cannot evaluate model architecture — but you can evaluate: shipped work, decision reasoning, communication, and how they handle failure modes. Four…",
+    "file": "concepts-founder-pb5/chapter-02-founder-hiring-ai-talent.ts"
+  },
+  {
+    "id": "founder-pb5-ch03-3-1-when-to-make-your-first-ai-hire",
+    "type": "flow",
+    "title": "When to make your first AI hire",
+    "caption": "Hire when AI is committed to the core product roadmap, the founder cannot prototype further, and delaying blocks revenue or fundraising — not when investors…",
+    "file": "concepts-founder-pb5/chapter-03-founder-first-ai-hire.ts"
+  },
+  {
+    "id": "founder-pb5-ch03-3-2-generalist-ai-engineer-vs-specialist",
+    "type": "comparison",
+    "title": "Generalist AI engineer vs specialist",
+    "caption": "First hire must: build features, set up basic evals and monitoring, and talk to customers about failure modes. Specialist researchers, pure MLOps, or narrow…",
+    "file": "concepts-founder-pb5/chapter-03-founder-first-ai-hire.ts"
+  },
+  {
+    "id": "founder-pb5-ch04-4-2-the-ai-centre-of-excellence-model",
+    "type": "flow",
+    "title": "The AI centre of excellence model",
+    "caption": "A Centre of Excellence (CoE) sets standards, trains the org, and builds shared tools — but does not own all AI delivery. CoE as sole delivery team creates…",
+    "file": "concepts-founder-pb5/chapter-04-founder-ai-org-design.ts"
+  },
+  {
+    "id": "founder-pb5-ch04-4-3-how-ai-teams-interface-with-product-teams",
+    "type": "flow",
+    "title": "How AI teams interface with product teams",
+    "caption": "Good interface: shared roadmap, joint success metrics (task completion, override rate), AI engineers in discovery, PMs in eval review. Bad interface: AI…",
+    "file": "concepts-founder-pb5/chapter-04-founder-ai-org-design.ts"
+  },
+  {
+    "id": "founder-pb5-ch05-5-1-why-ai-talent-leaves-startups",
+    "type": "flow",
+    "title": "Why AI talent leaves startups",
+    "caption": "Real reasons: better comp, harder technical problems elsewhere, lack of career path, founder technical illiteracy blocking decisions, burnout from…",
+    "file": "concepts-founder-pb5/chapter-05-founder-retaining-ai-talent.ts"
+  },
+  {
+    "id": "founder-pb5-ch05-5-2-technical-challenge-as-retention",
+    "type": "flow",
+    "title": "Technical challenge as retention",
+    "caption": "Assign problems that stretch: new architectures, proprietary data challenges, scale milestones. Rotate engineers off pure maintenance quarterly. Celebrate…",
+    "file": "concepts-founder-pb5/chapter-05-founder-retaining-ai-talent.ts"
+  },
+  {
+    "id": "founder-pb6-ch02-2-1-what-api-dependency-actually-means-for-your-",
+    "type": "nested",
+    "title": "What API dependency actually means for your business",
+    "caption": "API dependency means your core product capability runs on infrastructure you do not control — pricing, availability, model behaviour, terms of use, and…",
+    "file": "concepts-founder-pb6/chapter-02-founder-api-dependency-risk.ts"
+  },
+  {
+    "id": "founder-pb6-ch02-2-2-the-four-vendor-risk-scenarios",
+    "type": "flow",
+    "title": "The four vendor risk scenarios",
+    "caption": "Plan explicitly for four scenarios: vendor raises price, vendor deprecates your model, vendor changes terms (data use, rate limits, geographic access), and…",
+    "file": "concepts-founder-pb6/chapter-02-founder-api-dependency-risk.ts"
+  },
+  {
+    "id": "founder-pb6-ch03-3-1-the-ai-vendor-landscape-a-founder-s-map",
+    "type": "flow",
+    "title": "The AI vendor landscape — a founder's map",
+    "caption": "The AI vendor landscape has four layers: foundation model APIs (OpenAI, Anthropic, Google, Mistral), infrastructure (vector DBs, labelling, observability,…",
+    "file": "concepts-founder-pb6/chapter-03-founder-evaluating-ai-vendors.ts"
+  },
+  {
+    "id": "founder-pb6-ch03-3-2-what-a-rigorous-ai-vendor-evaluation-looks-l",
+    "type": "flow",
+    "title": "What a rigorous AI vendor evaluation looks like",
+    "caption": "Rigorous evaluation has three tracks running in parallel: technical (your data, your edge cases, your latency requirements), commercial (TCO at 3× volume,…",
+    "file": "concepts-founder-pb6/chapter-03-founder-evaluating-ai-vendors.ts"
+  },
+  {
+    "id": "prompting-vs-finetuning-ladder",
+    "type": "flow",
+    "title": "The three customisation options — a plain language overview",
+    "caption": "Prompt engineering changes instructions to the model — zero training cost, fastest iteration. RAG retrieves your documents at inference time — knowledge gap…",
+    "file": "concepts-founder-pb6/chapter-04-founder-finetuning-rag-prompting.ts"
+  },
+  {
+    "id": "pb4-rag-pipeline",
+    "type": "flow",
+    "title": "RAG — the knowledge option",
+    "caption": "RAG solves knowledge gaps: policies, product docs, proprietary research, customer-specific data. Pipeline: chunk, embed, retrieve, rerank, inject. Cost is…",
+    "file": "concepts-founder-pb6/chapter-04-founder-finetuning-rag-prompting.ts"
+  },
+  {
+    "id": "founder-pb6-ch05-5-1-data-ownership-clauses-the-non-negotiable",
+    "type": "flow",
+    "title": "Data ownership clauses — the non-negotiable",
+    "caption": "Contract must state: you retain all ownership of inputs, outputs, and derived insights from your data. Vendor receives limited license to process for…",
+    "file": "concepts-founder-pb6/chapter-05-founder-ai-vendor-contracts.ts"
+  },
+  {
+    "id": "founder-pb6-ch05-5-2-training-data-opt-out",
+    "type": "flow",
+    "title": "Training data opt-out",
+    "caption": "Default for many APIs: vendor may train on customer inputs unless enterprise no-training addendum signed. Contract must prohibit training on customer data…",
+    "file": "concepts-founder-pb6/chapter-05-founder-ai-vendor-contracts.ts"
+  },
+  {
+    "id": "founder-pb7-ch01-1-2-how-ai-risk-materialises-for-startups",
+    "type": "nested",
+    "title": "How AI risk materialises for startups",
+    "caption": "AI incidents compress into days what traditional software bugs take months to surface. The typical timeline: user discovers failure → social amplification →…",
+    "file": "concepts-founder-pb7/chapter-01-founder-ai-risk-landscape.ts"
+  },
+  {
+    "id": "founder-pb7-ch01-1-4-the-risk-reward-calibration",
+    "type": "flow",
+    "title": "The risk-reward calibration",
+    "caption": "The goal is not zero AI risk — that means zero AI product. The goal is proportional risk management: higher autonomy and higher-stakes domains require…",
+    "file": "concepts-founder-pb7/chapter-01-founder-ai-risk-landscape.ts"
+  },
+  {
+    "id": "founder-pb7-ch02-2-1-what-the-eu-ai-act-is-and-when-it-applies",
+    "type": "nested",
+    "title": "What the EU AI Act is and when it applies",
+    "caption": "The EU AI Act is the world's first comprehensive horizontal AI law. It applies extraterritorially: if you place an AI system on the EU market or if its…",
+    "file": "concepts-founder-pb7/chapter-02-founder-eu-ai-act.ts"
+  },
+  {
+    "id": "founder-pb7-ch02-2-2-the-four-risk-tiers",
+    "type": "flow",
+    "title": "The four risk tiers",
+    "caption": "Four tiers define your compliance burden: unacceptable (banned outright), high-risk (conformity assessment and ongoing obligations), limited risk…",
+    "file": "concepts-founder-pb7/chapter-02-founder-eu-ai-act.ts"
+  },
+  {
+    "id": "founder-pb7-ch03-3-1-the-federal-ai-landscape-in-2025",
+    "type": "flow",
+    "title": "The federal AI landscape in 2025",
+    "caption": "US federal AI policy combines executive orders mandating agency AI use standards, NIST's voluntary AI Risk Management Framework, OSTP guidance, and proposed…",
+    "file": "concepts-founder-pb7/chapter-03-founder-us-ai-regulation.ts"
+  },
+  {
+    "id": "founder-pb7-ch03-3-2-ftc-scrutiny-of-ai-companies",
+    "type": "flow",
+    "title": "FTC scrutiny of AI companies",
+    "caption": "The FTC enforces against unfair and deceptive practices in AI — overclaiming capabilities, undisclosed AI use, biased outcomes causing consumer harm, and…",
+    "file": "concepts-founder-pb7/chapter-03-founder-us-ai-regulation.ts"
+  },
+  {
+    "id": "founder-pb7-ch04-4-1-when-hallucination-becomes-legal-liability",
+    "type": "flow",
+    "title": "When hallucination becomes legal liability",
+    "caption": "Hallucination becomes legal liability when AI outputs influence consequential decisions — legal advice, medical guidance, financial recommendations,…",
+    "file": "concepts-founder-pb7/chapter-04-founder-hallucination-bias-liability.ts"
+  },
+  {
+    "id": "founder-pb7-ch04-4-2-real-cases-what-has-happened-to-companies-al",
+    "type": "flow",
+    "title": "Real cases — what has happened to companies already",
+    "caption": "AI liability is not theoretical. Companies have faced FTC settlements, tribunal liability, EEOC investigations, class action exploration, regulatory fines,…",
+    "file": "concepts-founder-pb7/chapter-04-founder-hallucination-bias-liability.ts"
+  },
+  {
+    "id": "founder-pb7-ch05-5-2-the-minimum-viable-governance-stack-for-a-st",
+    "type": "nested",
+    "title": "The minimum viable governance stack for a startup",
+    "caption": "Minimum viable AI governance has four components: (1) risk register with scored residual risk, (2) pre-launch safety checklist with enforcement, (3) logging…",
+    "file": "concepts-founder-pb7/chapter-05-founder-ai-governance-framework.ts"
+  },
+  {
+    "id": "founder-pb7-ch05-5-3-red-teaming-your-own-ai-product",
+    "type": "nested",
+    "title": "Red-teaming your own AI product",
+    "caption": "Red-teaming is adversarial testing: deliberately probing your AI for harm, jailbreaks, bias, hallucination, and policy violations. It is not standard QA —…",
+    "file": "concepts-founder-pb7/chapter-05-founder-ai-governance-framework.ts"
+  },
+  {
+    "id": "founder-pb8-ch01-1-3-the-three-cost-levers-at-scale",
+    "type": "flow",
+    "title": "The three cost levers at scale",
+    "caption": "Before you call your API vendor or raise prices, exhaust three levers: route requests to the cheapest model that meets quality bar, compress prompts without…",
+    "file": "concepts-founder-pb8/chapter-01-founder-infrastructure-cost-curves.ts"
+  },
+  {
+    "id": "founder-pb8-ch01-1-5-caching-strategies-for-ai-products",
+    "type": "comparison",
+    "title": "Caching strategies for AI products",
+    "caption": "Caching in AI products is not like caching static web pages. You choose what to cache (exact matches, semantic neighbours, precomputed embeddings), how long…",
+    "file": "concepts-founder-pb8/chapter-01-founder-infrastructure-cost-curves.ts"
+  },
+  {
+    "id": "founder-pb8-ch02-2-1-why-model-performance-degrades-at-scale",
+    "type": "flow",
+    "title": "Why model performance degrades at scale",
+    "caption": "Model performance degrades at scale because production traffic is not your test set. New user segments, novel inputs, adversarial behaviour, and…",
+    "file": "concepts-founder-pb8/chapter-02-founder-model-performance-at-scale.ts"
+  },
+  {
+    "id": "founder-pb8-ch02-2-2-distribution-shift-the-silent-killer",
+    "type": "flow",
+    "title": "Distribution shift — the silent killer",
+    "caption": "Distribution shift is the gradual or sudden divergence between training/eval data and production traffic. It is silent because aggregate metrics can look…",
+    "file": "concepts-founder-pb8/chapter-02-founder-model-performance-at-scale.ts"
+  },
+  {
+    "id": "founder-pb8-ch03-3-1-why-data-quality-degrades-as-you-scale",
+    "type": "flow",
+    "title": "Why data quality degrades as you scale",
+    "caption": "Data quality degrades at scale because volume amplifies noise. More users generate more edge cases, more labelling errors, more adversarial inputs, and more…",
+    "file": "concepts-founder-pb8/chapter-03-founder-data-quality-at-scale.ts"
+  },
+  {
+    "id": "founder-pb8-ch03-3-2-training-data-contamination",
+    "type": "flow",
+    "title": "Training data contamination",
+    "caption": "Training data contamination occurs when incorrect, adversarial, biased, or out-of-policy examples enter fine-tuning or retraining pipelines — degrading…",
+    "file": "concepts-founder-pb8/chapter-03-founder-data-quality-at-scale.ts"
+  },
+  {
+    "id": "founder-pb8-ch04-4-1-the-ai-team-structure-that-works-at-10-peopl",
+    "type": "flow",
+    "title": "The AI team structure that works at 10 people and fails at 50",
+    "caption": "At 10 people, a centralised AI team with direct founder access ships fast. At 50, the same structure creates bottlenecks, context loss, and misaligned…",
+    "file": "concepts-founder-pb8/chapter-04-founder-organisational-scaling-ai.ts"
+  },
+  {
+    "id": "founder-pb8-ch04-4-2-when-to-move-from-a-centralised-ai-team-to-e",
+    "type": "flow",
+    "title": "When to move from a centralised AI team to embedded AI engineers",
+    "caption": "Move toward embedded AI engineers when you have multiple distinct AI product surfaces, domain-specific model requirements, and a central team that cannot…",
+    "file": "concepts-founder-pb8/chapter-04-founder-organisational-scaling-ai.ts"
+  },
+  {
+    "id": "founder-pb8-ch05-5-1-the-four-unit-economics-inflection-points-in",
+    "type": "flow",
+    "title": "The four unit economics inflection points in AI product scaling",
+    "caption": "AI products hit four predictable inflection points: (1) API volume unlocks negotiation leverage, (2) usage crosses build-vs-buy threshold for self-hosting,…",
+    "file": "concepts-founder-pb8/chapter-05-founder-unit-economics-inflection.ts"
+  },
+  {
+    "id": "founder-pb8-ch05-5-2-the-model-negotiation-threshold",
+    "type": "flow",
+    "title": "The model negotiation threshold",
+    "caption": "API negotiation leverage typically begins at meaningful committed volume — often hundreds of millions of tokens monthly or equivalent spend tiers. Approach…",
+    "file": "concepts-founder-pb8/chapter-05-founder-unit-economics-inflection.ts"
+  }
+]

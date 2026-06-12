@@ -60,11 +60,11 @@ export const chapter07BlThirdPartyAiRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch07-7-1-why-third-party-ai-risk-is-different",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "Why Third-Party AI Risk Is Different",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Standard vendor risk management covers service availability, data security, and financial stability. Third-party AI risk adds four AI-specific dimensions:…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -114,11 +114,11 @@ export const chapter07BlThirdPartyAiRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch07-7-2-third-party-ai-due-diligence",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Third-Party AI Due Diligence",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Third-party AI due diligence requires seven questions beyond standard software procurement assessment: training data provenance, bias testing results,…",
     }),
     buildSection({
       number: "7.3",

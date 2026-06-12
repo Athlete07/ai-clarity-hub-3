@@ -60,11 +60,11 @@ export const chapter04BlAiInSalesRevenue = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch04-4-1-the-sales-ai-landscape-what-drives-revenue",
       type: "comparison",
-      title: "AI by Function",
+      title: "The Sales AI Landscape — What Drives Revenue",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "Sales AI delivers revenue impact in three zones: pipeline quality (better leads), forecast accuracy (better decisions), and rep productivity (better time…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -114,11 +114,11 @@ export const chapter04BlAiInSalesRevenue = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch04-4-2-ai-in-lead-generation-and-prospecting",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI in Lead Generation and Prospecting",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI prospecting tools that identify buyers showing active purchase intent signals — rather than matching an ICP demographic profile — produce materially…",
     }),
     buildSection({
       number: "4.3",

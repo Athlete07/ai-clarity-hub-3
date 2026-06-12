@@ -61,11 +61,11 @@ export const chapter11BlStakeholderManagementAiPolitics = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb2-ch11-11-1-why-ai-investment-is-inherently-political",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why AI Investment Is Inherently Political",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI investment is politically charged because it threatens established power structures, creates winners and losers within organisations, requires…",
     }),
     sectionWithDiagram({
       number: "11.2",
@@ -115,11 +115,11 @@ export const chapter11BlStakeholderManagementAiPolitics = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch11-11-2-building-the-stakeholder-map",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Building the Stakeholder Map",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A stakeholder map for an AI programme identifies: who has formal authority over investment decisions, who has informal influence over those with authority,…",
     }),
     buildSection({
       number: "11.3",

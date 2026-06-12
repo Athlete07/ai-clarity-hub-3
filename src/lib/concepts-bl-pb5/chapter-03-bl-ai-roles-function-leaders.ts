@@ -60,11 +60,11 @@ export const chapter03BlAiRolesFunctionLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "bl-pb5-ch03-3-1-the-new-ai-roles-every-function-leader-needs",
       type: "flow",
-      title: "AI Talent Strategy Sequence",
+      title: "The new AI roles every function leader needs to know",
       caption:
-        "Assess skills gap → upskill vs hire → prove pilot → scale team. Talent strategy follows use-case maturity.",
+        "AI is not just changing what functions do — it is changing what roles functions need. Understanding the new role landscape is a function leader's…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -114,11 +114,11 @@ export const chapter03BlAiRolesFunctionLeaders = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "bl-pb5-ch03-3-2-prompt-engineers-and-ai-workflow-designers",
       type: "flow",
-      title: "AI Talent Strategy",
+      title: "Prompt engineers and AI workflow designers",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "Prompt engineers and AI workflow designers are the roles most directly responsible for the quality of AI output in a business function. Prompt engineers…",
     }),
     buildSection({
       number: "3.3",

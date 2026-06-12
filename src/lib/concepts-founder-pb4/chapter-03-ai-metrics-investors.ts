@@ -61,11 +61,11 @@ export const chapter03AiMetricsInvestors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-vc-diligence-stack",
+      id: "founder-pb4-ch03-3-1-why-standard-saas-metrics-are-insufficient-f",
       type: "flow",
-      title: "Investor Diligence Stack",
+      title: "Why standard SaaS metrics are insufficient for AI companies",
       caption:
-        "Team → data moat → unit economics → timing → risk. The five lenses on every AI term sheet.",
+        "MRR, NRR, and CAC payback are necessary but insufficient for AI companies. Investors need leading indicators that the product compounds — not just grows.…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03AiMetricsInvestors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb4-ch03-3-2-model-improvement-rate",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Model improvement rate",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Model improvement rate measures whether your product intelligence compounds over time — via held-out eval scores, production quality metrics, and override…",
     }),
     buildSection({
       number: "3.3",

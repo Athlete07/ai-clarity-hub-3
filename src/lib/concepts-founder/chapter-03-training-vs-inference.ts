@@ -63,9 +63,9 @@ export const chapter03TrainingVsInference = buildChapter({
       kind: "diagram",
       id: "founder-training-inference-split",
       type: "comparison",
-      title: "Training CapEx vs Inference OpEx",
+      title: "Training cost",
       caption:
-        "Training manufactures capability once; inference meters it on every user action. Founders who confuse the two misallocate capital and discover margin crisis at scale.",
+        "Training is the massive offline investment that produces a frozen model: GPU clusters, months of calendar time, and irrecoverable spend if the run fails. It…",
     }),
     buildSection({
       number: "3.2",
@@ -164,9 +164,9 @@ export const chapter03TrainingVsInference = buildChapter({
       kind: "diagram",
       id: "founder-unit-economics-trap",
       type: "flow",
-      title: "The Unit Economics Trap",
+      title: "The unit economics trap",
       caption:
-        "Flat pricing plus unbounded inference turns viral adoption into a COGS crisis — model this before launch, not after the AWS bill.",
+        "The unit economics trap is shipping an AI feature customers love whose inference cost per user exceeds the revenue that user generates. Viral adoption makes…",
     }),
     sectionWithDiagram({
       number: "3.4",
@@ -218,9 +218,9 @@ export const chapter03TrainingVsInference = buildChapter({
       kind: "diagram",
       id: "founder-api-vs-own",
       type: "comparison",
-      title: "API Dependency vs Model Ownership",
+      title: "API dependency vs model ownership",
       caption:
-        "APIs trade margin for speed at low volume; self-hosting trades operational burden for wholesale economics at high volume.",
+        "API dependency means paying retail per-token prices with zero infrastructure overhead. Model ownership means renting GPUs 24/7 and hiring ML ops — but…",
     }),
     buildSection({
       number: "3.5",
@@ -319,9 +319,9 @@ export const chapter03TrainingVsInference = buildChapter({
       kind: "diagram",
       id: "founder-inference-optimisation",
       type: "flow",
-      title: "Inference Cost Optimisation Levers",
+      title: "Cost optimisation levers",
       caption:
-        "Routing, compression, caching, and distillation can cut COGS 40–80% — invest before crisis, not during a bridge round.",
+        "Inference cost is not fixed. Caching, model routing, prompt compression, batching, and distillation can cut COGS 40–80% without killing the feature — if you…",
     }),
     buildSection({
       number: "3.7",

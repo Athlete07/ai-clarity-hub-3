@@ -61,11 +61,11 @@ export const chapter04AiMarketStructure = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-pb3-ch04-4-1-the-ai-value-chain-where-the-money-flows-and",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "The AI value chain — where the money flows and where it doesn't",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "Foundation models capture platform economics and R&D scale. Infrastructure captures serving, retrieval, and observability rents. Applications capture…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04AiMarketStructure = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb3-ch04-4-2-why-the-application-layer-is-both-the-opport",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Why the application layer is both the opportunity and the danger zone",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Applications touch budgets and outcomes — where customers pay. They also sit in the crosshairs of suites and foundation providers adding features.…",
     }),
     buildSection({
       number: "4.3",

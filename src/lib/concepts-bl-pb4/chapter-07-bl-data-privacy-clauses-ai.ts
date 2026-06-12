@@ -61,11 +61,11 @@ export const chapter07BlDataPrivacyClausesAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb4-ch07-7-1-how-ai-changes-the-gdpr-landscape",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "How AI changes the GDPR landscape",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Three AI-specific GDPR obligations do not exist in standard software contracts: automated decision-making under Article 22 (when AI makes decisions about…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -115,11 +115,11 @@ export const chapter07BlDataPrivacyClausesAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch07-7-2-the-data-processing-agreement-for-ai-vendors",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Data Processing Agreement for AI vendors",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Article 28 GDPR requires a data processing agreement with every vendor who processes personal data on your behalf. For AI vendors, the DPA must cover…",
     }),
     buildSection({
       number: "7.3",

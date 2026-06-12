@@ -19,6 +19,7 @@ import {
 } from "@/lib/executive-kb";
 import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
+import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
 import { brandOgMeta } from "@/lib/brand";
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 
@@ -54,9 +55,15 @@ const EXECUTIVE_KBS_BY_ROLE: Record<RoleId, ExecutiveKb[]> = {
   pm: EXECUTIVE_KBS,
   founder: FOUNDER_EXECUTIVE_KBS,
   "business-leader": BUSINESS_LEADER_EXECUTIVE_KBS,
+  marketer: MARKETER_EXECUTIVE_KBS,
 };
 
-const ALL_KBS = [...EXECUTIVE_KBS, ...FOUNDER_EXECUTIVE_KBS, ...BUSINESS_LEADER_EXECUTIVE_KBS];
+const ALL_KBS = [
+  ...EXECUTIVE_KBS,
+  ...FOUNDER_EXECUTIVE_KBS,
+  ...BUSINESS_LEADER_EXECUTIVE_KBS,
+  ...MARKETER_EXECUTIVE_KBS,
+];
 const TOTAL_CHAPTERS = ALL_KBS.reduce((n, kb) => n + kb.sequence.length, 0);
 
 function ExecutiveKbPage() {
@@ -163,7 +170,7 @@ function ExecutiveKbPage() {
         <section className="border-y border-border/80 bg-muted/30">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-border/60 sm:grid-cols-4">
             <StatCell value={String(ALL_KBS.length)} label="Executive KBs" />
-            <StatCell value="3" label="Role tracks" />
+            <StatCell value={String(ROLES.length)} label="Role tracks" />
             <StatCell value={`${TOTAL_CHAPTERS}+`} label="Chapters" />
             <StatCell value="$0" label="Forever" />
           </div>
@@ -173,7 +180,7 @@ function ExecutiveKbPage() {
           {role === null ? (
             <>
               <p className="section-label mb-6">Compare tracks</p>
-              <div className="grid gap-4 lg:grid-cols-3">
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {ROLES.map((r, i) => {
                 const Icon = r.icon;
                 const rTheme = ROLE_THEMES[r.id];

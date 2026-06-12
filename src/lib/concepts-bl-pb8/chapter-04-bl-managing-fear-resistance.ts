@@ -61,11 +61,11 @@ export const chapter04BlManagingFearResistance = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch04-4-1-understanding-where-resistance-actually-come",
       type: "flow",
-      title: "AI Change Management",
+      title: "Understanding where resistance actually comes from",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI resistance has five distinct root sources: job security fear, professional identity threat, competence anxiety, trust deficit in leadership, and genuine…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04BlManagingFearResistance = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
-      type: "flow",
-      title: "Evaluation Framework",
+      id: "bl-pb8-ch04-4-2-the-fear-spectrum-in-ai-transformation",
+      type: "comparison",
+      title: "The fear spectrum in AI transformation",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI fears exist on a spectrum from existential (AI will make my career obsolete permanently) to practical (AI will change my current task and I might make…",
     }),
     buildSection({
       number: "4.3",

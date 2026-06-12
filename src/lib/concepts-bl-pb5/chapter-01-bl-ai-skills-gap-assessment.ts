@@ -107,11 +107,11 @@ export const chapter01BlAiSkillsGapAssessment = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb5-ch01-1-2-the-four-dimensions-of-ai-literacy",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The four dimensions of AI literacy",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "AI literacy is not a single competency — it is a profile across four dimensions, and each dimension requires a different type of intervention. Conflating…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -161,11 +161,11 @@ export const chapter01BlAiSkillsGapAssessment = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "bl-pb5-ch01-1-3-skills-gap-assessment-methods-and-tools",
       type: "flow",
-      title: "AI Talent Strategy",
+      title: "Skills gap assessment methods and tools",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "A skills gap assessment uses four complementary methods: self-report surveys for scale and speed, role-capability analyses for precision, tool usage audits…",
     }),
     buildSection({
       number: "1.4",

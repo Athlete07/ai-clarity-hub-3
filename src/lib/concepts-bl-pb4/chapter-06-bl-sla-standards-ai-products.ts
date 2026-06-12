@@ -61,11 +61,11 @@ export const chapter06BlSlaStandardsAiProducts = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch06-6-1-why-standard-slas-fail-for-ai-products",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "Why standard SLAs fail for AI products",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "Standard SLAs measure availability (is the system up?), response time (how fast does it respond?), and support tiers (how quickly does the vendor respond to…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -115,11 +115,11 @@ export const chapter06BlSlaStandardsAiProducts = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch06-6-2-accuracy-sla-metrics-thresholds-and-measurem",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Accuracy SLA: metrics, thresholds, and measurement",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "An accuracy SLA requires four elements: the metric (F1 score, precision, recall, MAPE, or agreement rate), the threshold (minimum acceptable value), the…",
     }),
     buildSection({
       number: "6.3",

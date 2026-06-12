@@ -61,11 +61,11 @@ export const chapter04BlRedFlagsAiVendorPitches = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch04-4-1-the-demo-to-production-gap",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "The demo-to-production gap",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "AI vendor demos are designed to show the model at its best: curated data, optimal prompts, pre-loaded context, and a test environment tuned for the demo…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04BlRedFlagsAiVendorPitches = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch04-4-2-benchmark-manipulation-and-statistical-red-f",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Benchmark manipulation and statistical red flags",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI vendor benchmarks are almost universally presented in the most favourable possible light: cherry-picked tasks, optimal configurations, proprietary…",
     }),
     buildSection({
       number: "4.3",

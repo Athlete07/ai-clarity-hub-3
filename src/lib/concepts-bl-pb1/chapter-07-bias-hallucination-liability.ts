@@ -60,11 +60,11 @@ export const chapter07BlBiasHallucinationLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb1-ch07-7-1-what-ai-bias-means-for-business-leaders",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "What AI Bias Means for Business Leaders",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI bias means the AI system produces systematically different outcomes for different groups in ways that are unfair, harmful, or illegal. It is not…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -114,11 +114,11 @@ export const chapter07BlBiasHallucinationLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb1-ch07-7-2-how-bias-enters-ai-systems",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "How Bias Enters AI Systems",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI bias enters through four pathways: historical data bias, measurement bias, label bias, and sampling bias. Each pathway has a different source, a…",
     }),
     buildSection({
       number: "7.3",

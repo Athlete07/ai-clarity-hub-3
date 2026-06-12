@@ -155,11 +155,11 @@ export const chapter01FounderInfrastructureCostCurves = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-scaling-inflection",
+      id: "founder-pb8-ch01-1-3-the-three-cost-levers-at-scale",
       type: "flow",
-      title: "Infrastructure Cost Inflection Points",
+      title: "The three cost levers at scale",
       caption:
-        "API defaults work at 1K users; routing and caching become mandatory at 100K. Model your cost curve at each order of magnitude.",
+        "Before you call your API vendor or raise prices, exhaust three levers: route requests to the cheapest model that meets quality bar, compress prompts without…",
     }),
     buildSection({
       number: "1.4",
@@ -256,11 +256,11 @@ export const chapter01FounderInfrastructureCostCurves = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch8-cost-latency-frontier",
+      id: "founder-pb8-ch01-1-5-caching-strategies-for-ai-products",
       type: "comparison",
-      title: "Cost-Latency-Quality Trade-offs at Scale",
+      title: "Caching strategies for AI products",
       caption:
-        "Different request types belong at different points on the frontier. Routing is a margin strategy, not just an engineering optimisation.",
+        "Caching in AI products is not like caching static web pages. You choose what to cache (exact matches, semantic neighbours, precomputed embeddings), how long…",
     }),
     buildSection({
       number: "1.6",

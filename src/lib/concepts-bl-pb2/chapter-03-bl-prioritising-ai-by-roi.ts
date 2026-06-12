@@ -61,11 +61,11 @@ export const chapter03BlPriorisingAiByRoi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb2-ch03-3-1-why-ai-roi-is-hard",
       type: "flow",
-      title: "AI Business Case Flow",
+      title: "Why AI ROI Is Hard",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "AI investment sits between R&D and operational technology — it carries uncertainty profiles that conventional NPV models were not designed for. Benefit…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03BlPriorisingAiByRoi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb2-ch03-3-2-building-a-scoring-model",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Building a Scoring Model",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "A scoring model forces explicit trade-off decisions before anyone is invested in a specific initiative. It replaces opinion-based prioritisation with…",
     }),
     buildSection({
       number: "3.3",

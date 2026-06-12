@@ -60,11 +60,11 @@ export const chapter07BlAttributionProblemAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch07-7-1-why-attribution-is-the-hardest-ai-roi-proble",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Why attribution is the hardest AI ROI problem",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "AI attribution is structurally harder than standard investment attribution for three reasons: AI works simultaneously with other changes (confounding), AI…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -114,11 +114,11 @@ export const chapter07BlAttributionProblemAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch07-7-2-types-of-attribution-challenges",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Types of attribution challenges",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Attribution challenges fall into five patterns: concurrent improvement (other changes happening at the same time), selection bias (the people or processes…",
     }),
     buildSection({
       number: "7.3",

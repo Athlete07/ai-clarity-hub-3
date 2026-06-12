@@ -108,11 +108,11 @@ export const chapter04FounderAiOrgDesign = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-org-design-stages",
+      id: "founder-pb5-ch04-4-2-the-ai-centre-of-excellence-model",
       type: "flow",
-      title: "AI Org Design by Stage",
+      title: "The AI centre of excellence model",
       caption:
-        "Seed generalist → Series A application stack → Series B platform team → scale governance. Org design follows product maturity.",
+        "A Centre of Excellence (CoE) sets standards, trains the org, and builds shared tools — but does not own all AI delivery. CoE as sole delivery team creates…",
     }),
     sectionWithDiagram({
       number: "4.3",
@@ -162,11 +162,11 @@ export const chapter04FounderAiOrgDesign = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-org-design-stages",
+      id: "founder-pb5-ch04-4-3-how-ai-teams-interface-with-product-teams",
       type: "flow",
-      title: "AI Org by Stage",
+      title: "How AI teams interface with product teams",
       caption:
-        "Generalist → application stack → platform → governance as the company scales.",
+        "Good interface: shared roadmap, joint success metrics (task completion, override rate), AI engineers in discovery, PMs in eval review. Bad interface: AI…",
     }),
     buildSection({
       number: "4.4",

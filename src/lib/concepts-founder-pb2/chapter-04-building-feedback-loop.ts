@@ -59,13 +59,13 @@ const section41 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
+      kind: "diagram",
     id: "ch4-feedback-cycle",
     type: "flow",
-    title: "The AI Feedback Loop",
+    title: "What a feedback loop is in an AI product",
     caption:
-      "Predict → react → label → improve — the cycle that separates compounding AI businesses from static features.",
-  },
+        "A feedback loop is a closed system: the product generates predictions, users react, reactions become labelled data, data improves the model, and the…",
+    },
 );
 
 export const chapter04BuildingFeedbackLoop = buildChapter({

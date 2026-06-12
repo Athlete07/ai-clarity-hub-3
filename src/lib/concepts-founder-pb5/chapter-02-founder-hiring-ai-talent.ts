@@ -61,11 +61,11 @@ export const chapter02FounderHiringAiTalent = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
+      id: "founder-pb5-ch02-2-1-the-ai-talent-market-in-2025",
       type: "flow",
-      title: "AI Talent Strategy",
+      title: "The AI talent market in 2025",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "Top AI talent competes with OpenAI, Google, Anthropic, and well-funded startups offering $300K–$500K+ total comp. You win on problem, equity upside, and…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02FounderHiringAiTalent = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb5-ch02-2-2-how-to-evaluate-ai-candidates-as-a-non-techn",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "How to evaluate AI candidates as a non-technical founder",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "You cannot evaluate model architecture — but you can evaluate: shipped work, decision reasoning, communication, and how they handle failure modes. Four…",
     }),
     buildSection({
       number: "2.3",

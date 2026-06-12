@@ -59,13 +59,13 @@ const section13 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
+      kind: "diagram",
     id: "ch1-dl-flow",
     type: "flow",
-    title: "Feature Extraction in Deep Learning",
+    title: "What is Deep Learning",
     caption:
-      "Deep learning models build complex concepts from simple ones through sequential layers — the capability unlock behind the current AI wave, and the cost class behind your GPU line item.",
-  },
+        "Deep learning is the subset of ML that cracked language, vision, and speech — and it is also the most expensive, least explainable, and most API-dependent…",
+    },
 );
 
 const section14 = insertDiagram(
@@ -117,13 +117,13 @@ const section14 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
+      kind: "diagram",
     id: "ch1-ai-hierarchy",
     type: "nested",
-    title: "The AI, ML, and DL Hierarchy",
+    title: "The nested hierarchy",
     caption:
-      "Every deep learning system is machine learning, and every machine learning system is AI — but the reverse is never true. Investors hear this distinction as a fluency test.",
-  },
+        "AI ⊃ ML ⊃ Deep Learning. Every deep learning system is machine learning; every ML system is AI. The reverse is never true. Founders who hold this precisely…",
+    },
 );
 
 const section15 = insertDiagram(
@@ -175,13 +175,13 @@ const section15 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
-    id: "ch1-paradigm-shift",
+      kind: "diagram",
+    id: "founder-ch01-1-5-rule-based-systems-vs-learned-systems",
     type: "comparison",
-    title: "Rules vs Learned Systems",
+    title: "Rule-based systems vs learned systems",
     caption:
-      "Traditional software requires humans to write rules; machine learning requires humans to provide examples so the system discovers rules. The scaling economics are opposite.",
-  },
+        "If you could write the behaviour as a list of if-statements, it is not machine learning — regardless of the slide deck. Rules scale with engineering…",
+    },
 );
 
 export const chapter01AiVsMlVsDeepLearning = buildChapter({

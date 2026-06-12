@@ -60,11 +60,11 @@ export const chapter09BlResistanceToAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb5-ch09-9-1-the-sources-of-ai-resistance-in-organisation",
       type: "flow",
-      title: "AI Change Management",
+      title: "The sources of AI resistance in organisations",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI resistance originates from three sources that require different responses: fear (job security, status loss, uncertainty), capability (inability to use AI…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -114,11 +114,11 @@ export const chapter09BlResistanceToAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
-      type: "flow",
-      title: "Evaluation Framework",
+      id: "bl-pb5-ch09-9-2-fear-based-vs-capability-based-resistance",
+      type: "comparison",
+      title: "Fear-based vs capability-based resistance",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Distinguishing fear-based from capability-based resistance requires a structured diagnostic conversation, not assumption. The two types often look identical…",
     }),
     buildSection({
       number: "9.3",

@@ -60,11 +60,11 @@ export const chapter09BlCrossFunctionalAiDependencies = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb7-ch09-9-1-why-ai-creates-cross-functional-dependencies",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why AI Creates Cross-Functional Dependencies",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI deployments create dependencies between functions that conventional software implementations do not — because AI value is proportional to data quality…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -114,11 +114,11 @@ export const chapter09BlCrossFunctionalAiDependencies = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch09-9-2-shared-data-infrastructure-and-the-customer-",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Shared Data Infrastructure and the Customer Data Foundation",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Customer data is the foundation of AI deployments across Marketing, Sales, Customer Service, Finance, and Product simultaneously. Building and governing a…",
     }),
     buildSection({
       number: "9.3",

@@ -31,7 +31,11 @@ function ThemeToggle() {
 
 export function Logo({ compact = false }: { compact?: boolean }) {
   return (
-    <Link to="/" className="text-foreground transition-opacity hover:opacity-90">
+    <Link
+      to="/"
+      className="flex items-center text-foreground transition-opacity hover:opacity-90"
+      aria-label={compact ? undefined : "FactorBeam home"}
+    >
       <FactorBeamLogo context={compact ? "compact" : "header"} />
     </Link>
   );

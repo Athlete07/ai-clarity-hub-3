@@ -61,11 +61,11 @@ export const chapter02FounderApiDependencyRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "founder-pb6-ch02-2-1-what-api-dependency-actually-means-for-your-",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "What API dependency actually means for your business",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "API dependency means your core product capability runs on infrastructure you do not control — pricing, availability, model behaviour, terms of use, and…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02FounderApiDependencyRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb6-ch02-2-2-the-four-vendor-risk-scenarios",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The four vendor risk scenarios",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Plan explicitly for four scenarios: vendor raises price, vendor deprecates your model, vendor changes terms (data use, rate limits, geographic access), and…",
     }),
     buildSection({
       number: "2.3",

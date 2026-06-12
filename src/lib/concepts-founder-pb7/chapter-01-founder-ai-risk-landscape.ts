@@ -108,11 +108,11 @@ export const chapter01FounderAiRiskLandscape = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "founder-pb7-ch01-1-2-how-ai-risk-materialises-for-startups",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "How AI risk materialises for startups",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "AI incidents compress into days what traditional software bugs take months to surface. The typical timeline: user discovers failure → social amplification →…",
     }),
     buildSection({
       number: "1.3",
@@ -209,11 +209,11 @@ export const chapter01FounderAiRiskLandscape = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-risk-governance",
+      id: "founder-pb7-ch01-1-4-the-risk-reward-calibration",
       type: "flow",
-      title: "AI Risk Governance Flow",
+      title: "The risk-reward calibration",
       caption:
-        "Map use cases → classify risk tier → implement controls → monitor → report. Governance is a fundraising and enterprise sales requirement.",
+        "The goal is not zero AI risk — that means zero AI product. The goal is proportional risk management: higher autonomy and higher-stakes domains require…",
     }),
     buildSection({
       number: "1.5",

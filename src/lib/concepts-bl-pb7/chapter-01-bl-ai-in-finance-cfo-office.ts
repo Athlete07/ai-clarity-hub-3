@@ -107,11 +107,11 @@ export const chapter01BlAiInFinanceCfoOffice = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb7-ch01-1-2-ai-powered-forecasting-and-fp-a",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "AI-Powered Forecasting and FP&A",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "ML forecasting is the single highest-value AI application for most finance functions. It replaces assumption-heavy spreadsheet models with data-driven…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -161,11 +161,11 @@ export const chapter01BlAiInFinanceCfoOffice = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch01-1-3-ai-in-audit-and-internal-controls",
       type: "comparison",
-      title: "AI by Function",
+      title: "AI in Audit and Internal Controls",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "AI shifts audit from periodic sampling to continuous transaction monitoring, catching anomalies that a sample-based approach structurally misses. The CFO's…",
     }),
     buildSection({
       number: "1.4",

@@ -60,11 +60,11 @@ export const chapter08BlAiInvestmentSizing = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb3-ch08-8-1-how-to-size-an-ai-investment-correctly",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "How to size an AI investment correctly",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI investment size is determined by four inputs: the value of the problem being solved (the ceiling), organisational absorptive capacity (the practical…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -114,11 +114,11 @@ export const chapter08BlAiInvestmentSizing = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch08-8-2-portfolio-approach-to-ai-investments",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Portfolio approach to AI investments",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Managing AI as a portfolio rather than as a collection of independent projects produces better resource allocation, better risk diversification, and better…",
     }),
     buildSection({
       number: "8.3",

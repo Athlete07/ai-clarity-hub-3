@@ -61,11 +61,11 @@ export const chapter10BlScalingPilotEnterprise = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-scaling-inflection",
+      id: "bl-pb4-ch10-10-1-why-pilot-success-does-not-guarantee-enterp",
       type: "flow",
-      title: "Scaling Inflection Points",
+      title: "Why pilot success does not guarantee enterprise success",
       caption:
-        "Cost and architecture choices compound at each order-of-magnitude in usage.",
+        "Pilot success and enterprise success are different outcomes driven by different variables. Six failure modes account for most AI enterprise scaling…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -115,11 +115,11 @@ export const chapter10BlScalingPilotEnterprise = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch10-10-2-technical-scaling-infrastructure-integratio",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Technical scaling: infrastructure, integration, and performance at volume",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Technical scaling from pilot to enterprise requires three infrastructure changes that pilots rarely reveal: compute and API capacity to handle enterprise…",
     }),
     buildSection({
       number: "10.3",

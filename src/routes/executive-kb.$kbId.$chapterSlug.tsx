@@ -351,7 +351,7 @@ function ConceptPage() {
             <span className="nav-link hidden text-muted-foreground md:inline">
               Ch. {displayNum}/{kbSlugs.length} · {pct}%
             </span>
-            <Link to="/" className="lg:hidden" aria-label={BRAND.name}>
+            <Link to="/" className="flex items-center lg:hidden" aria-label={BRAND.name}>
               <FactorBeamLogo context="icon" />
             </Link>
           </div>

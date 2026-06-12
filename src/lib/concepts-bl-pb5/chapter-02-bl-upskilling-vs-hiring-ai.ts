@@ -60,11 +60,11 @@ export const chapter02BlUpskillingVsHiringAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-hiring-sequence",
-      type: "flow",
-      title: "AI Talent Strategy",
+      id: "bl-pb5-ch02-2-1-the-upskill-vs-hire-decision-framework",
+      type: "comparison",
+      title: "The upskill vs hire decision framework",
       caption:
-        "Assess gap → upskill or hire → prove pilot → scale team.",
+        "The upskill vs hire decision should be driven by four variables: the type of capability gap (new knowledge, new skill, or entirely new role), the time…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -114,11 +114,11 @@ export const chapter02BlUpskillingVsHiringAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb5-ch02-2-2-when-upskilling-is-the-right-answer",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "When upskilling is the right answer",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Upskilling outperforms hiring when the gap is in working knowledge or practitioner skill (not specialist technical roles), when the deployment timeline…",
     }),
     buildSection({
       number: "2.3",

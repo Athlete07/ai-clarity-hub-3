@@ -63,9 +63,9 @@ export const chapter01FounderBuildBuyPartnerFramework = buildChapter({
       kind: "diagram",
       id: "founder-build-buy-partner",
       type: "tree",
-      title: "Build vs Buy Decision",
+      title: "What build vs buy actually means in an AI context",
       caption:
-        "Data advantage and task shape determine build, buy, or partner — not engineering preference.",
+        "In AI, 'build' spans pretraining a foundation model to assembling RAG and agents on rented weights. 'Buy' spans raw API tokens to full vertical SaaS.…",
     }),
     buildSection({
       number: "1.2",
@@ -164,9 +164,9 @@ export const chapter01FounderBuildBuyPartnerFramework = buildChapter({
       kind: "diagram",
       id: "founder-build-buy-partner",
       type: "tree",
-      title: "Build vs Buy vs Partner Decision Tree",
+      title: "When building is the right answer",
       caption:
-        "Proprietary data advantage and task shape determine whether you build, buy APIs, or partner — not engineering preference.",
+        "Build when the model is the moat — exclusive labelled data, regulatory barriers to third parties, unit economics that flip below API pricing at your volume,…",
     }),
     buildSection({
       number: "1.4",

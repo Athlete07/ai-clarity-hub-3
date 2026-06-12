@@ -69,11 +69,11 @@ export const chapter06BlAligningAiBusinessStrategy = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "bl-pb2-ch06-6-1-why-ai-programmes-fail-to-connect-to-strateg",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "Why AI Programmes Fail to Connect to Strategy",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "AI programmes drift from strategy through four recurring patterns: technology-first investment that starts with capability rather than strategic need;…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -123,11 +123,11 @@ export const chapter06BlAligningAiBusinessStrategy = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch06-6-2-mapping-ai-to-strategic-priorities",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Mapping AI to Strategic Priorities",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Every AI initiative in your portfolio must trace to a stated strategic priority. The tracing exercise — explicitly connecting initiative to priority to…",
     }),
     buildSection({
       number: "6.3",

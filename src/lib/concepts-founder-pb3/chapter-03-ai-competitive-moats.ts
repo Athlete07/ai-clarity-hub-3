@@ -108,11 +108,11 @@ export const chapter03AiCompetitiveMoats = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-pb3-ch03-3-2-the-five-real-moats-in-ai-businesses",
       type: "nested",
-      title: "Competitive Moat Layers",
+      title: "The five real moats in AI businesses",
       caption:
-        "Distribution, proprietary data, and model advantage — the three layers investors underwrite in AI diligence.",
+        "Durable AI companies combine at least one primary moat from the five: data others cannot get, distribution others cannot buy cheaply, switching costs others…",
     }),
     sectionWithDiagram({
       number: "3.3",
@@ -162,11 +162,11 @@ export const chapter03AiCompetitiveMoats = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "founder-pb3-ch03-3-3-data-moats-the-strongest-and-the-slowest",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "Data moats — the strongest and the slowest",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "Data moats require volume, label quality, exclusivity, and time — which is exactly why they work. Fast moats get copied; slow moats reward patience and…",
     }),
     buildSection({
       number: "3.4",

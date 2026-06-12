@@ -107,11 +107,11 @@ export const chapter01BlMeasuringAiRoi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb3-ch01-1-2-the-four-categories-of-ai-value",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The four categories of AI value",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "AI value falls into four categories: cost reduction, productivity gain, revenue growth, and risk reduction. Each requires a different measurement approach,…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -161,11 +161,11 @@ export const chapter01BlMeasuringAiRoi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch01-1-3-measurement-frameworks-before-after-control-",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Measurement frameworks: before/after, control groups, and attribution models",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "Before/after measurement is cheap and often misleading. Control groups are expensive and often impractical. Attribution models are always imperfect and…",
     }),
     buildSection({
       number: "1.4",

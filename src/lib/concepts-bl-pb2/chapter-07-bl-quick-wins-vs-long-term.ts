@@ -61,11 +61,11 @@ export const chapter07BlQuickWinsVsLongTerm = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb2-ch07-7-1-why-quick-wins-matter",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why Quick Wins Matter",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Quick wins matter because they are the only evidence that an AI programme is producing value before long-term bets mature. In the absence of evidence,…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -115,11 +115,11 @@ export const chapter07BlQuickWinsVsLongTerm = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch07-7-2-what-makes-a-good-quick-win",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "What Makes a Good Quick Win",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Not every small, fast AI deployment is a good quick win. A good quick win is measurably valuable, credibly attributable to AI (not a concurrent process…",
     }),
     buildSection({
       number: "7.3",

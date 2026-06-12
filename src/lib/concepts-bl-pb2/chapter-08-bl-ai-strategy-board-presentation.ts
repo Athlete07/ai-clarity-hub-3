@@ -61,11 +61,11 @@ export const chapter08BlAiStrategyBoardPresentation = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "bl-pb2-ch08-8-1-what-the-board-actually-wants",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "What the Board Actually Wants",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "Board members evaluating AI investment are asking four questions: Is this the right strategic bet given what we know about the competitive environment? Is…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -115,11 +115,11 @@ export const chapter08BlAiStrategyBoardPresentation = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch08-8-2-presentation-structure",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Presentation Structure",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "The most effective AI board presentation has six sections in a specific sequence: strategic context (why now), competitive imperative (why we must act),…",
     }),
     buildSection({
       number: "8.3",

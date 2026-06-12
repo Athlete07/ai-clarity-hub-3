@@ -61,11 +61,11 @@ export const chapter02BlIdentifyingAiUseCases = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb2-ch02-2-1-the-three-categories-of-ai-use-cases",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The Three Categories of AI Use Cases",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Every AI use case in a business context belongs to one of three archetypes: automation (AI replaces a human action), augmentation (AI improves a human…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02BlIdentifyingAiUseCases = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch02-2-2-running-discovery-workshops-that-work",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Running Discovery Workshops That Work",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A discovery workshop is a structured conversation, not a brainstorm. The facilitator's job is to extract problem statements from business unit leaders and…",
     }),
     buildSection({
       number: "2.3",

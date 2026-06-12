@@ -108,11 +108,11 @@ export const chapter01BlWhyAiTransformationsFail = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb8-ch01-1-2-why-leadership-misalignment-kills-ai-project",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why leadership misalignment kills AI projects",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "Leadership misalignment on AI transformation is not a personality conflict — it is a structural failure of goal-setting. When executives hold incompatible…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -162,11 +162,11 @@ export const chapter01BlWhyAiTransformationsFail = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch01-1-3-the-technology-first-trap",
       type: "flow",
-      title: "AI Change Management",
+      title: "The technology-first trap",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "Technology-first AI deployment gives people a powerful tool in a workflow that was not designed to use it. The result is predictable: the tool generates…",
     }),
     buildSection({
       number: "1.4",

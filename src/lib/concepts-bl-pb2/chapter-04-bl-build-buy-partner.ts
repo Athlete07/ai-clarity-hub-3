@@ -63,9 +63,9 @@ export const chapter04BlBuildBuyPartner = buildChapter({
       kind: "diagram",
       id: "founder-build-buy-partner",
       type: "tree",
-      title: "Build vs Buy Decision",
+      title: "The Three Paths Defined",
       caption:
-        "Data advantage and task shape determine build, buy, or partner — not engineering preference.",
+        "Build means developing AI capabilities using internal engineering and data science teams, typically from a base of open-source models or APIs. Buy means…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -115,11 +115,11 @@ export const chapter04BlBuildBuyPartner = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch04-4-2-the-true-cost-of-building",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The True Cost of Building",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Internal build estimates consistently undercount four cost categories: opportunity cost of engineering talent, the ongoing maintenance burden, the MLOps…",
     }),
     buildSection({
       number: "4.3",

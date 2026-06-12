@@ -61,11 +61,11 @@ export const chapter02BlChangeManagementFrameworkAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch02-2-1-why-ai-change-is-different-from-past-technol",
       type: "flow",
-      title: "AI Change Management",
+      title: "Why AI change is different from past technology change",
       caption:
-        "Executive sponsor → honest communication → training → champions → adoption metrics.",
+        "AI change differs from ERP, CRM, and cloud migration change in three fundamental ways: it changes what decisions humans are authorised to make, it renders…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02BlChangeManagementFrameworkAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch02-2-2-the-three-horizon-ai-change-model",
       type: "flow",
-      title: "AI Change Management",
+      title: "The three-horizon AI change model",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI transformation cannot be managed as a single change event or a series of unconnected deployments. It requires a three-horizon model: Horizon 1 (0–12…",
     }),
     buildSection({
       number: "2.3",

@@ -60,11 +60,11 @@ export const chapter08BlMeasuringAiAdoptionTeams = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb5-ch08-8-1-why-most-ai-adoption-metrics-are-vanity-metr",
       type: "flow",
-      title: "AI Change Management",
+      title: "Why most AI adoption metrics are vanity metrics",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "Vanity metrics are metrics that can improve without any improvement in business outcomes. In AI adoption, the classic vanity metrics are: number of users…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -114,11 +114,11 @@ export const chapter08BlMeasuringAiAdoptionTeams = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb5-ch08-8-2-four-categories-of-meaningful-ai-adoption-me",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Four categories of meaningful AI adoption metrics",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Meaningful AI adoption metrics fall into four categories that together describe the full adoption journey: usage depth (how extensively AI is being used in…",
     }),
     buildSection({
       number: "8.3",

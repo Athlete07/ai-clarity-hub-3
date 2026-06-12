@@ -60,11 +60,11 @@ export const chapter04BlAiAuditExplainability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch04-4-1-what-explainability-means-for-business-leade",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "What Explainability Means for Business Leaders",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Explainability in AI means being able to communicate, in terms meaningful to a non-technical person, why a specific AI system produced a specific output.…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -114,11 +114,11 @@ export const chapter04BlAiAuditExplainability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch04-4-2-the-legal-explainability-requirements",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Legal Explainability Requirements",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Three distinct legal frameworks create explainability obligations for business leaders: GDPR Article 22 (right to explanation for automated decisions), EU…",
     }),
     buildSection({
       number: "4.3",

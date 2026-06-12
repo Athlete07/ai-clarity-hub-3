@@ -61,11 +61,11 @@ export const chapter02FounderEuAiAct = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "founder-pb7-ch02-2-1-what-the-eu-ai-act-is-and-when-it-applies",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "What the EU AI Act is and when it applies",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "The EU AI Act is the world's first comprehensive horizontal AI law. It applies extraterritorially: if you place an AI system on the EU market or if its…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02FounderEuAiAct = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb7-ch02-2-2-the-four-risk-tiers",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The four risk tiers",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Four tiers define your compliance burden: unacceptable (banned outright), high-risk (conformity assessment and ongoing obligations), limited risk…",
     }),
     buildSection({
       number: "2.3",

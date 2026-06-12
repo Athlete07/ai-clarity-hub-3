@@ -156,9 +156,9 @@ export const chapter01BlAiVsMlVsDlBusinessLens = buildChapter({
       kind: "diagram",
       id: "ch1-dl-flow",
       type: "flow",
-      title: "Feature Extraction in Deep Learning",
+      title: "Deep Learning — The Unlock and the Cost",
       caption:
-        "Deep learning builds complex concepts from simple layers — the capability behind generative AI and the cost class behind GPU budgets.",
+        "Deep learning is the subset of ML that cracked language, vision, and speech — and it is also the most expensive, least explainable, and most API-dependent…",
     }),
     sectionWithDiagram({
       number: "1.4",
@@ -210,9 +210,9 @@ export const chapter01BlAiVsMlVsDlBusinessLens = buildChapter({
       kind: "diagram",
       id: "ch1-ai-hierarchy",
       type: "nested",
-      title: "The AI, ML, and DL Hierarchy",
+      title: "The Nested Hierarchy",
       caption:
-        "Every deep learning system is ML; every ML system is AI. Precision here is a budget and risk conversation, not pedantry.",
+        "Every deep learning system is machine learning. Every machine learning system is AI. The reverse is never true. Leaders who hold this precisely ask better…",
     }),
     sectionWithDiagram({
       number: "1.5",
@@ -262,11 +262,11 @@ export const chapter01BlAiVsMlVsDlBusinessLens = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch1-paradigm-shift",
+      id: "bl-pb1-ch01-1-5-rules-based-vs-learned-systems",
       type: "comparison",
-      title: "Rules vs Learned Systems",
+      title: "Rules-Based vs Learned Systems",
       caption:
-        "Rules scale with headcount; learned systems scale with data. Vendor diligence starts with which paradigm you are actually buying.",
+        "If the vendor could have written the behaviour as a list of if-then rules, it is not machine learning — regardless of the marketing. Rules scale with…",
     }),
     buildSection({
       number: "1.6",

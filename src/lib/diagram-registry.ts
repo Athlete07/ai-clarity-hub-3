@@ -53,6 +53,9 @@ export type DiagramDef =
   | ComparisonDiagramDef
   | TreeDiagramDef;
 
+import { BL_FOUNDER_DIAGRAM_REGISTRY } from "./diagram-registry-bl-founder";
+import { MARKETER_DIAGRAM_REGISTRY } from "./diagram-registry-marketer";
+
 export const DIAGRAM_REGISTRY: Record<string, DiagramDef> = {
   "ch1-feedback-loop": {
     type: "flow",
@@ -424,4 +427,6 @@ export const DIAGRAM_REGISTRY: Record<string, DiagramDef> = {
       { label: "Both", title: "RAG products", desc: "Retrieve then generate" },
     ],
   },
+  ...BL_FOUNDER_DIAGRAM_REGISTRY,
+  ...MARKETER_DIAGRAM_REGISTRY,
 };

@@ -28,7 +28,15 @@ export type ExecutiveKbId =
   | "ai-team-talent-strategy"
   | "ai-risk-compliance-governance-leaders"
   | "ai-transformation-by-function"
-  | "leading-through-ai-change";
+  | "leading-through-ai-change"
+  | "ai-fundamentals-for-marketers"
+  | "ai-powered-content-strategy"
+  | "seo-in-the-age-of-ai"
+  | "ai-paid-advertising-performance-marketing"
+  | "ai-personalisation-customer-experience"
+  | "ai-analytics-marketing-intelligence"
+  | "ai-for-growth-acquisition-retention"
+  | "ai-martech-stack-tool-selection";
 
 export type ExecutiveKbChapter = {
   slug: string;
@@ -55,12 +63,13 @@ export function withTrackOrder<T extends Omit<ExecutiveKb, "order">>(
   return executiveKbs.map((p, i) => ({ ...p, order: i + 1 }));
 }
 
-export type ExecutiveKbTrack = "pm" | "founder" | "business-leader";
+export type ExecutiveKbTrack = "pm" | "founder" | "business-leader" | "marketer";
 
 const TRACK_LABEL_PREFIX: Record<ExecutiveKbTrack, string> = {
   pm: "PM",
   founder: "Founder",
   "business-leader": "Leader",
+  marketer: "Marketer",
 };
 
 /** Display label for a KB within its role track, e.g. "PM 01", "Founder 03". */
@@ -555,6 +564,7 @@ export const EXECUTIVE_KBS: ExecutiveKb[] = withTrackOrder(PM_EXECUTIVE_KBS);
 import { canonicalChapterSlug } from "./chapter-slug-migrations";
 import { FOUNDER_EXECUTIVE_KBS } from "./executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "./executive-kb-business-leader";
+import { MARKETER_EXECUTIVE_KBS } from "./executive-kb-marketer";
 
 /** Legacy URL segments → canonical Executive KB id (no pb-N- prefix). */
 export const LEGACY_EXECUTIVE_KB_IDS: Record<string, ExecutiveKbId> = {
@@ -575,7 +585,8 @@ export const executiveKbForSlug = (slug: string): ExecutiveKb | undefined => {
   return (
     EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical)) ??
     FOUNDER_EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical)) ??
-    BUSINESS_LEADER_EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical))
+    BUSINESS_LEADER_EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical)) ??
+    MARKETER_EXECUTIVE_KBS.find((p) => p.sequence.some((c) => c.slug === canonical))
   );
 };
 
@@ -584,7 +595,8 @@ export const executiveKbById = (id: string): ExecutiveKb | undefined => {
   return (
     EXECUTIVE_KBS.find((p) => p.id === canonical) ??
     FOUNDER_EXECUTIVE_KBS.find((p) => p.id === canonical) ??
-    BUSINESS_LEADER_EXECUTIVE_KBS.find((p) => p.id === canonical)
+    BUSINESS_LEADER_EXECUTIVE_KBS.find((p) => p.id === canonical) ??
+    MARKETER_EXECUTIVE_KBS.find((p) => p.id === canonical)
   );
 };
 
@@ -629,5 +641,6 @@ export function executiveKbTrackForId(id: string): ExecutiveKbTrack {
   const canonical = canonicalExecutiveKbId(id);
   if (FOUNDER_EXECUTIVE_KBS.some((p) => p.id === canonical)) return "founder";
   if (BUSINESS_LEADER_EXECUTIVE_KBS.some((p) => p.id === canonical)) return "business-leader";
+  if (MARKETER_EXECUTIVE_KBS.some((p) => p.id === canonical)) return "marketer";
   return "pm";
 }

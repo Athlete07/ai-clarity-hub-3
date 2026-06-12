@@ -108,11 +108,11 @@ export const chapter05FounderAiGovernanceFramework = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "founder-pb7-ch05-5-2-the-minimum-viable-governance-stack-for-a-st",
       type: "nested",
-      title: "Minimum Viable AI Governance",
+      title: "The minimum viable governance stack for a startup",
       caption:
-        "Inventory → risk tier → minimum controls. Start here before building a 200-page policy nobody reads.",
+        "Minimum viable AI governance has four components: (1) risk register with scored residual risk, (2) pre-launch safety checklist with enforcement, (3) logging…",
     }),
     sectionWithDiagram({
       number: "5.3",
@@ -162,11 +162,11 @@ export const chapter05FounderAiGovernanceFramework = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "founder-pb7-ch05-5-3-red-teaming-your-own-ai-product",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "Red-teaming your own AI product",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "Red-teaming is adversarial testing: deliberately probing your AI for harm, jailbreaks, bias, hallucination, and policy violations. It is not standard QA —…",
     }),
     buildSection({
       number: "5.4",

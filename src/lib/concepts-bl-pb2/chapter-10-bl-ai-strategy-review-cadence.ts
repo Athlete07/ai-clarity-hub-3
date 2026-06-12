@@ -69,11 +69,11 @@ export const chapter10BlAiStrategyReviewCadence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-data-moat-layers",
+      id: "bl-pb2-ch10-10-1-why-ai-needs-a-faster-review-cadence",
       type: "nested",
-      title: "Strategic Moat Layers",
+      title: "Why AI Needs a Faster Review Cadence",
       caption:
-        "Distribution → proprietary data → model advantage. Strategy lives in the data loop.",
+        "Annual review cadence is designed for stable investment programmes — infrastructure, real estate, long-term capital equipment. AI investment is not stable:…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -123,11 +123,11 @@ export const chapter10BlAiStrategyReviewCadence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb2-ch10-10-2-the-quarterly-review",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Quarterly Review",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "The quarterly review is the primary governance event for an AI programme: it is where gate decisions are made, portfolio balance is assessed, vendor and…",
     }),
     buildSection({
       number: "10.3",

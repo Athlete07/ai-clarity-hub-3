@@ -61,11 +61,11 @@ export const chapter07BlPsychologicalSafetyAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb8-ch07-7-1-why-psychological-safety-is-the-prerequisite",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why psychological safety is the prerequisite for AI adoption",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI adoption failure in psychologically unsafe teams looks like resistance, disengagement, or incompetence — but is actually rational self-protection. In a…",
     }),
     sectionWithDiagram({
       number: "7.2",
@@ -115,11 +115,11 @@ export const chapter07BlPsychologicalSafetyAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch07-7-2-how-ai-erodes-psychological-safety-and-how-t",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "How AI erodes psychological safety — and how to prevent it",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI deployment can damage psychological safety in five specific ways: transparency about performance differential (AI makes some workers look less capable in…",
     }),
     buildSection({
       number: "7.3",

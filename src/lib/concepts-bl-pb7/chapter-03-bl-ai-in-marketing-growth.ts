@@ -60,11 +60,11 @@ export const chapter03BlAiInMarketingGrowth = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch03-3-1-the-marketing-ai-landscape-in-2026",
       type: "comparison",
-      title: "AI by Function",
+      title: "The Marketing AI Landscape in 2026",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "Marketing AI is not a single tool — it is a stack that spans content generation, audience intelligence, campaign optimisation, and customer journey…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -114,11 +114,11 @@ export const chapter03BlAiInMarketingGrowth = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch03-3-2-ai-in-content-creation-and-brand",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI in Content Creation and Brand",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI content tools can increase marketing content output by 3–10x while reducing production costs by 50–70%. The governance requirement is maintaining brand…",
     }),
     buildSection({
       number: "3.3",

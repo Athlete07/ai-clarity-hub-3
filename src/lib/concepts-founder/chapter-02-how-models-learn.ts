@@ -265,22 +265,25 @@ export const chapter02HowModelsLearn = buildChapter({
       kind: "diagram",
       id: "ch2-epochs-nested",
       type: "nested",
-      title: "The Data Hierarchy",
-      caption: "An epoch contains multiple batches; processing one batch is one iteration. Each cycle burns compute budget.",
+      title: "Parameters and weights",
+      caption:
+        "Parameters — also called weights — are the individual numbers inside a model that control how input signals are amplified or suppressed. More parameters…",
     }),
     insertDiagram(section24, {
       kind: "diagram",
       id: "ch2-training-loop",
       type: "flow",
-      title: "The Training Loop",
-      caption: "Forward pass → loss → backpropagation → weight update. This loop is where training spend converts into model improvement.",
+      title: "Parameters and weights",
+      caption:
+        "Parameters — also called weights — are the individual numbers inside a model that control how input signals are amplified or suppressed. More parameters…",
     }),
     insertDiagram(section25, {
       kind: "diagram",
-      id: "ch2-fitting-comparison",
+      id: "founder-ch02-2-2-parameters-and-weights",
       type: "comparison",
-      title: "The Fitting Spectrum",
-      caption: "Underfitting learns nothing. Overfitting memorises everything. Optimal fit learns the underlying pattern.",
+      title: "Parameters and weights",
+      caption:
+        "Parameters — also called weights — are the individual numbers inside a model that control how input signals are amplified or suppressed. More parameters…",
     }),
     buildSection({
       number: "2.6",

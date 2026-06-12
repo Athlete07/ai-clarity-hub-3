@@ -60,11 +60,11 @@ export const chapter06BlAiRiskRegister = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch06-6-1-what-makes-ai-risk-different",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "What Makes AI Risk Different",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "AI risks are not fully captured by standard enterprise risk frameworks. The distinctive characteristics of AI risk — opacity (you cannot fully inspect the…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -114,11 +114,11 @@ export const chapter06BlAiRiskRegister = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch06-6-2-the-six-ai-risk-categories",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The Six AI Risk Categories",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A complete AI risk register must cover six categories: technical and model risk, data risk, bias and discrimination risk, regulatory and compliance risk,…",
     }),
     buildSection({
       number: "6.3",

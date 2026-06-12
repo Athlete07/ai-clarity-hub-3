@@ -61,11 +61,11 @@ export const chapter03FounderUsAiRegulation = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "founder-pb7-ch03-3-1-the-federal-ai-landscape-in-2025",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The federal AI landscape in 2025",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "US federal AI policy combines executive orders mandating agency AI use standards, NIST's voluntary AI Risk Management Framework, OSTP guidance, and proposed…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -115,11 +115,11 @@ export const chapter03FounderUsAiRegulation = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb7-ch03-3-2-ftc-scrutiny-of-ai-companies",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "FTC scrutiny of AI companies",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "The FTC enforces against unfair and deceptive practices in AI — overclaiming capabilities, undisclosed AI use, biased outcomes causing consumer harm, and…",
     }),
     buildSection({
       number: "3.3",

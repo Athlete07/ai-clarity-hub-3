@@ -107,11 +107,11 @@ export const chapter01BlEuAiActByFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb6-ch01-1-2-the-four-tier-risk-classification",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The Four-Tier Risk Classification",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "The EU AI Act classifies AI systems into four tiers with fundamentally different compliance obligations. Classifying your portfolio accurately before…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -161,11 +161,11 @@ export const chapter01BlEuAiActByFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch01-1-3-high-risk-ai-what-compliance-actually-requir",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "High-Risk AI — What Compliance Actually Requires",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "High-risk AI systems under the EU AI Act require six mandatory compliance obligations before deployment: risk management system, data governance, technical…",
     }),
     buildSection({
       number: "1.4",

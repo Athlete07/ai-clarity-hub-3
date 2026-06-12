@@ -60,11 +60,11 @@ export const chapter03BlBiasDiscriminationLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb6-ch03-3-1-what-ai-bias-is-and-what-it-is-not",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "What AI Bias Is — and What It Is Not",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Statistical bias (model inaccuracy or over-representation in training data) and discriminatory bias (systematic unfair outcomes for protected groups) are…",
     }),
     sectionWithDiagram({
       number: "3.2",
@@ -114,11 +114,11 @@ export const chapter03BlBiasDiscriminationLiability = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch03-3-2-sources-of-bias-in-ai-systems",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Sources of Bias in AI Systems",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Bias enters AI systems at multiple stages: biased training data, biased feature selection, biased labelling, biased problem framing, and feedback loops that…",
     }),
     buildSection({
       number: "3.3",

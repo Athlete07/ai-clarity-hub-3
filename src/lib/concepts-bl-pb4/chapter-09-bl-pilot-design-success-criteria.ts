@@ -61,11 +61,11 @@ export const chapter09BlPilotDesignSuccessCriteria = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb4-ch09-9-1-what-a-pilot-is-and-what-it-is-not",
       type: "flow",
-      title: "Pilot to Scale Path",
+      title: "What a pilot is and what it is not",
       caption:
-        "Assess → prioritise → pilot → scale → embed.",
+        "A pilot is a structured experiment: defined scope, pre-agreed success criteria, fixed timeline, and a mandatory go/no-go decision at the end. An extended…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -115,11 +115,11 @@ export const chapter09BlPilotDesignSuccessCriteria = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch09-9-2-defining-success-criteria-before-the-pilot-b",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Defining success criteria before the pilot begins",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Success criteria written before a pilot begins are the commitment that makes the pilot evidence-based. Success criteria written after a pilot begins are a…",
     }),
     buildSection({
       number: "9.3",

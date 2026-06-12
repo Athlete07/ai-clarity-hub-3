@@ -108,11 +108,11 @@ export const chapter06ModelEvaluation = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
-      type: "flow",
-      title: "The Founder Evaluation Framework",
+      id: "founder-ch06-6-2-precision-vs-recall-a-business-decision-disg",
+      type: "comparison",
+      title: "Precision vs recall — a business decision disguised as a technical one",
       caption:
-        "Define the task, build a golden set, set a ship gate, and monitor drift — the minimum bar before any AI feature reaches users.",
+        "Precision asks: when the model speaks, can we trust it? Recall asks: when something important happens, did we catch it? You cannot maximize both at once.…",
     }),
     buildSection({
       number: "6.3",
@@ -256,11 +256,11 @@ export const chapter06ModelEvaluation = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "ch2-fitting-comparison",
+      id: "founder-ch06-6-5-evaluation-in-production-what-to-measure-aft",
       type: "comparison",
-      title: "The Fitting Spectrum",
+      title: "Evaluation in production — what to measure after you ship",
       caption:
-        "Underfitting fails users; overfitting fails in production. Optimal fit is a product decision tied to business risk tolerance.",
+        "Production evaluation asks whether the AI is making the business healthier — not whether the model still scores well on a frozen CSV. Founders need a short…",
     }),
     buildSection({
       number: "6.6",

@@ -61,11 +61,11 @@ export const chapter05FounderAiVendorContracts = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "founder-pb6-ch05-5-1-data-ownership-clauses-the-non-negotiable",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "Data ownership clauses — the non-negotiable",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "Contract must state: you retain all ownership of inputs, outputs, and derived insights from your data. Vendor receives limited license to process for…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05FounderAiVendorContracts = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb6-ch05-5-2-training-data-opt-out",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Training data opt-out",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Default for many APIs: vendor may train on customer inputs unless enterprise no-training addendum signed. Contract must prohibit training on customer data…",
     }),
     buildSection({
       number: "5.3",

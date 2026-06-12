@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
-import { Briefcase, Crown, UserCog } from "lucide-react";
+import { Briefcase, Crown, Megaphone, UserCog } from "lucide-react";
 
-export type RoleId = "pm" | "founder" | "business-leader";
+export type RoleId = "pm" | "founder" | "business-leader" | "marketer";
 
 export type RoleTheme = {
   border: string;
@@ -50,6 +50,17 @@ export const ROLE_THEMES: Record<RoleId, RoleTheme> = {
     iconBox: "bg-blue-bg text-blue",
     hoverBorder: "hover:border-blue/50 dark:hover:border-blue/50",
   },
+  marketer: {
+    border: "border-teal",
+    glow: "from-teal-bg/30",
+    badge: "bg-teal-bg text-teal border border-teal/10",
+    progress: "bg-teal",
+    textHover: "group-hover/card:text-teal",
+    pillActive: "bg-teal text-primary-foreground border-teal",
+    cardHover: "hover:border-teal/40",
+    iconBox: "bg-teal-bg text-teal",
+    hoverBorder: "hover:border-teal/50 dark:hover:border-teal/50",
+  },
 };
 
 export type Role = {
@@ -82,5 +93,12 @@ export const ROLES: Role[] = [
     description:
       "Lead AI adoption in your function — vendor selection, ROI, governance, and change management without a technical background.",
     icon: UserCog,
+  },
+  {
+    id: "marketer",
+    title: "Marketer",
+    description:
+      "Use AI across content, SEO, paid media, personalisation, and martech — without losing brand voice or betting budgets on hype.",
+    icon: Megaphone,
   },
 ];

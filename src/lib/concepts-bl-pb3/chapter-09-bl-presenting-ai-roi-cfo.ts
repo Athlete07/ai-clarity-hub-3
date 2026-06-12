@@ -60,11 +60,11 @@ export const chapter09BlPresentingAiRoiCfo = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch09-9-1-how-cfos-think-about-ai-investments",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "How CFOs think about AI investments",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "CFOs evaluate AI investments through four questions: Is the financial model rigorous and conservative? What is the worst credible outcome? How does this…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -114,11 +114,11 @@ export const chapter09BlPresentingAiRoiCfo = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch09-9-2-the-financial-language-of-ai-roi",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The financial language of AI ROI",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "CFOs lose confidence when AI sponsors use imprecise financial language — or when they use financial terminology incorrectly. Mastering ten financial terms…",
     }),
     buildSection({
       number: "9.3",

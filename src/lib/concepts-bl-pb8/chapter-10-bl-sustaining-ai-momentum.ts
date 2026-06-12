@@ -61,11 +61,11 @@ export const chapter10BlSustainingAiMomentum = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch10-10-1-the-momentum-trap-why-ai-transformations-st",
       type: "flow",
-      title: "AI Change Management",
+      title: "The momentum trap: why AI transformations stall after year one",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "Year one AI momentum is driven by novelty, visible quick wins, and concentrated leadership attention. Year two momentum must be driven by institutional…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -115,11 +115,11 @@ export const chapter10BlSustainingAiMomentum = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch10-10-2-building-institutional-ai-memory",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Building institutional AI memory",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Institutional AI memory is the organisation's accumulated knowledge about what works, what does not work, and why — preserved in systems and practices that…",
     }),
     buildSection({
       number: "10.3",

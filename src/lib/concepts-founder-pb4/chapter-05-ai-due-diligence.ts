@@ -61,11 +61,11 @@ export const chapter05AiDueDiligence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "founder-pb4-ch05-5-1-technical-due-diligence-for-ai-companies-wha",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "Technical due diligence for AI companies — what investors hire firms to find",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "Technical diligence examines architecture reality vs pitch claims: model stack, eval rigour, loop implementation, infrastructure costs at scale, and whether…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -115,11 +115,11 @@ export const chapter05AiDueDiligence = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "founder-pb4-ch05-5-2-data-due-diligence-the-questions-about-your-",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Data due diligence — the questions about your data you must be able to answer",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Data diligence asks: provenance, ownership, consent, exclusivity, quality, labelling methodology, and deletion rights. Weak answers unwind the data moat…",
     }),
     buildSection({
       number: "5.3",

@@ -61,11 +61,11 @@ export const chapter02BlRfpProcessAiVendors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch02-2-1-why-standard-rfps-fail-for-ai-vendors",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "Why standard RFPs fail for AI vendors",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO model → contract. Same process for every AI vendor pitch.",
+        "Standard RFPs assume vendors can describe their capabilities in writing, that written descriptions are comparable across vendors, and that reference checks…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -115,11 +115,11 @@ export const chapter02BlRfpProcessAiVendors = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch02-2-2-the-ai-rfp-structure-three-stages",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "The AI RFP structure: three stages",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "An AI RFP runs in three sequential stages: a written functional brief that vendors respond to, a live capability demonstration, and a structured pilot…",
     }),
     buildSection({
       number: "2.3",

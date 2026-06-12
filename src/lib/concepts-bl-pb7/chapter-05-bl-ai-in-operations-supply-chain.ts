@@ -60,11 +60,11 @@ export const chapter05BlAiInOperationsSupplyChain = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch05-5-1-the-operations-ai-landscape",
       type: "comparison",
-      title: "AI by Function",
+      title: "The Operations AI Landscape",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "Operations AI delivers the highest ROI in the enterprise when applied to high-frequency, high-volume decision processes — demand forecasting, inventory…",
     }),
     sectionWithDiagram({
       number: "5.2",
@@ -114,11 +114,11 @@ export const chapter05BlAiInOperationsSupplyChain = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch05-5-2-ai-in-demand-forecasting-and-inventory",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI in Demand Forecasting and Inventory",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI demand forecasting reduces forecast error by 20–50% compared to manual or statistical methods in most deployment contexts. The resulting inventory…",
     }),
     buildSection({
       number: "5.3",

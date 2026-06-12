@@ -59,13 +59,13 @@ const section25 = insertDiagram(
     ],
   }),
   {
-    kind: "diagram",
+      kind: "diagram",
     id: "ch2-data-flywheel",
     type: "flow",
-    title: "The Data Flywheel",
+    title: "The data flywheel — real vs imagined",
     caption:
-      "Usage generates signal, signal improves the model, a better product drives more usage — the cycle investors fund when it is real, not imagined.",
-  },
+        "A real data flywheel closes the loop automatically: usage generates labels, labels improve the model, the model improves the product, usage grows. Imagined…",
+    },
 );
 
 export const chapter02DataArchitectureMoat = buildChapter({

@@ -60,11 +60,11 @@ export const chapter04BlWorkingWithAiEngineers = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb5-ch04-4-1-what-ai-engineers-actually-do",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "What AI engineers actually do",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "AI engineers do four things: they prepare and manage data pipelines (data engineering), they select and configure AI models for specific tasks (model…",
     }),
     sectionWithDiagram({
       number: "4.2",
@@ -114,11 +114,11 @@ export const chapter04BlWorkingWithAiEngineers = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb5-ch04-4-2-the-language-barrier-translating-business-ne",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The language barrier: translating business need to technical spec",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI engineers cannot build what they cannot specify. Business requirements written in outcomes language ('improve customer satisfaction', 'reduce fraud')…",
     }),
     buildSection({
       number: "4.3",

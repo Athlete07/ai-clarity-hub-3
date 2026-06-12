@@ -61,11 +61,11 @@ export const chapter02AiValuationPremium = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-vc-diligence-stack",
+      id: "founder-pb4-ch02-2-1-what-the-ai-premium-actually-is",
       type: "flow",
-      title: "Investor Diligence Stack",
+      title: "What the AI premium actually is",
       caption:
-        "Team → data moat → unit economics → timing → risk. The five lenses on every AI term sheet.",
+        "The AI premium is not a label — it is an additional valuation multiple investors assign when they believe your architecture compounds defensibility faster…",
     }),
     buildSection({
       number: "2.2",
@@ -164,9 +164,9 @@ export const chapter02AiValuationPremium = buildChapter({
       kind: "diagram",
       id: "founder-funding-valuation",
       type: "comparison",
-      title: "AI Premium vs AI Discount",
+      title: "What does not justify the premium",
       caption:
-        "Compounding data loops earn premium multiples; API wrappers with negative unit economics trade at a discount.",
+        "API access, chatbot features, fine-tuning on public data, and 'AI-first' branding do not justify premium multiples. Investors have seen thousands of…",
     }),
     buildSection({
       number: "2.4",

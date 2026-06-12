@@ -61,11 +61,11 @@ export const chapter09BlAiTransformationMilestones = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch09-9-1-why-milestone-frameworks-prevent-transformat",
       type: "flow",
-      title: "AI Change Management",
+      title: "Why milestone frameworks prevent transformation drift",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "Without milestone frameworks, AI transformation programmes drift in two characteristic patterns: perpetual piloting (the organisation runs successful pilots…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -115,11 +115,11 @@ export const chapter09BlAiTransformationMilestones = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch09-9-2-the-five-stages-of-enterprise-ai-transformat",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "The five stages of enterprise AI transformation",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Enterprise AI transformation follows five stages: Stage 1 (Readiness and Foundation), Stage 2 (First Pilots and Learning), Stage 3 (Scaling Proof Points),…",
     }),
     buildSection({
       number: "9.3",

@@ -60,11 +60,11 @@ export const chapter10BlMeasuringTransformationProgress = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb7-ch10-10-1-why-ai-transformation-measurement-fails",
       type: "flow",
-      title: "AI Change Management",
+      title: "Why AI Transformation Measurement Fails",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI transformation measurement fails for four predictable reasons: no baseline measurement before deployment, activity metrics substituted for outcome…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -114,11 +114,11 @@ export const chapter10BlMeasuringTransformationProgress = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch10-10-2-measuring-ai-roi-by-function",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Measuring AI ROI by Function",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI ROI metrics are function-specific — the right metric for Finance AI is not the right metric for Marketing AI. Business leaders who define…",
     }),
     buildSection({
       number: "10.3",

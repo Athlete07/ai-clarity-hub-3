@@ -10,10 +10,16 @@ export const BRAND = {
     muted: "#6B7280",
   },
   logo: {
-    /** Transparent mark — error pages, static HTML */
-    mark: "/logo-mark.svg",
-    /** Filled favicon / app icon */
-    favicon: "/favicon.svg",
+    /** Official horizontal logo — transparent, for light backgrounds */
+    full: "/factorbeam-logo-light.png",
+    /** Horizontal logo — transparent, lightened wordmark for dark backgrounds */
+    fullDark: "/factorbeam-logo-dark.png",
+    /** Icon mark only — cropped from official logo */
+    mark: "/logo-mark.png",
+    /** Icon mark — lightened for dark backgrounds */
+    markDark: "/logo-mark-dark.png",
+    /** Browser tab / PWA icon */
+    favicon: "/favicon.png",
     /** Social preview image */
     og: "/og.png",
   },
@@ -25,8 +31,14 @@ export const BRAND = {
     heightPx: 64,
     heightSlimPx: 56,
     navFontPx: 14,
-    logoMarkPx: 32,
-    logoWordmarkPx: 18,
+    /** Full horizontal logo — main nav bar */
+    logoFullPx: 48,
+    /** Home hero, 404, error states */
+    logoHeroPx: 72,
+    /** Footer and compact chrome */
+    logoCompactPx: 40,
+    /** Icon-only — slim chapter header, inline marks */
+    logoMarkPx: 44,
     touchTargetPx: 44,
   },
 } as const;
@@ -35,7 +47,7 @@ type HeadMeta = { title?: string; name?: string; property?: string; content: str
 
 export function brandIconLinks() {
   return [
-    { rel: "icon", href: BRAND.logo.favicon, type: "image/svg+xml" },
+    { rel: "icon", href: BRAND.logo.favicon, type: "image/png" },
     { rel: "apple-touch-icon", href: BRAND.logo.favicon },
     { rel: "manifest", href: "/site.webmanifest" },
   ] as const;

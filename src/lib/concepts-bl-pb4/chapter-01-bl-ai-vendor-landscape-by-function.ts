@@ -108,11 +108,11 @@ export const chapter01BlAiVendorLandscapeByFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb4-ch01-1-2-the-eight-ai-vendor-categories-by-function",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "The eight AI vendor categories by function",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that separates successful transformations from expensive experiments.",
+        "Eight functional categories account for 90% of enterprise AI spend: sales intelligence, marketing personalisation, finance automation, HR analytics,…",
     }),
     sectionWithDiagram({
       number: "1.3",
@@ -162,11 +162,11 @@ export const chapter01BlAiVendorLandscapeByFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
-      type: "flow",
-      title: "Vendor Evaluation Process",
+      id: "bl-pb4-ch01-1-3-horizontal-platforms-vs-vertical-point-solut",
+      type: "comparison",
+      title: "Horizontal platforms vs vertical point solutions",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "Horizontal AI platforms offer broad capability and single-vendor simplicity. Vertical point solutions offer depth, faster time-to-value, and lower…",
     }),
     buildSection({
       number: "1.4",

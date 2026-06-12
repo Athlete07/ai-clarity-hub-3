@@ -60,11 +60,11 @@ export const chapter09BlIncidentResponseAiFailures = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-governance-mvg",
+      id: "bl-pb6-ch09-9-1-how-ai-incidents-differ-from-standard-it-inc",
       type: "nested",
-      title: "AI Governance Framework",
+      title: "How AI Incidents Differ From Standard IT Incidents",
       caption:
-        "Inventory → risk tier → minimum controls. The governance path regulators and boards expect.",
+        "AI incidents differ from standard IT incidents in four ways: they are often silent (no error generated), they are often slow (performance degrades…",
     }),
     sectionWithDiagram({
       number: "9.2",
@@ -114,11 +114,11 @@ export const chapter09BlIncidentResponseAiFailures = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb6-ch09-9-2-ai-incident-classification",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI Incident Classification",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI incident classification determines everything: how quickly you respond, who you escalate to, whether you halt the system, and whether you must notify…",
     }),
     buildSection({
       number: "9.3",

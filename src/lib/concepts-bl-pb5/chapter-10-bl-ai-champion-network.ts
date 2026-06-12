@@ -60,11 +60,11 @@ export const chapter10BlAiChampionNetwork = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb5-ch10-10-1-what-an-ai-champion-network-is-and-why-it-w",
       type: "flow",
-      title: "AI Change Management",
+      title: "What an AI champion network is and why it works",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "An AI champion network formalises what happens organically in every AI adoption programme — a small number of enthusiastic, capable employees who help their…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -114,11 +114,11 @@ export const chapter10BlAiChampionNetwork = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb5-ch10-10-2-identifying-and-recruiting-ai-champions",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Identifying and recruiting AI champions",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Champion selection is the most consequential design decision in a champion network — more important than training content, governance structure, or support…",
     }),
     buildSection({
       number: "10.3",

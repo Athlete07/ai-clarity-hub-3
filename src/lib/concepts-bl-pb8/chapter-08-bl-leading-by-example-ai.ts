@@ -61,11 +61,11 @@ export const chapter08BlLeadingByExampleAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-ai-transformation",
+      id: "bl-pb8-ch08-8-1-why-leader-behaviour-is-the-strongest-adopti",
       type: "flow",
-      title: "AI Initiative Execution Path",
+      title: "Why leader behaviour is the strongest adoption signal",
       caption:
-        "Assess → prioritise → pilot → scale → embed. The sequence that turns AI ambition into measurable outcomes.",
+        "Research on organisational change consistently shows that employee behaviour follows leader behaviour more reliably than it follows leader communication. In…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -115,11 +115,11 @@ export const chapter08BlLeadingByExampleAi = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch08-8-2-visible-ai-use-by-leaders",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Visible AI use by leaders",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Visible AI use is not about showing off AI capability — it is about normalising AI as a natural part of how leaders work. The most effective visible AI use…",
     }),
     buildSection({
       number: "8.3",

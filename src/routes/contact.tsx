@@ -128,8 +128,8 @@ function Contact() {
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="group inline-flex items-center gap-3 text-left"
                 >
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-purple-light/70 p-1.5 dark:bg-purple-light/15">
-                    <FactorBeamMark size={36} />
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-purple-light/70 p-1 dark:bg-purple-light/15">
+                    <FactorBeamMark />
                   </span>
                   <span>
                     <span className="block text-[11px] font-medium uppercase tracking-wider text-muted-foreground">

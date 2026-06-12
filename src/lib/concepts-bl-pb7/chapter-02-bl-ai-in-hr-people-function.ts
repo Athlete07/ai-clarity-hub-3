@@ -60,11 +60,11 @@ export const chapter02BlAiInHrPeopleFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-function-ai-map",
+      id: "bl-pb7-ch02-2-1-the-hr-ai-landscape-opportunity-and-obligati",
       type: "comparison",
-      title: "AI by Function",
+      title: "The HR AI Landscape — Opportunity and Obligation",
       caption:
-        "Each function has distinct ROI, risk, and adoption patterns.",
+        "HR AI is not a single category — it is a spectrum from high-volume, low-stakes process automation to high-stakes decisions about people's careers and…",
     }),
     sectionWithDiagram({
       number: "2.2",
@@ -114,11 +114,11 @@ export const chapter02BlAiInHrPeopleFunction = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb7-ch02-2-2-ai-in-talent-acquisition",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "AI in Talent Acquisition",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "AI in talent acquisition delivers measurable efficiency — 50–70% reduction in screening time in high-volume contexts. The governance requirement is matching…",
     }),
     buildSection({
       number: "2.3",

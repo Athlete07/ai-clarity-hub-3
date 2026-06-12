@@ -63,9 +63,9 @@ export const chapter04FounderFinetuningRagPrompting = buildChapter({
       kind: "diagram",
       id: "prompting-vs-finetuning-ladder",
       type: "flow",
-      title: "Prompt Before Fine-Tune Ladder",
+      title: "The three customisation options — a plain language overview",
       caption:
-        "Climb the ladder only when eval proves the rung beneath has hit its ceiling — better prompts and RAG before expensive fine-tunes.",
+        "Prompt engineering changes instructions to the model — zero training cost, fastest iteration. RAG retrieves your documents at inference time — knowledge gap…",
     }),
     buildSection({
       number: "4.2",
@@ -164,9 +164,9 @@ export const chapter04FounderFinetuningRagPrompting = buildChapter({
       kind: "diagram",
       id: "pb4-rag-pipeline",
       type: "flow",
-      title: "The RAG Pipeline",
+      title: "RAG — the knowledge option",
       caption:
-        "Ingest → chunk → embed → index → retrieve → generate. RAG is the default architecture for knowledge-grounded AI products.",
+        "RAG solves knowledge gaps: policies, product docs, proprietary research, customer-specific data. Pipeline: chunk, embed, retrieve, rerank, inject. Cost is…",
     }),
     buildSection({
       number: "4.4",

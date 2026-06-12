@@ -60,11 +60,11 @@ export const chapter10BlTrackingRoiPostDeployment = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-roi-business-case",
+      id: "bl-pb3-ch10-10-1-why-post-deployment-tracking-fails",
       type: "flow",
-      title: "AI ROI Framework",
+      title: "Why post-deployment tracking fails",
       caption:
-        "Baseline → hypothesis → pilot → scale → track. ROI without baseline measurement is fiction.",
+        "Post-deployment AI ROI tracking fails for five structural reasons: tracking starts too late, the wrong metrics are tracked, reporting goes to the wrong…",
     }),
     sectionWithDiagram({
       number: "10.2",
@@ -114,11 +114,11 @@ export const chapter10BlTrackingRoiPostDeployment = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb3-ch10-10-2-setting-up-the-roi-tracking-infrastructure",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Setting up the ROI tracking infrastructure",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "ROI tracking infrastructure has three components: a data pipeline that collects and processes the right signals, a dashboard that presents them in an…",
     }),
     buildSection({
       number: "10.3",

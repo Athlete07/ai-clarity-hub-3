@@ -62,9 +62,9 @@ export const chapter03BlTrainingVsInferenceCost = buildChapter({
       kind: "diagram",
       id: "founder-training-inference-split",
       type: "comparison",
-      title: "Training CapEx vs Inference OpEx",
+      title: "Training Cost as Capital Expenditure",
       caption:
-        "Most organisations should rent pre-trained models. Inference is the variable COGS line that scales with every API call.",
+        "Training a large AI model is a capital expenditure measured in millions of dollars for frontier models. Most organisations should never incur this cost…",
     }),
     buildSection({
       number: "3.2",
@@ -163,9 +163,9 @@ export const chapter03BlTrainingVsInferenceCost = buildChapter({
       kind: "diagram",
       id: "founder-unit-economics-trap",
       type: "flow",
-      title: "The Unit Economics Trap",
+      title: "Scale Economics — How AI Unit Cost Behaves at Volume",
       caption:
-        "Pilot budgets routinely underestimate inference at production volume. Model 10× usage before signing usage-based contracts.",
+        "AI has highly favourable scale economics: the marginal cost of serving additional users decreases as volume increases, and infrastructure investment…",
     }),
     buildSection({
       number: "3.4",

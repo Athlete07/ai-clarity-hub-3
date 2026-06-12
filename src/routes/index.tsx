@@ -13,6 +13,7 @@ import {
 } from "@/lib/executive-kb";
 import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
+import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
 import { executiveKbTrackSearch } from "@/lib/executive-kb-track";
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 import { FEATURED_GAME } from "@/lib/simulations";
@@ -97,19 +98,26 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const ALL_KBS = [...EXECUTIVE_KBS, ...FOUNDER_EXECUTIVE_KBS, ...BUSINESS_LEADER_EXECUTIVE_KBS];
+const ALL_KBS = [
+  ...EXECUTIVE_KBS,
+  ...FOUNDER_EXECUTIVE_KBS,
+  ...BUSINESS_LEADER_EXECUTIVE_KBS,
+  ...MARKETER_EXECUTIVE_KBS,
+];
 const TOTAL_CHAPTERS = ALL_KBS.reduce((n, kb) => n + kb.sequence.length, 0);
 
 const TRACK_KBS: Record<RoleId, ExecutiveKb[]> = {
   pm: EXECUTIVE_KBS,
   founder: FOUNDER_EXECUTIVE_KBS,
   "business-leader": BUSINESS_LEADER_EXECUTIVE_KBS,
+  marketer: MARKETER_EXECUTIVE_KBS,
 };
 
 const FEATURED_BY_TRACK: { track: ExecutiveKbTrack; roleId: RoleId }[] = [
   { track: "pm", roleId: "pm" },
   { track: "founder", roleId: "founder" },
   { track: "business-leader", roleId: "business-leader" },
+  { track: "marketer", roleId: "marketer" },
 ];
 
 function Home() {
@@ -245,7 +253,7 @@ function Home() {
         <section className="border-y border-border/80 bg-muted/30">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-border/60 sm:grid-cols-4">
             <StatCell value={String(ALL_KBS.length)} label="Executive KBs" />
-            <StatCell value="3" label="Role tracks" />
+            <StatCell value={String(ROLES.length)} label="Role tracks" />
             <StatCell value={`${TOTAL_CHAPTERS}+`} label="Chapters" />
             <StatCell value="$0" label="Forever" />
           </div>
@@ -263,7 +271,7 @@ function Home() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {ROLES.map((role, i) => {
               const theme = ROLE_THEMES[role.id];
               const Icon = role.icon;
@@ -399,7 +407,7 @@ function Home() {
             <div>
               <p className="section-label">Start anywhere</p>
               <h2 className="mt-3 text-[28px] font-medium tracking-[-0.02em] sm:text-[32px]">
-                Three entry points. One standard of clarity.
+                Four role tracks. One standard of clarity.
               </h2>
             </div>
             <Link
@@ -411,22 +419,16 @@ function Home() {
             </Link>
           </div>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {FEATURED_BY_TRACK.map(({ track, roleId }) => {
               const kb = TRACK_KBS[roleId][0];
               if (!kb) return null;
               const firstSlug = kb.sequence[0]?.slug;
               const params = firstSlug ? chapterRouteParams(firstSlug) : undefined;
               const theme = ROLE_THEMES[roleId];
-              if (!params) return null;
-
-              return (
-                <Link
-                  key={track}
-                  to="/executive-kb/$kbId/$chapterSlug"
-                  params={params}
-                  className={`group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-brand ${theme.cardHover}`}
-                >
+              const cardClass = `group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all hover:-translate-y-0.5 hover:shadow-brand ${theme.cardHover}`;
+              const cardBody = (
+                <>
                   <span
                     className={`inline-flex w-fit rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${theme.badge}`}
                   >
@@ -445,10 +447,34 @@ function Home() {
                     <span
                       className={`inline-flex items-center gap-1 font-medium opacity-0 transition-all group-hover:opacity-100 ${theme.textHover.replace("group-hover/card:", "group-hover:")}`}
                     >
-                      Start
+                      {params ? "Start" : "Browse track"}
                       <ArrowRight size={12} />
                     </span>
                   </div>
+                </>
+              );
+
+              if (params) {
+                return (
+                  <Link
+                    key={track}
+                    to="/executive-kb/$kbId/$chapterSlug"
+                    params={params}
+                    className={cardClass}
+                  >
+                    {cardBody}
+                  </Link>
+                );
+              }
+
+              return (
+                <Link
+                  key={track}
+                  to="/executive-kb"
+                  search={executiveKbTrackSearch(roleId)}
+                  className={cardClass}
+                >
+                  {cardBody}
                 </Link>
               );
             })}

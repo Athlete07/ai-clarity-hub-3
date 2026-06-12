@@ -61,11 +61,11 @@ export const chapter06BlAiWorkforcePlanning = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-change-management",
+      id: "bl-pb8-ch06-6-1-the-strategic-workforce-planning-imperative",
       type: "flow",
-      title: "AI Change Management",
+      title: "The strategic workforce planning imperative",
       caption:
-        "Sponsor → communicate → train → champions → measure adoption.",
+        "AI workforce planning that begins after AI deployment has already changed the workforce need is remediation, not planning. The planning horizon for AI…",
     }),
     sectionWithDiagram({
       number: "6.2",
@@ -115,11 +115,11 @@ export const chapter06BlAiWorkforcePlanning = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb8-ch06-6-2-skills-inventory-for-an-ai-augmented-organis",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Skills inventory for an AI-augmented organisation",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "A skills inventory is not a training needs assessment — it is a strategic view of the organisation's human capability portfolio. In an AI-augmented…",
     }),
     buildSection({
       number: "6.3",

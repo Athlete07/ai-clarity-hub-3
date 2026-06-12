@@ -61,11 +61,11 @@ export const chapter08BlVendorLockInRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "bl-vendor-evaluation",
+      id: "bl-pb4-ch08-8-1-the-four-levels-of-ai-vendor-lock-in",
       type: "flow",
-      title: "Vendor Evaluation Process",
+      title: "The four levels of AI vendor lock-in",
       caption:
-        "Requirements → shortlist → golden-set eval → TCO → contract. Run this process on every AI vendor pitch.",
+        "AI lock-in operates at four levels that compound over time: data lock-in (data in proprietary formats or stored exclusively with the vendor), model lock-in…",
     }),
     sectionWithDiagram({
       number: "8.2",
@@ -115,11 +115,11 @@ export const chapter08BlVendorLockInRisk = buildChapter({
       ],
     }, {
       kind: "diagram",
-      id: "founder-eval-framework",
+      id: "bl-pb4-ch08-8-2-assessing-lock-in-risk-before-contract-signa",
       type: "flow",
-      title: "Evaluation Framework",
+      title: "Assessing lock-in risk before contract signature",
       caption:
-        "Define task → golden set → ship gate → monitor drift.",
+        "Lock-in risk assessment before contract signature converts an abstract risk into a quantified exit cost estimate. A business leader who knows their…",
     }),
     buildSection({
       number: "8.3",
