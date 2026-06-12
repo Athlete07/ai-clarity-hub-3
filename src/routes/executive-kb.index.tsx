@@ -5,8 +5,8 @@ import { ShareMenu } from "@/components/share-menu";
 import { useProgress } from "@/lib/storage";
 import {
   dismissTrackBanner,
-  executiveKbSearchSchema,
   executiveKbTrackSearch,
+  parseExecutiveKbSearch,
   isTrackBannerDismissed,
   readStoredRole,
   writeStoredRole,
@@ -24,7 +24,7 @@ import { AUDIENCE, brandOgMeta } from "@/lib/brand";
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 
 export const Route = createFileRoute("/executive-kb/")({
-  validateSearch: (search) => executiveKbSearchSchema.parse(search),
+  validateSearch: parseExecutiveKbSearch,
   head: () => ({
     meta: [
       { title: `AI Literacy — AI knowledge for ${AUDIENCE.short} — FactorBeam` },

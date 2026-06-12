@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { z } from "zod";
 
 const CONSENT_KEY = "factorbeam:consent";
 const CONSENT_VERSION = 1;
@@ -24,14 +25,23 @@ const DEFAULT: ConsentState = {
   ads: false,
 };
 
+const consentSchema = z.object({
+  version: z.number(),
+  decidedAt: z.number(),
+  necessary: z.literal(true).optional(),
+  analytics: z.boolean(),
+  ads: z.boolean(),
+});
+
 function read(): ConsentState | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = localStorage.getItem(CONSENT_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as ConsentState;
-    if (!parsed || parsed.version !== CONSENT_VERSION) return null;
-    return { ...DEFAULT, ...parsed, necessary: true };
+    const json: unknown = JSON.parse(raw);
+    const parsed = consentSchema.safeParse(json);
+    if (!parsed.success || parsed.data.version !== CONSENT_VERSION) return null;
+    return { ...DEFAULT, ...parsed.data, necessary: true };
   } catch {
     return null;
   }

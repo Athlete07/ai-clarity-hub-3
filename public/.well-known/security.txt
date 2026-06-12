@@ -1,0 +1,4 @@
+Contact: mailto:contact.factorbeam@gmail.com
+Preferred-Languages: en
+Canonical: https://www.factorbeam.com/.well-known/security.txt
+Policy: https://www.factorbeam.com/privacy-policy

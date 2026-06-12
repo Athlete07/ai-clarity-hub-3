@@ -4,9 +4,10 @@ import { EXECUTIVE_KBS, chapterPath } from "@/lib/executive-kb";
 import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
 import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
+import { BRAND } from "@/lib/brand";
+import { securityHeadersInit } from "@/lib/security-headers";
 
-// TODO: replace with your project URL once a project name or custom domain is set.
-const BASE_URL = "";
+const BASE_URL = BRAND.siteUrl;
 
 interface SitemapEntry {
   path: string;
@@ -56,12 +57,15 @@ export const Route = createFileRoute("/sitemap.xml")({
           `</urlset>`,
         ].join("\n");
 
-        return new Response(xml, {
-          headers: {
-            "Content-Type": "application/xml",
-            "Cache-Control": "public, max-age=3600",
-          },
-        });
+        return new Response(
+          xml,
+          securityHeadersInit({
+            headers: {
+              "Content-Type": "application/xml",
+              "Cache-Control": "public, max-age=3600",
+            },
+          }),
+        );
       },
     },
   },

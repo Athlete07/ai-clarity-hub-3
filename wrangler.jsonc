@@ -4,4 +4,6 @@
   "compatibility_date": "2025-09-24",
   "compatibility_flags": ["nodejs_compat"],
   "main": "src/server.ts",
+  // Secrets (never commit): wrangler secret put HRIS_TOKEN && wrangler secret put HRIS_ENDPOINT
+  // DDoS/WAF: enable Cloudflare "Under Attack" mode, WAF managed rules, and rate limiting in dashboard.
 }

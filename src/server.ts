@@ -2,6 +2,9 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { guardRequest } from "./lib/request-guard";
+import { securityHeadersInit, withSecurityHeaders } from "./lib/security-headers";
+import { setWorkerBindings, type WorkerBindings } from "./lib/worker-env";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -19,10 +22,13 @@ async function getServerEntry(): Promise<ServerEntry> {
 }
 
 function brandedErrorResponse(): Response {
-  return new Response(renderErrorPage(), {
-    status: 500,
-    headers: { "content-type": "text/html; charset=utf-8" },
-  });
+  return new Response(
+    renderErrorPage(),
+    securityHeadersInit({
+      status: 500,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    }),
+  );
 }
 
 function isCatastrophicSsrErrorBody(body: string, responseStatus: number): boolean {
@@ -63,15 +69,21 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   }
 
   console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
-  return brandedErrorResponse();
+  return withSecurityHeaders(brandedErrorResponse());
 }
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    setWorkerBindings((env ?? {}) as WorkerBindings);
+
+    const blocked = guardRequest(request);
+    if (blocked) return withSecurityHeaders(blocked);
+
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const normalized = await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(normalized);
     } catch (error) {
       console.error(error);
       return brandedErrorResponse();

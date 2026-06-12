@@ -29,6 +29,8 @@ import { Route as GamesAgentOverseerRouteImport } from './routes/games_.agent-ov
 import { Route as ExecutiveKbTrackRouteImport } from './routes/executive-kb.$track'
 import { Route as PlaybooksPlaybookIdChapterSlugRouteImport } from './routes/playbooks.$playbookId.$chapterSlug'
 import { Route as ExecutiveKbKbIdChapterSlugRouteImport } from './routes/executive-kb.$kbId.$chapterSlug'
+import { Route as ApiAoTelemetryRouteImport } from './routes/api/ao/telemetry'
+import { Route as ApiAoSyncRouteImport } from './routes/api/ao/sync'
 
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
@@ -133,6 +135,16 @@ const ExecutiveKbKbIdChapterSlugRoute =
     path: '/$kbId/$chapterSlug',
     getParentRoute: () => ExecutiveKbRoute,
   } as any)
+const ApiAoTelemetryRoute = ApiAoTelemetryRouteImport.update({
+  id: '/api/ao/telemetry',
+  path: '/api/ao/telemetry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAoSyncRoute = ApiAoSyncRouteImport.update({
+  id: '/api/ao/sync',
+  path: '/api/ao/sync',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -153,6 +165,8 @@ export interface FileRoutesByFullPath {
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/api/ao/sync': typeof ApiAoSyncRoute
+  '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
 }
@@ -173,6 +187,8 @@ export interface FileRoutesByTo {
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
   '/executive-kb': typeof ExecutiveKbIndexRoute
   '/playbooks': typeof PlaybooksIndexRoute
+  '/api/ao/sync': typeof ApiAoSyncRoute
+  '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
 }
@@ -196,6 +212,8 @@ export interface FileRoutesById {
   '/simulations_/agent-overseer': typeof SimulationsAgentOverseerRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/api/ao/sync': typeof ApiAoSyncRoute
+  '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
 }
@@ -220,6 +238,8 @@ export interface FileRouteTypes {
     | '/simulations/agent-overseer'
     | '/executive-kb/'
     | '/playbooks/'
+    | '/api/ao/sync'
+    | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
   fileRoutesByTo: FileRoutesByTo
@@ -240,6 +260,8 @@ export interface FileRouteTypes {
     | '/simulations/agent-overseer'
     | '/executive-kb'
     | '/playbooks'
+    | '/api/ao/sync'
+    | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
   id:
@@ -262,6 +284,8 @@ export interface FileRouteTypes {
     | '/simulations_/agent-overseer'
     | '/executive-kb/'
     | '/playbooks/'
+    | '/api/ao/sync'
+    | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
   fileRoutesById: FileRoutesById
@@ -281,6 +305,8 @@ export interface RootRouteChildren {
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   GamesAgentOverseerRoute: typeof GamesAgentOverseerRoute
   SimulationsAgentOverseerRoute: typeof SimulationsAgentOverseerRoute
+  ApiAoSyncRoute: typeof ApiAoSyncRoute
+  ApiAoTelemetryRoute: typeof ApiAoTelemetryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -425,6 +451,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExecutiveKbKbIdChapterSlugRouteImport
       parentRoute: typeof ExecutiveKbRoute
     }
+    '/api/ao/telemetry': {
+      id: '/api/ao/telemetry'
+      path: '/api/ao/telemetry'
+      fullPath: '/api/ao/telemetry'
+      preLoaderRoute: typeof ApiAoTelemetryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ao/sync': {
+      id: '/api/ao/sync'
+      path: '/api/ao/sync'
+      fullPath: '/api/ao/sync'
+      preLoaderRoute: typeof ApiAoSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -485,6 +525,8 @@ const rootRouteChildren: RootRouteChildren = {
   TermsOfServiceRoute: TermsOfServiceRoute,
   GamesAgentOverseerRoute: GamesAgentOverseerRoute,
   SimulationsAgentOverseerRoute: SimulationsAgentOverseerRoute,
+  ApiAoSyncRoute: ApiAoSyncRoute,
+  ApiAoTelemetryRoute: ApiAoTelemetryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

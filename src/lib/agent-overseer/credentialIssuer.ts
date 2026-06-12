@@ -34,15 +34,13 @@ export async function verifyStamp(stamp: CredentialStamp): Promise<boolean> {
   return expected === stamp.signature;
 }
 
-export async function syncToHRIS(
-  stamp: CredentialStamp,
-  endpoint: string,
-  token: string,
-): Promise<void> {
-  if (!endpoint) return;
-  await fetch(endpoint, {
+const AO_SYNC_API = "/api/ao/sync";
+
+/** Forwards stamp to the server proxy — HRIS credentials never leave the Worker. */
+export async function syncToHRIS(stamp: CredentialStamp): Promise<void> {
+  await fetch(AO_SYNC_API, {
     method: "POST",
-    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(stamp),
   });
 }
@@ -51,14 +49,13 @@ export function queueStamp(stamp: CredentialStamp): void {
   queueStampForSync(stamp);
 }
 
-export async function retryQueuedSync(endpoint: string, token: string): Promise<boolean> {
-  if (!endpoint) return false;
+export async function retryQueuedSync(): Promise<boolean> {
   const queue = readSyncQueue();
   if (!queue.length) return true;
   try {
     for (const stamp of queue) {
       if (!(await verifyStamp(stamp))) continue;
-      await syncToHRIS(stamp, endpoint, token);
+      await syncToHRIS(stamp);
     }
     clearSyncQueue();
     return true;

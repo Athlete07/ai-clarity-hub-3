@@ -1,18 +1,20 @@
 import { flushTelemetry, flushTelemetryNow } from "./storage";
 import { retryQueuedSync } from "./credentialIssuer";
 
-const HRIS_ENDPOINT = import.meta.env.VITE_AO_HRIS_ENDPOINT ?? "";
-const HRIS_TOKEN = import.meta.env.VITE_AO_HRIS_TOKEN ?? "";
-
 let wired = false;
+
+/** UI flag only — HRIS secrets live in Worker env, not the client bundle. */
+export function hrisConfigured(): boolean {
+  return import.meta.env.VITE_AO_HRIS_ENABLED === "true";
+}
 
 export function initAgentOverseerSync(): () => void {
   if (wired || typeof window === "undefined") return () => {};
   wired = true;
 
   const onOnline = () => {
-    void retryQueuedSync(HRIS_ENDPOINT, HRIS_TOKEN);
-    if (HRIS_ENDPOINT) void flushTelemetry(HRIS_ENDPOINT);
+    void retryQueuedSync();
+    void flushTelemetry();
   };
 
   const onUnload = () => flushTelemetryNow();
@@ -20,15 +22,11 @@ export function initAgentOverseerSync(): () => void {
   window.addEventListener("online", onOnline);
   window.addEventListener("beforeunload", onUnload);
 
-  if (navigator.onLine && HRIS_ENDPOINT) void onOnline();
+  if (navigator.onLine) void onOnline();
 
   return () => {
     window.removeEventListener("online", onOnline);
     window.removeEventListener("beforeunload", onUnload);
     wired = false;
   };
-}
-
-export function hrisConfigured(): boolean {
-  return Boolean(HRIS_ENDPOINT);
 }

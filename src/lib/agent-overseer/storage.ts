@@ -88,10 +88,12 @@ export function flushTelemetryNow(): TelemetryEvent[] {
   return merged;
 }
 
-export async function flushTelemetry(hrisEndpoint: string): Promise<void> {
+const AO_TELEMETRY_API = "/api/ao/telemetry";
+
+export async function flushTelemetry(): Promise<void> {
   const all = flushTelemetryNow();
-  if (!all.length || !hrisEndpoint) return;
-  await fetch(hrisEndpoint, {
+  if (!all.length) return;
+  await fetch(AO_TELEMETRY_API, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(all),

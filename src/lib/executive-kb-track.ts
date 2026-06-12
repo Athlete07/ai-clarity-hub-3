@@ -22,6 +22,12 @@ export const executiveKbSearchSchema = z.object({
 
 export type ExecutiveKbSearch = z.infer<typeof executiveKbSearchSchema>;
 
+/** Safe search parse — invalid ?track= values are ignored instead of throwing. */
+export function parseExecutiveKbSearch(search: Record<string, unknown>): ExecutiveKbSearch {
+  const result = executiveKbSearchSchema.safeParse(search);
+  return result.success ? result.data : {};
+}
+
 /** Parse `?track=` or path segment into a role id. */
 export function parseRoleTrack(value: unknown): RoleId | undefined {
   if (typeof value !== "string") return undefined;
