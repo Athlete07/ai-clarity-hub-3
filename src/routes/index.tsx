@@ -87,7 +87,7 @@ export const Route = createFileRoute("/")({
               name: "Is it really free?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Yes — no signup, no paywall, no ads.",
+                text: "Yes — no signup and no paywall. Optional ads may appear via Google AdSense only if you consent to advertising cookies; you can reject or change that anytime in Cookie preferences.",
               },
             },
           ],
@@ -569,7 +569,7 @@ function Home() {
             />
             <FaqItem
               q="Is it really free?"
-              a="Yes — no signup, no paywall, no ads."
+              a="Yes — no signup and no paywall. Optional ads may appear via Google AdSense only if you consent to advertising cookies; you can reject or change that anytime in Cookie preferences."
             />
           </div>
         </section>

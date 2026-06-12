@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 
-const CONTACT_EMAIL = "hello@factorbeam.dev";
+const CONTACT_EMAIL = "contact.factorbeam@gmail.com";
 
 export function LegalHero({
   title,

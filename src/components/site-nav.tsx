@@ -9,7 +9,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
-const CONTACT_EMAIL = "hello@factorbeam.dev";
+const CONTACT_EMAIL = "contact.factorbeam@gmail.com";
 
 const navLinkClass =
   "nav-link text-muted-foreground transition-colors hover:text-foreground";

@@ -17,6 +17,8 @@ export const AI_LITERACY = {
 /** FactorBeam brand assets — single source of truth for logo paths. */
 export const BRAND = {
   name: "FactorBeam",
+  /** Canonical production URL — used in structured data and absolute links. */
+  siteUrl: "https://www.factorbeam.com",
   tagline: "Understand AI enough to ship.",
   colors: {
     primary: "#534AB7",

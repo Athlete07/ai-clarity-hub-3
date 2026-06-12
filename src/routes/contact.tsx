@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { useCallback, useState } from "react";
 
-const CONTACT_EMAIL = "hello@factorbeam.dev";
+const CONTACT_EMAIL = "contact.factorbeam@gmail.com";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -25,12 +25,12 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Email hello@factorbeam.dev for edits, feedback, bugs, or partnerships. Copy the address and write from your email client.",
+          "Email contact.factorbeam@gmail.com for edits, feedback, bugs, or partnerships. Copy the address and write from your email client.",
       },
       { property: "og:title", content: "Contact — FactorBeam" },
       {
         property: "og:description",
-        content: "Email hello@factorbeam.dev — every message is read personally.",
+        content: "Email contact.factorbeam@gmail.com — every message is read personally.",
       },
       { property: "og:url", content: "/contact" },
       { property: "og:type", content: "website" },

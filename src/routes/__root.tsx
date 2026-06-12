@@ -11,6 +11,7 @@ import {
 import appCss from "../styles.css?url";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { CookieConsent } from "@/components/cookie-consent";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { useAdsenseLoader } from "@/lib/adsense";
 import { AUDIENCE, BRAND, brandIconLinks, brandOgMeta } from "@/lib/brand";
 import { CREATOR } from "@/lib/creator";
@@ -111,8 +112,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: BRAND.name,
+          url: BRAND.siteUrl,
           description: `Plain-English AI Literacy for ${AUDIENCE.short}.`,
-          logo: BRAND.logo.mark,
+          logo: `${BRAND.siteUrl}${BRAND.logo.mark}`,
           author: {
             "@type": "Person",
             name: CREATOR.name,
@@ -153,6 +155,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <GoogleAnalytics />
       <Outlet />
       <CookieConsent />
     </QueryClientProvider>

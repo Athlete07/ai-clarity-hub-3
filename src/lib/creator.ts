@@ -28,6 +28,6 @@ export const CREATOR = {
   aiDisclosure:
     "Chapters are researched, structured, and edited by our curation team. AI assists drafting and editing; everything is reviewed before it goes live.",
   socials: {
-    email: "hello@factorbeam.dev",
+    email: "contact.factorbeam@gmail.com",
   },
 } as const;

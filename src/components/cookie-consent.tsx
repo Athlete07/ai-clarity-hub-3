@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { CONSENT_PANEL_OPEN_EVENT, useConsent } from "@/lib/consent";
 import { Cookie, X } from "lucide-react";
 
@@ -83,7 +84,10 @@ export function CookieConsent() {
             <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
               {preferencesMode
                 ? "Update which optional cookies we may use. Strictly necessary cookies stay on so the site works."
-                : "This site uses cookies for essential functions, and — only with your permission — for analytics and personalised ads. You can change your choice anytime in the footer."}
+                : "This site uses cookies for essential functions, and — only with your permission — for analytics and personalised ads. You can change your choice anytime in the footer."}{" "}
+              <Link to="/privacy-policy" className="text-purple hover:underline">
+                Privacy Policy
+              </Link>
             </p>
 
             {(details || preferencesMode) && (
@@ -96,7 +100,7 @@ export function CookieConsent() {
                 />
                 <Row
                   label="Analytics"
-                  desc="Anonymous usage stats to improve content."
+                  desc="Google Analytics 4 — anonymous usage stats to improve content."
                   checked={analytics}
                   onChange={setAnalytics}
                 />

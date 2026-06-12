@@ -35,6 +35,8 @@ const NAI_OPT_OUT_URL = "https://optout.networkadvertising.org";
 const GOOGLE_ADSENSE_POLICIES_URL =
   "https://support.google.com/adsense/answer/9335564";
 const CLOUDFLARE_PRIVACY_URL = "https://www.cloudflare.com/privacypolicy/";
+const GOOGLE_ANALYTICS_OPTOUT_URL =
+  "https://tools.google.com/dlpage/gaoptout";
 
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
@@ -68,7 +70,7 @@ const TOC = [
   { id: "legal-bases", title: "Legal bases" },
   { id: "cookies", title: "Cookies & technologies" },
   { id: "advertising", title: "Google AdSense" },
-  { id: "analytics", title: "Analytics" },
+  { id: "analytics", title: "Google Analytics 4" },
   { id: "data-use", title: "How we use data" },
   { id: "sharing", title: "Sharing & processors" },
   { id: "transfers", title: "International transfers" },
@@ -261,11 +263,9 @@ function PrivacyPolicy() {
                 function properly without them.
               </li>
               <li>
-                <strong>Analytics</strong> — help us understand how visitors use the AI Literacy
-                (for example, which sections are most read). Loaded only if you grant analytics
-                consent. We do not currently load a third-party analytics script; this category
-                exists so we can enable measurement in future without changing how you control
-                cookies.
+                <strong>Analytics</strong> — Google Analytics 4 (GA4) cookies help us understand
+                how visitors use the AI Literacy (for example, which chapters are most read).
+                Loaded only if you grant analytics consent.
               </li>
               <li>
                 <strong>Advertising</strong> — used by Google AdSense and its partners to serve
@@ -387,23 +387,48 @@ function PrivacyPolicy() {
             </p>
           </LegalSection>
 
-          <LegalSection id="analytics" index={8} icon={FileText} title="Analytics">
+          <LegalSection id="analytics" index={8} icon={FileText} title="Google Analytics 4">
             <p>
-              If you consent to analytics cookies, we may use privacy-oriented analytics tools to
-              understand aggregate traffic and content performance (for example, which AI Literacy
-              chapters are most visited). Analytics is designed to minimise identification of
-              individual visitors.
+              If you consent to analytics cookies, we use <strong>Google Analytics 4</strong>{" "}
+              (GA4), operated by Google LLC (and Google Ireland Limited for users in the European
+              Economic Area and United Kingdom), to understand aggregate traffic and content
+              performance — for example, which AI Literacy chapters are most visited. GA4 scripts
+              load only after you grant analytics consent.
             </p>
             <p>
-              <strong>Current status:</strong> Analytics consent is collected through our cookie
-              banner, but a third-party analytics provider is not yet active on the site. When we
-              enable analytics, we will update this policy and ensure processing remains
-              consent-gated where required by law.
+              GA4 may collect information such as pages viewed, approximate location (country or
+              region), device and browser type, referral source, and interaction events. Google
+              processes this data under its own privacy policy. See the{" "}
+              <a href={GOOGLE_PRIVACY_URL} target="_blank" rel="noopener noreferrer">
+                Google Privacy Policy
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://policies.google.com/technologies/partner-sites"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                How Google uses data from sites that use its services
+              </a>
+              .
             </p>
             <p>
-              You may withdraw analytics consent at any time via{" "}
+              <strong>Opt-out:</strong> Reject analytics cookies in our banner or via{" "}
               <CookiePreferencesLink className="font-medium text-purple hover:underline" />{" "}
-              in the footer.
+              in the footer. You can also install the{" "}
+              <a
+                href={GOOGLE_ANALYTICS_OPTOUT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Google Analytics Opt-out Browser Add-on
+              </a>
+              .
+            </p>
+            <p>
+              We configure GA4 to send page views only after consent and to avoid automatic
+              page-view bursts on single-page navigations without your permission. Analytics data
+              is used in aggregate to improve the Service; we do not sell it.
             </p>
           </LegalSection>
 
@@ -448,8 +473,8 @@ function PrivacyPolicy() {
                 Limited) when you consent to advertising cookies.
               </li>
               <li>
-                <strong>Analytics</strong> — future analytics providers, only with consent where
-                required.
+                <strong>Analytics</strong> — Google Analytics 4 (Google LLC / Google Ireland
+                Limited) when you consent to analytics cookies.
               </li>
               <li>
                 <strong>Legal &amp; safety</strong> — regulators, courts, or law enforcement when

@@ -43,6 +43,7 @@ import {
   BookmarkCheck,
 } from "lucide-react";
 import { ShareMenu } from "@/components/share-menu";
+import { AdSlot } from "@/components/ad-slot";
 
 // Approx 220 words per minute; word counts derived from block kind.
 function blockWords(b: ConceptBodyBlock): number {
@@ -492,6 +493,8 @@ function ConceptPage() {
                 ),
               )}
             </div>
+
+            <AdSlot variant="article" className="my-12" />
 
             {tabExamples.length > 0 && (
               <section id="examples" className="mt-16">
