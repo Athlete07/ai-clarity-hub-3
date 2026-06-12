@@ -302,8 +302,8 @@ function SimulationsPage() {
                     BUILT FOR
                   </div>
                   <p className="mt-2 text-[13px] text-[#9FB8D1]">
-                    PMs, founders and engineers who want hands-on intuition for
-                    agent orchestration — not another LinkedIn post.
+                    PMs, founders, marketers, and engineers who want hands-on intuition
+                    for agent orchestration — not another LinkedIn post.
                   </p>
                 </div>
               </div>

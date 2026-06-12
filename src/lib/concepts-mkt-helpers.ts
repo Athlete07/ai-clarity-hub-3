@@ -1,4 +1,4 @@
-/** Shared helpers for Marketer / Growth Lead Executive KB chapters. */
+/** Shared helpers for Marketer / Growth Lead AI Literacy chapters. */
 export {
   buildChapter,
   buildSection,

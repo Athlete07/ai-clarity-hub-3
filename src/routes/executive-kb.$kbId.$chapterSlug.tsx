@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, redirect, useRouter } from "@tanstack/
 import { useEffect, useRef, useState, useMemo } from "react";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { Nav, Footer } from "@/components/site-nav";
-import { BRAND, brandOgMeta } from "@/lib/brand";
+import { AI_LITERACY, BRAND, brandOgMeta } from "@/lib/brand";
 import { ExampleTabs } from "@/components/example-tabs";
 import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Quiz } from "@/components/quiz";
@@ -178,7 +178,7 @@ export const Route = createFileRoute("/executive-kb/$kbId/$chapterSlug")({
       <div>
         <h1 className="text-2xl font-medium">Concept not found</h1>
         <Link to="/executive-kb" className="mt-3 inline-block text-purple hover:underline">
-          ← Back to Executive KB
+          {AI_LITERACY.backShort}
         </Link>
       </div>
     </div>
@@ -338,7 +338,7 @@ function ConceptPage() {
               search={executiveKbTrackSearch(track)}
               className="nav-link hidden items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
             >
-              Executive KB
+              {AI_LITERACY.name}
             </Link>
             <span className="hidden text-muted-foreground/40 sm:inline" aria-hidden>
               /
@@ -572,7 +572,7 @@ function ConceptPage() {
                     search={executiveKbTrackSearch(track)}
                     className={`inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-[13px] font-medium text-primary-foreground ${theme.progress} hover:opacity-90`}
                   >
-                    Back to Executive KB
+                    {AI_LITERACY.back}
                     <ArrowRight size={14} />
                   </Link>
                 )}
@@ -877,10 +877,10 @@ function Sidebar({
         search={executiveKbTrackSearch(track)}
         className="mb-5 inline-flex items-center gap-1 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
       >
-        ← Executive KB
+        {AI_LITERACY.backShort}
       </Link>
       <p className="text-[13px] font-medium leading-snug text-foreground">
-        {executiveKb?.title ?? "Executive KB"}
+        {executiveKb?.title ?? AI_LITERACY.name}
       </p>
       <div className="mt-3">
         <div className="flex items-center justify-between text-[10px] text-muted-foreground">

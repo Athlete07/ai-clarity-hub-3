@@ -12,7 +12,7 @@ import appCss from "../styles.css?url";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { CookieConsent } from "@/components/cookie-consent";
 import { useAdsenseLoader } from "@/lib/adsense";
-import { BRAND, brandIconLinks, brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, BRAND, brandIconLinks, brandOgMeta } from "@/lib/brand";
 import { CREATOR } from "@/lib/creator";
 
 function NotFoundComponent() {
@@ -79,11 +79,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "FactorBeam — Executive KB for product leaders" },
+      { title: `FactorBeam — AI Literacy for ${AUDIENCE.short}` },
       {
         name: "description",
         content:
-          "Plain-English Executive KB for product leaders. Highlight any sentence to get an instant, in-place explanation. Free, no signup.",
+          `Plain-English AI Literacy for ${AUDIENCE.short}. Highlight any sentence to get an instant, in-place explanation. Free, no signup.`,
       },
       { name: "author", content: CREATOR.name },
       { property: "og:site_name", content: BRAND.name },
@@ -111,7 +111,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@context": "https://schema.org",
           "@type": "WebSite",
           name: BRAND.name,
-          description: "Plain-English Executive KB for product leaders.",
+          description: `Plain-English AI Literacy for ${AUDIENCE.short}.`,
           logo: BRAND.logo.mark,
           author: {
             "@type": "Person",

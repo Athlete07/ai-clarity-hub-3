@@ -19,12 +19,12 @@ export const Route = createFileRoute("/terms-of-service")({
       {
         name: "description",
         content:
-          "FactorBeam's Terms of Service. Read the rules for using this website, its Executive KB, and content.",
+          "FactorBeam's Terms of Service. Read the rules for using this website, its AI Literacy, and content.",
       },
       { property: "og:title", content: "Terms of Service — FactorBeam" },
       {
         property: "og:description",
-        content: "Rules for using FactorBeam's website, Executive KB, and content.",
+        content: "Rules for using FactorBeam's website, AI Literacy, and content.",
       },
       { property: "og:url", content: "/terms-of-service" },
       { property: "og:type", content: "website" },
@@ -52,7 +52,7 @@ const TOC = [
 ] as const;
 
 const HIGHLIGHTS = [
-  { label: "Free to use", detail: "No payment required for the Executive KB." },
+  { label: "Free to use", detail: "No payment required for the AI Literacy." },
   { label: "Personal study", detail: "Read, bookmark, and quote with attribution." },
   { label: "No scraping", detail: "Systematic download or mirroring is prohibited." },
   { label: "England & Wales", detail: "Governing law for disputes and interpretation." },
@@ -65,7 +65,7 @@ function TermsOfService() {
       <main className="overflow-x-hidden">
         <LegalHero
           title="Terms of Service"
-          description="The rules for using FactorBeam — our website, Executive KB, quizzes, and all related content."
+          description="The rules for using FactorBeam — our website, AI Literacy, quizzes, and all related content."
           lastUpdated="June 2026"
         />
 
@@ -81,9 +81,9 @@ function TermsOfService() {
         >
           <LegalSection id="overview" index={1} icon={FileText} title="Overview">
             <p>
-              FactorBeam is a free educational website and open Executive KB project,
+              FactorBeam is a free educational website and open AI Literacy project,
               operated by {CREATOR.name}. These Terms of Service (&quot;Terms&quot;) govern
-              your access to and use of FactorBeam — the website, Executive KB, quizzes, and
+              your access to and use of FactorBeam — the website, AI Literacy, quizzes, and
               all related content (collectively, the &quot;Service&quot;). By using the
               Service, you agree to these Terms. If you do not agree, please do not use the
               Service.
@@ -110,7 +110,7 @@ function TermsOfService() {
 
           <LegalSection id="content" index={4} icon={FileText} title="Content & intellectual property">
             <p>
-              All Executive KB content, text, diagrams, quizzes, and code examples on
+              All AI Literacy content, text, diagrams, quizzes, and code examples on
               FactorBeam are original work published on the site unless otherwise noted, and
               are protected by copyright and other intellectual-property laws.
             </p>
@@ -137,7 +137,7 @@ function TermsOfService() {
               </li>
               <li>
                 Create derivative works (e.g., courses, books, paid newsletters) based on the
-                Executive KB without a licence
+                AI Literacy without a licence
               </li>
               <li>Scrape, mirror, or systematically download the site</li>
             </ul>
@@ -220,7 +220,7 @@ function TermsOfService() {
               be corrected.
             </p>
             <p>
-              The Executive KB reflects the author&apos;s best understanding of AI and
+              The AI Literacy reflects the author&apos;s best understanding of AI and
               product-management concepts at the time of writing, but the field evolves
               rapidly. No guarantee is made that any strategy, technique, or example will
               produce specific results in your context.
@@ -287,7 +287,7 @@ function TermsOfService() {
         </LegalDocumentLayout>
 
         <LegalClosingCta
-          title="Back to the Executive KB."
+          title="Back to AI Literacy."
           subtitle="Free. No signup. Start reading in the next 60 seconds."
           secondaryLabel="Read Privacy Policy"
           secondaryTo="/privacy-policy"

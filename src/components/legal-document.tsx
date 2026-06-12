@@ -176,7 +176,7 @@ export function LegalProse({ children }: { children: ReactNode }) {
 export function LegalClosingCta({
   title,
   subtitle,
-  primaryLabel = "Browse Executive KB",
+  primaryLabel = "Browse AI Literacy",
   primaryTo = "/executive-kb" as const,
   secondaryLabel,
   secondaryTo,

@@ -1,21 +1,21 @@
 # FactorBeam
 
-> Plain-English Executive KB for product leaders. Highlight any sentence to get an instant, in-place explanation. Free, no signup.
+> Plain-English AI Literacy for PMs, founders, business leaders, and marketers. Highlight any sentence to get an instant, in-place explanation. Free, no signup.
 
 Logo: /factorbeam-logo-light.png (light mode), /factorbeam-logo-dark.png (dark mode)
 Logo mark: /logo-mark.png
 Favicon: /favicon.png
 Brand colors: primary #534AB7, secondary #6B5FD4
 
-FactorBeam is a free reading site that teaches how modern AI actually works — written for product managers, founders, and operators rather than ML engineers. Each Executive KB is a sequenced set of chapters with three real product examples per concept and a short quiz at the end.
+FactorBeam is a free reading site that teaches how modern AI actually works — written for product managers, founders, business leaders, and marketers rather than ML engineers. Each AI Literacy track is a sequenced set of chapters with three real product examples per concept and a short quiz at the end.
 
 ## Pages
 
-- [Home](/): Overview of FactorBeam and the available Executive KB.
-- [Executive KB](/executive-kb): Index of every KB in the library.
+- [Home](/): Overview of FactorBeam and AI Literacy.
+- [AI Literacy](/executive-kb): Index of every track in the library — PM, Founder, Business Leader, and Marketer role tracks.
 - [About](/about): Why FactorBeam exists and who it's for.
 
-## Executive KB
+## AI Literacy — Product Manager tracks
 
 - [AI Foundations for PMs](/executive-kb/pm-foundations/ai-vs-ml-vs-deep-learning): Technical fast-track on models, training vs inference, evaluation, bias and hallucination.
 - [LLMs, Models & Prompting](/executive-kb/pm-llms-prompting/tokenization): Tokenization, transformers and attention, context windows, prompting, fine-tuning vs RAG.
@@ -26,3 +26,14 @@ FactorBeam is a free reading site that teaches how modern AI actually works — 
 - [AI Product Strategy & Decisions](/executive-kb/ai-product-strategy-decisions/build-buy-fine-tune): Build vs buy, metrics, discovery, data strategy, safety, PRDs, roadmaps.
 - [Multimodal & Emerging AI](/executive-kb/multimodal-emerging-ai/vision-transformers): Vision, diffusion, speech, video, voice interfaces, on-device AI, emerging frontiers.
 - [SEO & Content Strategy for AI](/executive-kb/seo-content-strategy-ai/semantic-seo): Semantic SEO, topic clusters, AI overviews, structured data, entity SEO, AIO.
+
+## AI Literacy — Marketer tracks
+
+- [AI Fundamentals for Marketers](/executive-kb/ai-fundamentals-for-marketers/mkt-ai-vs-ml-vs-dl-marketer-lens): AI hierarchy, model learning, inference costs, data, evaluation, liability, and martech vendor landscape.
+- [AI-Powered Content Strategy](/executive-kb/ai-powered-content-strategy/mkt-ai-content-generation-fundamentals): Content generation, prompting, brand voice, repurposing, and quality at scale.
+- [SEO in the Age of AI](/executive-kb/seo-in-the-age-of-ai/mkt-ai-restructuring-search): Semantic SEO, AI Overviews, answer-engine optimisation, and AI search visibility.
+- [AI for Paid Advertising & Performance Marketing](/executive-kb/ai-paid-advertising-performance-marketing/mkt-how-ai-runs-ad-platforms): How ad-platform AI works, creative strategy, and attribution in a modeled world.
+- [AI Personalisation & Customer Experience](/executive-kb/ai-personalisation-customer-experience/mkt-personalisation-means-in-ai): Personalisation, recommendations, and email at scale without losing trust.
+- [AI Analytics & Marketing Intelligence](/executive-kb/ai-analytics-marketing-intelligence/mkt-descriptive-to-predictive-analytics): Predictive analytics, CLV, and competitive intelligence for marketing teams.
+- [AI for Growth — Acquisition, Retention & Revenue](/executive-kb/ai-for-growth-acquisition-retention/mkt-ai-growth-funnel): Growth funnel AI, lead scoring, and conversion optimisation.
+- [AI Martech Stack & Tool Selection](/executive-kb/ai-martech-stack-tool-selection/mkt-navigating-ai-martech-landscape): Martech evaluation, integration, and building a coherent AI marketing stack.

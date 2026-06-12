@@ -1,4 +1,4 @@
-/** Data-driven diagram definitions for Executive KB chapters. */
+/** Data-driven diagram definitions for AI Literacy chapters. */
 
 export type FlowStep = { title: string; desc: string };
 

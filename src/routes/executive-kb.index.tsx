@@ -20,27 +20,27 @@ import {
 import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
 import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
-import { brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, brandOgMeta } from "@/lib/brand";
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 
 export const Route = createFileRoute("/executive-kb/")({
   validateSearch: (search) => executiveKbSearchSchema.parse(search),
   head: () => ({
     meta: [
-      { title: "Executive KB — AI knowledge for product leaders — FactorBeam" },
+      { title: `AI Literacy — AI knowledge for ${AUDIENCE.short} — FactorBeam` },
       {
         name: "description",
         content:
-          "Browse every FactorBeam Executive KB. Plain-English AI chapters sequenced for product managers, founders, and business leaders — pick the KB that matches the gap in your work.",
+          `Browse every FactorBeam AI Literacy track. Plain-English AI chapters sequenced for ${AUDIENCE.long} — pick the track that matches the gap in your work.`,
       },
       {
         property: "og:title",
-        content: "Executive KB — AI knowledge for product leaders — FactorBeam",
+        content: `AI Literacy — AI knowledge for ${AUDIENCE.short} — FactorBeam`,
       },
       {
         property: "og:description",
         content:
-          "Plain-English Executive KB for product leaders — sequenced like a course, skimmable like a doc.",
+          `Plain-English AI Literacy for ${AUDIENCE.short} — sequenced like a course, skimmable like a doc.`,
       },
       { property: "og:url", content: "/executive-kb" },
       { property: "og:type", content: "website" },
@@ -148,14 +148,14 @@ function ExecutiveKbPage() {
           </div>
 
           <div className="mx-auto max-w-6xl px-5 pt-14 pb-12 sm:px-6 sm:pt-20 sm:pb-16">
-            <p className="section-label">Executive KB</p>
+            <p className="section-label">AI Literacy</p>
             <h1 className="mt-3 text-[clamp(1.75rem,4.5vw,3rem)] font-medium leading-[1.1] tracking-[-0.035em] text-balance sm:text-pretty">
               Same AI concepts,{" "}
               <span className="text-purple">sequenced for your role.</span>
             </h1>
             <p className="mt-5 text-[16px] leading-relaxed text-muted-foreground text-balance sm:text-[17px] sm:text-pretty">
               {role
-                ? `${executiveKbs.length} plain-English Executive KBs with chapters and quizzes — sequenced for ${activeRole?.title}s.`
+                ? `${executiveKbs.length} plain-English AI Literacy tracks with chapters and quizzes — sequenced for ${activeRole?.title}s.`
                 : "Same AI concepts, framed for how you actually work — pick your track to browse sequenced chapters."}
             </p>
 
@@ -169,7 +169,7 @@ function ExecutiveKbPage() {
         {/* ── Stats ──────────────────────────────────────────────── */}
         <section className="border-y border-border/80 bg-muted/30">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-border/60 sm:grid-cols-4">
-            <StatCell value={String(ALL_KBS.length)} label="Executive KBs" />
+            <StatCell value={String(ALL_KBS.length)} label="AI Literacy tracks" />
             <StatCell value={String(ROLES.length)} label="Role tracks" />
             <StatCell value={`${TOTAL_CHAPTERS}+`} label="Chapters" />
             <StatCell value="$0" label="Forever" />
@@ -209,7 +209,7 @@ function ExecutiveKbPage() {
                     </p>
                     <div className="mt-6 flex items-center justify-between">
                       <span className="text-[12px] text-muted-foreground">
-                        {kbCount} Executive KBs
+                        {kbCount} AI Literacy tracks
                       </span>
                       <span
                         className={`inline-flex items-center gap-1 text-[13px] font-medium ${rTheme.textHover.replace("group-hover/card:", "group-hover:")}`}
@@ -228,13 +228,13 @@ function ExecutiveKbPage() {
               <div className="mb-8">
                 <p className="section-label">Library</p>
                 <h2 className="mt-2 text-[22px] font-medium tracking-tight sm:text-[26px]">
-                  {activeRole?.title} Executive KBs
+                  {activeRole?.title} AI Literacy tracks
                 </h2>
               </div>
               {executiveKbs.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-border bg-muted/20 px-8 py-16 text-center">
                   <BookOpen size={28} className="mx-auto text-muted-foreground/50" />
-                  <p className="mt-4 text-[17px] font-medium">No Executive KB yet</p>
+                  <p className="mt-4 text-[17px] font-medium">No AI Literacy track yet</p>
                   <p className="mx-auto mt-2 max-w-md text-[14px] leading-relaxed text-muted-foreground">
                     {activeRole?.title} entries are on the way. Switch to another track to
                     browse what&apos;s available today.

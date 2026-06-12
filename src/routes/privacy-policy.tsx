@@ -73,7 +73,7 @@ function PrivacyPolicy() {
           related={{
             label: "Terms of Service",
             to: "/terms-of-service",
-            description: "Rules for using FactorBeam's website and Executive KB content.",
+            description: "Rules for using FactorBeam's website and AI Literacy content.",
           }}
         >
           <LegalSection id="overview" index={1} icon={Shield} title="Overview">
@@ -121,7 +121,7 @@ function PrivacyPolicy() {
               </li>
               <li>
                 <strong>Analytics</strong> — anonymous usage statistics to understand which
-                Executive KB sections are most helpful. Only active if you grant consent.
+                AI Literacy sections are most helpful. Only active if you grant consent.
               </li>
               <li>
                 <strong>Advertising</strong> — personalised ads via Google AdSense. Only
@@ -193,7 +193,7 @@ function PrivacyPolicy() {
             <ul>
               <li>Operate and secure the website</li>
               <li>Remember your preferences (theme, reading progress)</li>
-              <li>Analyse aggregate usage to improve the Executive KB</li>
+              <li>Analyse aggregate usage to improve the AI Literacy</li>
               <li>Serve ads when you have given consent</li>
               <li>Respond to your messages and feedback</li>
             </ul>

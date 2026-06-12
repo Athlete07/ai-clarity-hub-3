@@ -51,8 +51,8 @@ export function renderErrorPage(): string {
       .primary { background: var(--primary); color: var(--primary-foreground); }
       .primary:hover { background: var(--primary-hover); }
       .secondary { background: var(--background); color: var(--foreground); border-color: var(--border); }
-      .logo-light { display: block; margin: 0 auto 1.25rem; width: auto; height: 72px; }
-      .logo-dark { display: none; margin: 0 auto 1.25rem; width: auto; height: 72px; }
+      .logo-light { display: block; margin: 0 auto 1rem; width: auto; height: 32px; }
+      .logo-dark { display: none; margin: 0 auto 1rem; width: auto; height: 32px; }
       @media (prefers-color-scheme: dark) {
         .logo-light { display: none; }
         .logo-dark { display: block; }

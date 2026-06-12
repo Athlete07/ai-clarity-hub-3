@@ -1,13 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/site-nav";
 import { AuthorPortrait } from "@/components/author-portrait";
-import { brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, brandOgMeta } from "@/lib/brand";
 import { CREATOR } from "@/lib/creator";
 import { PLATFORM_ABOUT } from "@/lib/platform-about";
-import { ArrowRight, Cpu, Layers, PenLine, ShieldCheck } from "lucide-react";
-import { useCallback, useState } from "react";
-
-const CONTACT_EMAIL = CREATOR.socials.email;
+import { ArrowRight, BookOpen, Cpu, Layers, PenLine, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -16,7 +13,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "FactorBeam cuts through AI hype for PMs, founders, and leaders. Transparent methodology, stress-tested playbooks, and frameworks built for execution.",
+          `FactorBeam cuts through AI hype for ${AUDIENCE.short}. Transparent methodology, stress-tested playbooks, and frameworks built for execution.`,
       },
       {
         property: "og:title",
@@ -63,7 +60,7 @@ function AboutThePlatform() {
               to="/executive-kb"
               className="btn-primary mt-10 inline-flex px-6 py-3 text-[14px]"
             >
-              Explore Executive KB
+              Explore AI Literacy
               <ArrowRight size={15} />
             </Link>
           </div>
@@ -179,33 +176,44 @@ function AboutThePlatform() {
               aria-hidden
               className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,255,255,0.1),transparent_55%)]"
             />
-            <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/70">
-                  Your next step
-                </p>
-                <h2 className="mt-3 text-[22px] font-medium leading-snug tracking-tight sm:text-[26px]">
-                  {conversion.primary.label}
-                </h2>
-                <p className="mt-3 text-[14px] text-primary-foreground/85">
-                  {conversion.primary.hint}
-                </p>
-                <Link
-                  to={conversion.primary.href}
-                  className="mt-6 inline-flex items-center gap-2 rounded-md bg-background px-6 py-3.5 text-[14px] font-medium text-foreground transition-opacity hover:opacity-95"
-                >
-                  <Cpu size={16} aria-hidden />
-                  Launch Agent Overseer
-                  <ArrowRight size={15} />
-                </Link>
-              </div>
+            <div className="relative">
+              <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-primary-foreground/70">
+                Your next step
+              </p>
+              <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-stretch sm:gap-6">
+                <div className="flex flex-1 flex-col rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm sm:p-7">
+                  <h2 className="text-[18px] font-medium leading-snug tracking-tight sm:text-[20px]">
+                    {conversion.primary.label}
+                  </h2>
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-primary-foreground/85 sm:text-[14px]">
+                    {conversion.primary.hint}
+                  </p>
+                  <Link
+                    to={conversion.primary.href}
+                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-background px-5 py-3.5 text-[14px] font-medium text-foreground transition-opacity hover:opacity-95 sm:w-auto sm:justify-start"
+                  >
+                    <Cpu size={16} aria-hidden />
+                    Launch Agent Overseer
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
 
-              <div className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm sm:p-7">
-                <p className="text-[15px] font-medium">{conversion.secondary.label}</p>
-                <p className="mt-1.5 text-[13px] text-primary-foreground/80">
-                  {conversion.secondary.hint}
-                </p>
-                <WorkflowEmailCapture subject={conversion.secondary.mailSubject} />
+                <div className="flex flex-1 flex-col rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 p-6 backdrop-blur-sm sm:p-7">
+                  <h2 className="text-[18px] font-medium leading-snug tracking-tight sm:text-[20px]">
+                    {conversion.secondary.label}
+                  </h2>
+                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-primary-foreground/85 sm:text-[14px]">
+                    {conversion.secondary.hint}
+                  </p>
+                  <Link
+                    to={conversion.secondary.href}
+                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary-foreground/25 bg-primary-foreground/15 px-5 py-3.5 text-[14px] font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/25 sm:w-auto sm:justify-start"
+                  >
+                    <BookOpen size={16} aria-hidden />
+                    Explore AI Literacy
+                    <ArrowRight size={15} />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -213,54 +221,5 @@ function AboutThePlatform() {
       </main>
       <Footer />
     </>
-  );
-}
-
-function WorkflowEmailCapture({ subject }: { subject: string }) {
-  const [email, setEmail] = useState("");
-
-  const requestWorkflows = useCallback(() => {
-    const trimmed = email.trim();
-    if (!trimmed) return;
-
-    const body = [
-      "Please send the 5 most downloaded PM AI workflows.",
-      "",
-      `Email: ${trimmed}`,
-    ].join("\n");
-
-    const href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = href;
-  }, [email, subject]);
-
-  return (
-    <form
-      className="mt-5 flex flex-col gap-3 sm:flex-row"
-      onSubmit={(e) => {
-        e.preventDefault();
-        requestWorkflows();
-      }}
-    >
-      <label className="sr-only" htmlFor="workflow-email">
-        Your email
-      </label>
-      <input
-        id="workflow-email"
-        type="email"
-        required
-        autoComplete="email"
-        placeholder="you@company.com"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        className="min-w-0 flex-1 rounded-md border border-primary-foreground/20 bg-background px-4 py-3 text-[14px] text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary-foreground/30"
-      />
-      <button
-        type="submit"
-        className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-primary-foreground px-5 py-3 text-[14px] font-medium text-purple transition-opacity hover:opacity-95"
-      >
-        Send to inbox
-        <ArrowRight size={14} aria-hidden />
-      </button>
-    </form>
   );
 }

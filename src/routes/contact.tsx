@@ -50,7 +50,7 @@ const REASONS = [
   {
     icon: Lightbulb,
     title: "Topic idea",
-    detail: "A concept you wish the Executive KB covered.",
+    detail: "A concept you wish AI Literacy covered.",
   },
   {
     icon: Bug,
@@ -128,8 +128,8 @@ function Contact() {
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="group inline-flex items-center gap-3 text-left"
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-purple-light/70 p-1 dark:bg-purple-light/15">
-                    <FactorBeamMark />
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-purple-light/70 p-1.5 dark:bg-purple-light/15">
+                    <FactorBeamMark size={20} />
                   </span>
                   <span>
                     <span className="block text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
@@ -229,7 +229,7 @@ function Contact() {
             <div className="section-label mb-3">Include when you can</div>
             <ul className="grid gap-2.5 sm:grid-cols-2">
               {[
-                "Executive KB and chapter name",
+                "AI Literacy track and chapter name",
                 "What confused you or felt off",
                 "How you'd rephrase or fix it",
                 "Screenshots for visual bugs",
@@ -275,7 +275,7 @@ function Contact() {
         <section className="mx-auto max-w-[720px] px-5 pb-32 sm:px-6">
           <div className="flex flex-col items-center rounded-2xl hairline bg-card p-10 text-center sm:p-14">
             <h2 className="mb-3 text-[26px] font-medium tracking-tight sm:text-[32px]">
-              Many answers are already in the Executive KB
+              Many answers are already in AI Literacy
             </h2>
             <p className="mb-8 max-w-[420px] text-[14.5px] text-muted-foreground sm:text-[15.5px]">
               Before you write, skim the index — you might find what you need in under
@@ -285,7 +285,7 @@ function Contact() {
               to="/executive-kb"
               className="btn-primary gap-2 px-6 py-3 text-[14px]"
             >
-              Browse Executive KB
+              Browse AI Literacy
               <ArrowRight size={15} />
             </Link>
           </div>

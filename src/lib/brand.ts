@@ -1,3 +1,19 @@
+/** Audience copy — keep role lists in sync across meta, hero, and legal pages. */
+export const AUDIENCE = {
+  short: "PMs, founders, business leaders, and marketers",
+  long: "product managers, founders, business leaders, and marketers",
+} as const;
+
+/** User-facing name for the sequenced chapter library (routes stay at /executive-kb). */
+export const AI_LITERACY = {
+  name: "AI Literacy",
+  tracks: "AI Literacy tracks",
+  browse: "Browse AI Literacy",
+  explore: "Explore AI Literacy",
+  back: "Back to AI Literacy",
+  backShort: "← AI Literacy",
+} as const;
+
 /** FactorBeam brand assets — single source of truth for logo paths. */
 export const BRAND = {
   name: "FactorBeam",
@@ -24,21 +40,17 @@ export const BRAND = {
     og: "/og.png",
   },
   /**
-   * Site header scale — aligned with Material (64dp bar, 14sp nav)
-   * and WCAG 2.2 (44px minimum touch targets).
+   * Site chrome scale — mirrors CSS vars in styles.css (--header-height, --logo-height-*).
+   * Body base is 15px; nav is 14px; header bar is 56px.
    */
   header: {
-    heightPx: 64,
-    heightSlimPx: 56,
+    heightPx: 56,
+    heightSlimPx: 48,
     navFontPx: 14,
-    /** Full horizontal logo — main nav bar */
-    logoFullPx: 48,
-    /** Home hero, 404, error states */
-    logoHeroPx: 72,
-    /** Footer and compact chrome */
-    logoCompactPx: 40,
-    /** Icon-only — slim chapter header, inline marks */
-    logoMarkPx: 44,
+    logoFullPx: 24,
+    logoHeroPx: 32,
+    logoCompactPx: 20,
+    logoMarkPx: 24,
     touchTargetPx: 44,
   },
 } as const;

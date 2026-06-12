@@ -5,7 +5,7 @@ export const PLATFORM_ABOUT = {
 
   hero: {
     headline:
-      "Cutting through the AI noise for Product Managers, Founders, and Leaders.",
+      "Cutting through the AI noise for Product Managers, Founders, Leaders, and Marketers.",
     subheadline:
       "We test the tools and build the frameworks so you can focus on execution.",
   },
@@ -50,9 +50,9 @@ export const PLATFORM_ABOUT = {
       href: "/simulations/agent-overseer" as const,
     },
     secondary: {
-      label: "Get the 5 most downloaded PM AI workflows",
-      hint: "Sent to your inbox — the tactics teams actually reuse.",
-      mailSubject: "PM AI workflows request",
+      label: "Start with AI Literacy",
+      hint: "Sequenced chapters for your role — real examples, highlight-to-explain, and quizzes. Free, no signup.",
+      href: "/executive-kb" as const,
     },
   },
 } as const;

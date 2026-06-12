@@ -1,4 +1,4 @@
-/** Shared helpers for Business Leader / Head of Function Executive KB chapters. */
+/** Shared helpers for Business Leader / Head of Function AI Literacy chapters. */
 export {
   buildChapter,
   buildSection,

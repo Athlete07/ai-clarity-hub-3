@@ -18,7 +18,7 @@ export const CREATOR = {
   ] as const,
   /** Brief authority block on About the Platform — after methodology only */
   curatorBrief: [
-    "Krishna Kumar leads curation at FactorBeam — stress-testing AI concepts against how product and business teams actually ship, negotiate, and govern.",
+    "Krishna Kumar leads curation at FactorBeam — stress-testing AI concepts against how product, marketing, and business teams actually ship, negotiate, and govern.",
     "Every chapter is researched, structured, and held to a roadmap-review bar before it goes live. AI assists drafting; the curation team owns the judgment.",
   ] as const,
   methodologyCta: {

@@ -1,5 +1,5 @@
-// Single source of truth for Executive KB → chapter sequences.
-// Both the Executive KB listing page and the chapter reader use this.
+// Single source of truth for AI Literacy track → chapter sequences.
+// Both the AI Literacy listing page and the chapter reader use this.
 // Keeping chapters scoped to their KB prevents cross-KB bleed
 // in sidebar, prev/next nav, progress %, and chapter numbering.
 
@@ -566,7 +566,7 @@ import { FOUNDER_EXECUTIVE_KBS } from "./executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "./executive-kb-business-leader";
 import { MARKETER_EXECUTIVE_KBS } from "./executive-kb-marketer";
 
-/** Legacy URL segments → canonical Executive KB id (no pb-N- prefix). */
+/** Legacy URL segments → canonical AI Literacy track id (no pb-N- prefix). */
 export const LEGACY_EXECUTIVE_KB_IDS: Record<string, ExecutiveKbId> = {
   "pb-4-ai-systems-design": "ai-systems-design",
   "pb-5-ai-infrastructure-deployment": "ai-infrastructure-deployment",
@@ -636,7 +636,7 @@ export const prevSlugInExecutiveKb = (slug: string): string | undefined => {
   return i > 0 ? kb.sequence[i - 1].slug : undefined;
 };
 
-/** Role track for a given Executive KB id. */
+/** Role track for a given AI Literacy track id. */
 export function executiveKbTrackForId(id: string): ExecutiveKbTrack {
   const canonical = canonicalExecutiveKbId(id);
   if (FOUNDER_EXECUTIVE_KBS.some((p) => p.id === canonical)) return "founder";

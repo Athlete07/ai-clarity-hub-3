@@ -1,5 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
+import { AI_LITERACY, BRAND } from "@/lib/brand";
 import { useStreak } from "@/lib/storage";
 import { useTheme } from "@/lib/theme";
 import { Flame, Moon, Sun, Menu } from "lucide-react";
@@ -33,7 +34,7 @@ export function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <Link
       to="/"
-      className="flex items-center text-foreground transition-opacity hover:opacity-90"
+      className="inline-flex items-center text-foreground transition-opacity hover:opacity-90"
       aria-label={compact ? undefined : "FactorBeam home"}
     >
       <FactorBeamLogo context={compact ? "compact" : "header"} />
@@ -66,12 +67,12 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
       <SheetContent side="right" className="w-[280px] border-l bg-background/95 backdrop-blur p-0">
         <SheetTitle className="sr-only">Navigation</SheetTitle>
         <div className="flex h-full flex-col">
-          <div className="hairline-b flex items-center px-5 py-4" style={{ minHeight: "4rem" }}>
+          <div className="site-header hairline-b flex items-center px-5">
             <Logo compact />
           </div>
           <nav className="flex flex-col gap-1 p-3" aria-label="Primary">
             <Link to="/executive-kb" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
-              Executive KB
+              {AI_LITERACY.name}
             </Link>
             <Link to="/about" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
               About the Platform
@@ -114,15 +115,15 @@ export function Nav({ slim = false }: { slim?: boolean }) {
         slim ? "site-header--slim" : "site-header",
       )}
     >
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 sm:px-6">
-        <div className="flex min-w-0 items-center gap-4 sm:gap-5">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+        <div className="flex min-w-0 items-center gap-4 sm:gap-6">
           <Logo />
           {slim && (
             <Link
               to="/executive-kb"
               className={cn(navLinkClass, "hidden sm:inline")}
             >
-              ← Executive KB
+              {AI_LITERACY.backShort}
             </Link>
           )}
         </div>
@@ -130,7 +131,7 @@ export function Nav({ slim = false }: { slim?: boolean }) {
         {!slim && (
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
             <Link to="/executive-kb" className={navLinkClass}>
-              Executive KB
+              {AI_LITERACY.name}
             </Link>
             <Link to="/about" className={navLinkClass}>
               About the Platform
@@ -204,7 +205,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
           <FooterColumn title="Product">
-            <FooterLink to="/executive-kb">Executive KB</FooterLink>
+            <FooterLink to="/executive-kb">{AI_LITERACY.name}</FooterLink>
             <FooterLink to="/about">About the Platform</FooterLink>
             <FooterLink to="/simulations">
               <span className="inline-flex items-center gap-2">
@@ -231,7 +232,7 @@ export function Footer() {
 
         <div className="hairline-t mt-10 flex flex-col gap-2 pt-8 text-sm leading-normal text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <Logo compact />
-          <span className="text-xs sm:text-sm">© 2026 · Built for curious minds, not engineers.</span>
+          <span className="text-xs sm:text-sm">© 2026 · {BRAND.tagline}</span>
         </div>
       </div>
     </footer>

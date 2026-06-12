@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { Nav, Footer } from "@/components/site-nav";
-import { brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, brandOgMeta } from "@/lib/brand";
 import { FaqItem } from "@/components/faq-item";
 import { useProgress } from "@/lib/storage";
 import {
@@ -31,20 +31,20 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FactorBeam — AI clarity for product leaders worldwide" },
+      { title: `FactorBeam — AI clarity for ${AUDIENCE.short}` },
       {
         name: "description",
         content:
-          "Plain-English Executive KB for PMs, founders, and business leaders. Sequenced chapters, real product examples, highlight-to-explain, and quizzes. Free, no signup.",
+          `Plain-English AI Literacy for ${AUDIENCE.short}. Sequenced chapters, real product examples, highlight-to-explain, and quizzes. Free, no signup.`,
       },
       {
         property: "og:title",
-        content: "FactorBeam — AI clarity for product leaders worldwide",
+        content: `FactorBeam — AI clarity for ${AUDIENCE.short}`,
       },
       {
         property: "og:description",
         content:
-          "Understand modern AI well enough to ship. Executive KB for every role — highlight anything confusing and get an instant explanation.",
+          "Understand modern AI well enough to ship. AI Literacy for every role — highlight anything confusing and get an instant explanation.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/")({
               name: "Do I need a technical background?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "None at all. Every chapter is written for operators, founders, and curious people — not engineers. Where math would normally appear, chapters use product analogies and real examples instead.",
+                text: `None at all. Every chapter is written for ${AUDIENCE.short} — not engineers. Where math would normally appear, chapters use role-specific examples and plain language instead.`,
               },
             },
             {
@@ -145,13 +145,13 @@ function Home() {
 
           <div className="mx-auto max-w-6xl px-5 pt-14 pb-20 sm:px-6 sm:pt-20 sm:pb-28 lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:pt-24 lg:pb-32">
             <div className="text-center lg:text-left">
-              <div className="mb-6 flex justify-center lg:justify-start">
+              <div className="mb-5 flex items-center justify-center lg:justify-start">
                 <FactorBeamLogo context="hero" />
               </div>
               <div className="inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-purple/15 bg-purple-light/60 px-3 py-1 text-[11px] font-medium tracking-wide text-purple-dark dark:bg-purple-light/20 dark:text-purple">
                   <Sparkles size={12} aria-hidden />
-                  Executive KB
+                  AI Literacy
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 py-1 text-[11px] font-medium tracking-wide text-muted-foreground">
                   <Globe size={12} aria-hidden />
@@ -166,7 +166,7 @@ function Home() {
               </h1>
 
               <p className="mx-auto mt-6 max-w-[480px] text-[16px] leading-[1.65] text-muted-foreground sm:text-[18px] lg:mx-0">
-                Plain-English chapters for PMs, founders, and business leaders.
+                Plain-English chapters for {AUDIENCE.short}.
                 Highlight any sentence you don&apos;t understand — get an explanation
                 right there, in context.
               </p>
@@ -252,7 +252,7 @@ function Home() {
         {/* ── Stats strip ─────────────────────────────────────────── */}
         <section className="border-y border-border/80 bg-muted/30">
           <div className="mx-auto grid max-w-6xl grid-cols-2 divide-x divide-border/60 sm:grid-cols-4">
-            <StatCell value={String(ALL_KBS.length)} label="Executive KBs" />
+            <StatCell value={String(ALL_KBS.length)} label="AI Literacy tracks" />
             <StatCell value={String(ROLES.length)} label="Role tracks" />
             <StatCell value={`${TOTAL_CHAPTERS}+`} label="Chapters" />
             <StatCell value="$0" label="Forever" />
@@ -267,7 +267,7 @@ function Home() {
               Same AI concepts. Sequenced for your role.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground text-balance sm:whitespace-nowrap sm:text-[16px] sm:text-pretty">
-              Pick a track on the Executive KB page — every chapter uses examples and framing that match your day job.
+              Pick a track on the AI Literacy page — every chapter uses examples and framing that match your day job.
             </p>
           </div>
 
@@ -300,7 +300,7 @@ function Home() {
                   </p>
                   <div className="mt-6 flex items-center justify-between">
                     <span className="text-[12px] font-medium text-muted-foreground">
-                      {kbCount} Executive KBs
+                      {kbCount} AI Literacy tracks
                     </span>
                     <span
                       className={`inline-flex items-center gap-1 text-[13px] font-medium transition-all group-hover:gap-2 ${theme.textHover.replace("group-hover/card:", "group-hover:")}`}
@@ -557,7 +557,7 @@ function Home() {
           <div className="hairline-t mt-8">
             <FaqItem
               q="Do I need a technical background?"
-              a="None at all. Every chapter is written for operators, founders, and curious people — not engineers. Where math would normally appear, chapters use product analogies and real examples instead."
+              a={`None at all. Every chapter is written for ${AUDIENCE.short} — not engineers. Where math would normally appear, chapters use role-specific examples and plain language instead.`}
             />
             <FaqItem
               q="How long does each chapter take?"
@@ -588,15 +588,15 @@ function Home() {
                 Leave with sharper judgment.
               </h2>
               <p className="mx-auto mt-4 max-w-md text-[15px] text-primary-foreground/85">
-                Join product leaders worldwide who are building real AI intuition — one
-                highlight at a time.
+                Join {AUDIENCE.short} worldwide building real AI intuition — one highlight
+                at a time.
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   to="/executive-kb"
                   className="inline-flex items-center gap-2 rounded-md bg-background px-7 py-3.5 text-[15px] font-medium text-foreground transition-opacity hover:opacity-95"
                 >
-                  Explore Executive KB
+                  Explore AI Literacy
                   <ArrowRight size={16} />
                 </Link>
                 {resumeParams ? (

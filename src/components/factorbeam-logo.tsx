@@ -1,38 +1,39 @@
 import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
-/** Height presets per layout context — tied to BRAND.header scale */
-const LOGO_CONTEXT = {
-  header: { height: BRAND.header.logoFullPx },
-  hero: { height: BRAND.header.logoHeroPx },
-  compact: { height: BRAND.header.logoCompactPx },
-  icon: { height: BRAND.header.logoMarkPx },
+/** Logo height tokens — keep in sync with --logo-height-* in styles.css */
+const LOGO_HEIGHT = {
+  header: { var: "var(--logo-height-header)", px: BRAND.header.logoFullPx },
+  hero: { var: "var(--logo-height-hero)", px: BRAND.header.logoHeroPx },
+  compact: { var: "var(--logo-height-compact)", px: BRAND.header.logoCompactPx },
+  icon: { var: "var(--logo-height-mark)", px: BRAND.header.logoMarkPx },
 } as const;
 
-type LogoContext = keyof typeof LOGO_CONTEXT;
+type LogoContext = keyof typeof LOGO_HEIGHT;
 
 type MarkProps = {
   size?: number;
   className?: string;
-  /** Favicon / app-icon style — square crop of the icon mark from the full logo */
   variant?: "default" | "filled";
 };
 
-/**
- * FactorBeam icon mark — left portion of the official horizontal logo (icon only).
- */
-export function FactorBeamMark({ size = BRAND.header.logoMarkPx, className, variant: _variant = "default" }: MarkProps) {
+/** FactorBeam icon mark — square crop from the horizontal logo. */
+export function FactorBeamMark({ size, className, variant: _variant = "default" }: MarkProps) {
   return (
     <span
-      className={cn("inline-block shrink-0 overflow-hidden", className)}
-      style={{ width: size, height: size }}
+      className={cn("inline-flex shrink-0 items-center justify-center leading-none", className)}
+      style={
+        size
+          ? { width: size, height: size }
+          : { width: LOGO_HEIGHT.icon.var, height: LOGO_HEIGHT.icon.var }
+      }
       aria-hidden
     >
       <img
         src={BRAND.logo.mark}
         alt=""
         draggable={false}
-        className="h-full w-full object-contain select-none dark:hidden"
+        className="block h-full w-full object-contain select-none dark:hidden"
       />
       <img
         src={BRAND.logo.markDark}
@@ -45,7 +46,6 @@ export function FactorBeamMark({ size = BRAND.header.logoMarkPx, className, vari
 }
 
 type LogoProps = {
-  /** Layout preset — `header` matches global nav standards */
   context?: LogoContext;
   markSize?: number;
   className?: string;
@@ -55,7 +55,7 @@ type LogoProps = {
   size?: number;
 };
 
-/** Full FactorBeam horizontal logo (icon + wordmark) from brand asset. */
+/** Full FactorBeam horizontal logo (icon + wordmark). */
 export function FactorBeamLogo({
   context = "header",
   markSize,
@@ -64,15 +64,28 @@ export function FactorBeamLogo({
   iconOnly = false,
   size,
 }: LogoProps) {
-  const preset = LOGO_CONTEXT[context];
-  const height = markSize ?? (size ? size * 1.75 : preset.height);
+  const preset = LOGO_HEIGHT[context];
+  const overridePx = markSize ?? (size ? size * 1.75 : undefined);
 
   if (iconOnly || context === "icon") {
-    return <FactorBeamMark size={height} className={className} />;
+    return <FactorBeamMark size={overridePx} className={className} />;
   }
 
   return (
-    <span className={cn("inline-flex shrink-0 items-center", className)} style={{ height }}>
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center leading-none",
+        context === "header" && "site-logo",
+        className,
+      )}
+      style={
+        overridePx
+          ? { height: overridePx }
+          : context !== "header"
+            ? { height: preset.var }
+            : undefined
+      }
+    >
       <img
         src={BRAND.logo.full}
         alt={BRAND.name}
