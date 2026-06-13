@@ -44,6 +44,7 @@ import {
 } from "lucide-react";
 import { ShareMenu } from "@/components/share-menu";
 import { AdSlot } from "@/components/ad-slot";
+import { useAdsenseLoader } from "@/lib/adsense";
 
 // Approx 220 words per minute; word counts derived from block kind.
 function blockWords(b: ConceptBodyBlock): number {
@@ -215,6 +216,7 @@ function ConceptPage() {
     concept: NonNullable<ReturnType<typeof conceptBySlug>>;
     kbId: ExecutiveKbId;
   };
+  useAdsenseLoader();
   const { progress, markDone, markInProgress } = useProgress();
   const [readMode, setReadMode] = useReadMode();
   const articleRef = useRef<HTMLElement | null>(null);

@@ -109,16 +109,20 @@ export function unloadAdsenseScript(): void {
 
 /**
  * Hook: loads or unloads AdSense as the user grants or revokes ads consent.
+ * Use only on chapter pages — do not mount from the root layout.
  * No-op when publisher ID is not configured.
  */
 export function useAdsenseLoader(): void {
   const allowed = useHasConsent("ads");
   useEffect(() => {
-    if (allowed) {
-      void loadAdsenseScript();
+    if (!allowed) {
+      unloadAdsenseScript();
       return;
     }
-    unloadAdsenseScript();
+    void loadAdsenseScript();
+    return () => {
+      unloadAdsenseScript();
+    };
   }, [allowed]);
 }
 

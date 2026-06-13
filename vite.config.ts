@@ -11,5 +11,11 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
+    // Static HTML for file-manager deploy (see npm run build:deploy).
+    prerender: { enabled: true },
+    sitemap: {
+      enabled: true,
+      host: "https://www.factorbeam.com",
+    },
   },
 });

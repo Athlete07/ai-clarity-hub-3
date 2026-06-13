@@ -12,7 +12,6 @@ import appCss from "../styles.css?url";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { CookieConsent } from "@/components/cookie-consent";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { useAdsenseLoader } from "@/lib/adsense";
 import { AUDIENCE, BRAND, brandIconLinks, brandOgMeta } from "@/lib/brand";
 import { CREATOR } from "@/lib/creator";
 
@@ -151,7 +150,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  useAdsenseLoader();
 
   return (
     <QueryClientProvider client={queryClient}>

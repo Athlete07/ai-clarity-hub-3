@@ -19,13 +19,11 @@ type AdSlotProps = {
 };
 
 /**
- * Consent-gated Google AdSense display unit. Renders nothing until:
+ * Consent-gated Google AdSense display unit for chapter pages only.
+ * Renders nothing until:
  * 1) VITE_ADSENSE_CLIENT + slot ID are configured
  * 2) User has granted advertising cookies
- * 3) AdSense script has loaded
- *
- * Auto ads (enabled in the AdSense dashboard) work via useAdsenseLoader alone;
- * this component is for manual in-article display units.
+ * 3) AdSense script has loaded (via useAdsenseLoader on the chapter route)
  */
 export function AdSlot({ variant, className }: AdSlotProps) {
   const hasAdsConsent = useHasConsent("ads");
