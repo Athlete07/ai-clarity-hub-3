@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { AI_LITERACY } from "@/lib/brand";
 
 const CONTACT_EMAIL = "contact.factorbeam@gmail.com";
 
@@ -177,14 +178,14 @@ export function LegalClosingCta({
   title,
   subtitle,
   primaryLabel = "Browse AI Literacy",
-  primaryTo = "/executive-kb" as const,
+  primaryTo = AI_LITERACY.href,
   secondaryLabel,
   secondaryTo,
 }: {
   title: string;
   subtitle: string;
   primaryLabel?: string;
-  primaryTo?: "/executive-kb" | "/contact";
+  primaryTo?: typeof AI_LITERACY.href | "/contact";
   secondaryLabel?: string;
   secondaryTo?: "/contact" | "/privacy-policy" | "/terms-of-service";
 }) {

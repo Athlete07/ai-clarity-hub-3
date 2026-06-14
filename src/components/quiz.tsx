@@ -63,7 +63,7 @@ export function Quiz({
           </p>
           {nextChapterSlug && nextKbId && (
             <Link
-              to="/executive-kb/$kbId/$chapterSlug"
+              to="/ai-literacy/$kbId/$chapterSlug"
               params={{ kbId: nextKbId, chapterSlug: nextChapterSlug }}
               className="mt-6 inline-flex items-center gap-1.5 rounded-md bg-purple px-4 py-2 text-[13px] font-medium text-primary-foreground hover:bg-purple-dark"
             >

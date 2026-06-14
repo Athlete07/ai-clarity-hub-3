@@ -69,7 +69,7 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
             <Logo />
           </div>
           <nav className="flex flex-col gap-1 p-3" aria-label="Primary">
-            <Link to="/executive-kb" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
+            <Link to={AI_LITERACY.href} className={cn(navLinkClass, "rounded-md px-3 py-3")}>
               {AI_LITERACY.name}
             </Link>
             <Link to="/about" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
@@ -118,7 +118,7 @@ export function Nav({ slim = false }: { slim?: boolean }) {
           <Logo />
           {slim && (
             <Link
-              to="/executive-kb"
+              to={AI_LITERACY.href}
               className={cn(navLinkClass, "hidden sm:inline")}
             >
               {AI_LITERACY.backShort}
@@ -128,7 +128,7 @@ export function Nav({ slim = false }: { slim?: boolean }) {
 
         {!slim && (
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-            <Link to="/executive-kb" className={navLinkClass}>
+            <Link to={AI_LITERACY.href} className={navLinkClass}>
               {AI_LITERACY.name}
             </Link>
             <Link to="/about" className={navLinkClass}>
@@ -174,7 +174,7 @@ function FooterLink({
   children,
   href,
 }: {
-  to?: "/executive-kb" | "/about" | "/creator" | "/contact" | "/privacy-policy" | "/terms-of-service" | "/simulations";
+  to?: "/ai-literacy" | "/about" | "/creator" | "/contact" | "/privacy-policy" | "/terms-of-service" | "/simulations";
   href?: string;
   children: React.ReactNode;
 }) {
@@ -203,7 +203,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
           <FooterColumn title="Product">
-            <FooterLink to="/executive-kb">{AI_LITERACY.name}</FooterLink>
+            <FooterLink to={AI_LITERACY.href}>{AI_LITERACY.name}</FooterLink>
             <FooterLink to="/about">About the Platform</FooterLink>
             <FooterLink to="/simulations">
               <span className="inline-flex items-center gap-2">

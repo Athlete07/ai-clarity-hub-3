@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { Nav, Footer } from "@/components/site-nav";
-import { AUDIENCE, brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, AI_LITERACY, brandOgMeta } from "@/lib/brand";
 import { FaqItem } from "@/components/faq-item";
 import { useProgress } from "@/lib/storage";
 import {
@@ -174,7 +174,7 @@ function Home() {
               <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
                 {resumeParams ? (
                   <Link
-                    to="/executive-kb/$kbId/$chapterSlug"
+                    to="/ai-literacy/$kbId/$chapterSlug"
                     params={resumeParams}
                     className="btn-primary px-7 py-3.5 text-[15px]"
                   >
@@ -183,7 +183,7 @@ function Home() {
                   </Link>
                 ) : null}
                 <Link
-                  to="/executive-kb"
+                  to="/ai-literacy"
                   className="inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[15px] font-medium text-foreground/80 transition-colors hover:text-foreground"
                 >
                   Browse all tracks
@@ -279,7 +279,7 @@ function Home() {
               return (
                 <Link
                   key={role.id}
-                  to="/executive-kb"
+                  to="/ai-literacy"
                   search={executiveKbTrackSearch(role.id)}
                   className={`group relative flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover sm:p-7 ${theme.hoverBorder} animate-fade-in-up`}
                   style={{ animationDelay: `${i * 80}ms`, animationFillMode: "both" }}
@@ -411,7 +411,7 @@ function Home() {
               </h2>
             </div>
             <Link
-              to="/executive-kb"
+              to="/ai-literacy"
               className="inline-flex items-center gap-1 text-[14px] font-medium text-purple transition-colors hover:text-purple-dark"
             >
               View full library
@@ -458,7 +458,7 @@ function Home() {
                 return (
                   <Link
                     key={track}
-                    to="/executive-kb/$kbId/$chapterSlug"
+                    to="/ai-literacy/$kbId/$chapterSlug"
                     params={params}
                     className={cardClass}
                   >
@@ -470,7 +470,7 @@ function Home() {
               return (
                 <Link
                   key={track}
-                  to="/executive-kb"
+                  to="/ai-literacy"
                   search={executiveKbTrackSearch(roleId)}
                   className={cardClass}
                 >
@@ -593,7 +593,7 @@ function Home() {
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
-                  to="/executive-kb"
+                  to="/ai-literacy"
                   className="inline-flex items-center gap-2 rounded-md bg-background px-7 py-3.5 text-[15px] font-medium text-foreground transition-opacity hover:opacity-95"
                 >
                   Explore AI Literacy
@@ -601,7 +601,7 @@ function Home() {
                 </Link>
                 {resumeParams ? (
                   <Link
-                    to="/executive-kb/$kbId/$chapterSlug"
+                    to="/ai-literacy/$kbId/$chapterSlug"
                     params={resumeParams}
                     className="inline-flex items-center gap-2 px-5 py-3.5 text-[15px] font-medium text-primary-foreground/90 transition-colors hover:text-primary-foreground"
                   >

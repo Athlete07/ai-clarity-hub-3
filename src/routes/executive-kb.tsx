@@ -1,10 +1,10 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-/** Layout route so chapter pages (/executive-kb/:id/:slug) render via Outlet. */
+/** Legacy layout — child routes redirect to /ai-literacy. */
 export const Route = createFileRoute("/executive-kb")({
-  component: ExecutiveKbLayout,
+  component: ExecutiveKbLegacyLayout,
 });
 
-function ExecutiveKbLayout() {
+function ExecutiveKbLegacyLayout() {
   return <Outlet />;
 }

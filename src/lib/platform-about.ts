@@ -52,7 +52,7 @@ export const PLATFORM_ABOUT = {
     secondary: {
       label: "Start with AI Literacy",
       hint: "Sequenced chapters for your role — real examples, highlight-to-explain, and quizzes. Free, no signup.",
-      href: "/executive-kb" as const,
+      href: "/ai-literacy" as const,
     },
   },
 } as const;

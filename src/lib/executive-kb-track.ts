@@ -6,7 +6,7 @@ export const TRACK_BANNER_DISMISSED_KEY = "factorbeam_track_banner_dismissed";
 
 const ROLE_IDS = ["pm", "founder", "business-leader", "marketer"] as const satisfies readonly RoleId[];
 
-/** URL path aliases → canonical role id (e.g. /executive-kb/leader). */
+/** URL path aliases → canonical role id (e.g. /ai-literacy/leader). */
 const TRACK_PATH_ALIASES: Record<string, RoleId> = {
   pm: "pm",
   founder: "founder",
@@ -44,8 +44,8 @@ export function executiveKbTrackSearch(track: RoleId): ExecutiveKbSearch {
 }
 
 /** Short marketing path — redirects to canonical `?track=` on the index route. */
-export function executiveKbTrackPath(track: RoleId): `/executive-kb/${RoleId}` {
-  return `/executive-kb/${track}`;
+export function executiveKbTrackPath(track: RoleId): `/ai-literacy/${RoleId}` {
+  return `/ai-literacy/${track}`;
 }
 
 export function readStoredRole(): RoleId | null {

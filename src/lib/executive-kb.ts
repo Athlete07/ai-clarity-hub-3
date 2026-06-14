@@ -600,9 +600,9 @@ export const executiveKbById = (id: string): ExecutiveKb | undefined => {
   );
 };
 
-/** Canonical chapter URL: /executive-kb/{kbId}/{chapterSlug} */
+/** Canonical chapter URL: /ai-literacy/{kbId}/{chapterSlug} */
 export function chapterPath(kbId: string, chapterSlug: string): string {
-  return `/executive-kb/${canonicalExecutiveKbId(kbId)}/${canonicalChapterSlug(chapterSlug)}`;
+  return `/ai-literacy/${canonicalExecutiveKbId(kbId)}/${canonicalChapterSlug(chapterSlug)}`;
 }
 
 export function chapterRouteParams(

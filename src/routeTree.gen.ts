@@ -19,18 +19,22 @@ import { Route as GamesRouteImport } from './routes/games'
 import { Route as ExecutiveKbRouteImport } from './routes/executive-kb'
 import { Route as CreatorRouteImport } from './routes/creator'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AiLiteracyRouteImport } from './routes/ai-literacy'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PlaybooksIndexRouteImport } from './routes/playbooks.index'
 import { Route as ExecutiveKbIndexRouteImport } from './routes/executive-kb.index'
+import { Route as AiLiteracyIndexRouteImport } from './routes/ai-literacy.index'
 import { Route as SimulationsAgentOverseerRouteImport } from './routes/simulations_.agent-overseer'
 import { Route as PlaybookSlugRouteImport } from './routes/playbook.$slug'
 import { Route as GamesAgentOverseerRouteImport } from './routes/games_.agent-overseer'
 import { Route as ExecutiveKbTrackRouteImport } from './routes/executive-kb.$track'
+import { Route as AiLiteracyTrackRouteImport } from './routes/ai-literacy.$track'
 import { Route as PlaybooksPlaybookIdChapterSlugRouteImport } from './routes/playbooks.$playbookId.$chapterSlug'
 import { Route as ExecutiveKbKbIdChapterSlugRouteImport } from './routes/executive-kb.$kbId.$chapterSlug'
 import { Route as ApiAoTelemetryRouteImport } from './routes/api/ao/telemetry'
 import { Route as ApiAoSyncRouteImport } from './routes/api/ao/sync'
+import { Route as AiLiteracyKbIdChapterSlugRouteImport } from './routes/ai-literacy.$kbId.$chapterSlug'
 
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
@@ -82,6 +86,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiLiteracyRoute = AiLiteracyRouteImport.update({
+  id: '/ai-literacy',
+  path: '/ai-literacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -101,6 +110,11 @@ const ExecutiveKbIndexRoute = ExecutiveKbIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ExecutiveKbRoute,
+} as any)
+const AiLiteracyIndexRoute = AiLiteracyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AiLiteracyRoute,
 } as any)
 const SimulationsAgentOverseerRoute =
   SimulationsAgentOverseerRouteImport.update({
@@ -122,6 +136,11 @@ const ExecutiveKbTrackRoute = ExecutiveKbTrackRouteImport.update({
   id: '/$track',
   path: '/$track',
   getParentRoute: () => ExecutiveKbRoute,
+} as any)
+const AiLiteracyTrackRoute = AiLiteracyTrackRouteImport.update({
+  id: '/$track',
+  path: '/$track',
+  getParentRoute: () => AiLiteracyRoute,
 } as any)
 const PlaybooksPlaybookIdChapterSlugRoute =
   PlaybooksPlaybookIdChapterSlugRouteImport.update({
@@ -145,10 +164,17 @@ const ApiAoSyncRoute = ApiAoSyncRouteImport.update({
   path: '/api/ao/sync',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiLiteracyKbIdChapterSlugRoute =
+  AiLiteracyKbIdChapterSlugRouteImport.update({
+    id: '/$kbId/$chapterSlug',
+    path: '/$kbId/$chapterSlug',
+    getParentRoute: () => AiLiteracyRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-literacy': typeof AiLiteracyRouteWithChildren
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
   '/executive-kb': typeof ExecutiveKbRouteWithChildren
@@ -159,12 +185,15 @@ export interface FileRoutesByFullPath {
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
+  '/ai-literacy/': typeof AiLiteracyIndexRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/api/ao/sync': typeof ApiAoSyncRoute
   '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
@@ -181,12 +210,15 @@ export interface FileRoutesByTo {
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
+  '/ai-literacy': typeof AiLiteracyIndexRoute
   '/executive-kb': typeof ExecutiveKbIndexRoute
   '/playbooks': typeof PlaybooksIndexRoute
+  '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/api/ao/sync': typeof ApiAoSyncRoute
   '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
@@ -196,6 +228,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-literacy': typeof AiLiteracyRouteWithChildren
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
   '/executive-kb': typeof ExecutiveKbRouteWithChildren
@@ -206,12 +239,15 @@ export interface FileRoutesById {
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games_/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations_/agent-overseer': typeof SimulationsAgentOverseerRoute
+  '/ai-literacy/': typeof AiLiteracyIndexRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/api/ao/sync': typeof ApiAoSyncRoute
   '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
@@ -222,6 +258,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/ai-literacy'
     | '/contact'
     | '/creator'
     | '/executive-kb'
@@ -232,12 +269,15 @@ export interface FileRouteTypes {
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/ai-literacy/$track'
     | '/executive-kb/$track'
     | '/games/agent-overseer'
     | '/playbook/$slug'
     | '/simulations/agent-overseer'
+    | '/ai-literacy/'
     | '/executive-kb/'
     | '/playbooks/'
+    | '/ai-literacy/$kbId/$chapterSlug'
     | '/api/ao/sync'
     | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
@@ -254,12 +294,15 @@ export interface FileRouteTypes {
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/ai-literacy/$track'
     | '/executive-kb/$track'
     | '/games/agent-overseer'
     | '/playbook/$slug'
     | '/simulations/agent-overseer'
+    | '/ai-literacy'
     | '/executive-kb'
     | '/playbooks'
+    | '/ai-literacy/$kbId/$chapterSlug'
     | '/api/ao/sync'
     | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
@@ -268,6 +311,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/ai-literacy'
     | '/contact'
     | '/creator'
     | '/executive-kb'
@@ -278,12 +322,15 @@ export interface FileRouteTypes {
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/ai-literacy/$track'
     | '/executive-kb/$track'
     | '/games_/agent-overseer'
     | '/playbook/$slug'
     | '/simulations_/agent-overseer'
+    | '/ai-literacy/'
     | '/executive-kb/'
     | '/playbooks/'
+    | '/ai-literacy/$kbId/$chapterSlug'
     | '/api/ao/sync'
     | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
@@ -293,6 +340,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AiLiteracyRoute: typeof AiLiteracyRouteWithChildren
   ContactRoute: typeof ContactRoute
   CreatorRoute: typeof CreatorRoute
   ExecutiveKbRoute: typeof ExecutiveKbRouteWithChildren
@@ -381,6 +429,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-literacy': {
+      id: '/ai-literacy'
+      path: '/ai-literacy'
+      fullPath: '/ai-literacy'
+      preLoaderRoute: typeof AiLiteracyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -408,6 +463,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/executive-kb/'
       preLoaderRoute: typeof ExecutiveKbIndexRouteImport
       parentRoute: typeof ExecutiveKbRoute
+    }
+    '/ai-literacy/': {
+      id: '/ai-literacy/'
+      path: '/'
+      fullPath: '/ai-literacy/'
+      preLoaderRoute: typeof AiLiteracyIndexRouteImport
+      parentRoute: typeof AiLiteracyRoute
     }
     '/simulations_/agent-overseer': {
       id: '/simulations_/agent-overseer'
@@ -437,6 +499,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExecutiveKbTrackRouteImport
       parentRoute: typeof ExecutiveKbRoute
     }
+    '/ai-literacy/$track': {
+      id: '/ai-literacy/$track'
+      path: '/$track'
+      fullPath: '/ai-literacy/$track'
+      preLoaderRoute: typeof AiLiteracyTrackRouteImport
+      parentRoute: typeof AiLiteracyRoute
+    }
     '/playbooks/$playbookId/$chapterSlug': {
       id: '/playbooks/$playbookId/$chapterSlug'
       path: '/$playbookId/$chapterSlug'
@@ -465,8 +534,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAoSyncRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-literacy/$kbId/$chapterSlug': {
+      id: '/ai-literacy/$kbId/$chapterSlug'
+      path: '/$kbId/$chapterSlug'
+      fullPath: '/ai-literacy/$kbId/$chapterSlug'
+      preLoaderRoute: typeof AiLiteracyKbIdChapterSlugRouteImport
+      parentRoute: typeof AiLiteracyRoute
+    }
   }
 }
+
+interface AiLiteracyRouteChildren {
+  AiLiteracyTrackRoute: typeof AiLiteracyTrackRoute
+  AiLiteracyIndexRoute: typeof AiLiteracyIndexRoute
+  AiLiteracyKbIdChapterSlugRoute: typeof AiLiteracyKbIdChapterSlugRoute
+}
+
+const AiLiteracyRouteChildren: AiLiteracyRouteChildren = {
+  AiLiteracyTrackRoute: AiLiteracyTrackRoute,
+  AiLiteracyIndexRoute: AiLiteracyIndexRoute,
+  AiLiteracyKbIdChapterSlugRoute: AiLiteracyKbIdChapterSlugRoute,
+}
+
+const AiLiteracyRouteWithChildren = AiLiteracyRoute._addFileChildren(
+  AiLiteracyRouteChildren,
+)
 
 interface ExecutiveKbRouteChildren {
   ExecutiveKbTrackRoute: typeof ExecutiveKbTrackRoute
@@ -513,6 +605,7 @@ const PlaybooksRouteWithChildren = PlaybooksRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AiLiteracyRoute: AiLiteracyRouteWithChildren,
   ContactRoute: ContactRoute,
   CreatorRoute: CreatorRoute,
   ExecutiveKbRoute: ExecutiveKbRouteWithChildren,

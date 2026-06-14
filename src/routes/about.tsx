@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/site-nav";
 import { AuthorPortrait } from "@/components/author-portrait";
-import { AUDIENCE, brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, AI_LITERACY, brandOgMeta } from "@/lib/brand";
 import { CREATOR } from "@/lib/creator";
 import { PLATFORM_ABOUT } from "@/lib/platform-about";
 import { ArrowRight, BookOpen, Cpu, Layers, PenLine, ShieldCheck } from "lucide-react";
@@ -57,7 +57,7 @@ function AboutThePlatform() {
               {hero.subheadline}
             </p>
             <Link
-              to="/executive-kb"
+              to={AI_LITERACY.href}
               className="btn-primary mt-10 inline-flex px-6 py-3 text-[14px]"
             >
               Explore AI Literacy

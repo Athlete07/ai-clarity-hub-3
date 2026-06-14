@@ -13,28 +13,28 @@ FactorBeam is a free reading site that teaches how modern AI actually works — 
 ## Pages
 
 - [Home](/): Overview of FactorBeam and AI Literacy.
-- [AI Literacy](/executive-kb): Index of every track in the library — PM, Founder, Business Leader, and Marketer role tracks.
+- [AI Literacy](/ai-literacy): Index of every track in the library — PM, Founder, Business Leader, and Marketer role tracks.
 - [About](/about): Why FactorBeam exists and who it's for.
 
 ## AI Literacy — Product Manager tracks
 
-- [AI Foundations for PMs](/executive-kb/pm-foundations/ai-vs-ml-vs-deep-learning): Technical fast-track on models, training vs inference, evaluation, bias and hallucination.
-- [LLMs, Models & Prompting](/executive-kb/pm-llms-prompting/tokenization): Tokenization, transformers and attention, context windows, prompting, fine-tuning vs RAG.
-- [Developer Toolchain for PMs](/executive-kb/pm-dev-toolchain/git-and-github): APIs, Python, notebooks, cloud, containers, CI/CD, and cost/latency tradeoffs.
-- [AI Systems Design](/executive-kb/ai-systems-design/rag-architecture): RAG, vector databases, chunking, reranking, LangChain, fine-tuning, evals, guardrails, observability.
-- [AI Infrastructure & Deployment](/executive-kb/ai-infrastructure-deployment/model-serving-architectures): Serving architectures, GPU vs CPU, batch vs streaming, quantisation, MLOps, deployments.
-- [Agents & Multi-agent Systems](/executive-kb/agents-multi-agent-systems/agent-fundamentals): Tool use, ReAct, memory, LangGraph, multi-agent coordination, MCP, reliability.
-- [AI Product Strategy & Decisions](/executive-kb/ai-product-strategy-decisions/build-buy-fine-tune): Build vs buy, metrics, discovery, data strategy, safety, PRDs, roadmaps.
-- [Multimodal & Emerging AI](/executive-kb/multimodal-emerging-ai/vision-transformers): Vision, diffusion, speech, video, voice interfaces, on-device AI, emerging frontiers.
-- [SEO & Content Strategy for AI](/executive-kb/seo-content-strategy-ai/semantic-seo): Semantic SEO, topic clusters, AI overviews, structured data, entity SEO, AIO.
+- [AI Foundations for PMs](/ai-literacy/pm-foundations/ai-vs-ml-vs-deep-learning): Technical fast-track on models, training vs inference, evaluation, bias and hallucination.
+- [LLMs, Models & Prompting](/ai-literacy/pm-llms-prompting/tokenization): Tokenization, transformers and attention, context windows, prompting, fine-tuning vs RAG.
+- [Developer Toolchain for PMs](/ai-literacy/pm-dev-toolchain/git-and-github): APIs, Python, notebooks, cloud, containers, CI/CD, and cost/latency tradeoffs.
+- [AI Systems Design](/ai-literacy/ai-systems-design/rag-architecture): RAG, vector databases, chunking, reranking, LangChain, fine-tuning, evals, guardrails, observability.
+- [AI Infrastructure & Deployment](/ai-literacy/ai-infrastructure-deployment/model-serving-architectures): Serving architectures, GPU vs CPU, batch vs streaming, quantisation, MLOps, deployments.
+- [Agents & Multi-agent Systems](/ai-literacy/agents-multi-agent-systems/agent-fundamentals): Tool use, ReAct, memory, LangGraph, multi-agent coordination, MCP, reliability.
+- [AI Product Strategy & Decisions](/ai-literacy/ai-product-strategy-decisions/build-buy-fine-tune): Build vs buy, metrics, discovery, data strategy, safety, PRDs, roadmaps.
+- [Multimodal & Emerging AI](/ai-literacy/multimodal-emerging-ai/vision-transformers): Vision, diffusion, speech, video, voice interfaces, on-device AI, emerging frontiers.
+- [SEO & Content Strategy for AI](/ai-literacy/seo-content-strategy-ai/semantic-seo): Semantic SEO, topic clusters, AI overviews, structured data, entity SEO, AIO.
 
 ## AI Literacy — Marketer tracks
 
-- [AI Fundamentals for Marketers](/executive-kb/ai-fundamentals-for-marketers/mkt-ai-vs-ml-vs-dl-marketer-lens): AI hierarchy, model learning, inference costs, data, evaluation, liability, and martech vendor landscape.
-- [AI-Powered Content Strategy](/executive-kb/ai-powered-content-strategy/mkt-ai-content-generation-fundamentals): Content generation, prompting, brand voice, repurposing, and quality at scale.
-- [SEO in the Age of AI](/executive-kb/seo-in-the-age-of-ai/mkt-ai-restructuring-search): Semantic SEO, AI Overviews, answer-engine optimisation, and AI search visibility.
-- [AI for Paid Advertising & Performance Marketing](/executive-kb/ai-paid-advertising-performance-marketing/mkt-how-ai-runs-ad-platforms): How ad-platform AI works, creative strategy, and attribution in a modeled world.
-- [AI Personalisation & Customer Experience](/executive-kb/ai-personalisation-customer-experience/mkt-personalisation-means-in-ai): Personalisation, recommendations, and email at scale without losing trust.
-- [AI Analytics & Marketing Intelligence](/executive-kb/ai-analytics-marketing-intelligence/mkt-descriptive-to-predictive-analytics): Predictive analytics, CLV, and competitive intelligence for marketing teams.
-- [AI for Growth — Acquisition, Retention & Revenue](/executive-kb/ai-for-growth-acquisition-retention/mkt-ai-growth-funnel): Growth funnel AI, lead scoring, and conversion optimisation.
-- [AI Martech Stack & Tool Selection](/executive-kb/ai-martech-stack-tool-selection/mkt-navigating-ai-martech-landscape): Martech evaluation, integration, and building a coherent AI marketing stack.
+- [AI Fundamentals for Marketers](/ai-literacy/ai-fundamentals-for-marketers/mkt-ai-vs-ml-vs-dl-marketer-lens): AI hierarchy, model learning, inference costs, data, evaluation, liability, and martech vendor landscape.
+- [AI-Powered Content Strategy](/ai-literacy/ai-powered-content-strategy/mkt-ai-content-generation-fundamentals): Content generation, prompting, brand voice, repurposing, and quality at scale.
+- [SEO in the Age of AI](/ai-literacy/seo-in-the-age-of-ai/mkt-ai-restructuring-search): Semantic SEO, AI Overviews, answer-engine optimisation, and AI search visibility.
+- [AI for Paid Advertising & Performance Marketing](/ai-literacy/ai-paid-advertising-performance-marketing/mkt-how-ai-runs-ad-platforms): How ad-platform AI works, creative strategy, and attribution in a modeled world.
+- [AI Personalisation & Customer Experience](/ai-literacy/ai-personalisation-customer-experience/mkt-personalisation-means-in-ai): Personalisation, recommendations, and email at scale without losing trust.
+- [AI Analytics & Marketing Intelligence](/ai-literacy/ai-analytics-marketing-intelligence/mkt-descriptive-to-predictive-analytics): Predictive analytics, CLV, and competitive intelligence for marketing teams.
+- [AI for Growth — Acquisition, Retention & Revenue](/ai-literacy/ai-for-growth-acquisition-retention/mkt-ai-growth-funnel): Growth funnel AI, lead scoring, and conversion optimisation.
+- [AI Martech Stack & Tool Selection](/ai-literacy/ai-martech-stack-tool-selection/mkt-navigating-ai-martech-landscape): Martech evaluation, integration, and building a coherent AI marketing stack.

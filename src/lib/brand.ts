@@ -4,9 +4,10 @@ export const AUDIENCE = {
   long: "product managers, founders, business leaders, and marketers",
 } as const;
 
-/** User-facing name for the sequenced chapter library (routes stay at /executive-kb). */
+/** User-facing name and URL for the sequenced chapter library. */
 export const AI_LITERACY = {
   name: "AI Literacy",
+  href: "/ai-literacy" as const,
   tracks: "AI Literacy tracks",
   browse: "Browse AI Literacy",
   explore: "Explore AI Literacy",

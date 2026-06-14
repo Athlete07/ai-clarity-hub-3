@@ -18,6 +18,10 @@ const HTACCESS = `# FactorBeam static deploy — Apache (cPanel) SPA fallback
   RewriteEngine On
   RewriteBase /
 
+  # Legacy URL → AI Literacy
+  RewriteRule ^executive-kb/?$ /ai-literacy [R=301,L]
+  RewriteRule ^executive-kb/(.*)$ /ai-literacy/$1 [R=301,L]
+
   # Client-side routes: fall back to index.html when no static file exists
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d

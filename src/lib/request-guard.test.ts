@@ -20,7 +20,7 @@ describe("guardRequest", () => {
   });
 
   it("allows GET to pages", () => {
-    expect(guardRequest(new Request("https://example.com/executive-kb"))).toBeNull();
+    expect(guardRequest(new Request("https://example.com/ai-literacy"))).toBeNull();
   });
 
   it("allows POST to AO API", () => {

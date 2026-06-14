@@ -282,7 +282,7 @@ function Contact() {
               a minute.
             </p>
             <Link
-              to="/executive-kb"
+              to="/ai-literacy"
               className="btn-primary gap-2 px-6 py-3 text-[14px]"
             >
               Browse AI Literacy

@@ -1,8 +1,8 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-/** Legacy /playbook → /executive-kb */
+/** Legacy /playbook → /ai-literacy */
 export const Route = createFileRoute("/playbook")({
   beforeLoad: () => {
-    throw redirect({ to: "/executive-kb", replace: true });
+    throw redirect({ to: "/ai-literacy", replace: true });
   },
 });
