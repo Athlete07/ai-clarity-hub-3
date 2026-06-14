@@ -1,7 +1,7 @@
-import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import sharp from "sharp";
+import { generateFavicons } from "./generate-favicons.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, "..", "public");
@@ -52,11 +52,6 @@ async function saveRaw(data, info, file) {
   await sharp(data, { raw: info }).png().toFile(file);
 }
 
-async function cropMark(data, info, size, outFile) {
-  const crop = Math.min(info.height, Math.floor(info.width * 0.22));
-  await sharp(data, { raw: info }).extract({ left: 0, top: 0, width: crop, height: crop }).png().toFile(outFile);
-}
-
 async function buildOg(transparentPath) {
   const meta = await sharp(transparentPath).metadata();
   const scale = Math.min((1200 * 0.72) / meta.width, (630 * 0.45) / meta.height);
@@ -77,29 +72,10 @@ const dark = toDarkMode(light);
 
 const lightPath = path.join(publicDir, "factorbeam-logo-light.png");
 const darkPath = path.join(publicDir, "factorbeam-logo-dark.png");
-const markPath = path.join(publicDir, "logo-mark-new.png");
-const markDarkPath = path.join(publicDir, "logo-mark-dark-new.png");
-const faviconPath = path.join(publicDir, "favicon-new.png");
 
 await saveRaw(light, info, lightPath);
 await saveRaw(dark, info, darkPath);
-await cropMark(light, info, null, markPath);
-await cropMark(dark, info, null, markDarkPath);
-await cropMark(light, info, null, faviconPath);
 await buildOg(lightPath);
+await generateFavicons();
 
-for (const [from, to] of [
-  [markPath, path.join(publicDir, "logo-mark.png")],
-  [markDarkPath, path.join(publicDir, "logo-mark-dark.png")],
-  [faviconPath, path.join(publicDir, "favicon.png")],
-]) {
-  try {
-    if (fs.existsSync(to)) fs.unlinkSync(to);
-  } catch {
-    /* ignore */
-  }
-  fs.renameSync(from, to);
-}
-// Light/dark full logos stay as factorbeam-logo-light.png / factorbeam-logo-dark.png (brand.ts).
-
-console.log("Transparent logos written:", { lightPath, darkPath, crop: Math.min(info.height, Math.floor(info.width * 0.22)) });
+console.log("Transparent logos written:", { lightPath, darkPath });

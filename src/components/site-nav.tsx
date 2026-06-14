@@ -28,14 +28,14 @@ function ThemeToggle() {
   );
 }
 
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo() {
   return (
     <Link
       to="/"
-      className="inline-flex items-center text-foreground transition-opacity hover:opacity-90"
-      aria-label={compact ? undefined : "FactorBeam home"}
+      className="inline-flex shrink-0 items-center text-foreground transition-opacity hover:opacity-90"
+      aria-label="FactorBeam home"
     >
-      <FactorBeamLogo context={compact ? "compact" : "header"} />
+      <FactorBeamLogo context="compact" />
     </Link>
   );
 }
@@ -66,7 +66,7 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
         <SheetTitle className="sr-only">Navigation</SheetTitle>
         <div className="flex h-full flex-col">
           <div className="site-header hairline-b flex items-center px-5">
-            <Logo compact />
+            <Logo />
           </div>
           <nav className="flex flex-col gap-1 p-3" aria-label="Primary">
             <Link to="/executive-kb" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
@@ -228,7 +228,7 @@ export function Footer() {
         </div>
 
         <div className="hairline-t mt-10 flex flex-col gap-2 pt-8 text-sm leading-normal text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <Logo compact />
+          <Logo />
           <span className="text-xs sm:text-sm">© 2026 · {BRAND.tagline}</span>
         </div>
       </div>

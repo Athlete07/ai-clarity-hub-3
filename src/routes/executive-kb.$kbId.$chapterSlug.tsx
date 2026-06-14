@@ -945,7 +945,7 @@ function Sidebar({
   return (
     <>
       <aside
-        className="relative sticky top-14 hidden h-[calc(100vh-3.5rem)] shrink-0 overflow-y-auto border-r border-border/80 bg-muted/20 lg:block"
+        className="relative sticky top-12 hidden h-[calc(100vh-3rem)] shrink-0 overflow-y-auto border-r border-border/80 bg-muted/20 lg:block"
         style={{ width: sidebarWidth }}
       >
         {list}
@@ -1041,7 +1041,7 @@ function TableOfContents({
       className={
         mobile
           ? "w-full"
-          : "sticky top-14 hidden h-[calc(100vh-3.5rem)] w-[220px] shrink-0 overflow-y-auto px-5 py-10 xl:block"
+          : "sticky top-12 hidden h-[calc(100vh-3rem)] w-[220px] shrink-0 overflow-y-auto px-5 py-10 xl:block"
       }
     >
       <div className="rounded-xl border border-border bg-card p-4">

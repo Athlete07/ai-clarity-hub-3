@@ -3,8 +3,9 @@
 > Plain-English AI Literacy for PMs, founders, business leaders, and marketers. Highlight any sentence to get an instant, in-place explanation. Free, no signup.
 
 Logo: /factorbeam-logo-light.png (light mode), /factorbeam-logo-dark.png (dark mode)
-Logo mark: /logo-mark.png
-Favicon: /favicon.png
+Logo mark: /logo-mark.png (transparent icon, no wordmark)
+Favicon: /favicon.ico, /favicon-32x32.png
+Icon source: /factorbeam-icon-transparent-1024.png
 Brand colors: primary #534AB7, secondary #6B5FD4
 
 FactorBeam is a free reading site that teaches how modern AI actually works — written for product managers, founders, business leaders, and marketers rather than ML engineers. Each AI Literacy track is a sequenced set of chapters with three real product examples per concept and a short quiz at the end.

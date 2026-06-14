@@ -8,5 +8,17 @@
 /ads.txt
   Cache-Control: public, max-age=86400
 
-/favicon.png
+/favicon.ico
+  Cache-Control: public, max-age=604800, immutable
+
+/favicon-32x32.png
+  Cache-Control: public, max-age=604800, immutable
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=604800, immutable
+
+/icon-192.png
+  Cache-Control: public, max-age=604800, immutable
+
+/icon-512.png
   Cache-Control: public, max-age=604800, immutable

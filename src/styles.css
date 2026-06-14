@@ -52,9 +52,9 @@
     "Helvetica Neue", Arial, sans-serif;
 
   /* Site chrome — synced with src/lib/brand.ts */
-  --header-height: 3.5rem;
+  --header-height: 3rem;
   --header-height-slim: 3rem;
-  --logo-height-header: 1.5rem;
+  --logo-height-header: 1.25rem;
   --logo-height-hero: 2rem;
   --logo-height-compact: 1.25rem;
   --logo-height-mark: 1.5rem;
@@ -199,7 +199,7 @@
 }
 
 @layer components {
-  /* Site chrome — 56px bar, 14px nav, WCAG 44px icon targets */
+  /* Site chrome — 48px bar, 14px nav, WCAG 44px icon targets */
   .site-header {
     height: var(--header-height);
   }

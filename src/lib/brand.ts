@@ -32,24 +32,30 @@ export const BRAND = {
     full: "/factorbeam-logo-light.png",
     /** Horizontal logo — transparent, lightened wordmark for dark backgrounds */
     fullDark: "/factorbeam-logo-dark.png",
-    /** Icon mark only — cropped from official logo */
+    /** Icon mark only — transparent PNG, no wordmark */
     mark: "/logo-mark.png",
-    /** Icon mark — lightened for dark backgrounds */
+    /** Icon mark — slightly lifted for dark UI chrome */
     markDark: "/logo-mark-dark.png",
-    /** Browser tab / PWA icon */
-    favicon: "/favicon.png",
+    /** Browser tab icon (ICO + PNG fallbacks) */
+    favicon: "/favicon.ico",
+    faviconPng32: "/favicon-32x32.png",
+    appleTouchIcon: "/apple-touch-icon.png",
+    icon192: "/icon-192.png",
+    icon512: "/icon-512.png",
+    /** Master transparent mark source (1024px max edge) */
+    iconSource: "/factorbeam-icon-transparent-1024.png",
     /** Social preview image */
     og: "/og.png",
   },
   /**
    * Site chrome scale — mirrors CSS vars in styles.css (--header-height, --logo-height-*).
-   * Body base is 15px; nav is 14px; header bar is 56px.
+   * Body base is 15px; nav is 14px; header bar is 48px.
    */
   header: {
-    heightPx: 56,
+    heightPx: 48,
     heightSlimPx: 48,
     navFontPx: 14,
-    logoFullPx: 24,
+    logoFullPx: 20,
     logoHeroPx: 32,
     logoCompactPx: 20,
     logoMarkPx: 24,
@@ -61,8 +67,10 @@ type HeadMeta = { title?: string; name?: string; property?: string; content: str
 
 export function brandIconLinks() {
   return [
-    { rel: "icon", href: BRAND.logo.favicon, type: "image/png" },
-    { rel: "apple-touch-icon", href: BRAND.logo.favicon },
+    { rel: "icon", href: BRAND.logo.favicon, sizes: "48x48" },
+    { rel: "icon", type: "image/png", sizes: "32x32", href: BRAND.logo.faviconPng32 },
+    { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
+    { rel: "apple-touch-icon", sizes: "180x180", href: BRAND.logo.appleTouchIcon },
     { rel: "manifest", href: "/site.webmanifest" },
   ] as const;
 }
