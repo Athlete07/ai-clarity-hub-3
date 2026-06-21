@@ -10,7 +10,7 @@ export function ExampleTabs({ examples }: { examples: Example[] }) {
 
   return (
     <div className="mt-6">
-      <div className="flex flex-wrap items-center gap-2 border-b border-muted/60 pb-4">
+      <div className="flex flex-wrap items-center gap-2 border-b border-border pb-4">
         {examples.map((ex, idx) => {
           const isActive = idx === activeIndex;
 
@@ -25,7 +25,7 @@ export function ExampleTabs({ examples }: { examples: Example[] }) {
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors \${
+              className={`rounded-full px-4 py-1.5 text-[13px] font-medium transition-colors ${
                 isActive
                   ? "bg-purple text-primary-foreground shadow-sm"
                   : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
@@ -37,11 +37,11 @@ export function ExampleTabs({ examples }: { examples: Example[] }) {
         })}
       </div>
 
-      <div className="mt-5 rounded-xl border border-muted/60 bg-card p-6 shadow-sm">
+      <div className="mt-5 rounded-xl border border-border bg-card p-6 shadow-sm">
         <h4 className="text-lg font-semibold text-foreground tracking-tight">
           {activeExample.title}
         </h4>
-        <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground whitespace-pre-line">
+        <p className="mt-3 text-[15px] leading-relaxed text-foreground/90 whitespace-pre-line">
           {activeExample.body}
         </p>
       </div>
