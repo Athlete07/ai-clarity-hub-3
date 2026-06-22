@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { Nav, Footer } from "@/components/site-nav";
-import { AUDIENCE, AI_LITERACY, brandOgMeta } from "@/lib/brand";
+import { AUDIENCE, AI_LITERACY, PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import { FaqItem } from "@/components/faq-item";
 import { useProgress } from "@/lib/storage";
 import {
@@ -151,7 +151,7 @@ function Home() {
               <div className="inline-flex flex-wrap items-center justify-center gap-2 lg:justify-start">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-purple/15 bg-purple-light/60 px-3 py-1 text-[11px] font-medium tracking-wide text-purple-dark dark:bg-purple-light/20 dark:text-purple">
                   <Sparkles size={12} aria-hidden />
-                  AI Literacy
+                  Playbook Library
                 </span>
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card/80 px-3 py-1 text-[11px] font-medium tracking-wide text-muted-foreground">
                   <Globe size={12} aria-hidden />
@@ -160,35 +160,43 @@ function Home() {
               </div>
 
               <h1 className="mt-8 text-[40px] font-medium leading-[1.04] tracking-[-0.035em] sm:text-[52px] lg:text-[58px]">
-                Understand AI
+                The playbook library
                 <br />
-                <span className="text-purple">enough to ship.</span>
+                <span className="text-purple">for modern AI teams.</span>
               </h1>
 
               <p className="mx-auto mt-6 max-w-[480px] text-[16px] leading-[1.65] text-muted-foreground sm:text-[18px] lg:mx-0">
-                Plain-English chapters for {AUDIENCE.short}.
-                Highlight any sentence you don&apos;t understand — get an explanation
-                right there, in context.
+                Workflows, implementation guides, and role playbooks in one
+                repository — built to scale. Plus AI Literacy chapters while we
+                migrate concept content here.
               </p>
 
               <div className="mt-9 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
+                <Link
+                  to={PLAYBOOK_REPOSITORY.href}
+                  className="btn-primary px-7 py-3.5 text-[15px]"
+                >
+                  {PLAYBOOK_REPOSITORY.browse}
+                  <ArrowRight size={16} />
+                </Link>
                 {resumeParams ? (
                   <Link
                     to="/ai-literacy/$kbId/$chapterSlug"
                     params={resumeParams}
-                    className="btn-primary px-7 py-3.5 text-[15px]"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[15px] font-medium text-foreground/80 transition-colors hover:text-foreground"
                   >
                     {ctaLabel}
-                    <ArrowRight size={16} />
+                    <ArrowRight size={15} className="opacity-60" />
                   </Link>
-                ) : null}
-                <Link
-                  to="/ai-literacy"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[15px] font-medium text-foreground/80 transition-colors hover:text-foreground"
-                >
-                  Browse all tracks
-                  <ArrowRight size={15} className="opacity-60" />
-                </Link>
+                ) : (
+                  <Link
+                    to={AI_LITERACY.href}
+                    className="inline-flex items-center justify-center gap-2 px-4 py-3.5 text-[15px] font-medium text-foreground/80 transition-colors hover:text-foreground"
+                  >
+                    AI Literacy
+                    <ArrowRight size={15} className="opacity-60" />
+                  </Link>
+                )}
               </div>
 
               {doneCount > 0 ? (

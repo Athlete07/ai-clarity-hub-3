@@ -1,6 +1,6 @@
 import { Link, useRouter } from "@tanstack/react-router";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
-import { AI_LITERACY, BRAND } from "@/lib/brand";
+import { AI_LITERACY, BRAND, PLAYBOOK_REPOSITORY, SHOW_AI_LITERACY_IN_NAV } from "@/lib/brand";
 import { useStreak } from "@/lib/storage";
 import { useTheme } from "@/lib/theme";
 import { Flame, Moon, Sun, Menu } from "lucide-react";
@@ -69,9 +69,14 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
             <Logo />
           </div>
           <nav className="flex flex-col gap-1 p-3" aria-label="Primary">
-            <Link to={AI_LITERACY.href} className={cn(navLinkClass, "rounded-md px-3 py-3")}>
-              {AI_LITERACY.name}
+            <Link to={PLAYBOOK_REPOSITORY.href} className={cn(navLinkClass, "rounded-md px-3 py-3")}>
+              {PLAYBOOK_REPOSITORY.navLabel}
             </Link>
+            {SHOW_AI_LITERACY_IN_NAV && (
+              <Link to={AI_LITERACY.href} className={cn(navLinkClass, "rounded-md px-3 py-3")}>
+                {AI_LITERACY.name}
+              </Link>
+            )}
             <Link to="/about" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
               About the Platform
             </Link>
@@ -128,9 +133,14 @@ export function Nav({ slim = false }: { slim?: boolean }) {
 
         {!slim && (
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-            <Link to={AI_LITERACY.href} className={navLinkClass}>
-              {AI_LITERACY.name}
+            <Link to={PLAYBOOK_REPOSITORY.href} className={navLinkClass}>
+              {PLAYBOOK_REPOSITORY.navLabel}
             </Link>
+            {SHOW_AI_LITERACY_IN_NAV && (
+              <Link to={AI_LITERACY.href} className={navLinkClass}>
+                {AI_LITERACY.name}
+              </Link>
+            )}
             <Link to="/about" className={navLinkClass}>
               About the Platform
             </Link>
@@ -174,7 +184,15 @@ function FooterLink({
   children,
   href,
 }: {
-  to?: "/ai-literacy" | "/about" | "/creator" | "/contact" | "/privacy-policy" | "/terms-of-service" | "/simulations";
+  to?:
+    | "/use-cases"
+    | "/ai-literacy"
+    | "/about"
+    | "/creator"
+    | "/contact"
+    | "/privacy-policy"
+    | "/terms-of-service"
+    | "/simulations";
   href?: string;
   children: React.ReactNode;
 }) {
@@ -203,6 +221,9 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
           <FooterColumn title="Product">
+            <FooterLink to={PLAYBOOK_REPOSITORY.href}>
+              {PLAYBOOK_REPOSITORY.navLabel}
+            </FooterLink>
             <FooterLink to={AI_LITERACY.href}>{AI_LITERACY.name}</FooterLink>
             <FooterLink to="/about">About the Platform</FooterLink>
             <FooterLink to="/simulations">

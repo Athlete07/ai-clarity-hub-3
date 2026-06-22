@@ -9,12 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UseCasesRouteImport } from './routes/use-cases'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SimulationsRouteImport } from './routes/simulations'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
 import { Route as PlaybooksRouteImport } from './routes/playbooks'
 import { Route as PlaybookRouteImport } from './routes/playbook'
+import { Route as LibraryRouteImport } from './routes/library'
 import { Route as GamesRouteImport } from './routes/games'
 import { Route as ExecutiveKbRouteImport } from './routes/executive-kb'
 import { Route as CreatorRouteImport } from './routes/creator'
@@ -22,20 +24,29 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AiLiteracyRouteImport } from './routes/ai-literacy'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UseCasesIndexRouteImport } from './routes/use-cases.index'
 import { Route as PlaybooksIndexRouteImport } from './routes/playbooks.index'
 import { Route as ExecutiveKbIndexRouteImport } from './routes/executive-kb.index'
 import { Route as AiLiteracyIndexRouteImport } from './routes/ai-literacy.index'
+import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as SimulationsAgentOverseerRouteImport } from './routes/simulations_.agent-overseer'
 import { Route as PlaybookSlugRouteImport } from './routes/playbook.$slug'
 import { Route as GamesAgentOverseerRouteImport } from './routes/games_.agent-overseer'
 import { Route as ExecutiveKbTrackRouteImport } from './routes/executive-kb.$track'
 import { Route as AiLiteracyTrackRouteImport } from './routes/ai-literacy.$track'
+import { Route as UseCasesSlugIndexRouteImport } from './routes/use-cases.$slug.index'
+import { Route as UseCasesSlugChapterSlugRouteImport } from './routes/use-cases.$slug.$chapterSlug'
 import { Route as PlaybooksPlaybookIdChapterSlugRouteImport } from './routes/playbooks.$playbookId.$chapterSlug'
 import { Route as ExecutiveKbKbIdChapterSlugRouteImport } from './routes/executive-kb.$kbId.$chapterSlug'
 import { Route as ApiAoTelemetryRouteImport } from './routes/api/ao/telemetry'
 import { Route as ApiAoSyncRouteImport } from './routes/api/ao/sync'
 import { Route as AiLiteracyKbIdChapterSlugRouteImport } from './routes/ai-literacy.$kbId.$chapterSlug'
 
+const UseCasesRoute = UseCasesRouteImport.update({
+  id: '/use-cases',
+  path: '/use-cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
   id: '/terms-of-service',
   path: '/terms-of-service',
@@ -64,6 +75,11 @@ const PlaybooksRoute = PlaybooksRouteImport.update({
 const PlaybookRoute = PlaybookRouteImport.update({
   id: '/playbook',
   path: '/playbook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LibraryRoute = LibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GamesRoute = GamesRouteImport.update({
@@ -101,6 +117,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UseCasesIndexRoute = UseCasesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UseCasesRoute,
+} as any)
 const PlaybooksIndexRoute = PlaybooksIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -115,6 +136,11 @@ const AiLiteracyIndexRoute = AiLiteracyIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AiLiteracyRoute,
+} as any)
+const UseCasesSlugRoute = UseCasesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => UseCasesRoute,
 } as any)
 const SimulationsAgentOverseerRoute =
   SimulationsAgentOverseerRouteImport.update({
@@ -141,6 +167,16 @@ const AiLiteracyTrackRoute = AiLiteracyTrackRouteImport.update({
   id: '/$track',
   path: '/$track',
   getParentRoute: () => AiLiteracyRoute,
+} as any)
+const UseCasesSlugIndexRoute = UseCasesSlugIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UseCasesSlugRoute,
+} as any)
+const UseCasesSlugChapterSlugRoute = UseCasesSlugChapterSlugRouteImport.update({
+  id: '/$chapterSlug',
+  path: '/$chapterSlug',
+  getParentRoute: () => UseCasesSlugRoute,
 } as any)
 const PlaybooksPlaybookIdChapterSlugRoute =
   PlaybooksPlaybookIdChapterSlugRouteImport.update({
@@ -179,25 +215,31 @@ export interface FileRoutesByFullPath {
   '/creator': typeof CreatorRoute
   '/executive-kb': typeof ExecutiveKbRouteWithChildren
   '/games': typeof GamesRoute
+  '/library': typeof LibraryRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/playbooks': typeof PlaybooksRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/use-cases': typeof UseCasesRouteWithChildren
   '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations/agent-overseer': typeof SimulationsAgentOverseerRoute
+  '/use-cases/$slug': typeof UseCasesSlugRouteWithChildren
   '/ai-literacy/': typeof AiLiteracyIndexRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/use-cases/': typeof UseCasesIndexRoute
   '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/api/ao/sync': typeof ApiAoSyncRoute
   '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
+  '/use-cases/$slug/$chapterSlug': typeof UseCasesSlugChapterSlugRoute
+  '/use-cases/$slug/': typeof UseCasesSlugIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -205,6 +247,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
   '/games': typeof GamesRoute
+  '/library': typeof LibraryRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/simulations': typeof SimulationsRoute
@@ -218,11 +261,14 @@ export interface FileRoutesByTo {
   '/ai-literacy': typeof AiLiteracyIndexRoute
   '/executive-kb': typeof ExecutiveKbIndexRoute
   '/playbooks': typeof PlaybooksIndexRoute
+  '/use-cases': typeof UseCasesIndexRoute
   '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/api/ao/sync': typeof ApiAoSyncRoute
   '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
+  '/use-cases/$slug/$chapterSlug': typeof UseCasesSlugChapterSlugRoute
+  '/use-cases/$slug': typeof UseCasesSlugIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -233,25 +279,31 @@ export interface FileRoutesById {
   '/creator': typeof CreatorRoute
   '/executive-kb': typeof ExecutiveKbRouteWithChildren
   '/games': typeof GamesRoute
+  '/library': typeof LibraryRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/playbooks': typeof PlaybooksRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/simulations': typeof SimulationsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms-of-service': typeof TermsOfServiceRoute
+  '/use-cases': typeof UseCasesRouteWithChildren
   '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
   '/games_/agent-overseer': typeof GamesAgentOverseerRoute
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/simulations_/agent-overseer': typeof SimulationsAgentOverseerRoute
+  '/use-cases/$slug': typeof UseCasesSlugRouteWithChildren
   '/ai-literacy/': typeof AiLiteracyIndexRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
+  '/use-cases/': typeof UseCasesIndexRoute
   '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/api/ao/sync': typeof ApiAoSyncRoute
   '/api/ao/telemetry': typeof ApiAoTelemetryRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
+  '/use-cases/$slug/$chapterSlug': typeof UseCasesSlugChapterSlugRoute
+  '/use-cases/$slug/': typeof UseCasesSlugIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -263,25 +315,31 @@ export interface FileRouteTypes {
     | '/creator'
     | '/executive-kb'
     | '/games'
+    | '/library'
     | '/playbook'
     | '/playbooks'
     | '/privacy-policy'
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/use-cases'
     | '/ai-literacy/$track'
     | '/executive-kb/$track'
     | '/games/agent-overseer'
     | '/playbook/$slug'
     | '/simulations/agent-overseer'
+    | '/use-cases/$slug'
     | '/ai-literacy/'
     | '/executive-kb/'
     | '/playbooks/'
+    | '/use-cases/'
     | '/ai-literacy/$kbId/$chapterSlug'
     | '/api/ao/sync'
     | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
+    | '/use-cases/$slug/$chapterSlug'
+    | '/use-cases/$slug/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -289,6 +347,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/creator'
     | '/games'
+    | '/library'
     | '/playbook'
     | '/privacy-policy'
     | '/simulations'
@@ -302,11 +361,14 @@ export interface FileRouteTypes {
     | '/ai-literacy'
     | '/executive-kb'
     | '/playbooks'
+    | '/use-cases'
     | '/ai-literacy/$kbId/$chapterSlug'
     | '/api/ao/sync'
     | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
+    | '/use-cases/$slug/$chapterSlug'
+    | '/use-cases/$slug'
   id:
     | '__root__'
     | '/'
@@ -316,25 +378,31 @@ export interface FileRouteTypes {
     | '/creator'
     | '/executive-kb'
     | '/games'
+    | '/library'
     | '/playbook'
     | '/playbooks'
     | '/privacy-policy'
     | '/simulations'
     | '/sitemap.xml'
     | '/terms-of-service'
+    | '/use-cases'
     | '/ai-literacy/$track'
     | '/executive-kb/$track'
     | '/games_/agent-overseer'
     | '/playbook/$slug'
     | '/simulations_/agent-overseer'
+    | '/use-cases/$slug'
     | '/ai-literacy/'
     | '/executive-kb/'
     | '/playbooks/'
+    | '/use-cases/'
     | '/ai-literacy/$kbId/$chapterSlug'
     | '/api/ao/sync'
     | '/api/ao/telemetry'
     | '/executive-kb/$kbId/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
+    | '/use-cases/$slug/$chapterSlug'
+    | '/use-cases/$slug/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -345,12 +413,14 @@ export interface RootRouteChildren {
   CreatorRoute: typeof CreatorRoute
   ExecutiveKbRoute: typeof ExecutiveKbRouteWithChildren
   GamesRoute: typeof GamesRoute
+  LibraryRoute: typeof LibraryRoute
   PlaybookRoute: typeof PlaybookRouteWithChildren
   PlaybooksRoute: typeof PlaybooksRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
   SimulationsRoute: typeof SimulationsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsOfServiceRoute: typeof TermsOfServiceRoute
+  UseCasesRoute: typeof UseCasesRouteWithChildren
   GamesAgentOverseerRoute: typeof GamesAgentOverseerRoute
   SimulationsAgentOverseerRoute: typeof SimulationsAgentOverseerRoute
   ApiAoSyncRoute: typeof ApiAoSyncRoute
@@ -359,6 +429,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/use-cases': {
+      id: '/use-cases'
+      path: '/use-cases'
+      fullPath: '/use-cases'
+      preLoaderRoute: typeof UseCasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms-of-service': {
       id: '/terms-of-service'
       path: '/terms-of-service'
@@ -399,6 +476,13 @@ declare module '@tanstack/react-router' {
       path: '/playbook'
       fullPath: '/playbook'
       preLoaderRoute: typeof PlaybookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/library': {
+      id: '/library'
+      path: '/library'
+      fullPath: '/library'
+      preLoaderRoute: typeof LibraryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/games': {
@@ -450,6 +534,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/use-cases/': {
+      id: '/use-cases/'
+      path: '/'
+      fullPath: '/use-cases/'
+      preLoaderRoute: typeof UseCasesIndexRouteImport
+      parentRoute: typeof UseCasesRoute
+    }
     '/playbooks/': {
       id: '/playbooks/'
       path: '/'
@@ -470,6 +561,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/ai-literacy/'
       preLoaderRoute: typeof AiLiteracyIndexRouteImport
       parentRoute: typeof AiLiteracyRoute
+    }
+    '/use-cases/$slug': {
+      id: '/use-cases/$slug'
+      path: '/$slug'
+      fullPath: '/use-cases/$slug'
+      preLoaderRoute: typeof UseCasesSlugRouteImport
+      parentRoute: typeof UseCasesRoute
     }
     '/simulations_/agent-overseer': {
       id: '/simulations_/agent-overseer'
@@ -505,6 +603,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/ai-literacy/$track'
       preLoaderRoute: typeof AiLiteracyTrackRouteImport
       parentRoute: typeof AiLiteracyRoute
+    }
+    '/use-cases/$slug/': {
+      id: '/use-cases/$slug/'
+      path: '/'
+      fullPath: '/use-cases/$slug/'
+      preLoaderRoute: typeof UseCasesSlugIndexRouteImport
+      parentRoute: typeof UseCasesSlugRoute
+    }
+    '/use-cases/$slug/$chapterSlug': {
+      id: '/use-cases/$slug/$chapterSlug'
+      path: '/$chapterSlug'
+      fullPath: '/use-cases/$slug/$chapterSlug'
+      preLoaderRoute: typeof UseCasesSlugChapterSlugRouteImport
+      parentRoute: typeof UseCasesSlugRoute
     }
     '/playbooks/$playbookId/$chapterSlug': {
       id: '/playbooks/$playbookId/$chapterSlug'
@@ -602,6 +714,34 @@ const PlaybooksRouteWithChildren = PlaybooksRoute._addFileChildren(
   PlaybooksRouteChildren,
 )
 
+interface UseCasesSlugRouteChildren {
+  UseCasesSlugChapterSlugRoute: typeof UseCasesSlugChapterSlugRoute
+  UseCasesSlugIndexRoute: typeof UseCasesSlugIndexRoute
+}
+
+const UseCasesSlugRouteChildren: UseCasesSlugRouteChildren = {
+  UseCasesSlugChapterSlugRoute: UseCasesSlugChapterSlugRoute,
+  UseCasesSlugIndexRoute: UseCasesSlugIndexRoute,
+}
+
+const UseCasesSlugRouteWithChildren = UseCasesSlugRoute._addFileChildren(
+  UseCasesSlugRouteChildren,
+)
+
+interface UseCasesRouteChildren {
+  UseCasesSlugRoute: typeof UseCasesSlugRouteWithChildren
+  UseCasesIndexRoute: typeof UseCasesIndexRoute
+}
+
+const UseCasesRouteChildren: UseCasesRouteChildren = {
+  UseCasesSlugRoute: UseCasesSlugRouteWithChildren,
+  UseCasesIndexRoute: UseCasesIndexRoute,
+}
+
+const UseCasesRouteWithChildren = UseCasesRoute._addFileChildren(
+  UseCasesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -610,12 +750,14 @@ const rootRouteChildren: RootRouteChildren = {
   CreatorRoute: CreatorRoute,
   ExecutiveKbRoute: ExecutiveKbRouteWithChildren,
   GamesRoute: GamesRoute,
+  LibraryRoute: LibraryRoute,
   PlaybookRoute: PlaybookRouteWithChildren,
   PlaybooksRoute: PlaybooksRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
   SimulationsRoute: SimulationsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsOfServiceRoute: TermsOfServiceRoute,
+  UseCasesRoute: UseCasesRouteWithChildren,
   GamesAgentOverseerRoute: GamesAgentOverseerRoute,
   SimulationsAgentOverseerRoute: SimulationsAgentOverseerRoute,
   ApiAoSyncRoute: ApiAoSyncRoute,

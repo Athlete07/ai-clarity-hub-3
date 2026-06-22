@@ -6,6 +6,8 @@ import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leade
 import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
 import { BRAND } from "@/lib/brand";
 import { securityHeadersInit } from "@/lib/security-headers";
+import { allGuideChapterPaths, allUseCaseSlugs } from "@/lib/use-cases/registry";
+import { guideChapterPath } from "@/lib/use-cases/guide-helpers";
 
 const BASE_URL = BRAND.siteUrl;
 
@@ -35,6 +37,17 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/playbook", changefreq: "monthly", priority: "0.5" },
           { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms-of-service", changefreq: "yearly", priority: "0.3" },
+          { path: "/use-cases", changefreq: "weekly", priority: "0.9" },
+          ...allUseCaseSlugs().map((slug) => ({
+            path: `/use-cases/${slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.85",
+          })),
+          ...allGuideChapterPaths().map(({ playbookSlug, chapterSlug }) => ({
+            path: guideChapterPath(playbookSlug, chapterSlug),
+            changefreq: "monthly" as const,
+            priority: "0.8",
+          })),
           ...allKbs.flatMap((p) =>
             p.sequence.map((c) => ({
               path: chapterPath(p.id, c.slug),

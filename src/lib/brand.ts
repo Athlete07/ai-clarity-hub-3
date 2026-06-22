@@ -15,6 +15,31 @@ export const AI_LITERACY = {
   backShort: "← AI Literacy",
 } as const;
 
+/** Primary repository — workflows, playbooks, and future migrated AI Literacy content. */
+export const PLAYBOOK_REPOSITORY = {
+  name: "Playbook Library",
+  navLabel: "Playbook Library",
+  shortLabel: "Library",
+  href: "/use-cases" as const,
+  /** Friendly alias — redirects to href. */
+  aliasHref: "/library" as const,
+  browse: "Browse the library",
+  explore: "Explore the library",
+  back: "Back to library",
+  backShort: "← Library",
+  tagline:
+    "The single repository for AI workflows, implementation guides, and role playbooks.",
+} as const;
+
+/** @deprecated Use PLAYBOOK_REPOSITORY */
+export const USE_CASES = PLAYBOOK_REPOSITORY;
+
+/**
+ * When false, AI Literacy moves out of primary nav (footer only).
+ * Flip to false once the Playbook Library holds 10+ native workflows.
+ */
+export const SHOW_AI_LITERACY_IN_NAV = true;
+
 /** FactorBeam brand assets — single source of truth for logo paths. */
 export const BRAND = {
   name: "FactorBeam",

@@ -421,6 +421,19 @@
   color: color-mix(in oklch, var(--foreground) 92%, transparent);
 }
 
+.chapter-insight {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.chapter-insight p {
+  color: color-mix(in oklch, var(--background) 92%, transparent);
+}
+
+.chapter-insight-label {
+  color: color-mix(in oklch, var(--background) 60%, transparent);
+}
+
 /* AI Literacy — playbook library hub */
 .playbook-ruled-bg {
   background-image:
@@ -460,5 +473,273 @@
   .playbook-spine-timeline::before {
     left: 1.625rem;
   }
+}
+
+/* Implementation playbooks — Stripe-inspired surfaces */
+.use-cases-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
+}
+
+.use-cases-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, color-mix(in oklch, var(--purple) 12%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, color-mix(in oklch, var(--blue) 8%, transparent), transparent 60%),
+    radial-gradient(ellipse 40% 35% at 0% 100%, color-mix(in oklch, var(--purple) 6%, transparent), transparent 55%);
+  pointer-events: none;
+}
+
+.dark .use-cases-hero::before {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, color-mix(in oklch, var(--purple) 18%, transparent), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 100% 0%, color-mix(in oklch, var(--blue) 10%, transparent), transparent 60%);
+}
+
+.use-cases-search {
+  box-shadow:
+    0 1px 2px color-mix(in oklch, var(--foreground) 4%, transparent),
+    0 8px 24px -8px color-mix(in oklch, var(--foreground) 8%, transparent);
+}
+
+.use-cases-search:focus-within {
+  box-shadow:
+    0 0 0 1px color-mix(in oklch, var(--purple) 25%, transparent),
+    0 8px 32px -8px color-mix(in oklch, var(--purple) 15%, transparent);
+}
+
+.playbook-detail-hero {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--purple-light) 55%, var(--background)) 0%,
+    var(--background) 100%
+  );
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 90%, transparent);
+}
+
+.dark .playbook-detail-hero {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--purple-light) 35%, var(--background)) 0%,
+    var(--background) 100%
+  );
+}
+
+.playbook-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in oklch, var(--border) 90%, transparent);
+  background: var(--border);
+}
+
+@media (min-width: 640px) {
+  .playbook-meta-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.playbook-meta-cell {
+  background: var(--card);
+  padding: 1rem 1.25rem;
+}
+
+.playbook-meta-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.playbook-meta-value {
+  margin-top: 0.35rem;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+.playbook-toc {
+  position: sticky;
+  top: calc(var(--header-height) + 1.5rem);
+  max-height: calc(100vh - var(--header-height) - 3rem);
+  overflow-y: auto;
+}
+
+.playbook-toc-link {
+  display: block;
+  padding: 0.35rem 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted-foreground);
+  transition: color 0.15s ease;
+}
+
+.playbook-toc-link:hover {
+  color: var(--foreground);
+}
+
+.guide-chapter-nav {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.guide-chapter-nav-inline .guide-chapter-link {
+  border: 1px solid var(--border);
+}
+
+/* Multi-chapter guide — mirrors AI Literacy three-column reader */
+.guide-playbook-body {
+  align-items: flex-start;
+}
+
+.guide-chapter-sidebar {
+  position: sticky;
+  top: 3rem;
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+  border-right: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
+  background: color-mix(in oklch, var(--muted) 22%, var(--background));
+}
+
+.guide-chapter-toc {
+  position: sticky;
+  top: 3rem;
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+  flex-shrink: 0;
+  width: 220px;
+  padding: 2.5rem 1.25rem 2rem 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .guide-chapter-toc {
+    display: block;
+  }
+}
+
+.guide-chapter-toc-panel {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 1rem;
+}
+
+.guide-playbook-subheader {
+  z-index: 30;
+}
+
+.chapter-hero {
+  margin-bottom: 0;
+}
+
+.playbook-phase-line {
+  position: relative;
+  padding-left: 2rem;
+  padding-bottom: 3rem;
+}
+
+.playbook-phase-line::before {
+  content: "";
+  position: absolute;
+  left: 0.4375rem;
+  top: 1.5rem;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in oklch, var(--border) 90%, transparent),
+    transparent
+  );
+}
+
+.playbook-phase-line:last-child {
+  padding-bottom: 0;
+}
+
+.playbook-phase-line:last-child::before {
+  display: none;
+}
+
+.playbook-phase-num {
+  position: absolute;
+  left: 0;
+  top: 0.125rem;
+  display: flex;
+  height: 1rem;
+  width: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--foreground);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--background);
+}
+
+.playbook-stat-value {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.playbook-row-card {
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.playbook-row-card:hover {
+  border-color: color-mix(in oklch, var(--purple) 20%, var(--border));
+  box-shadow: 0 12px 40px -16px color-mix(in oklch, var(--foreground) 12%, transparent);
+}
+
+/* Playbook Library — repository browse at scale */
+.repository-page {
+  min-height: 100vh;
+}
+
+.repository-hero {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--purple-light) 40%, var(--background)) 0%,
+    var(--background) 100%
+  );
+}
+
+.dark .repository-hero {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklch, var(--purple-light) 20%, var(--background)) 0%,
+    var(--background) 100%
+  );
+}
+
+.repository-sidebar {
+  position: sticky;
+  top: calc(var(--header-height) + 4.5rem);
+  max-height: calc(100vh - var(--header-height) - 5rem);
+  overflow-y: auto;
+}
+
+.repository-toolbar {
+  /* sits below site header */
+}
+
+.repository-row:focus-visible {
+  outline: 2px solid color-mix(in oklch, var(--purple) 40%, transparent);
+  outline-offset: 2px;
 }
 
