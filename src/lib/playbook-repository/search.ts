@@ -103,7 +103,13 @@ export function catalogEntryMatches(
   const normalized = normalize(q);
   if (!normalized) return true;
   const haystack = normalize(
-    [entry.title, entry.summary, entry.tags.join(" "), entry.tools.join(" ")].join(" "),
+    [
+      entry.title,
+      entry.summary,
+      entry.tags.join(" "),
+      entry.tools.join(" "),
+      entry.searchText ?? "",
+    ].join(" "),
   );
   return normalized.split(/\s+/).every((word) => haystack.includes(word));
 }

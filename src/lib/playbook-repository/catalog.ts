@@ -18,6 +18,9 @@ export type RepositoryCatalogEntry = {
   timeLabel?: string;
   costLabel?: string;
   readingMinutes?: number;
+  chapterCount?: number;
+  /** Extra terms for repository search (from playbook searchKeywords). */
+  searchText?: string;
   updatedAt: string;
   href: string;
   /** When set, entry is a mirror/link (e.g. AI Literacy chapter) not a native workflow page. */
@@ -37,6 +40,8 @@ export function playbookToCatalogEntry(p: UseCasePlaybook): RepositoryCatalogEnt
     timeLabel: p.timeToImplement,
     costLabel: p.costEstimate,
     readingMinutes: p.readingMinutes,
+    chapterCount: p.guide?.chapters.length,
+    searchText: p.searchKeywords.join(" "),
     updatedAt: p.updatedAt,
     href: `/use-cases/${p.slug}`,
   };

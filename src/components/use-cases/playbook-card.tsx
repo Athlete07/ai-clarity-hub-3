@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, BookOpen, MessageCircle } from "lucide-react";
+import { hasGuideChapters, totalGuideReadingMinutes } from "@/lib/use-cases/guide-helpers";
 import type { UseCasePlaybook } from "@/lib/use-cases/types";
 
 export function PlaybookCard({
@@ -11,6 +12,10 @@ export function PlaybookCard({
   commentCount?: number;
   featured?: boolean;
 }) {
+  const isGuide = hasGuideChapters(playbook);
+  const chapterCount = playbook.guide?.chapters.length;
+  const totalMinutes = isGuide ? totalGuideReadingMinutes(playbook) : undefined;
+
   return (
     <Link
       to="/use-cases/$slug"
@@ -21,7 +26,7 @@ export function PlaybookCard({
     >
       <div className="min-w-0 flex-1">
         <p className="text-[13px] font-medium text-muted-foreground">
-          {playbook.tags.slice(0, 3).join(" · ")}
+          {playbook.tags.slice(0, 4).join(" · ")}
         </p>
         <h3
           className={`mt-2 font-medium leading-[1.2] tracking-[-0.02em] text-foreground transition-colors group-hover:text-purple-dark ${
@@ -30,8 +35,25 @@ export function PlaybookCard({
         >
           {playbook.title}
         </h3>
-        <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted-foreground">
-          {playbook.timeToImplement} · {playbook.costEstimate}
+        <p className="mt-3 max-w-2xl text-[14px] leading-relaxed text-muted-foreground line-clamp-2">
+          {playbook.summary}
+        </p>
+        <p className="mt-3 text-[13px] text-muted-foreground/90">
+          {isGuide && chapterCount ? (
+            <span className="inline-flex items-center gap-1.5">
+              <BookOpen size={13} />
+              {chapterCount} chapters
+              {totalMinutes ? ` · ~${totalMinutes} min` : ""}
+              <span aria-hidden> · </span>
+            </span>
+          ) : null}
+          {playbook.timeToImplement}
+          {!isGuide && (
+            <>
+              <span aria-hidden> · </span>
+              {playbook.costEstimate}
+            </>
+          )}
         </p>
         <p className="mt-2 text-[13px] text-muted-foreground/80">
           {playbook.tools.join(" · ")}

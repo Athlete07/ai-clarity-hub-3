@@ -15,14 +15,26 @@ const SERIES_ID = "claude-full-stack";
 
 export const CLAUDE_FULL_STACK: UseCasePlaybook = {
   slug: "claude-full-stack",
-  title: "Claude — The Full Stack Decoded",
+  title: "The Complete Claude Playbook",
   summary:
-    "The complete Claude power-user playbook — mental model, economics, Claude.ai mastery, prompting, tools, and production systems.",
+    "Stop guessing at Claude. Ten chapters take you from mental model to production workflows — pricing, Projects, MCP, Claude Code, Agent Skills, and the traps nobody warns you about.",
+  heroBullets: [
+    "10 chapters · read in order or jump to the bottleneck that’s costing you time",
+    "Claude.ai → MCP → Claude Code → Agent Skills — one arc, not scattered blog posts",
+    "~15 hours of depth — examples, workflows, and copy-paste artifacts you can use today",
+  ],
   kind: "tool-guide",
   categoryId: "product-engineering",
-  tags: ["Claude", "Anthropic", "AI Tools", "Power User", "Multi-chapter"],
+  tags: [
+    "10 Chapters",
+    "Claude",
+    "Agent Skills",
+    "MCP",
+    "Claude Code",
+    "Power User",
+  ],
   roles: ["pm", "founder", "business-leader", "marketer", "sme-owner"],
-  timeToImplement: "8+ hr series",
+  timeToImplement: "10 chapters · ~15 hr read",
   tools: [
     "Claude.ai",
     "Claude API",
@@ -101,10 +113,14 @@ export const CLAUDE_FULL_STACK: UseCasePlaybook = {
     "GitLab",
     "Zendesk",
     "Intercom",
+    "Batch API",
+  ],
   guide: {
     series: {
       id: SERIES_ID,
       title: "Claude — The Full Stack Decoded",
+      subtitle:
+        "Mental model → Claude.ai → MCP → Claude Code → Agent Skills → production workflows. Ten chapters. One stack.",
     },
     chapters: [
       CHAPTER_01_MENTAL_MODEL,
@@ -120,17 +136,40 @@ export const CLAUDE_FULL_STACK: UseCasePlaybook = {
     ],
   },
   businessContext: [
-    "This is a ",
+    "Most teams adopt Claude in fragments — a pricing spreadsheet here, a prompt doc there, an engineer experimenting with MCP in a side channel. Nobody shares the same mental model, so ",
     x(
-      "multi-chapter playbook",
-      "One catalog entry with many chapters — like a book, not a folder of separate PDFs.",
+      "quality and cost drift",
+      "Inconsistent outputs, surprise token bills, and duplicated experiments across people who don’t know what others already tried.",
     ),
-    ". Start with Chapter 1 if Claude is new; Ch 2 pricing; Ch 3 Claude.ai; Ch 4 prompting; Ch 5 memory; Ch 6 Projects; Ch 7 MCP; Ch 8 Claude Code; Ch 9 workflows; Ch 10 power user wisdom.",
+    ". This playbook is the single path from “we have Claude seats” to “we know which surface to use, how to prompt, how to connect tools, and how to ship workflows that survive contact with reality.”",
+    " Read Chapter 1 if Claude is new. Jump to Ch 2 for pricing, Ch 7 for MCP, Ch 8 for Claude Code, or Ch 10 when you’re ready for traps and mental models that separate power users from prompt typers.",
   ],
-  decisionCriteria: [],
+  decisionCriteria: [
+    {
+      question: "You’re paying for Claude but outcomes still feel random?",
+      yesMeans:
+        "Start with Ch 1 (mental model) and Ch 4 (prompting). Most “Claude doesn’t work for us” complaints trace back to surface choice and prompt structure — not model quality.",
+    },
+    {
+      question: "You need to justify plan tier, API spend, or team rollout?",
+      yesMeans:
+        "Ch 2 maps plans, tokens, and caching economics so finance and engineering speak the same language before you scale.",
+    },
+    {
+      question: "You want Claude inside your stack — Notion, GitHub, CRM, code?",
+      yesMeans:
+        "Ch 6–8 cover Projects, MCP connectors, and Claude Code. Ch 9 shows how to wire cross-surface workflows that don’t break in production.",
+    },
+    {
+      question: "You’ve heard about Agent Skills, extended thinking, or Cowork?",
+      yesMeans:
+        "Ch 1, 3, 8, and 10 cover platform capabilities, interface toggles, Skills/plugins, and the traps that bite teams who enable features without understanding tradeoffs.",
+    },
+  ],
   architecture: {
     title: "Playbook arc",
-    caption: "Read in order for full stack literacy — or jump to the chapter that matches your bottleneck.",
+    caption:
+      "Read in order for full-stack literacy — or jump to the chapter that matches your bottleneck.",
     steps: [
       { label: "Ch 1", desc: "Mental model & ecosystem", tool: "Foundation" },
       { label: "Ch 2", desc: "Plans & token economics", tool: "Budget" },
@@ -147,18 +186,36 @@ export const CLAUDE_FULL_STACK: UseCasePlaybook = {
   phases: [],
   artifacts: [],
   caseStudy: {
-    title: "Why one playbook, many chapters",
+    title: "What changes when the stack clicks",
     scenario:
-      "Teams treated each Claude topic as a separate doc — mental model in Notion, pricing in a finance deck, prompts in Slack pins. Nothing linked; onboarding was archaeology.",
+      "A product team had Claude Pro seats, an API key in a vault, and one engineer using Claude Code — but PMs still rewrote the same briefs every week, support couldn’t trust answers, and nobody knew when to use Projects vs. chat vs. MCP.",
     before:
-      "Six disconnected resources, duplicate explanations, no shared progress tracking.",
+      "Ad hoc prompts in DMs, duplicate context in every thread, no shared project instructions, MCP experiments siloed with engineering.",
     after:
-      "Single playbook slug in the library; chapter sidebar for navigation; per-chapter completion and comments.",
+      "Shared mental model, Projects for recurring workstreams, MCP for live data, Claude Code for implementation — with prompting and failure-mode guardrails the whole team understands.",
     metrics: [
-      "Onboarding sources → 1 playbook URL",
-      "New chapter publish → same slug, new route",
-      "Library clutter → 1 entry instead of N",
+      "Pick the right Claude surface on the first try",
+      "Estimate token cost before you scale a workflow",
+      "Wire MCP and Agent Skills without security surprises",
+      "Ship production workflows with human-in-the-loop checkpoints",
     ],
   },
-  failurePoints: [],
+  failurePoints: [
+    {
+      problem: "Treating Claude like a search box with manners",
+      fix: "Ch 1 + Ch 4: understand stateless reasoning and structure prompts for the outcome you need — not the question you’d type into Google.",
+    },
+    {
+      problem: "Surprise bills from API or team usage",
+      fix: "Ch 2: map plans, caching, and batch patterns before you automate high-volume flows.",
+    },
+    {
+      problem: "Context rot — answers ignore your docs halfway through a long thread",
+      fix: "Ch 5–6: Projects, file strategy, and context architecture beat pasting the same PDF every time.",
+    },
+    {
+      problem: "MCP or Skills enabled without a threat model",
+      fix: "Ch 7–8 + Ch 10: connector scope, prompt injection, and capability traps — enable power features with eyes open.",
+    },
+  ],
 };

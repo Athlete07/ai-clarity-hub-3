@@ -60,6 +60,8 @@ export type UseCasePlaybook = {
   title: string;
   /** One-line description for catalog rows and search. */
   summary: string;
+  /** Optional hook lines on the playbook landing hero (guide playbooks). */
+  heroBullets?: string[];
   kind: PlaybookKind;
   categoryId: RepositoryCategoryId;
   /** Display chips — role, industry, team size, etc. */

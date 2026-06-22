@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, MessageCircle } from "lucide-react";
 import type { RepositoryCatalogEntry } from "@/lib/playbook-repository/catalog";
 import {
   PLAYBOOK_KIND_LABELS,
@@ -16,6 +16,7 @@ export function RepositoryRow({
 }) {
   const category = REPOSITORY_CATEGORY_MAP[entry.categoryId];
   const roleLine = entry.roles.map((r) => REPOSITORY_ROLE_LABELS[r]).join(" · ");
+  const isMultiChapter = (entry.chapterCount ?? 0) > 1;
 
   const inner = (
     <>
@@ -33,10 +34,25 @@ export function RepositoryRow({
                 <span>{entry.timeLabel}</span>
               </>
             )}
+            {isMultiChapter && entry.readingMinutes && (
+              <>
+                <span aria-hidden>·</span>
+                <span className="inline-flex items-center gap-1">
+                  <Clock size={12} className="opacity-70" />
+                  ~{entry.readingMinutes} min
+                </span>
+              </>
+            )}
           </div>
           <h3 className="mt-2 text-[16px] font-medium leading-snug tracking-[-0.01em] text-foreground transition-colors group-hover:text-purple-dark sm:text-[17px]">
             {entry.title}
           </h3>
+          {isMultiChapter && (
+            <p className="mt-1.5 inline-flex items-center gap-1.5 text-[12px] font-medium text-purple-dark dark:text-purple">
+              <BookOpen size={13} />
+              {entry.chapterCount} chapters — start anywhere or read in order
+            </p>
+          )}
           <p className="mt-1.5 line-clamp-2 text-[14px] leading-relaxed text-muted-foreground">
             {entry.summary}
           </p>

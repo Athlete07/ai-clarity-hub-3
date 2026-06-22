@@ -22,7 +22,7 @@ import {
 } from "@/lib/use-cases/guide-helpers";
 import { PLAYBOOK_KIND_LABELS, REPOSITORY_CATEGORY_MAP } from "@/lib/playbook-repository/taxonomy";
 import { useCaseBySlug } from "@/lib/use-cases/registry";
-import type { UseCasePlaybook } from "@/lib/use-cases/types";
+import { USE_CASE_ROLE_LABELS, type UseCasePlaybook } from "@/lib/use-cases/types";
 import { cn } from "@/lib/utils";
 
 const WORKFLOW_TOC = [
@@ -291,6 +291,12 @@ function UseCasePlaybookIndexPage() {
           <span>{REPOSITORY_CATEGORY_MAP[playbook.categoryId].label}</span>
           <span aria-hidden>·</span>
           <span>{playbook.guide!.chapters.length} chapters</span>
+          {totalMinutes && (
+            <>
+              <span aria-hidden>·</span>
+              <span>~{totalMinutes} min</span>
+            </>
+          )}
         </div>
 
         <h1 className="mt-4 text-[28px] font-medium leading-[1.12] tracking-[-0.03em] text-foreground sm:text-[38px]">
@@ -298,7 +304,7 @@ function UseCasePlaybookIndexPage() {
         </h1>
 
         {playbook.guide!.series.subtitle && (
-          <p className="mt-4 text-[15px] text-muted-foreground">
+          <p className="mt-3 text-[15px] font-medium leading-relaxed text-foreground/80">
             {playbook.guide!.series.subtitle}
           </p>
         )}
@@ -306,13 +312,39 @@ function UseCasePlaybookIndexPage() {
         <p
           className={cn(
             "text-[16px] leading-relaxed text-muted-foreground",
-            playbook.guide!.series.subtitle
-              ? "mt-5 border-t border-border/60 pt-5"
-              : "mt-5",
+            playbook.guide!.series.subtitle ? "mt-4" : "mt-5",
           )}
         >
           {playbook.summary}
         </p>
+
+        {playbook.heroBullets && playbook.heroBullets.length > 0 && (
+          <ul className="mt-5 space-y-2">
+            {playbook.heroBullets.map((bullet) => (
+              <li
+                key={bullet}
+                className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/85"
+              >
+                <Check
+                  size={16}
+                  className="mt-0.5 shrink-0 text-purple-dark dark:text-purple"
+                />
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {playbook.roles.map((role) => (
+            <span
+              key={role}
+              className="rounded-full border border-border/80 bg-background/60 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
+            >
+              {USE_CASE_ROLE_LABELS[role]}
+            </span>
+          ))}
+        </div>
 
         {firstChapter && (
           <Link
@@ -325,8 +357,10 @@ function UseCasePlaybookIndexPage() {
           </Link>
         )}
 
-        {totalMinutes && (
-          <p className="mt-4 text-[13px] text-muted-foreground">~{totalMinutes} min total</p>
+        {playbook.guide!.series.title !== playbook.title && (
+          <p className="mt-4 text-[12px] text-muted-foreground/70">
+            Series: {playbook.guide!.series.title}
+          </p>
         )}
       </header>
     );
