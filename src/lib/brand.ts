@@ -28,7 +28,7 @@ export const PLAYBOOK_REPOSITORY = {
   back: "Back to library",
   backShort: "← Library",
   tagline:
-    "The single repository for AI workflows, implementation guides, and role playbooks.",
+    "Practical AI playbooks — from literacy and tool mastery to workflows SMEs can ship, growing toward community ideas and outcome-based consulting.",
 } as const;
 
 /** @deprecated Use PLAYBOOK_REPOSITORY */

@@ -712,19 +712,7 @@
 }
 
 .repository-hero {
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklch, var(--purple-light) 40%, var(--background)) 0%,
-    var(--background) 100%
-  );
-}
-
-.dark .repository-hero {
-  background: linear-gradient(
-    180deg,
-    color-mix(in oklch, var(--purple-light) 20%, var(--background)) 0%,
-    var(--background) 100%
-  );
+  background: var(--background);
 }
 
 .repository-sidebar {
@@ -738,8 +726,47 @@
   /* sits below site header */
 }
 
-.repository-row:focus-visible {
+.repository-card:focus-visible {
   outline: 2px solid color-mix(in oklch, var(--purple) 40%, transparent);
   outline-offset: 2px;
+}
+
+/* Library — minimal lane tabs */
+.library-lane-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+}
+
+.library-lane-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.library-lane-tab:hover {
+  color: var(--foreground);
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.library-lane-tab-active {
+  color: var(--foreground);
+  background: color-mix(in oklch, var(--muted) 65%, transparent);
+  font-weight: 500;
+}
+
+.library-lane-tab-muted {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
 }
 

@@ -12,10 +12,10 @@ export const PLAYBOOK_KIND_LABELS: Record<PlaybookKind, string> = {
 };
 
 export const PLAYBOOK_KIND_DESCRIPTIONS: Record<PlaybookKind, string> = {
-  workflow: "End-to-end systems you can build and ship",
-  implementation: "Step-by-step setup with artifacts and checkpoints",
-  concept: "Foundational knowledge for a role or domain",
-  "tool-guide": "How to use a specific tool in production",
+  workflow: "End-to-end systems that fix a real business problem",
+  implementation: "Step-by-step setup with artifacts — ready to copy",
+  concept: "Foundational literacy by role — how AI actually works",
+  "tool-guide": "Master Claude, Claude Code, Cowork, and the full stack",
 };
 
 /** Top-level browse categories — designed to hold 700–1,000 entries. */
