@@ -33,7 +33,7 @@ export function Logo() {
     <Link
       to="/"
       className="inline-flex shrink-0 items-center text-foreground transition-opacity hover:opacity-90"
-      aria-label="FactorBeam home"
+      aria-label={`${BRAND.name} home`}
     >
       <FactorBeamLogo context="compact" />
     </Link>

@@ -209,14 +209,7 @@
   .site-logo {
     display: inline-flex;
     align-items: center;
-    height: var(--logo-height-header);
-    line-height: 0;
-  }
-  .site-logo img {
-    display: block;
-    height: 100%;
-    width: auto;
-    max-width: none;
+    line-height: 1.2;
   }
   .nav-link {
     font-size: 0.875rem;

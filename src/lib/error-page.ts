@@ -51,18 +51,14 @@ export function renderErrorPage(): string {
       .primary { background: var(--primary); color: var(--primary-foreground); }
       .primary:hover { background: var(--primary-hover); }
       .secondary { background: var(--background); color: var(--foreground); border-color: var(--border); }
-      .logo-light { display: block; margin: 0 auto 1rem; width: auto; height: 32px; }
-      .logo-dark { display: none; margin: 0 auto 1rem; width: auto; height: 32px; }
-      @media (prefers-color-scheme: dark) {
-        .logo-light { display: none; }
-        .logo-dark { display: block; }
-      }
+      .wordmark { display: block; margin: 0 auto 1rem; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+      .wordmark-factor { color: var(--foreground); }
+      .wordmark-beam { color: var(--primary); }
     </style>
   </head>
   <body>
     <div class="card">
-      <img class="logo-light" src="/factorbeam-logo-light.png" alt="FactorBeam" />
-      <img class="logo-dark" src="/factorbeam-logo-dark.png" alt="FactorBeam" />
+      <p class="wordmark" aria-label="FactorBeam"><span class="wordmark-factor">Factor</span><span class="wordmark-beam">Beam</span></p>
       <h1>This page didn't load</h1>
       <p>Something went wrong on our end. You can try refreshing or head back home.</p>
       <div class="actions">

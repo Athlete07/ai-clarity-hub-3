@@ -1,15 +1,40 @@
 import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
-/** Logo height tokens — keep in sync with --logo-height-* in styles.css */
-const LOGO_HEIGHT = {
-  header: { var: "var(--logo-height-header)", px: BRAND.header.logoFullPx },
-  hero: { var: "var(--logo-height-hero)", px: BRAND.header.logoHeroPx },
-  compact: { var: "var(--logo-height-compact)", px: BRAND.header.logoCompactPx },
-  icon: { var: "var(--logo-height-mark)", px: BRAND.header.logoMarkPx },
+const WORDMARK_SIZE = {
+  header: "text-[15px] sm:text-[16px]",
+  hero: "text-[26px] sm:text-[32px]",
+  compact: "text-[15px]",
+  icon: "text-[15px]",
 } as const;
 
-type LogoContext = keyof typeof LOGO_HEIGHT;
+type LogoContext = keyof typeof WORDMARK_SIZE;
+
+/** Colored wordmark only — Factor (ink) + Beam (purple). No icon image. */
+export function FactorBeamWordmark({
+  context = "header",
+  className,
+  style,
+}: {
+  context?: LogoContext;
+  className?: string;
+  style?: React.CSSProperties;
+}) {
+  return (
+    <span
+      className={cn(
+        "site-wordmark inline-flex shrink-0 items-baseline font-semibold leading-none tracking-[-0.02em]",
+        WORDMARK_SIZE[context],
+        className,
+      )}
+      style={style}
+      aria-label={BRAND.name}
+    >
+      <span className="text-foreground">Factor</span>
+      <span className="text-purple-dark dark:text-purple">Beam</span>
+    </span>
+  );
+}
 
 type MarkProps = {
   size?: number;
@@ -17,31 +42,14 @@ type MarkProps = {
   variant?: "default" | "filled";
 };
 
-/** FactorBeam icon mark — square crop from the horizontal logo. */
-export function FactorBeamMark({ size, className, variant: _variant = "default" }: MarkProps) {
+/** @deprecated Site UI uses wordmark only — kept for callers that imported the mark. */
+export function FactorBeamMark({ size, className }: MarkProps) {
   return (
-    <span
-      className={cn("inline-flex shrink-0 items-center justify-center leading-none", className)}
-      style={
-        size
-          ? { width: size, height: size }
-          : { width: LOGO_HEIGHT.icon.var, height: LOGO_HEIGHT.icon.var }
-      }
-      aria-hidden
-    >
-      <img
-        src={BRAND.logo.mark}
-        alt=""
-        draggable={false}
-        className="block h-full w-full object-contain select-none dark:hidden"
-      />
-      <img
-        src={BRAND.logo.markDark}
-        alt=""
-        draggable={false}
-        className="hidden h-full w-full object-contain select-none dark:block"
-      />
-    </span>
+    <FactorBeamWordmark
+      context="icon"
+      className={className}
+      style={size ? { fontSize: size } : undefined}
+    />
   );
 }
 
@@ -55,7 +63,7 @@ type LogoProps = {
   size?: number;
 };
 
-/** Full FactorBeam horizontal logo (icon + wordmark). */
+/** FactorBeam wordmark — icon image removed; colored name only. */
 export function FactorBeamLogo({
   context = "header",
   markSize,
@@ -64,41 +72,14 @@ export function FactorBeamLogo({
   iconOnly = false,
   size,
 }: LogoProps) {
-  const preset = LOGO_HEIGHT[context];
-  const overridePx = markSize ?? (size ? size * 1.75 : undefined);
-
-  if (iconOnly || context === "icon") {
-    return <FactorBeamMark size={overridePx} className={className} />;
-  }
+  const resolvedContext = iconOnly || context === "icon" ? "icon" : context;
+  const fontSize = markSize ?? size;
 
   return (
-    <span
-      className={cn(
-        "inline-flex shrink-0 items-center leading-none",
-        context === "header" && "site-logo",
-        className,
-      )}
-      style={
-        overridePx
-          ? { height: overridePx }
-          : context !== "header"
-            ? { height: preset.var }
-            : undefined
-      }
-    >
-      <img
-        src={BRAND.logo.full}
-        alt={BRAND.name}
-        draggable={false}
-        className="block h-full w-auto max-w-none select-none dark:hidden"
-      />
-      <img
-        src={BRAND.logo.fullDark}
-        alt=""
-        aria-hidden
-        draggable={false}
-        className="hidden h-full w-auto max-w-none select-none dark:block"
-      />
-    </span>
+    <FactorBeamWordmark
+      context={resolvedContext}
+      className={cn(context === "header" && "site-logo", className)}
+      style={fontSize ? { fontSize } : undefined}
+    />
   );
 }
