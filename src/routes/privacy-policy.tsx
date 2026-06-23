@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav, Footer } from "@/components/site-nav";
+import { LandingPageShell } from "@/components/home/landing-page-shell";
 import {
   LegalClosingCta,
   LegalDocumentLayout,
@@ -91,9 +91,7 @@ const HIGHLIGHTS = [
 
 function PrivacyPolicy() {
   return (
-    <>
-      <Nav />
-      <main className="overflow-x-hidden">
+    <LandingPageShell>
         <LegalHero
           title="Privacy Policy"
           description="How FactorBeam collects, uses, and protects personal data for visitors worldwide — including cookie choices, Google AdSense disclosures, and your rights under applicable privacy laws."
@@ -700,8 +698,6 @@ function PrivacyPolicy() {
           secondaryLabel="Read Terms of Service"
           secondaryTo="/terms-of-service"
         />
-      </main>
-      <Footer />
-    </>
+    </LandingPageShell>
   );
 }

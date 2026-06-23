@@ -50,7 +50,7 @@ export function GuidePlaybookShell({
     : 0;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen catalog-body">
       <GuidePlaybookSubheader
         playbookTitle={playbook.title}
         playbookSlug={playbook.slug}

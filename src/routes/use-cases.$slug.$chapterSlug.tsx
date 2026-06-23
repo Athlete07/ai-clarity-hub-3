@@ -63,7 +63,7 @@ function GuideChapterPage() {
   }, [progressKey, markInProgress]);
 
   const hero = (
-    <header className="chapter-hero rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
+    <header className="chapter-hero landing-surface-card rounded-2xl p-6 sm:p-8">
       <div className="flex flex-wrap items-center gap-2">
         <span className="rounded-full bg-purple-light/80 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-purple-dark dark:bg-purple-light/15 dark:text-purple">
           {PLAYBOOK_KIND_LABELS[playbook.kind]}

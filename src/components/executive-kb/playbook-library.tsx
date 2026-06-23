@@ -4,6 +4,7 @@ import {
   BookOpen,
   CheckCircle2,
 } from "lucide-react";
+import { CatalogPageHero } from "@/components/home/catalog-hero";
 import {
   LIBRARY_CARD_CLASS,
   LibraryCardBadge,
@@ -25,7 +26,7 @@ import {
 import { ROLES, ROLE_THEMES, type Role, type RoleId } from "@/lib/role-themes";
 import { cn } from "@/lib/utils";
 
-const LIBRARY_GRID_CLASS = "grid grid-cols-1 gap-4 sm:grid-cols-2";
+const LIBRARY_GRID_CLASS = "grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6";
 
 export { LIBRARY_GRID_CLASS };
 
@@ -43,26 +44,24 @@ export function PlaybookHero({
   totalRoles: number;
 }) {
   const activeRole = role ? ROLES.find((r) => r.id === role) : null;
-  const lead = role
+  const subtitle = role
     ? `${activeRole?.title} track — sequenced playbooks with quizzes, examples, and highlight-to-explain on every chapter.`
     : `${totalPlaybooks} sequenced playbooks · ${totalChapters}+ chapters · ${totalRoles} role tracks. Read in order within a track.`;
 
   return (
-    <header className="repository-hero hairline-b">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 sm:py-14">
-        <h1 className="text-[28px] font-medium leading-[1.12] tracking-[-0.03em] sm:text-[34px]">
-          AI Literacy
-        </h1>
-        <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">{lead}</p>
-
-        <div className="mt-8">
-          <p className="mb-3 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            Choose your lens
-          </p>
-          <RoleTrackPills role={role} onSelect={onSelectRole} />
-        </div>
+    <CatalogPageHero
+      eyebrow="FactorBeam library"
+      title="AI Literacy"
+      titleAccent="for every role."
+      subtitle={subtitle}
+    >
+      <div>
+        <p className="mb-3 text-[11px] font-medium uppercase tracking-wider text-white/45">
+          Choose your lens
+        </p>
+        <RoleTrackPills role={role} onSelect={onSelectRole} />
       </div>
-    </header>
+    </CatalogPageHero>
   );
 }
 
@@ -86,24 +85,18 @@ export function RoleTrackPills({
       {ROLES.map((r) => {
         const Icon = r.icon;
         const active = r.id === role;
-        const theme = ROLE_THEMES[r.id];
         return (
           <button
             key={r.id}
             type="button"
             onClick={() => onSelect(r.id)}
             aria-pressed={active}
-            className={cn(
-              "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-[13px] font-semibold transition-all",
-              active
-                ? theme.pillActive
-                : "border-border bg-card text-muted-foreground shadow-sm hover:border-border/80 hover:text-foreground",
-            )}
+            className={cn("catalog-role-pill", active && "catalog-role-pill-active")}
           >
             <Icon size={15} aria-hidden />
             {r.title}
             {r.popular && !active ? (
-              <span className="rounded bg-purple-light px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-purple-dark">
+              <span className="rounded bg-white/15 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wide text-white/80">
                 Popular
               </span>
             ) : null}
@@ -337,24 +330,22 @@ function LiteracyPlaybookCard({
 
 export function PlaybookMethodologyCta() {
   return (
-    <section className="mt-14 rounded-xl border border-border bg-muted/20 px-6 py-8 sm:px-8 sm:py-10">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <section className="catalog-methodology mt-14">
+      <div className="catalog-methodology-aurora" aria-hidden />
+      <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="max-w-xl">
-          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+          <p className="text-[11px] font-medium uppercase tracking-wider text-white/50">
             Methodology
           </p>
-          <h2 className="mt-2 text-[18px] font-medium tracking-tight sm:text-[20px]">
+          <h2 className="mt-3 text-[20px] font-medium tracking-tight text-white sm:text-[22px]">
             Stress-tested before it reaches your screen
           </h2>
-          <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+          <p className="mt-2 text-[14px] leading-relaxed text-white/65">
             Every playbook passes aggregation, human stress-testing, and executive formatting — so
             you get deployable signal, not LinkedIn fluff.
           </p>
         </div>
-        <Link
-          to="/about"
-          className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-border bg-card px-5 py-2.5 text-[13px] font-medium transition-colors hover:bg-muted/50"
-        >
+        <Link to="/about" className="landing-cta-ghost-on-aurora inline-flex shrink-0 items-center gap-2">
           <BookOpen size={16} />
           How we build playbooks
           <ArrowRight size={14} className="opacity-60" />

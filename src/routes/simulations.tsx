@@ -126,8 +126,8 @@ function SimulationsPage() {
 
   return (
     <>
-      <Nav />
-      <main className="bg-background pb-24">
+      <Nav overlay />
+      <main className="landing-page overflow-x-hidden bg-background pb-24">
         {/* HERO — terminal / HUD aesthetic */}
         <section className="relative overflow-hidden bg-[#050A14] text-[#E8F4FD]">
           {/* animated grid backdrop */}

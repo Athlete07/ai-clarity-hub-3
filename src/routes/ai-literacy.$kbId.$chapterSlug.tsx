@@ -324,7 +324,7 @@ function ConceptPage() {
   const kbOrder = executiveKb?.order ?? 1;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen catalog-body">
       <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md">
         <div className="site-header--slim mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 sm:px-6">
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
@@ -380,7 +380,7 @@ function ConceptPage() {
           <article ref={articleRef} className="chapter-article relative mx-auto max-w-[680px]">
             <HighlightExplainer containerRef={articleRef} />
 
-            <header className="chapter-hero rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
+            <header className="chapter-hero landing-surface-card rounded-2xl p-6 sm:p-8">
               <div className="flex flex-wrap items-center gap-2">
                 <span
                   className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${theme.badge}`}

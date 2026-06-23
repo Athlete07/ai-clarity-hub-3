@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav, Footer } from "@/components/site-nav";
+import { ContentPageHero } from "@/components/home/catalog-hero";
+import { LandingPageShell } from "@/components/home/landing-page-shell";
 import { ArrowRight } from "lucide-react";
 import { AuthorPortrait } from "@/components/author-portrait";
 import { BRAND } from "@/lib/brand";
@@ -57,28 +58,18 @@ export const Route = createFileRoute("/creator")({
 
 function CuratorBoxPage() {
   return (
-    <>
-      <Nav />
-      <main className="overflow-x-hidden">
-        <section className="mx-auto max-w-xl px-5 pb-24 pt-16 sm:px-6 sm:pb-32 sm:pt-24">
-          <p className="section-label text-center">{CREATOR.pageName}</p>
+    <LandingPageShell>
+      <ContentPageHero
+        eyebrow={CREATOR.pageName}
+        title={CREATOR.name}
+        subtitle={`${CREATOR.title} · ${CREATOR.brand} — ${CREATOR.location}`}
+      >
+        <AuthorPortrait size="spotlight" tone="editorial" priority />
+      </ContentPageHero>
 
-          <div className="mt-10 flex justify-center">
-            <AuthorPortrait size="spotlight" tone="editorial" priority />
-          </div>
-
-          <div className="mt-10 text-center">
-            <h1 className="text-[28px] font-medium tracking-[-0.03em] text-foreground sm:text-[34px]">
-              {CREATOR.name}
-            </h1>
-            <p className="mt-2 text-[15px] font-medium text-purple sm:text-[16px]">
-              {CREATOR.title}
-              <span className="font-normal text-muted-foreground"> · {CREATOR.brand}</span>
-            </p>
-            <p className="mt-1 text-[13px] text-muted-foreground">{CREATOR.location}</p>
-          </div>
-
-          <div className="mt-10 space-y-4 border-y border-border/80 py-10 text-center">
+      <div className="catalog-body">
+        <section className="mx-auto max-w-xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+          <div className="landing-surface-card space-y-4 rounded-2xl p-8 text-center sm:p-10">
             <p className="text-[17px] font-medium leading-[1.55] tracking-[-0.01em] text-foreground sm:text-[18px]">
               {CREATOR.hook[0]}
             </p>
@@ -90,13 +81,9 @@ function CuratorBoxPage() {
           <div className="mt-10 flex justify-center">
             <a
               href={CREATOR.methodologyCta.href}
-              className="group inline-flex items-center gap-2 text-[14px] font-medium text-purple transition-colors hover:text-purple-dark"
+              className="landing-text-cta inline-flex items-center gap-2"
             >
-              <ArrowRight
-                size={15}
-                className="transition-transform group-hover:translate-x-0.5"
-                aria-hidden
-              />
+              <ArrowRight size={15} aria-hidden />
               {CREATOR.methodologyCta.label}
             </a>
           </div>
@@ -108,8 +95,7 @@ function CuratorBoxPage() {
             </Link>
           </p>
         </section>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </LandingPageShell>
   );
 }

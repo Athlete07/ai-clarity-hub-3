@@ -281,10 +281,11 @@ function UseCasePlaybookIndexPage() {
 
   return (
     <>
-      <Nav slim />
+      <Nav overlay />
 
-      <header className="playbook-detail-hero">
-        <div className="mx-auto max-w-6xl px-4 pb-12 pt-8 sm:px-6 sm:pb-14 sm:pt-10">
+      <main className="landing-page overflow-x-hidden">
+      <header className="playbook-detail-hero relative overflow-hidden">
+        <div className="mx-auto max-w-7xl px-5 pb-12 pt-28 sm:px-8 sm:pb-14 sm:pt-32 lg:px-12">
           <Link
             to="/use-cases"
             className="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -320,7 +321,8 @@ function UseCasePlaybookIndexPage() {
         </div>
       </header>
 
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+      <div className="catalog-body">
+        <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 lg:px-12">
         <div className="grid gap-12 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-16 xl:grid-cols-[220px_minmax(0,1fr)]">
           <aside className="hidden lg:block">
             <PlaybookToc items={tocItems} />
@@ -334,7 +336,7 @@ function UseCasePlaybookIndexPage() {
               <h2 className="text-[22px] font-medium tracking-[-0.02em] sm:text-[26px]">
                 What goes wrong
               </h2>
-              <div className="mt-8 space-y-0 divide-y divide-border rounded-xl border border-border">
+              <div className="mt-8 space-y-0 divide-y divide-border landing-surface-card overflow-hidden rounded-xl">
                 {playbook.failurePoints.map((fp, i) => (
                   <div key={i} className="px-5 py-5 sm:px-6">
                     <p className="text-[15px] font-medium text-foreground">{fp.problem}</p>
@@ -371,7 +373,9 @@ function UseCasePlaybookIndexPage() {
             </div>
           </article>
         </div>
+        </div>
       </div>
+      </main>
 
       <Footer />
     </>

@@ -109,22 +109,50 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
   );
 }
 
-export function Nav({ slim = false }: { slim?: boolean }) {
+export function Nav({ slim = false, overlay = false }: { slim?: boolean; overlay?: boolean }) {
   const streak = useStreak();
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!overlay) return;
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [overlay]);
+
+  const isOverlayTop = overlay && !scrolled;
+
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 hairline-b bg-background/85 backdrop-blur",
+        overlay ? "fixed inset-x-0 top-0 z-50 transition-all duration-500" : "sticky top-0 z-40",
+        isOverlayTop
+          ? "landing-nav-overlay border-transparent bg-transparent backdrop-blur-none"
+          : "hairline-b bg-background/85 backdrop-blur",
         slim ? "site-header--slim" : "site-header",
       )}
     >
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-4 sm:gap-6">
-          <Logo />
+          <Link
+            to="/"
+            className={cn(
+              "inline-flex shrink-0 items-center transition-opacity hover:opacity-90",
+              isOverlayTop ? "text-white" : "text-foreground",
+            )}
+            aria-label={`${BRAND.name} home`}
+          >
+            <FactorBeamLogo context="compact" />
+          </Link>
           {slim && (
             <Link
               to={AI_LITERACY.href}
-              className={cn(navLinkClass, "hidden sm:inline")}
+              className={cn(
+                navLinkClass,
+                "hidden sm:inline",
+                isOverlayTop && "text-white/70 hover:text-white",
+              )}
             >
               {AI_LITERACY.backShort}
             </Link>
@@ -133,15 +161,24 @@ export function Nav({ slim = false }: { slim?: boolean }) {
 
         {!slim && (
           <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
-            <Link to={PLAYBOOK_REPOSITORY.href} className={navLinkClass}>
+            <Link
+              to={PLAYBOOK_REPOSITORY.href}
+              className={cn(navLinkClass, isOverlayTop && "text-white/75 hover:text-white")}
+            >
               {PLAYBOOK_REPOSITORY.navLabel}
             </Link>
             {SHOW_AI_LITERACY_IN_NAV && (
-              <Link to={AI_LITERACY.href} className={navLinkClass}>
+              <Link
+                to={AI_LITERACY.href}
+                className={cn(navLinkClass, isOverlayTop && "text-white/75 hover:text-white")}
+              >
                 {AI_LITERACY.name}
               </Link>
             )}
-            <Link to="/about" className={navLinkClass}>
+            <Link
+              to="/about"
+              className={cn(navLinkClass, isOverlayTop && "text-white/75 hover:text-white")}
+            >
               About the Platform
             </Link>
           </nav>
@@ -149,7 +186,12 @@ export function Nav({ slim = false }: { slim?: boolean }) {
 
         <div className="flex items-center gap-1 sm:gap-2">
           {streak > 1 && (
-            <span className="nav-link hidden items-center gap-1.5 text-muted-foreground md:inline-flex">
+            <span
+              className={cn(
+                "nav-link hidden items-center gap-1.5 md:inline-flex",
+                isOverlayTop ? "text-white/70" : "text-muted-foreground",
+              )}
+            >
               <Flame size={14} aria-hidden />
               {streak}-day streak
             </span>
@@ -217,8 +259,8 @@ function FooterLink({
 
 export function Footer() {
   return (
-    <footer className="hairline-t mt-24">
-      <div className="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+    <footer className="landing-footer">
+      <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-14 lg:px-12">
         <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
           <FooterColumn title="Product">
             <FooterLink to={PLAYBOOK_REPOSITORY.href}>

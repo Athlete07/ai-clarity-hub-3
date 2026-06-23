@@ -15,11 +15,11 @@ export function LibraryLaneTabs({
   onSelectLane,
 }: LibraryLaneTabsProps) {
   return (
-    <nav className="library-lane-tabs" aria-label="Browse by path">
+    <nav className="catalog-lane-tabs" aria-label="Browse by path">
       <button
         type="button"
         onClick={() => onSelectLane(null)}
-        className={cn("library-lane-tab", !hasFilters && "library-lane-tab-active")}
+        className={cn("catalog-lane-tab", !hasFilters && "catalog-lane-tab-active")}
       >
         All
       </button>
@@ -30,7 +30,7 @@ export function LibraryLaneTabs({
 
         if (lane.href) {
           return (
-            <Link key={lane.id} to={lane.href} className="library-lane-tab">
+            <Link key={lane.id} to={lane.href} className="catalog-lane-tab">
               {lane.title}
             </Link>
           );
@@ -40,7 +40,7 @@ export function LibraryLaneTabs({
           return (
             <span
               key={lane.id}
-              className="library-lane-tab library-lane-tab-muted"
+              className="catalog-lane-tab catalog-lane-tab-muted"
               aria-disabled
             >
               {lane.title}
@@ -53,7 +53,7 @@ export function LibraryLaneTabs({
             key={lane.id}
             type="button"
             onClick={() => onSelectLane(lane)}
-            className={cn("library-lane-tab", active && "library-lane-tab-active")}
+            className={cn("catalog-lane-tab", active && "catalog-lane-tab-active")}
           >
             {lane.title}
           </button>

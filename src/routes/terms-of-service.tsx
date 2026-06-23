@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Nav, Footer } from "@/components/site-nav";
+import { LandingPageShell } from "@/components/home/landing-page-shell";
 import {
   LegalClosingCta,
   LegalDocumentLayout,
@@ -77,9 +77,7 @@ const HIGHLIGHTS = [
 
 function TermsOfService() {
   return (
-    <>
-      <Nav />
-      <main className="overflow-x-hidden">
+    <LandingPageShell>
         <LegalHero
           title="Terms of Service"
           description="Global terms for using FactorBeam — our website, AI Literacy library, quizzes, and related services. Includes standards required for Google AdSense and respect for mandatory rights in your jurisdiction."
@@ -646,8 +644,6 @@ function TermsOfService() {
           secondaryLabel="Read Privacy Policy"
           secondaryTo="/privacy-policy"
         />
-      </main>
-      <Footer />
-    </>
+    </LandingPageShell>
   );
 }

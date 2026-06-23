@@ -1,6 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Nav, Footer } from "@/components/site-nav";
+import { CatalogCrossLink } from "@/components/home/catalog-hero";
+import { LandingMarquee } from "@/components/home/landing-ui";
+import { LandingPageShell } from "@/components/home/landing-page-shell";
 import {
   EmptyTrackState,
   PlaybookHero,
@@ -66,6 +68,13 @@ const ALL_KBS = [
 ];
 const TOTAL_CHAPTERS = ALL_KBS.reduce((n, kb) => n + kb.sequence.length, 0);
 
+const LITERACY_STATS = [
+  { value: String(ALL_KBS.length), label: "Playbooks" },
+  { value: String(ROLES.length), label: "Role tracks" },
+  { value: `${TOTAL_CHAPTERS}+`, label: "Chapters" },
+  { value: "$0", label: "Forever free" },
+];
+
 function ExecutiveKbPage() {
   const { track: trackFromUrl } = Route.useSearch();
   const navigate = useNavigate();
@@ -106,9 +115,7 @@ function ExecutiveKbPage() {
   const activeRole = role ? ROLES.find((r) => r.id === role) : null;
 
   return (
-    <>
-      <Nav />
-      <main className="repository-page">
+    <LandingPageShell>
         <PlaybookHero
           role={role}
           onSelectRole={selectRole}
@@ -117,33 +124,32 @@ function ExecutiveKbPage() {
           totalRoles={ROLES.length}
         />
 
-        <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
-          <p className="mb-6 text-[13px] text-muted-foreground">
-            Tool guides & workflows —{" "}
-            <Link
-              to={PLAYBOOK_REPOSITORY.href}
-              className="font-medium text-foreground hover:underline"
-            >
-              browse Playbook Library
-            </Link>
-          </p>
+        <LandingMarquee stats={LITERACY_STATS} />
 
-          {role === null ? (
-            <TrackGallery
-              onSelect={selectRole}
-              progress={progress}
-              kbsByRole={EXECUTIVE_KBS_BY_ROLE}
-            />
-          ) : executiveKbs.length === 0 ? (
-            <EmptyTrackState roleTitle={activeRole?.title ?? "This"} />
-          ) : (
-            <TrackLibrary role={role} kbs={executiveKbs} progress={progress} />
-          )}
+        <div className="catalog-body">
+          <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 sm:py-12 lg:px-12">
+            <CatalogCrossLink>
+              Tool guides & workflows —{" "}
+              <Link to={PLAYBOOK_REPOSITORY.href}>browse Playbook Library</Link>
+            </CatalogCrossLink>
 
-          <PlaybookMethodologyCta />
+            <div className="mt-8">
+              {role === null ? (
+                <TrackGallery
+                  onSelect={selectRole}
+                  progress={progress}
+                  kbsByRole={EXECUTIVE_KBS_BY_ROLE}
+                />
+              ) : executiveKbs.length === 0 ? (
+                <EmptyTrackState roleTitle={activeRole?.title ?? "This"} />
+              ) : (
+                <TrackLibrary role={role} kbs={executiveKbs} progress={progress} />
+              )}
+
+              <PlaybookMethodologyCta />
+            </div>
+          </div>
         </div>
-      </main>
-      <Footer />
-    </>
+    </LandingPageShell>
   );
 }

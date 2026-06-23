@@ -106,7 +106,7 @@ export function RepositoryRow({
 
   const cardClass = cn(
     LIBRARY_CARD_CLASS,
-    featured && "border-purple/25 bg-gradient-to-br from-purple/[0.04] to-card sm:p-7",
+    featured && "ring-1 ring-purple/20 shadow-[0_8px_32px_-8px_rgb(83_74_183/0.25)]",
   );
 
   if (entry.external) {

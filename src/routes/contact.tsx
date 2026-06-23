@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FactorBeamWordmark } from "@/components/factorbeam-logo";
-import { Nav, Footer } from "@/components/site-nav";
+import { ContentPageHero } from "@/components/home/catalog-hero";
+import { LandingPageShell } from "@/components/home/landing-page-shell";
+import { LandingSectionLabel } from "@/components/home/landing-ui";
 import { brandOgMeta } from "@/lib/brand";
 import {
   ArrowRight,
@@ -73,7 +75,6 @@ function Contact() {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      // Fallback for older browsers or denied permission
       const el = document.createElement("textarea");
       el.value = CONTACT_EMAIL;
       el.setAttribute("readonly", "");
@@ -89,33 +90,17 @@ function Contact() {
   }, []);
 
   return (
-    <>
-      <Nav />
-      <main className="overflow-x-hidden">
-        {/* Hero */}
-        <section className="relative">
-          <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-            <div className="mesh-glow-1 absolute -top-24 left-1/2 h-[460px] w-[460px] -translate-x-1/2 rounded-full bg-purple-light/50 blur-[110px] dark:bg-purple-light/10" />
-          </div>
+    <LandingPageShell>
+      <ContentPageHero
+        eyebrow="Contact"
+        title="Write by"
+        titleAccent="email."
+        subtitle="No form, no ticket queue. Copy the address, open your mail app, and send a note — every message is read personally."
+      />
 
-          <div className="mx-auto max-w-[720px] px-5 pt-16 pb-12 text-center sm:px-6 sm:pt-28 sm:pb-16">
-            <div className="section-label mb-4 inline-flex items-center gap-2">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-purple" />
-              Contact
-            </div>
-            <h1 className="text-[36px] font-medium leading-[1.08] tracking-[-0.025em] sm:text-[56px] sm:leading-[1.02]">
-              Write by <span className="text-purple">email</span>.
-            </h1>
-            <p className="mx-auto mt-5 max-w-[520px] text-[15px] leading-relaxed text-muted-foreground sm:text-[17px]">
-              No form, no ticket queue. Copy the address, open your mail app, and send
-              a note — every message is read personally.
-            </p>
-          </div>
-        </section>
-
-        {/* Email card — primary focal point */}
-        <section className="mx-auto max-w-[640px] px-5 pb-16 sm:px-6 sm:pb-20">
-          <div className="hairline bg-card overflow-hidden rounded-2xl">
+      <div className="catalog-body">
+        <section className="mx-auto max-w-[640px] px-5 pb-16 pt-10 sm:px-8 sm:pb-20 lg:px-12">
+          <div className="landing-surface-card overflow-hidden rounded-2xl">
             <div className="border-b border-border/60 bg-muted/20 px-6 py-4 sm:px-8">
               <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                 Email address
@@ -140,7 +125,7 @@ function Contact() {
                   type="button"
                   onClick={copyEmail}
                   aria-label={copied ? "Email copied" : "Copy email address"}
-                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-[13px] font-medium transition-all hover:border-purple/40 hover:bg-purple-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/30"
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 text-[13px] font-medium transition-all hover:border-purple/40 hover:bg-purple-light/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple/30"
                 >
                   {copied ? (
                     <>
@@ -189,11 +174,10 @@ function Contact() {
           </p>
         </section>
 
-        {/* What to write about */}
-        <section className="mx-auto max-w-[900px] px-5 pb-20 sm:px-6 sm:pb-28">
+        <section className="mx-auto max-w-[900px] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12">
           <div className="mb-8 text-center">
-            <div className="section-label mb-2">What to write about</div>
-            <h2 className="text-[24px] font-medium tracking-tight sm:text-[28px]">
+            <LandingSectionLabel>What to write about</LandingSectionLabel>
+            <h2 className="landing-headline mt-5">
               A helpful subject line is enough
             </h2>
             <p className="mx-auto mt-3 max-w-[480px] text-[14px] text-muted-foreground">
@@ -201,11 +185,11 @@ function Contact() {
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             {REASONS.map(({ icon: Icon, title, detail }) => (
               <div
                 key={title}
-                className="hairline bg-card flex gap-4 rounded-xl p-5 transition-colors hover:border-purple/30"
+                className="landing-surface-card landing-surface-card-hover flex gap-4 rounded-xl p-5"
               >
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted/60 text-purple">
                   <Icon size={16} />
@@ -220,9 +204,9 @@ function Contact() {
             ))}
           </div>
 
-          <div className="hairline mt-6 rounded-xl bg-card p-6 sm:p-7">
-            <div className="section-label mb-3">Include when you can</div>
-            <ul className="grid gap-2.5 sm:grid-cols-2">
+          <div className="landing-surface-card mt-6 rounded-xl p-6 sm:p-7">
+            <LandingSectionLabel>Include when you can</LandingSectionLabel>
+            <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
               {[
                 "AI Literacy track and chapter name",
                 "What confused you or felt off",
@@ -238,15 +222,12 @@ function Contact() {
           </div>
         </section>
 
-        {/* FAQ */}
-        <section className="mx-auto max-w-[720px] px-5 pb-24 sm:px-6 sm:pb-32">
+        <section className="mx-auto max-w-[720px] px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
           <div className="mb-8 text-center">
-            <div className="section-label mb-2">FAQ</div>
-            <h2 className="text-[26px] font-medium tracking-tight sm:text-[32px]">
-              Quick answers
-            </h2>
+            <LandingSectionLabel>FAQ</LandingSectionLabel>
+            <h2 className="landing-headline mt-5">Quick answers</h2>
           </div>
-          <div className="hairline divide-y divide-border overflow-hidden rounded-2xl bg-card">
+          <div className="landing-surface-card divide-y divide-border overflow-hidden rounded-2xl">
             <Faq q="How fast will I hear back?">
               Most messages get a reply within two business days. Edit suggestions are
               usually merged or declined within a week.
@@ -266,28 +247,29 @@ function Contact() {
           </div>
         </section>
 
-        {/* Footer CTA */}
-        <section className="mx-auto max-w-[720px] px-5 pb-32 sm:px-6">
-          <div className="flex flex-col items-center rounded-2xl hairline bg-card p-10 text-center sm:p-14">
-            <h2 className="mb-3 text-[26px] font-medium tracking-tight sm:text-[32px]">
-              Many answers are already in AI Literacy
-            </h2>
-            <p className="mb-8 max-w-[420px] text-[14.5px] text-muted-foreground sm:text-[15.5px]">
-              Before you write, skim the index — you might find what you need in under
-              a minute.
-            </p>
-            <Link
-              to="/ai-literacy"
-              className="btn-primary gap-2 px-6 py-3 text-[14px]"
-            >
-              Browse AI Literacy
-              <ArrowRight size={15} />
-            </Link>
+        <section className="mx-auto max-w-[720px] px-5 pb-32 sm:px-8 lg:px-12">
+          <div className="catalog-methodology flex flex-col items-center p-10 text-center sm:p-14">
+            <div className="catalog-methodology-aurora" aria-hidden />
+            <div className="relative">
+              <h2 className="text-[26px] font-medium tracking-tight text-white sm:text-[32px]">
+                Many answers are already in AI Literacy
+              </h2>
+              <p className="mx-auto mt-3 max-w-[420px] text-[14.5px] text-white/70 sm:text-[15.5px]">
+                Before you write, skim the index — you might find what you need in under
+                a minute.
+              </p>
+              <Link
+                to="/ai-literacy"
+                className="landing-cta-on-aurora mt-8 inline-flex items-center gap-2"
+              >
+                Browse AI Literacy
+                <ArrowRight size={15} />
+              </Link>
+            </div>
           </div>
         </section>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </LandingPageShell>
   );
 }
 

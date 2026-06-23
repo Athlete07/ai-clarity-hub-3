@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 
 export const LIBRARY_CARD_CLASS = cn(
-  "repository-card group flex h-full rounded-xl border border-border bg-card p-5 transition-all",
-  "hover:-translate-y-0.5 hover:border-purple/20 hover:shadow-sm sm:p-6",
+  "repository-card landing-surface-card landing-surface-card-hover group flex h-full flex-col rounded-2xl p-6 transition-all sm:p-7",
+  "hover:-translate-y-1",
 );
 
 export function LibraryCardShell({
@@ -55,7 +55,7 @@ export function LibraryCardTitle({
   return (
     <h3
       className={cn(
-        "mt-3 text-[16px] font-medium leading-snug tracking-[-0.01em] text-foreground transition-colors group-hover:text-purple-dark sm:text-[17px]",
+        "mt-3 text-[17px] font-medium leading-snug tracking-[-0.02em] text-foreground transition-colors group-hover:text-purple-dark sm:text-[18px]",
         className,
       )}
     >

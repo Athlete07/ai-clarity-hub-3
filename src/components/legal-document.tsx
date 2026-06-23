@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { ContentPageHero } from "@/components/home/catalog-hero";
+import { LandingMarquee } from "@/components/home/landing-ui";
 import { AI_LITERACY } from "@/lib/brand";
 
 const CONTACT_EMAIL = "contact.factorbeam@gmail.com";
@@ -15,51 +17,35 @@ export function LegalHero({
   lastUpdated: string;
 }) {
   return (
-    <section className="relative home-hero-mesh">
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="mesh-glow-1 absolute -top-32 left-1/3 h-[400px] w-[400px] rounded-full bg-purple-light/35 blur-[120px] dark:bg-purple-light/8" />
-      </div>
-
-      <div className="mx-auto max-w-6xl px-5 pt-14 pb-12 sm:px-6 sm:pt-20 sm:pb-16 lg:grid lg:grid-cols-12 lg:items-end lg:gap-12">
-        <div className="lg:col-span-7">
-          <p className="section-label">Legal</p>
-          <h1 className="mt-3 text-[36px] font-medium leading-[1.05] tracking-[-0.035em] sm:text-[48px] lg:text-[52px]">
-            {title}
-          </h1>
-          <p className="mt-5 max-w-[540px] text-[16px] leading-relaxed text-muted-foreground sm:text-[17px]">
-            {description}
-          </p>
-        </div>
-        <div className="mt-8 lg:col-span-5 lg:mt-0 lg:text-right">
-          <p className="text-[12px] font-medium uppercase tracking-wider text-muted-foreground">
+    <ContentPageHero
+      eyebrow="Legal"
+      title={title}
+      subtitle={description}
+      align="left"
+      aside={
+        <div>
+          <p className="text-[12px] font-medium uppercase tracking-wider text-white/45">
             Last updated
           </p>
-          <p className="mt-1 text-[15px] font-medium text-foreground">{lastUpdated}</p>
-          <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground lg:ml-auto lg:max-w-[280px]">
+          <p className="mt-1 text-[15px] font-medium text-white">{lastUpdated}</p>
+          <p className="mt-4 text-[13px] leading-relaxed text-white/55 lg:ml-auto lg:max-w-[280px]">
             Questions?{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-purple hover:underline">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-[#C4B5FD] transition-colors hover:text-white"
+            >
               {CONTACT_EMAIL}
             </a>
           </p>
         </div>
-      </div>
-    </section>
+      }
+    />
   );
 }
 
 export function LegalHighlightStrip({ items }: { items: { label: string; detail: string }[] }) {
-  return (
-    <section className="border-y border-border/80 bg-muted/30">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-px bg-border/60 sm:grid-cols-4">
-        {items.map((item) => (
-          <div key={item.label} className="bg-background px-5 py-7 text-center sm:px-6 sm:py-8">
-            <p className="text-[13px] font-semibold tracking-tight text-foreground">{item.label}</p>
-            <p className="mt-1.5 text-[12px] leading-snug text-muted-foreground">{item.detail}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
+  const stats = items.map((item) => ({ value: item.label, label: item.detail }));
+  return <LandingMarquee stats={stats} />;
 }
 
 export function LegalDocumentLayout({
@@ -72,57 +58,59 @@ export function LegalDocumentLayout({
   related: { label: string; to: "/privacy-policy" | "/terms-of-service"; description: string };
 }) {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-16 sm:px-6 sm:py-20 lg:py-24">
-      <div className="lg:grid lg:grid-cols-12 lg:gap-12">
-        <aside className="hidden lg:col-span-3 lg:block">
-          <nav
-            aria-label="On this page"
-            className="sticky top-24 rounded-2xl border border-border bg-card p-5"
-          >
-            <p className="section-label">On this page</p>
-            <ul className="mt-4 space-y-1">
-              {toc.map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className="block rounded-md px-2 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                  >
-                    {item.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 border-t border-border pt-5">
-              <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-                Related
+    <section className="catalog-body">
+      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-12 lg:py-24">
+        <div className="lg:grid lg:grid-cols-12 lg:gap-12">
+          <aside className="hidden lg:col-span-3 lg:block">
+            <nav
+              aria-label="On this page"
+              className="landing-surface-card sticky top-24 rounded-2xl p-5"
+            >
+              <p className="landing-section-label">On this page</p>
+              <ul className="mt-4 space-y-1">
+                {toc.map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      className="block rounded-md px-2 py-1.5 text-[13px] text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 border-t border-border/60 pt-5">
+                <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                  Related
+                </p>
+                <Link
+                  to={related.to}
+                  className="mt-2 block text-[13px] font-medium text-purple hover:underline"
+                >
+                  {related.label}
+                </Link>
+                <p className="mt-1 text-[12px] leading-snug text-muted-foreground">
+                  {related.description}
+                </p>
+              </div>
+            </nav>
+          </aside>
+
+          <div className="lg:col-span-9">
+            <div className="space-y-5">{children}</div>
+
+            <div className="landing-surface-card mt-8 rounded-2xl p-5 sm:p-6 lg:hidden">
+              <p className="text-[12px] font-medium uppercase tracking-wider text-muted-foreground">
+                Related document
               </p>
               <Link
                 to={related.to}
-                className="mt-2 block text-[13px] font-medium text-purple hover:underline"
+                className="mt-2 inline-flex items-center gap-1 text-[14px] font-medium text-purple hover:underline"
               >
                 {related.label}
+                <ArrowRight size={14} />
               </Link>
-              <p className="mt-1 text-[12px] leading-snug text-muted-foreground">
-                {related.description}
-              </p>
             </div>
-          </nav>
-        </aside>
-
-        <div className="lg:col-span-9">
-          <div className="space-y-4">{children}</div>
-
-          <div className="mt-8 rounded-2xl border border-border bg-muted/30 p-5 sm:p-6 lg:hidden">
-            <p className="text-[12px] font-medium uppercase tracking-wider text-muted-foreground">
-              Related document
-            </p>
-            <Link
-              to={related.to}
-              className="mt-2 inline-flex items-center gap-1 text-[14px] font-medium text-purple hover:underline"
-            >
-              {related.label}
-              <ArrowRight size={14} />
-            </Link>
           </div>
         </div>
       </div>
@@ -144,10 +132,7 @@ export function LegalSection({
   children: ReactNode;
 }) {
   return (
-    <article
-      id={id}
-      className="scroll-mt-24 rounded-2xl border border-border bg-card p-6 sm:p-8"
-    >
+    <article id={id} className="landing-surface-card scroll-mt-24 rounded-2xl p-6 sm:p-8">
       <div className="flex items-start gap-4">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-purple-light text-purple-dark dark:bg-purple-light/20 dark:text-purple">
           <Icon size={18} />
@@ -190,31 +175,29 @@ export function LegalClosingCta({
   secondaryTo?: "/contact" | "/privacy-policy" | "/terms-of-service";
 }) {
   return (
-    <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-6 sm:pb-28">
-      <div className="relative overflow-hidden rounded-3xl bg-purple px-8 py-14 text-center text-primary-foreground sm:px-12 sm:py-16">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,255,255,0.1),transparent_55%)]"
-        />
-        <div className="relative">
-          <h2 className="text-[24px] font-medium tracking-tight sm:text-[30px]">{title}</h2>
-          <p className="mx-auto mt-4 max-w-md text-[15px] text-primary-foreground/85">{subtitle}</p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              to={primaryTo}
-              className="inline-flex items-center gap-2 rounded-md bg-background px-7 py-3.5 text-[15px] font-medium text-foreground transition-opacity hover:opacity-95"
-            >
-              {primaryLabel}
-              <ArrowRight size={16} />
-            </Link>
-            {secondaryLabel && secondaryTo ? (
-              <Link
-                to={secondaryTo}
-                className="inline-flex items-center gap-2 px-5 py-3.5 text-[15px] font-medium text-primary-foreground/90 transition-colors hover:text-primary-foreground"
-              >
-                {secondaryLabel}
+    <section className="catalog-body">
+      <div className="mx-auto max-w-7xl px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12">
+        <div className="catalog-methodology text-center">
+          <div className="catalog-methodology-aurora" aria-hidden />
+          <div className="relative">
+            <h2 className="text-[24px] font-medium tracking-tight text-white sm:text-[30px]">
+              {title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-md text-[15px] text-white/70">{subtitle}</p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link to={primaryTo} className="landing-cta-on-aurora inline-flex items-center gap-2">
+                {primaryLabel}
+                <ArrowRight size={16} />
               </Link>
-            ) : null}
+              {secondaryLabel && secondaryTo ? (
+                <Link
+                  to={secondaryTo}
+                  className="landing-cta-ghost-on-aurora inline-flex items-center gap-2"
+                >
+                  {secondaryLabel}
+                </Link>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
