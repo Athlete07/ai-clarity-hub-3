@@ -45,9 +45,20 @@ export function LibraryCardBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function LibraryCardTitle({ children }: { children: React.ReactNode }) {
+export function LibraryCardTitle({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <h3 className="mt-3 text-[16px] font-medium leading-snug tracking-[-0.01em] text-foreground transition-colors group-hover:text-purple-dark sm:text-[17px]">
+    <h3
+      className={cn(
+        "mt-3 text-[16px] font-medium leading-snug tracking-[-0.01em] text-foreground transition-colors group-hover:text-purple-dark sm:text-[17px]",
+        className,
+      )}
+    >
       {children}
     </h3>
   );

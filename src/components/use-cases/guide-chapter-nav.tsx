@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import {
   guideChapterPath,
   guideProgressKey,
@@ -94,46 +94,61 @@ export function GuideChapterPager({
   playbookSlug,
   prev,
   next,
+  isDone = false,
 }: {
   playbookSlug: string;
   prev?: GuideChapter;
   next?: GuideChapter;
+  isDone?: boolean;
 }) {
   if (!prev && !next) return null;
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      {prev ? (
-        <Link
-          to="/use-cases/$slug/$chapterSlug"
-          params={{ slug: playbookSlug, chapterSlug: prev.slug }}
-          className="group rounded-xl border border-border p-5 transition-colors hover:border-foreground/20 hover:bg-muted/30"
-        >
-          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            Previous
-          </p>
-          <p className="mt-2 text-[15px] font-medium text-foreground group-hover:underline">
-            Ch {prev.number}: {prev.title}
-          </p>
-        </Link>
-      ) : (
-        <div />
-      )}
-      {next ? (
-        <Link
-          to="/use-cases/$slug/$chapterSlug"
-          params={{ slug: playbookSlug, chapterSlug: next.slug }}
-          className="group rounded-xl border border-border p-5 text-right transition-colors hover:border-foreground/20 hover:bg-muted/30 sm:col-start-2"
-        >
-          <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
-            Next
-          </p>
-          <p className="mt-2 text-[15px] font-medium text-foreground group-hover:underline">
+    <nav
+      aria-label="Chapter navigation"
+      className="rounded-2xl border border-border bg-card p-4 sm:p-5"
+    >
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        {prev ? (
+          <Link
+            to="/use-cases/$slug/$chapterSlug"
+            params={{ slug: playbookSlug, chapterSlug: prev.slug }}
+            className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-[13px] font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            ← Ch {prev.number}: {prev.title}
+          </Link>
+        ) : (
+          <span />
+        )}
+        <span className="text-center text-[12px] text-muted-foreground">
+          {isDone ? (
+            <span className="inline-flex items-center gap-1.5 text-success">
+              <Check size={13} /> Chapter complete
+            </span>
+          ) : (
+            "Mark complete when you finish this chapter"
+          )}
+        </span>
+        {next ? (
+          <Link
+            to="/use-cases/$slug/$chapterSlug"
+            params={{ slug: playbookSlug, chapterSlug: next.slug }}
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:col-start-2 sm:justify-self-end"
+          >
             Ch {next.number}: {next.title}
-          </p>
-        </Link>
-      ) : null}
-    </div>
+            <ArrowRight size={14} />
+          </Link>
+        ) : (
+          <Link
+            to="/use-cases"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:justify-self-end"
+          >
+            Back to library
+            <ArrowRight size={14} />
+          </Link>
+        )}
+      </div>
+    </nav>
   );
 }
 

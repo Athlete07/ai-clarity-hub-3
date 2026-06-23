@@ -60,7 +60,11 @@ function sortEntries(
       );
     case "recommended":
     default:
-      return copy;
+      return copy.sort((a, b) => {
+        const feat = Number(Boolean(b.featured)) - Number(Boolean(a.featured));
+        if (feat !== 0) return feat;
+        return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+      });
   }
 }
 

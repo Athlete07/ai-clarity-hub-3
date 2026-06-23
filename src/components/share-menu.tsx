@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Share2, Link as LinkIcon, Check, Twitter, Linkedin, Mail } from "lucide-react";
+import { BRAND } from "@/lib/brand";
 import { chapterPath, chapterRouteParams, type ExecutiveKbId } from "@/lib/executive-kb";
 
 type Props = {
@@ -8,6 +9,8 @@ type Props = {
   slug?: string;
   kbId?: ExecutiveKbId;
   chapterSlug?: string;
+  /** Site path e.g. /use-cases/foo/ch01 — used when not an AI Literacy chapter. */
+  path?: string;
   url?: string;
   variant?: "pill" | "ghost" | "icon";
 };
@@ -18,6 +21,7 @@ export function ShareMenu({
   slug,
   kbId,
   chapterSlug,
+  path,
   url: urlProp,
   variant = "pill",
 }: Props) {
@@ -32,11 +36,12 @@ export function ShareMenu({
       : resolvedChapterSlug
         ? chapterRouteParams(resolvedChapterSlug)
         : undefined;
-  const path = route ? chapterPath(route.kbId, route.chapterSlug) : "/";
+  const pathFromLiteracy = route ? chapterPath(route.kbId, route.chapterSlug) : undefined;
+  const resolvedPath = path ?? pathFromLiteracy ?? "/";
 
-  const url =
-    urlProp ??
-    (typeof window !== "undefined" ? `${window.location.origin}${path}` : path);
+  const origin =
+    typeof window !== "undefined" ? window.location.origin : BRAND.siteUrl;
+  const url = urlProp ?? `${origin}${resolvedPath}`;
   const shareText = `${title} — ${summary}`;
 
   useEffect(() => {
@@ -55,7 +60,9 @@ export function ShareMenu({
     };
   }, [open]);
 
-  const handleClick = async () => {
+  const handleClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     if (typeof navigator !== "undefined" && "share" in navigator && /Mobi|Android/i.test(navigator.userAgent)) {
       try {
         await navigator.share({ title, text: summary, url });

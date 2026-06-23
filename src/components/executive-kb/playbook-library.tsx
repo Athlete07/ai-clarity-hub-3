@@ -27,6 +27,8 @@ import { cn } from "@/lib/utils";
 
 const LIBRARY_GRID_CLASS = "grid grid-cols-1 gap-4 sm:grid-cols-2";
 
+export { LIBRARY_GRID_CLASS };
+
 export function PlaybookHero({
   role,
   onSelectRole,

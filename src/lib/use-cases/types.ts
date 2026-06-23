@@ -73,6 +73,10 @@ export type UseCasePlaybook = {
   readingMinutes?: number;
   /** ISO date for sort-by-newest in the repository. */
   updatedAt: string;
+  /** Pin to top of library on recommended sort and optional spotlight row. */
+  featured?: boolean;
+  /** Short badge on catalog cards — e.g. "New · Complete guide". */
+  catalogBadge?: string;
   searchKeywords: string[];
   /** Multi-chapter guide. Chapters live at /use-cases/{slug}/{chapterSlug}. */
   guide?: GuidePlaybook;

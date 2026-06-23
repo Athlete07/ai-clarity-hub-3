@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Check, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { PLAYBOOK_REPOSITORY } from "@/lib/brand";
+import { FactorBeamLogo } from "@/components/factorbeam-logo";
+import { PLAYBOOK_REPOSITORY, BRAND } from "@/lib/brand";
 import { guideProgressKey } from "@/lib/use-cases/guide-helpers";
 import type { GuideChapter, GuidePlaybook } from "@/lib/use-cases/guide-types";
 import type { UseCaseProgress } from "@/lib/use-case-storage";
@@ -11,7 +12,6 @@ type GuideChapterSidebarProps = {
   playbookSlug: string;
   series: GuidePlaybook["series"];
   chapters: GuideChapter[];
-  /** Omit on playbook overview; set on chapter pages. */
   currentChapterSlug?: string;
   progress?: UseCaseProgress;
   open?: boolean;
@@ -134,7 +134,7 @@ export function GuideChapterSidebar({
   return (
     <>
       <aside
-        className="guide-chapter-sidebar relative sticky top-12 hidden h-[calc(100vh-3rem)] shrink-0 overflow-y-auto border-r border-border/80 bg-muted/20 lg:block"
+        className="relative sticky top-12 hidden h-[calc(100vh-3rem)] shrink-0 overflow-y-auto border-r border-border/80 bg-muted/20 lg:block"
         style={{ width: sidebarWidth }}
       >
         {nav}
@@ -176,6 +176,7 @@ export function GuideChapterSidebar({
 export function GuidePlaybookSubheader({
   playbookTitle,
   playbookSlug,
+  firstChapterSlug,
   chapter,
   chapterCount,
   donePct,
@@ -183,18 +184,21 @@ export function GuidePlaybookSubheader({
 }: {
   playbookTitle: string;
   playbookSlug: string;
+  firstChapterSlug: string;
   chapter?: GuideChapter;
   chapterCount: number;
   donePct: number;
   onOpenMenu: () => void;
 }) {
+  const displayNum = chapter?.number;
+
   return (
-    <div className="guide-playbook-subheader sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
+    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md">
+      <div className="site-header--slim mx-auto flex max-w-[1400px] items-center justify-between gap-4 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
           <button
             type="button"
-            className="nav-icon-btn text-muted-foreground hover:bg-muted lg:hidden"
+            className="nav-icon-btn text-muted-foreground transition-colors hover:bg-muted lg:hidden"
             onClick={onOpenMenu}
             aria-label="Open chapter menu"
           >
@@ -210,8 +214,8 @@ export function GuidePlaybookSubheader({
             /
           </span>
           <Link
-            to="/use-cases/$slug"
-            params={{ slug: playbookSlug }}
+            to="/use-cases/$slug/$chapterSlug"
+            params={{ slug: playbookSlug, chapterSlug: firstChapterSlug }}
             className={cn(
               "nav-link truncate transition-colors",
               chapter
@@ -226,18 +230,22 @@ export function GuidePlaybookSubheader({
               <span className="hidden text-muted-foreground/40 sm:inline" aria-hidden>
                 /
               </span>
-              <span className="truncate text-[13px] font-medium text-foreground">
+              <span className="hidden truncate text-[13px] font-medium text-foreground sm:inline">
                 Ch. {chapter.number}: {chapter.title}
               </span>
             </>
           )}
         </div>
-        <span className="shrink-0 text-[12px] text-muted-foreground">
-          {chapter
-            ? `Ch. ${chapter.number}/${chapterCount}`
-            : `${chapterCount} chapters`}{" "}
-          · {donePct}%
-        </span>
+        <div className="flex shrink-0 items-center gap-3">
+          <span className="nav-link hidden text-muted-foreground md:inline">
+            {displayNum
+              ? `Ch. ${displayNum}/${chapterCount} · ${donePct}%`
+              : `${chapterCount} chapters · ${donePct}%`}
+          </span>
+          <Link to="/" className="flex items-center lg:hidden" aria-label={BRAND.name}>
+            <FactorBeamLogo context="icon" />
+          </Link>
+        </div>
       </div>
       <div className="h-[2px] bg-muted">
         <div
@@ -245,6 +253,6 @@ export function GuidePlaybookSubheader({
           style={{ width: `${donePct}%` }}
         />
       </div>
-    </div>
+    </header>
   );
 }

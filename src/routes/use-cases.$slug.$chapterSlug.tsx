@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { Check, Clock } from "lucide-react";
+import { ShareMenu } from "@/components/share-menu";
 import { CommentsSection } from "@/components/use-cases/comments-section";
 import { ExplainParagraph } from "@/components/use-cases/explain-text";
 import { GuideChapterPager } from "@/components/use-cases/guide-chapter-nav";
@@ -12,11 +13,12 @@ import {
 import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import { useUseCaseProgress } from "@/lib/use-case-storage";
 import {
+  guideChapterPath,
   guideProgressKey,
   nextGuideChapter,
   prevGuideChapter,
 } from "@/lib/use-cases/guide-helpers";
-import { PLAYBOOK_KIND_LABELS, REPOSITORY_CATEGORY_MAP } from "@/lib/playbook-repository/taxonomy";
+import { PLAYBOOK_KIND_LABELS } from "@/lib/playbook-repository/taxonomy";
 import { loadGuideChapter } from "@/lib/use-cases/registry";
 
 export const Route = createFileRoute("/use-cases/$slug/$chapterSlug")({
@@ -61,16 +63,10 @@ function GuideChapterPage() {
   }, [progressKey, markInProgress]);
 
   const hero = (
-    <header className="chapter-hero scroll-mt-28 rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
+    <header className="chapter-hero rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
       <div className="flex flex-wrap items-center gap-2">
         <span className="rounded-full bg-purple-light/80 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-purple-dark dark:bg-purple-light/15 dark:text-purple">
           {PLAYBOOK_KIND_LABELS[playbook.kind]}
-        </span>
-        <span className="text-[12px] text-muted-foreground">
-          {REPOSITORY_CATEGORY_MAP[playbook.categoryId].label}
-        </span>
-        <span className="text-[12px] text-muted-foreground" aria-hidden>
-          ·
         </span>
         <span className="text-[12px] text-muted-foreground">
           Chapter {chapter.number} of {playbook.guide!.chapters.length}
@@ -97,6 +93,13 @@ function GuideChapterPage() {
             </span>
           </>
         )}
+        <span className="ml-auto">
+          <ShareMenu
+            title={chapter.title}
+            summary={chapter.subtitle}
+            path={guideChapterPath(playbook.slug, chapter.slug)}
+          />
+        </span>
       </div>
 
       <p className="mt-5 border-t border-border/60 pt-5 text-[16px] leading-relaxed text-muted-foreground">
@@ -171,7 +174,12 @@ function GuideChapterPage() {
 
       <hr className="my-12 border-border" />
 
-      <GuideChapterPager playbookSlug={playbook.slug} prev={prev} next={next} />
+      <GuideChapterPager
+        playbookSlug={playbook.slug}
+        prev={prev}
+        next={next}
+        isDone={isDone}
+      />
 
       <div className="mt-10">
         <button

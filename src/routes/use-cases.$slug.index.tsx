@@ -1,6 +1,6 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
+import { ArrowLeft, Check } from "lucide-react";
 import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Nav, Footer } from "@/components/site-nav";
 import { ArchitectureDiagram } from "@/components/use-cases/architecture-diagram";
@@ -8,11 +8,6 @@ import { ArtifactBlock } from "@/components/use-cases/artifact-block";
 import { CommentsSection } from "@/components/use-cases/comments-section";
 import { ExplainParagraph } from "@/components/use-cases/explain-text";
 import { MindmapDiagram } from "@/components/use-cases/mindmap-diagram";
-import { GuidePlaybookShell } from "@/components/use-cases/guide-playbook-shell";
-import {
-  buildGuideOverviewToc,
-  GuidePlaybookOverview,
-} from "@/components/use-cases/guide-playbook-overview";
 import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import { useUseCaseProgress } from "@/lib/use-case-storage";
 import {
@@ -22,8 +17,7 @@ import {
 } from "@/lib/use-cases/guide-helpers";
 import { PLAYBOOK_KIND_LABELS, REPOSITORY_CATEGORY_MAP } from "@/lib/playbook-repository/taxonomy";
 import { useCaseBySlug } from "@/lib/use-cases/registry";
-import { USE_CASE_ROLE_LABELS, type UseCasePlaybook } from "@/lib/use-cases/types";
-import { cn } from "@/lib/utils";
+import type { UseCasePlaybook } from "@/lib/use-cases/types";
 
 const WORKFLOW_TOC = [
   { id: "context", label: "Business context" },
@@ -40,6 +34,15 @@ export const Route = createFileRoute("/use-cases/$slug/")({
   loader: ({ params }) => {
     const playbook = useCaseBySlug(params.slug);
     if (!playbook) throw notFound();
+    if (hasGuideChapters(playbook)) {
+      const first = firstGuideChapter(playbook);
+      if (first) {
+        throw redirect({
+          to: "/use-cases/$slug/$chapterSlug",
+          params: { slug: playbook.slug, chapterSlug: first.slug },
+        });
+      }
+    }
     return { playbook };
   },
   head: ({ loaderData }) => {
@@ -269,118 +272,12 @@ function UseCasePlaybookIndexPage() {
   const { playbook } = Route.useLoaderData();
   const articleRef = useRef<HTMLElement>(null);
   const { progress, markDone, markInProgress } = useUseCaseProgress();
-  const isGuide = hasGuideChapters(playbook);
   const isDone = progress[playbook.slug] === "done";
-  const tocItems = isGuide
-    ? buildGuideOverviewToc(playbook)
-    : WORKFLOW_TOC.map((s) => ({ id: s.id, label: s.label }));
-  const firstChapter = isGuide ? firstGuideChapter(playbook) : undefined;
-  const totalMinutes = isGuide ? totalGuideReadingMinutes(playbook) : undefined;
+  const tocItems = WORKFLOW_TOC.map((s) => ({ id: s.id, label: s.label }));
 
   useEffect(() => {
     markInProgress(playbook.slug);
   }, [playbook.slug, markInProgress]);
-
-  if (isGuide) {
-    const hero = (
-      <header className="chapter-hero scroll-mt-28 rounded-2xl border border-border/80 bg-card/40 p-6 sm:p-8">
-        <div className="flex flex-wrap items-center gap-2 text-[12px] text-muted-foreground">
-          <span className="rounded-full bg-muted px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-foreground/80">
-            {PLAYBOOK_KIND_LABELS[playbook.kind]}
-          </span>
-          <span>{REPOSITORY_CATEGORY_MAP[playbook.categoryId].label}</span>
-          <span aria-hidden>·</span>
-          <span>{playbook.guide!.chapters.length} chapters</span>
-          {totalMinutes && (
-            <>
-              <span aria-hidden>·</span>
-              <span>~{totalMinutes} min</span>
-            </>
-          )}
-        </div>
-
-        <h1 className="mt-4 text-[28px] font-medium leading-[1.12] tracking-[-0.03em] text-foreground sm:text-[38px]">
-          {playbook.title}
-        </h1>
-
-        {playbook.guide!.series.subtitle && (
-          <p className="mt-3 text-[15px] font-medium leading-relaxed text-foreground/80">
-            {playbook.guide!.series.subtitle}
-          </p>
-        )}
-
-        <p
-          className={cn(
-            "text-[16px] leading-relaxed text-muted-foreground",
-            playbook.guide!.series.subtitle ? "mt-4" : "mt-5",
-          )}
-        >
-          {playbook.summary}
-        </p>
-
-        {playbook.heroBullets && playbook.heroBullets.length > 0 && (
-          <ul className="mt-5 space-y-2">
-            {playbook.heroBullets.map((bullet) => (
-              <li
-                key={bullet}
-                className="flex gap-2.5 text-[14px] leading-relaxed text-foreground/85"
-              >
-                <Check
-                  size={16}
-                  className="mt-0.5 shrink-0 text-purple-dark dark:text-purple"
-                />
-                {bullet}
-              </li>
-            ))}
-          </ul>
-        )}
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          {playbook.roles.map((role) => (
-            <span
-              key={role}
-              className="rounded-full border border-border/80 bg-background/60 px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
-            >
-              {USE_CASE_ROLE_LABELS[role]}
-            </span>
-          ))}
-        </div>
-
-        {firstChapter && (
-          <Link
-            to="/use-cases/$slug/$chapterSlug"
-            params={{ slug: playbook.slug, chapterSlug: firstChapter.slug }}
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-2.5 text-[14px] font-medium text-background transition-opacity hover:opacity-90"
-          >
-            Start Chapter {firstChapter.number}
-            <ArrowRight size={16} />
-          </Link>
-        )}
-
-        {playbook.guide!.series.title !== playbook.title && (
-          <p className="mt-4 text-[12px] text-muted-foreground/70">
-            Series: {playbook.guide!.series.title}
-          </p>
-        )}
-      </header>
-    );
-
-    return (
-      <GuidePlaybookShell
-        playbook={playbook}
-        tocItems={tocItems}
-        progress={progress}
-        articleRef={articleRef}
-        hero={hero}
-      >
-        <GuidePlaybookOverview playbook={playbook} />
-        <hr className="my-12 border-border" />
-        <div id="discussion" className="scroll-mt-28">
-          <CommentsSection playbookSlug={playbook.slug} />
-        </div>
-      </GuidePlaybookShell>
-    );
-  }
 
   return (
     <>

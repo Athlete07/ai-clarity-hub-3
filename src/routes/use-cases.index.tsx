@@ -4,6 +4,10 @@ import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { Nav, Footer } from "@/components/site-nav";
 import { LibraryLaneTabs } from "@/components/playbook-repository/library-lane-cards";
 import { RepositoryRow } from "@/components/playbook-repository/repository-row";
+import {
+  LIBRARY_GRID_CLASS,
+  PlaybookMethodologyCta,
+} from "@/components/executive-kb/playbook-library";
 import { AI_LITERACY, PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import { REPOSITORY_CATALOG } from "@/lib/playbook-repository/catalog";
 import {
@@ -71,6 +75,18 @@ function PlaybookLibraryPage() {
   );
 
   const hasFilters = query.kinds.length > 0 || query.q.length > 0;
+
+  const featuredEntries = useMemo(
+    () => REPOSITORY_CATALOG.filter((e) => e.featured),
+    [],
+  );
+
+  const showFeaturedSpotlight =
+    !hasFilters && result.page === 1 && featuredEntries.length > 0;
+
+  const gridItems = showFeaturedSpotlight
+    ? result.items.filter((e) => !e.featured)
+    : result.items;
 
   function setQ(q: string) {
     setQuery((prev) => ({ ...prev, q, page: 1 }));
@@ -175,22 +191,21 @@ function PlaybookLibraryPage() {
               hasFilters={hasFilters}
               onSelectLane={selectLane}
             />
-
-            <p className="mt-6 text-[13px] text-muted-foreground">
-              Role-based fundamentals live in{" "}
-              <Link
-                to={AI_LITERACY.href}
-                className="font-medium text-foreground hover:underline"
-              >
-                AI Literacy
-              </Link>
-              .
-            </p>
           </div>
         </header>
 
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 sm:py-10">
-          <div className="flex items-center justify-between gap-4">
+          <p className="mb-6 text-[13px] text-muted-foreground">
+            Role-based fundamentals —{" "}
+            <Link
+              to={AI_LITERACY.href}
+              className="font-medium text-foreground hover:underline"
+            >
+              browse AI Literacy
+            </Link>
+          </p>
+
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <p className="text-[13px] text-muted-foreground">
               {result.total} {result.total === 1 ? "playbook" : "playbooks"}
             </p>
@@ -219,10 +234,28 @@ function PlaybookLibraryPage() {
             </div>
           </div>
 
-          <div className="mt-6">
-            {result.items.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {result.items.map((entry) => (
+          <div>
+            {showFeaturedSpotlight && (
+              <section className="mb-6" aria-label="Featured playbooks">
+                <p className="mb-3 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+                  Featured
+                </p>
+                <div className={LIBRARY_GRID_CLASS}>
+                  {featuredEntries.map((entry) => (
+                    <RepositoryRow
+                      key={entry.slug}
+                      entry={entry}
+                      featured
+                      commentCount={commentCounts[entry.slug] ?? 0}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {gridItems.length > 0 ? (
+              <div className={LIBRARY_GRID_CLASS}>
+                {gridItems.map((entry) => (
                   <RepositoryRow
                     key={entry.slug}
                     entry={entry}
@@ -268,6 +301,8 @@ function PlaybookLibraryPage() {
                 </button>
               </nav>
             )}
+
+            <PlaybookMethodologyCta />
           </div>
         </div>
       </main>

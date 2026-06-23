@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, MessageCircle } from "lucide-react";
-import { hasGuideChapters, totalGuideReadingMinutes } from "@/lib/use-cases/guide-helpers";
+import { hasGuideChapters, firstGuideChapter, totalGuideReadingMinutes } from "@/lib/use-cases/guide-helpers";
 import type { UseCasePlaybook } from "@/lib/use-cases/types";
+import { ShareMenu } from "@/components/share-menu";
 
 export function PlaybookCard({
   playbook,
@@ -15,11 +16,16 @@ export function PlaybookCard({
   const isGuide = hasGuideChapters(playbook);
   const chapterCount = playbook.guide?.chapters.length;
   const totalMinutes = isGuide ? totalGuideReadingMinutes(playbook) : undefined;
+  const firstChapter = isGuide ? firstGuideChapter(playbook) : undefined;
 
   return (
     <Link
-      to="/use-cases/$slug"
-      params={{ slug: playbook.slug }}
+      to={firstChapter ? "/use-cases/$slug/$chapterSlug" : "/use-cases/$slug"}
+      params={
+        firstChapter
+          ? { slug: playbook.slug, chapterSlug: firstChapter.slug }
+          : { slug: playbook.slug }
+      }
       className={`playbook-row-card group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-8 ${
         featured ? "sm:p-10" : ""
       }`}

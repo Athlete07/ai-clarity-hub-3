@@ -40,7 +40,7 @@ export const LIBRARY_LANES: LibraryLane[] = [
     title: "Master the tools",
     tagline: "Claude · Code · Cowork",
     description:
-      "Deep playbooks on the AI stack — mental models, pricing, MCP, Agent Skills, and when to use each surface in production.",
+      "Complete playbooks for Claude and Cowork — mental models, Skills, schedules, MCP connectors, and production ops for teams that ship.",
     status: "growing",
     kinds: ["tool-guide"],
   },

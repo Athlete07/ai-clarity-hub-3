@@ -54,13 +54,14 @@ export function GuidePlaybookShell({
       <GuidePlaybookSubheader
         playbookTitle={playbook.title}
         playbookSlug={playbook.slug}
+        firstChapterSlug={guide.chapters[0]!.slug}
         chapter={chapter}
         chapterCount={guide.chapters.length}
         donePct={donePct}
         onOpenMenu={() => setSidebarOpen(true)}
       />
 
-      <div className="guide-playbook-body mx-auto flex w-full max-w-[1400px]">
+      <div className="mx-auto flex max-w-[1400px]">
         <GuideChapterSidebar
           playbookSlug={playbook.slug}
           series={guide.series}

@@ -45,11 +45,11 @@ export function GuideChapterToc({ items, mobile }: GuideChapterTocProps) {
       className={cn(
         mobile
           ? "w-full"
-          : "guide-chapter-toc sticky top-12 hidden h-[calc(100vh-3rem)] w-[220px] shrink-0 overflow-y-auto px-5 py-10 lg:block",
+          : "sticky top-12 hidden h-[calc(100vh-3rem)] w-[220px] shrink-0 overflow-y-auto px-5 py-10 xl:block",
       )}
       aria-label="On this page"
     >
-      <div className="guide-chapter-toc-panel">
+      <div className="rounded-xl border border-border bg-card p-4">
         <p className="section-label">On this page</p>
         <ul className="mt-3 space-y-0.5">
           {items.map((item) => {

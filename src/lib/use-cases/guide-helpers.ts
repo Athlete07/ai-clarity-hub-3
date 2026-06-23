@@ -37,6 +37,13 @@ export function firstGuideChapter(playbook: UseCasePlaybook): GuideChapter | und
   return playbook.guide?.chapters[0];
 }
 
+/** Library cards and bare /use-cases/{slug} links land on chapter 1 for guides. */
+export function playbookEntryPath(playbook: UseCasePlaybook): string {
+  const first = firstGuideChapter(playbook);
+  if (first) return guideChapterPath(playbook.slug, first.slug);
+  return `/use-cases/${playbook.slug}`;
+}
+
 export function prevGuideChapter(
   playbook: UseCasePlaybook,
   chapterSlug: string,

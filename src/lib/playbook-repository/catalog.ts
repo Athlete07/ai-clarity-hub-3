@@ -1,5 +1,6 @@
 import type { UseCasePlaybook } from "@/lib/use-cases/types";
 import { USE_CASE_PLAYBOOKS } from "@/lib/use-cases/registry";
+import { guideChapterPath, hasGuideChapters } from "@/lib/use-cases/guide-helpers";
 import type { PlaybookKind, RepositoryCategoryId } from "./taxonomy";
 
 /**
@@ -21,13 +22,18 @@ export type RepositoryCatalogEntry = {
   chapterCount?: number;
   /** Extra terms for repository search (from playbook searchKeywords). */
   searchText?: string;
+  /** First chapter slug when kind is multi-chapter guide (for typed router links). */
+  entryChapterSlug?: string;
   updatedAt: string;
+  featured?: boolean;
+  catalogBadge?: string;
   href: string;
   /** When set, entry is a mirror/link (e.g. AI Literacy chapter) not a native workflow page. */
   external?: boolean;
 };
 
 export function playbookToCatalogEntry(p: UseCasePlaybook): RepositoryCatalogEntry {
+  const firstChapter = hasGuideChapters(p) ? p.guide.chapters[0] : undefined;
   return {
     slug: p.slug,
     title: p.title,
@@ -43,7 +49,12 @@ export function playbookToCatalogEntry(p: UseCasePlaybook): RepositoryCatalogEnt
     chapterCount: p.guide?.chapters.length,
     searchText: p.searchKeywords.join(" "),
     updatedAt: p.updatedAt,
-    href: `/use-cases/${p.slug}`,
+    featured: p.featured,
+    catalogBadge: p.catalogBadge,
+    entryChapterSlug: firstChapter?.slug,
+    href: firstChapter
+      ? guideChapterPath(p.slug, firstChapter.slug)
+      : `/use-cases/${p.slug}`,
   };
 }
 

@@ -6,8 +6,8 @@ import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leade
 import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
 import { BRAND } from "@/lib/brand";
 import { securityHeadersInit } from "@/lib/security-headers";
-import { allGuideChapterPaths, allUseCaseSlugs } from "@/lib/use-cases/registry";
-import { guideChapterPath } from "@/lib/use-cases/guide-helpers";
+import { USE_CASE_PLAYBOOKS, allGuideChapterPaths } from "@/lib/use-cases/registry";
+import { guideChapterPath, hasGuideChapters } from "@/lib/use-cases/guide-helpers";
 
 const BASE_URL = BRAND.siteUrl;
 
@@ -38,8 +38,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms-of-service", changefreq: "yearly", priority: "0.3" },
           { path: "/use-cases", changefreq: "weekly", priority: "0.9" },
-          ...allUseCaseSlugs().map((slug) => ({
-            path: `/use-cases/${slug}`,
+          ...USE_CASE_PLAYBOOKS.filter((p) => !hasGuideChapters(p)).map((p) => ({
+            path: `/use-cases/${p.slug}`,
             changefreq: "monthly" as const,
             priority: "0.85",
           })),

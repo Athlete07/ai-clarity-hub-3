@@ -1,7 +1,7 @@
 import { createFileRoute, notFound, Outlet, redirect } from "@tanstack/react-router";
 import { resolveLegacyChapterSlug, useCaseBySlug } from "@/lib/use-cases/registry";
 
-/** Layout route — child routes render via Outlet (index = overview, $chapterSlug = chapter). */
+/** Layout route — child routes: index (workflow playbooks only) or $chapterSlug (guides). */
 export const Route = createFileRoute("/use-cases/$slug")({
   loader: ({ params }) => {
     const legacy = resolveLegacyChapterSlug(params.slug);
