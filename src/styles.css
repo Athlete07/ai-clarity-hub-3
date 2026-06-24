@@ -876,40 +876,6 @@
   }
 }
 
-.landing-sim {
-  background: #050a14;
-  color: #e8f4fd;
-}
-
-.landing-sim-grid {
-  position: absolute;
-  inset: 0;
-  opacity: 0.1;
-  background-image:
-    linear-gradient(#00f5ff22 1px, transparent 1px),
-    linear-gradient(90deg, #00f5ff22 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.landing-sim-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  border-radius: 0.5rem;
-  background: #00f5ff;
-  padding: 0.85rem 1.5rem;
-  font-family: ui-monospace, monospace;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #050a14;
-  transition: box-shadow 0.2s ease;
-}
-
-.landing-sim-cta:hover {
-  box-shadow: 0 0 40px -4px #00f5ff80;
-}
-
 .landing-manifesto {
   font-size: clamp(1.25rem, 3vw, 1.65rem);
   font-weight: 500;

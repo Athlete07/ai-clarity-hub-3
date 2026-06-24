@@ -1,6 +1,6 @@
 import type { UseCasePlaybook } from "@/lib/use-cases/types";
 import { USE_CASE_PLAYBOOKS } from "@/lib/use-cases/registry";
-import { guideChapterPath, hasGuideChapters } from "@/lib/use-cases/guide-helpers";
+import { hasGuideChapters } from "@/lib/use-cases/guide-helpers";
 import type { PlaybookKind, RepositoryCategoryId } from "./taxonomy";
 
 /**
@@ -52,9 +52,7 @@ export function playbookToCatalogEntry(p: UseCasePlaybook): RepositoryCatalogEnt
     featured: p.featured,
     catalogBadge: p.catalogBadge,
     entryChapterSlug: firstChapter?.slug,
-    href: firstChapter
-      ? guideChapterPath(p.slug, firstChapter.slug)
-      : `/use-cases/${p.slug}`,
+    href: `/use-cases/${p.slug}`,
   };
 }
 

@@ -97,7 +97,7 @@ export function RepositoryRow({
               {commentCount}
             </span>
           ) : entry.entryChapterSlug ? (
-            <span className="text-[12px] font-medium text-muted-foreground">Open</span>
+            <span className="text-[12px] font-medium text-muted-foreground">View guide</span>
           ) : undefined
         }
       />
@@ -119,11 +119,7 @@ export function RepositoryRow({
 
   if (entry.entryChapterSlug) {
     return (
-      <Link
-        to="/use-cases/$slug/$chapterSlug"
-        params={{ slug: entry.slug, chapterSlug: entry.entryChapterSlug }}
-        className={cardClass}
-      >
+      <Link to="/use-cases/$slug" params={{ slug: entry.slug }} className={cardClass}>
         {inner}
       </Link>
     );

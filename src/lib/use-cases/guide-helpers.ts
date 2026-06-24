@@ -20,6 +20,10 @@ export function guideChapterPath(playbookSlug: string, chapterSlug: string): str
   return `/use-cases/${playbookSlug}/${chapterSlug}`;
 }
 
+export function guideOverviewPath(playbookSlug: string): string {
+  return `/use-cases/${playbookSlug}`;
+}
+
 export function hasGuideChapters(
   playbook: UseCasePlaybook,
 ): playbook is UseCasePlaybook & { guide: GuidePlaybook } {
@@ -37,11 +41,16 @@ export function firstGuideChapter(playbook: UseCasePlaybook): GuideChapter | und
   return playbook.guide?.chapters[0];
 }
 
-/** Library cards and bare /use-cases/{slug} links land on chapter 1 for guides. */
+/** Library cards and catalog hrefs land on the guide overview; use entryChapterSlug to start reading. */
 export function playbookEntryPath(playbook: UseCasePlaybook): string {
-  const first = firstGuideChapter(playbook);
-  if (first) return guideChapterPath(playbook.slug, first.slug);
+  if (hasGuideChapters(playbook)) return guideOverviewPath(playbook.slug);
   return `/use-cases/${playbook.slug}`;
+}
+
+export function guideStartChapterPath(playbook: UseCasePlaybook): string | undefined {
+  const first = firstGuideChapter(playbook);
+  if (!first) return undefined;
+  return guideChapterPath(playbook.slug, first.slug);
 }
 
 export function prevGuideChapter(

@@ -33,7 +33,6 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/about", changefreq: "monthly", priority: "0.5" },
           { path: "/contact", changefreq: "monthly", priority: "0.4" },
           { path: "/creator", changefreq: "monthly", priority: "0.4" },
-          { path: "/games", changefreq: "monthly", priority: "0.5" },
           { path: "/playbook", changefreq: "monthly", priority: "0.5" },
           { path: "/privacy-policy", changefreq: "yearly", priority: "0.3" },
           { path: "/terms-of-service", changefreq: "yearly", priority: "0.3" },
@@ -42,6 +41,11 @@ export const Route = createFileRoute("/sitemap.xml")({
             path: `/use-cases/${p.slug}`,
             changefreq: "monthly" as const,
             priority: "0.85",
+          })),
+          ...USE_CASE_PLAYBOOKS.filter(hasGuideChapters).map((p) => ({
+            path: `/use-cases/${p.slug}`,
+            changefreq: "weekly" as const,
+            priority: "0.9",
           })),
           ...allGuideChapterPaths().map(({ playbookSlug, chapterSlug }) => ({
             path: guideChapterPath(playbookSlug, chapterSlug),

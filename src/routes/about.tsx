@@ -6,7 +6,7 @@ import { AuthorPortrait } from "@/components/author-portrait";
 import { AUDIENCE, AI_LITERACY, brandOgMeta } from "@/lib/brand";
 import { CREATOR } from "@/lib/creator";
 import { PLATFORM_ABOUT } from "@/lib/platform-about";
-import { ArrowRight, BookOpen, Cpu, Layers, PenLine, ShieldCheck } from "lucide-react";
+import { ArrowRight, BookOpen, Layers, PenLine, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -157,23 +157,6 @@ function AboutThePlatform() {
                 Your next step
               </p>
               <div className="mt-8 flex flex-col gap-5 sm:flex-row sm:items-stretch sm:gap-6">
-                <div className="landing-glass-card flex flex-1 flex-col rounded-2xl p-6 sm:p-7">
-                  <h2 className="text-[18px] font-medium leading-snug tracking-tight text-white sm:text-[20px]">
-                    {conversion.primary.label}
-                  </h2>
-                  <p className="mt-2 flex-1 text-[13px] leading-relaxed text-white/70 sm:text-[14px]">
-                    {conversion.primary.hint}
-                  </p>
-                  <Link
-                    to={conversion.primary.href}
-                    className="landing-cta-on-aurora mt-6 inline-flex w-full items-center justify-center gap-2 sm:w-auto sm:justify-start"
-                  >
-                    <Cpu size={16} aria-hidden />
-                    Launch Agent Overseer
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-
                 <div className="landing-glass-card flex flex-1 flex-col rounded-2xl p-6 sm:p-7">
                   <h2 className="text-[18px] font-medium leading-snug tracking-tight text-white sm:text-[20px]">
                     {conversion.secondary.label}

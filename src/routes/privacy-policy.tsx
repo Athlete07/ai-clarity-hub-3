@@ -115,7 +115,7 @@ function PrivacyPolicy() {
               &quot;our&quot;) is a free educational website and open AI Literacy project
               operated by {CREATOR.name}. This Privacy Policy explains how we collect, use,
               disclose, and protect personal data when you visit or use our website, AI Literacy
-              tracks, quizzes, simulations, and related features (collectively, the
+              tracks, quizzes, and related features (collectively, the
               &quot;Service&quot;).
             </p>
             <p>

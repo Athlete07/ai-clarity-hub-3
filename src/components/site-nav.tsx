@@ -233,8 +233,7 @@ function FooterLink({
     | "/creator"
     | "/contact"
     | "/privacy-policy"
-    | "/terms-of-service"
-    | "/simulations";
+    | "/terms-of-service";
   href?: string;
   children: React.ReactNode;
 }) {
@@ -268,14 +267,6 @@ export function Footer() {
             </FooterLink>
             <FooterLink to={AI_LITERACY.href}>{AI_LITERACY.name}</FooterLink>
             <FooterLink to="/about">About the Platform</FooterLink>
-            <FooterLink to="/simulations">
-              <span className="inline-flex items-center gap-2">
-                Simulations
-                <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Beta
-                </span>
-              </span>
-            </FooterLink>
           </FooterColumn>
           <FooterColumn title="Connect">
             <FooterLink to="/creator">Curator Box</FooterLink>

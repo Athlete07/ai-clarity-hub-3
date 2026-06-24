@@ -64,6 +64,15 @@ export function GuideChapterSidebar({
         {PLAYBOOK_REPOSITORY.backShort}
       </Link>
 
+      <Link
+        to="/use-cases/$slug"
+        params={{ slug: playbookSlug }}
+        className="mb-3 inline-flex items-center gap-1 text-[12px] font-medium text-purple transition-colors hover:text-purple-dark"
+        onClick={onClose}
+      >
+        Guide overview →
+      </Link>
+
       <p className="text-[13px] font-medium leading-snug text-foreground">{series.title}</p>
       {series.subtitle && (
         <p className="mt-1 text-[12px] leading-snug text-muted-foreground">{series.subtitle}</p>
@@ -176,7 +185,6 @@ export function GuideChapterSidebar({
 export function GuidePlaybookSubheader({
   playbookTitle,
   playbookSlug,
-  firstChapterSlug,
   chapter,
   chapterCount,
   donePct,
@@ -184,7 +192,7 @@ export function GuidePlaybookSubheader({
 }: {
   playbookTitle: string;
   playbookSlug: string;
-  firstChapterSlug: string;
+  firstChapterSlug?: string;
   chapter?: GuideChapter;
   chapterCount: number;
   donePct: number;
@@ -214,8 +222,8 @@ export function GuidePlaybookSubheader({
             /
           </span>
           <Link
-            to="/use-cases/$slug/$chapterSlug"
-            params={{ slug: playbookSlug, chapterSlug: firstChapterSlug }}
+            to="/use-cases/$slug"
+            params={{ slug: playbookSlug }}
             className={cn(
               "nav-link truncate transition-colors",
               chapter

@@ -2,13 +2,18 @@ import { createFileRoute, Link, notFound, redirect, useRouter } from "@tanstack/
 import { useEffect, useRef, useState, useMemo } from "react";
 import { FactorBeamLogo } from "@/components/factorbeam-logo";
 import { Nav, Footer } from "@/components/site-nav";
-import { AI_LITERACY, BRAND, brandOgMeta } from "@/lib/brand";
+import { AI_LITERACY, BRAND } from "@/lib/brand";
 import { ExampleTabs } from "@/components/example-tabs";
 import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Quiz } from "@/components/quiz";
 import { DiagramBlock } from "@/components/diagrams";
 import { CreatorAttribution } from "@/components/creator-attribution";
-import { CREATOR } from "@/lib/creator";
+import { CommentsSection } from "@/components/use-cases/comments-section";
+import {
+  LiteracyChapterJumpLinks,
+  LiteracyChapterSeriesBanner,
+  literacyChapterHead,
+} from "@/components/executive-kb/literacy-chapter-article";
 import {
   conceptBySlug,
   type ConceptBodyBlock,
@@ -133,47 +138,18 @@ export const Route = createFileRoute("/ai-literacy/$kbId/$chapterSlug")({
     const c = loaderData?.concept;
     const kbId = loaderData?.kbId;
     if (!c || !kbId) return { meta: [{ title: "Chapter — FactorBeam" }] };
-    const canonical = chapterPath(kbId, c.slug);
-    const shortTitle = c.shortTitle ?? c.title;
-    const metaTitle = `${shortTitle} — FactorBeam`;
-    return {
-      meta: [
-        { title: metaTitle },
-        { name: "description", content: c.summary },
-        { property: "og:title", content: metaTitle },
-        { property: "og:description", content: c.summary },
-        { property: "og:url", content: canonical },
-        { property: "og:type", content: "article" },
-        { property: "og:site_name", content: BRAND.name },
-        ...brandOgMeta(),
-      ],
-      links: [{ rel: "canonical", href: canonical }],
-      scripts: [
-        {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: c.title,
-            description: c.summary,
-            author: {
-              "@type": "Person",
-              name: CREATOR.name,
-              url: "/creator",
-              image: CREATOR.photo,
-              jobTitle: CREATOR.title,
-            },
-            publisher: {
-              "@type": "Organization",
-              name: BRAND.name,
-              url: "/",
-              logo: BRAND.logo.mark,
-            },
-            mainEntityOfPage: canonical,
-          }),
-        },
-      ],
-    };
+    const kb = executiveKbById(kbId);
+    if (!kb) return { meta: [{ title: "Chapter — FactorBeam" }] };
+    const track = executiveKbTrackForId(kbId);
+    const chapterIndex = kb.sequence.findIndex((s) => s.slug === c.slug) + 1;
+    return literacyChapterHead({
+      concept: c,
+      kb,
+      kbId,
+      track,
+      chapterIndex: chapterIndex || 1,
+      chapterTotal: kb.sequence.length,
+    });
   },
   notFoundComponent: () => (
     <div className="flex min-h-screen items-center justify-center text-center">
@@ -308,7 +284,8 @@ function ConceptPage() {
     markInProgress(concept.slug);
   }, [concept.slug, markInProgress]);
 
-  const executiveKb = executiveKbById(kbId) ?? executiveKbForSlug(concept.slug);
+  const executiveKb = executiveKbById(kbId);
+  if (!executiveKb) throw notFound();
   const kbSlugs = executiveKb?.sequence.map((c) => c.slug) ?? [concept.slug];
   const doneCount = kbSlugs.filter((s) => progress[s] === "done").length;
   const pct = Math.round((doneCount / kbSlugs.length) * 100);
@@ -346,9 +323,13 @@ function ConceptPage() {
             <span className="hidden text-muted-foreground/40 sm:inline" aria-hidden>
               /
             </span>
-            <span className="nav-link truncate font-medium text-foreground">
+            <Link
+              to="/ai-literacy"
+              search={executiveKbTrackSearch(track)}
+              className="nav-link hidden truncate font-medium text-foreground transition-colors hover:text-purple-dark sm:inline"
+            >
               {executiveKb?.title ?? "Chapter"}
-            </span>
+            </Link>
           </div>
           <div className="flex shrink-0 items-center gap-3">
             <span className="nav-link hidden text-muted-foreground md:inline">
@@ -379,6 +360,18 @@ function ConceptPage() {
         <main className="min-w-0 flex-1 px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
           <article ref={articleRef} className="chapter-article relative mx-auto max-w-[680px]">
             <HighlightExplainer containerRef={articleRef} />
+
+            <LiteracyChapterSeriesBanner
+              kb={executiveKb}
+              kbId={kbId}
+              track={track}
+              chapterIndex={displayNum}
+              chapterTotal={kbSlugs.length}
+              keyTakeaway={concept.keyTakeaway}
+              firstChapterSlug={kbSlugs[0]!}
+              currentChapterSlug={concept.slug}
+              className="mb-6"
+            />
 
             <header className="chapter-hero landing-surface-card rounded-2xl p-6 sm:p-8">
               <div className="flex flex-wrap items-center gap-2">
@@ -463,15 +456,6 @@ function ConceptPage() {
               </p>
             </div>
 
-            <div className="mt-6 rounded-xl border border-purple/15 bg-purple-light/50 px-5 py-4 dark:bg-purple-light/10">
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-purple-dark dark:text-purple">
-                Key takeaway
-              </p>
-              <p className="mt-1.5 text-[15px] font-medium leading-relaxed text-foreground/90">
-                {concept.keyTakeaway}
-              </p>
-            </div>
-
             {readMode === "deep" && (
               <div className="mt-5 flex items-center gap-2 rounded-xl border border-border bg-muted/40 px-4 py-3 text-[12px] text-muted-foreground">
                 <Hand size={14} className="shrink-0 text-purple" />
@@ -510,6 +494,23 @@ function ConceptPage() {
               </section>
             )}
 
+            {/* Jump links */}
+            {executiveKb && (
+              <div className="mt-12">
+                <LiteracyChapterJumpLinks
+                  kb={executiveKb}
+                  kbId={kbId}
+                  track={track}
+                  currentChapterSlug={concept.slug}
+                  chapters={executiveKb.sequence.map((s) => ({
+                    slug: s.slug,
+                    shortTitle: conceptBySlug(s.slug)?.shortTitle ?? s.slug,
+                    note: s.note,
+                  }))}
+                />
+              </div>
+            )}
+
             {/* Quiz */}
             <section id="quiz">
               <Quiz
@@ -528,7 +529,7 @@ function ConceptPage() {
 
             <nav
               aria-label="Chapter navigation"
-              className="mt-12 rounded-2xl border border-border bg-card p-4 sm:p-5"
+              className="landing-surface-card mt-12 rounded-2xl p-4 sm:p-5"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 {prev ? (
@@ -583,6 +584,12 @@ function ConceptPage() {
                 )}
               </div>
             </nav>
+
+            <hr className="my-12 border-border" />
+
+            <div id="discussion" className="scroll-mt-28">
+              <CommentsSection playbookSlug={`ai-literacy:${kbId}`} />
+            </div>
           </article>
         </main>
         <TableOfContents concept={concept} slug={concept.slug} track={track} />
@@ -880,7 +887,15 @@ function Sidebar({
       <Link
         to="/ai-literacy"
         search={executiveKbTrackSearch(track)}
+        className="mb-3 inline-flex items-center gap-1 text-[12px] font-medium text-purple transition-colors hover:text-purple-dark"
+      >
+        View track library →
+      </Link>
+      <Link
+        to="/ai-literacy"
+        search={executiveKbTrackSearch(track)}
         className="mb-5 inline-flex items-center gap-1 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
+        onClick={onClose}
       >
         {AI_LITERACY.backShort}
       </Link>
@@ -1010,6 +1025,7 @@ function TableOfContents({
       list.push({ id: "examples", title: "Examples", kind: "h" });
     }
     list.push({ id: "quiz", title: "Quiz", kind: "h" });
+    list.push({ id: "discussion", title: "Discussion", kind: "h" });
     return list;
   }, [concept]);
 

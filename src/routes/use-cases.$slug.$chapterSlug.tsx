@@ -5,12 +5,16 @@ import { ShareMenu } from "@/components/share-menu";
 import { CommentsSection } from "@/components/use-cases/comments-section";
 import { ExplainParagraph } from "@/components/use-cases/explain-text";
 import { GuideChapterPager } from "@/components/use-cases/guide-chapter-nav";
+import {
+  GuideChapterJumpLinks,
+  GuideChapterSeriesBanner,
+  guideChapterHead,
+} from "@/components/use-cases/guide-chapter-article";
 import { GuidePlaybookShell } from "@/components/use-cases/guide-playbook-shell";
 import {
   buildGuideChapterToc,
   GuideChapterView,
 } from "@/components/use-cases/guide-playbook-view";
-import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import { useUseCaseProgress } from "@/lib/use-case-storage";
 import {
   guideChapterPath,
@@ -31,19 +35,7 @@ export const Route = createFileRoute("/use-cases/$slug/$chapterSlug")({
     const data = loaderData;
     if (!data) return {};
     const { playbook, chapter } = data;
-    const url = `${PLAYBOOK_REPOSITORY.href}/${playbook.slug}/${chapter.slug}`;
-    return {
-      meta: [
-        { title: `${chapter.title} · ${playbook.title} | FactorBeam` },
-        { name: "description", content: chapter.subtitle },
-        { property: "og:title", content: `${chapter.title} · ${playbook.title}` },
-        { property: "og:description", content: chapter.subtitle },
-        { property: "og:url", content: url },
-        { property: "og:type", content: "article" },
-        ...brandOgMeta(),
-      ],
-      links: [{ rel: "canonical", href: url }],
-    };
+    return guideChapterHead(playbook, chapter);
   },
   component: GuideChapterPage,
 });
@@ -115,7 +107,12 @@ function GuideChapterPage() {
       tocItems={tocItems}
       progress={progress}
       articleRef={articleRef}
-      hero={hero}
+      hero={
+        <>
+          <GuideChapterSeriesBanner playbook={playbook} chapter={chapter} className="mb-6" />
+          {hero}
+        </>
+      }
     >
       <section id="context" className="scroll-mt-28">
         <h2 className="text-[22px] font-medium tracking-[-0.02em] sm:text-[26px]">
@@ -154,6 +151,10 @@ function GuideChapterPage() {
 
       <GuideChapterView chapter={chapter} />
 
+      <div className="mt-10">
+        <GuideChapterJumpLinks playbook={playbook} currentChapter={chapter} />
+      </div>
+
       <hr className="my-12 border-border" />
 
       <section id="pitfalls" className="scroll-mt-28">
@@ -176,6 +177,7 @@ function GuideChapterPage() {
 
       <GuideChapterPager
         playbookSlug={playbook.slug}
+        playbookTitle={playbook.title}
         prev={prev}
         next={next}
         isDone={isDone}

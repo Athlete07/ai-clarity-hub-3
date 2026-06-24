@@ -6,7 +6,6 @@ import {
   BookOpen,
   Highlighter,
   ListChecks,
-  Play,
   Sparkles,
   Zap,
 } from "lucide-react";
@@ -28,9 +27,8 @@ import { FOUNDER_EXECUTIVE_KBS } from "@/lib/executive-kb-founder";
 import { BUSINESS_LEADER_EXECUTIVE_KBS } from "@/lib/executive-kb-business-leader";
 import { MARKETER_EXECUTIVE_KBS } from "@/lib/executive-kb-marketer";
 import { executiveKbTrackSearch } from "@/lib/executive-kb-track";
-import { firstGuideChapter, hasGuideChapters } from "@/lib/use-cases/guide-helpers";
+import { hasGuideChapters } from "@/lib/use-cases/guide-helpers";
 import { USE_CASE_PLAYBOOKS } from "@/lib/use-cases/registry";
-import { FEATURED_GAME } from "@/lib/simulations";
 import { ROLES, ROLE_THEMES, type RoleId } from "@/lib/role-themes";
 import { cn } from "@/lib/utils";
 
@@ -102,13 +100,11 @@ export function HomePage({
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            {guidePlaybooks.map((playbook, i) => {
-              const first = firstGuideChapter(playbook)!;
-              return (
+            {guidePlaybooks.map((playbook, i) => (
                 <Link
                   key={playbook.slug}
-                  to="/use-cases/$slug/$chapterSlug"
-                  params={{ slug: playbook.slug, chapterSlug: first.slug }}
+                  to="/use-cases/$slug"
+                  params={{ slug: playbook.slug }}
                   className={cn(
                     "landing-playbook-spotlight group",
                     i === 0 && "lg:row-span-1",
@@ -136,8 +132,7 @@ export function HomePage({
                     </p>
                   </div>
                 </Link>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
@@ -356,41 +351,6 @@ export function HomePage({
         </div>
       </section>
 
-      {/* ── Simulation ────────────────────────────────────────── */}
-      <section className="landing-sim relative overflow-hidden">
-        <div className="landing-sim-grid" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-12">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] text-[#00F5FF]">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00F5FF] opacity-50" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#00F5FF]" />
-                </span>
-                SIMULATIONS · BETA
-              </div>
-              <h2 className="mt-6 font-mono text-[32px] font-medium tracking-tight text-[#E8F4FD] sm:text-[40px]">
-                {FEATURED_GAME.title}
-              </h2>
-              <p className="mt-4 max-w-lg text-[16px] leading-relaxed text-[#9FB8D1]">
-                {FEATURED_GAME.description} Eight minutes. No signup. Build orchestration instincts
-                no whitepaper can teach.
-              </p>
-              <Link to={FEATURED_GAME.route} className="landing-sim-cta mt-9">
-                <Play size={14} fill="currentColor" />
-                Launch simulation
-              </Link>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <SimStat label="Duration" value={`~${FEATURED_GAME.minutes} min`} />
-              <SimStat label="Difficulty" value={FEATURED_GAME.difficulty.toUpperCase()} />
-              <SimStat label="Waves" value={String(FEATURED_GAME.waves)} />
-              <SimStat label="Agents" value="ALPHA · BETA" />
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Manifesto ─────────────────────────────────────────── */}
       <section className="landing-section">
         <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
@@ -468,14 +428,5 @@ export function HomePage({
         </div>
       </section>
     </main>
-  );
-}
-
-function SimStat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-xl border border-[#1E3A5F]/80 bg-[#0A1220]/60 px-5 py-5 backdrop-blur-sm">
-      <p className="font-mono text-[10px] tracking-[0.2em] text-[#4A7FA5]">{label}</p>
-      <p className="mt-1.5 font-mono text-[16px] font-medium text-[#E8F4FD]">{value}</p>
-    </div>
   );
 }

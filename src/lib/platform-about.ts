@@ -44,11 +44,6 @@ export const PLATFORM_ABOUT = {
   },
 
   conversion: {
-    primary: {
-      label: "Test your AI readiness with our Executive Simulation",
-      hint: "Agent Overseer — an 8-minute orchestration sandbox. No login.",
-      href: "/simulations/agent-overseer" as const,
-    },
     secondary: {
       label: "Start with AI Literacy",
       hint: "Sequenced chapters for your role — real examples, highlight-to-explain, and quizzes. Free, no signup.",

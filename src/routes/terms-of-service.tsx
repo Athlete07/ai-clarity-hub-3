@@ -102,7 +102,7 @@ function TermsOfService() {
               operated by {CREATOR.name}. These Terms of Service (&quot;Terms&quot;) form a
               legally binding agreement between you (&quot;you&quot; or &quot;user&quot;) and
               FactorBeam governing your access to and use of our website, AI Literacy tracks,
-              quizzes, simulations, and all related content, software, and features
+              quizzes, and all related content, software, and features
               (collectively, the &quot;Service&quot;).
             </p>
             <p>
@@ -194,8 +194,8 @@ function TermsOfService() {
 
           <LegalSection id="content" index={6} icon={Shield} title="Intellectual property">
             <p>
-              The Service — including AI Literacy text, diagrams, quizzes, simulations, trade
-              names, logos, and site design — is owned by or licensed to FactorBeam and is
+              The Service — including AI Literacy text, diagrams, quizzes, trade names, logos,
+              and site design — is owned by or licensed to FactorBeam and is
               protected by copyright, trademark, and other intellectual-property laws worldwide.
             </p>
             <p>

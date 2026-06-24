@@ -92,11 +92,13 @@ export function GuideChapterNav({
 
 export function GuideChapterPager({
   playbookSlug,
+  playbookTitle,
   prev,
   next,
   isDone = false,
 }: {
   playbookSlug: string;
+  playbookTitle?: string;
   prev?: GuideChapter;
   next?: GuideChapter;
   isDone?: boolean;
@@ -106,7 +108,7 @@ export function GuideChapterPager({
   return (
     <nav
       aria-label="Chapter navigation"
-      className="rounded-2xl border border-border bg-card p-4 sm:p-5"
+      className="landing-surface-card rounded-2xl p-4 sm:p-5"
     >
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         {prev ? (
@@ -133,17 +135,18 @@ export function GuideChapterPager({
           <Link
             to="/use-cases/$slug/$chapterSlug"
             params={{ slug: playbookSlug, chapterSlug: next.slug }}
-            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:col-start-2 sm:justify-self-end"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:justify-self-end"
           >
             Ch {next.number}: {next.title}
             <ArrowRight size={14} />
           </Link>
         ) : (
           <Link
-            to="/use-cases"
+            to="/use-cases/$slug"
+            params={{ slug: playbookSlug }}
             className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:justify-self-end"
           >
-            Back to library
+            {playbookTitle ? `Complete ${playbookTitle}` : "View full guide"}
             <ArrowRight size={14} />
           </Link>
         )}

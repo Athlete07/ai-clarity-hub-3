@@ -1,8 +1,12 @@
-import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { ArrowLeft, Check } from "lucide-react";
 import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Nav, Footer } from "@/components/site-nav";
+import {
+  GuidePlaybookOverview,
+  guideOverviewHead,
+} from "@/components/use-cases/guide-playbook-overview";
 import { ArchitectureDiagram } from "@/components/use-cases/architecture-diagram";
 import { ArtifactBlock } from "@/components/use-cases/artifact-block";
 import { CommentsSection } from "@/components/use-cases/comments-section";
@@ -11,7 +15,6 @@ import { MindmapDiagram } from "@/components/use-cases/mindmap-diagram";
 import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import { useUseCaseProgress } from "@/lib/use-case-storage";
 import {
-  firstGuideChapter,
   hasGuideChapters,
   totalGuideReadingMinutes,
 } from "@/lib/use-cases/guide-helpers";
@@ -34,20 +37,12 @@ export const Route = createFileRoute("/use-cases/$slug/")({
   loader: ({ params }) => {
     const playbook = useCaseBySlug(params.slug);
     if (!playbook) throw notFound();
-    if (hasGuideChapters(playbook)) {
-      const first = firstGuideChapter(playbook);
-      if (first) {
-        throw redirect({
-          to: "/use-cases/$slug/$chapterSlug",
-          params: { slug: playbook.slug, chapterSlug: first.slug },
-        });
-      }
-    }
     return { playbook };
   },
   head: ({ loaderData }) => {
     const playbook = loaderData?.playbook;
     if (!playbook) return {};
+    if (hasGuideChapters(playbook)) return guideOverviewHead(playbook);
     const url = `${PLAYBOOK_REPOSITORY.href}/${playbook.slug}`;
     return {
       meta: [
@@ -270,6 +265,16 @@ function WorkflowPlaybookBody({ playbook }: { playbook: UseCasePlaybook }) {
 
 function UseCasePlaybookIndexPage() {
   const { playbook } = Route.useLoaderData();
+  const { progress } = useUseCaseProgress();
+
+  if (hasGuideChapters(playbook)) {
+    return <GuidePlaybookOverview playbook={playbook} progress={progress} />;
+  }
+
+  return <WorkflowPlaybookIndexPage playbook={playbook} />;
+}
+
+function WorkflowPlaybookIndexPage({ playbook }: { playbook: UseCasePlaybook }) {
   const articleRef = useRef<HTMLElement>(null);
   const { progress, markDone, markInProgress } = useUseCaseProgress();
   const isDone = progress[playbook.slug] === "done";
