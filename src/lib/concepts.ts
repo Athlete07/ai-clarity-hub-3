@@ -29,6 +29,7 @@ import { mktPb5Concepts } from "./concepts-mkt-pb5";
 import { mktPb6Concepts } from "./concepts-mkt-pb6";
 import { mktPb7Concepts } from "./concepts-mkt-pb7";
 import { mktPb8Concepts } from "./concepts-mkt-pb8";
+import { mktPb9Concepts } from "./concepts-mkt-pb9";
 
 export type ExplainSpan = { text: string; explain: string };
 export type ConceptBodyBlock =
@@ -13405,6 +13406,7 @@ export const concepts: Concept[] = [
   ...mktPb6Concepts,
   ...mktPb7Concepts,
   ...mktPb8Concepts,
+  ...mktPb9Concepts,
 ];
 
 export const conceptBySlug = (slug: string): Concept | undefined => {

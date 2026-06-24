@@ -1,19 +1,19 @@
-import { chapter01MktAiVsMlVsDlMarketerLens } from "./chapter-01-ai-vs-ml-vs-dl-marketer-lens";
-import { chapter02MktHowModelsLearnCampaigns } from "./chapter-02-mkt-how-models-learn-campaigns";
-import { chapter03MktTrainingVsInferenceToolCosts } from "./chapter-03-mkt-training-vs-inference-tool-costs";
-import { chapter04MktDataMarketingSuperpowerLiability } from "./chapter-04-mkt-data-marketing-superpower-liability";
-import { chapter05MktProbabilityConfidenceRecommendations } from "./chapter-05-mkt-probability-confidence-recommendations";
-import { chapter06MktModelEvaluationMarketingAi } from "./chapter-06-mkt-model-evaluation-marketing-ai";
-import { chapter07MktBiasHallucinationMarketingLiability } from "./chapter-07-mkt-bias-hallucination-marketing-liability";
-import { chapter08MktAiMartechLandscape } from "./chapter-08-mkt-ai-martech-landscape";
+import { chapter01MktAiMarketersMentalModel } from "./chapter-01-mkt-ai-marketers-mental-model";
+import { chapter02MktHowModelsLearnMarketing } from "./chapter-02-mkt-how-models-learn-marketing";
+import { chapter03MktAiMarketingToolLandscape } from "./chapter-03-mkt-ai-marketing-tool-landscape";
+import { chapter04MktPromptingForMarketers } from "./chapter-04-mkt-prompting-for-marketers";
+import { chapter05MktBrandVoiceAgeOfAi } from "./chapter-05-mkt-brand-voice-age-of-ai";
+import { chapter06MktAiEthicsResponsibleMarketing } from "./chapter-06-mkt-ai-ethics-responsible-marketing";
+import { chapter07MktMeasuringAiMarketingImpact } from "./chapter-07-mkt-measuring-ai-marketing-impact";
+import { chapter08MktAiMarketingMindset } from "./chapter-08-mkt-ai-marketing-mindset";
 
 export const mktPb1Concepts = [
-  chapter01MktAiVsMlVsDlMarketerLens,
-  chapter02MktHowModelsLearnCampaigns,
-  chapter03MktTrainingVsInferenceToolCosts,
-  chapter04MktDataMarketingSuperpowerLiability,
-  chapter05MktProbabilityConfidenceRecommendations,
-  chapter06MktModelEvaluationMarketingAi,
-  chapter07MktBiasHallucinationMarketingLiability,
-  chapter08MktAiMartechLandscape,
+  chapter01MktAiMarketersMentalModel,
+  chapter02MktHowModelsLearnMarketing,
+  chapter03MktAiMarketingToolLandscape,
+  chapter04MktPromptingForMarketers,
+  chapter05MktBrandVoiceAgeOfAi,
+  chapter06MktAiEthicsResponsibleMarketing,
+  chapter07MktMeasuringAiMarketingImpact,
+  chapter08MktAiMarketingMindset,
 ];

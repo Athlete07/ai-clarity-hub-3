@@ -30,13 +30,14 @@ export type ExecutiveKbId =
   | "ai-transformation-by-function"
   | "leading-through-ai-change"
   | "ai-fundamentals-for-marketers"
-  | "ai-powered-content-strategy"
-  | "seo-in-the-age-of-ai"
-  | "ai-paid-advertising-performance-marketing"
-  | "ai-personalisation-customer-experience"
-  | "ai-analytics-marketing-intelligence"
-  | "ai-for-growth-acquisition-retention"
-  | "ai-martech-stack-tool-selection";
+  | "ai-powered-content-strategy-creation"
+  | "ai-powered-seo-organic-growth"
+  | "ai-powered-paid-media-performance"
+  | "ai-powered-email-crm-lifecycle"
+  | "ai-powered-brand-pr-communications"
+  | "ai-powered-demand-generation-gtm"
+  | "ai-powered-marketing-analytics-intelligence"
+  | "ai-era-marketer-team-career-operations";
 
 export type ExecutiveKbChapter = {
   slug: string;
