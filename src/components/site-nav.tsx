@@ -78,7 +78,7 @@ function MobileMenu({ slim = false }: { slim?: boolean }) {
               </Link>
             )}
             <Link to="/about" className={cn(navLinkClass, "rounded-md px-3 py-3")}>
-              About the Platform
+              About
             </Link>
           </nav>
           <div className="mt-auto hairline-t space-y-3 p-4">
@@ -179,7 +179,7 @@ export function Nav({ slim = false, overlay = false }: { slim?: boolean; overlay
               to="/about"
               className={cn(navLinkClass, isOverlayTop && "text-white/75 hover:text-white")}
             >
-              About the Platform
+              About
             </Link>
           </nav>
         )}
@@ -227,7 +227,7 @@ function FooterLink({
   href,
 }: {
   to?:
-    | "/use-cases"
+    | "/library"
     | "/ai-literacy"
     | "/about"
     | "/creator"

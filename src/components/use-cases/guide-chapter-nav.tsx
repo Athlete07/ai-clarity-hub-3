@@ -49,7 +49,7 @@ export function GuideChapterNav({
           return (
             <li key={chapter.slug}>
               <Link
-                to="/use-cases/$slug/$chapterSlug"
+                to="/library/$slug/$chapterSlug"
                 params={{ slug: playbookSlug, chapterSlug: chapter.slug }}
                 className={cn(
                   "guide-chapter-link flex items-start gap-2 rounded-lg px-3 py-2.5 text-[13px] leading-snug transition-colors",
@@ -113,7 +113,7 @@ export function GuideChapterPager({
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         {prev ? (
           <Link
-            to="/use-cases/$slug/$chapterSlug"
+            to="/library/$slug/$chapterSlug"
             params={{ slug: playbookSlug, chapterSlug: prev.slug }}
             className="inline-flex items-center gap-2 rounded-lg border border-border px-4 py-2.5 text-[13px] font-medium text-foreground transition-colors hover:bg-muted"
           >
@@ -133,7 +133,7 @@ export function GuideChapterPager({
         </span>
         {next ? (
           <Link
-            to="/use-cases/$slug/$chapterSlug"
+            to="/library/$slug/$chapterSlug"
             params={{ slug: playbookSlug, chapterSlug: next.slug }}
             className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:justify-self-end"
           >
@@ -142,7 +142,7 @@ export function GuideChapterPager({
           </Link>
         ) : (
           <Link
-            to="/use-cases/$slug"
+            to="/library/$slug"
             params={{ slug: playbookSlug }}
             className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2.5 text-[13px] font-medium text-background transition-opacity hover:opacity-90 sm:justify-self-end"
           >

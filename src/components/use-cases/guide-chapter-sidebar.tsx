@@ -57,7 +57,7 @@ export function GuideChapterSidebar({
   const nav = (
     <nav className="flex flex-col px-4 py-6 sm:px-5" aria-label="Playbook chapters">
       <Link
-        to="/use-cases"
+        to="/library"
         className="mb-5 inline-flex items-center gap-1 text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
         onClick={onClose}
       >
@@ -65,7 +65,7 @@ export function GuideChapterSidebar({
       </Link>
 
       <Link
-        to="/use-cases/$slug"
+        to="/library/$slug"
         params={{ slug: playbookSlug }}
         className="mb-3 inline-flex items-center gap-1 text-[12px] font-medium text-purple transition-colors hover:text-purple-dark"
         onClick={onClose}
@@ -101,7 +101,7 @@ export function GuideChapterSidebar({
           return (
             <li key={chapter.slug}>
               <Link
-                to="/use-cases/$slug/$chapterSlug"
+                to="/library/$slug/$chapterSlug"
                 params={{ slug: playbookSlug, chapterSlug: chapter.slug }}
                 onClick={onClose}
                 className={cn(
@@ -213,7 +213,7 @@ export function GuidePlaybookSubheader({
             <Menu size={20} />
           </button>
           <Link
-            to="/use-cases"
+            to="/library"
             className="nav-link hidden items-center gap-1.5 text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
           >
             {PLAYBOOK_REPOSITORY.name}
@@ -222,7 +222,7 @@ export function GuidePlaybookSubheader({
             /
           </span>
           <Link
-            to="/use-cases/$slug"
+            to="/library/$slug"
             params={{ slug: playbookSlug }}
             className={cn(
               "nav-link truncate transition-colors",

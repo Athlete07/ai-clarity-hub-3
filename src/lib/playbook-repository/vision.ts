@@ -1,9 +1,8 @@
-import { AI_LITERACY } from "@/lib/brand";
 import type { PlaybookKind } from "./taxonomy";
 
 export type LibraryLaneStatus = "live" | "growing" | "coming-soon";
 
-export type LibraryLaneId = "understand" | "tools" | "solve";
+export type LibraryLaneId = "tools";
 
 export type LibraryLane = {
   id: LibraryLaneId;
@@ -11,10 +10,8 @@ export type LibraryLane = {
   tagline: string;
   description: string;
   status: LibraryLaneStatus;
-  /** Filter native catalog entries by kind — empty means no catalog filter. */
+  /** Filter native catalog entries by kind. */
   kinds: PlaybookKind[];
-  /** External entry (e.g. AI Literacy) instead of catalog filter. */
-  href?: string;
 };
 
 export const LIBRARY_LANE_STATUS_LABELS: Record<LibraryLaneStatus, string> = {
@@ -23,35 +20,16 @@ export const LIBRARY_LANE_STATUS_LABELS: Record<LibraryLaneStatus, string> = {
   "coming-soon": "Coming soon",
 };
 
-/** Four paths the library is built around — mirrors FactorBeam's product arc. */
+/** Browse paths — all tool guides live under Tools today. */
 export const LIBRARY_LANES: LibraryLane[] = [
   {
-    id: "understand",
-    title: "Understand AI",
-    tagline: "Role-based literacy",
-    description:
-      "Sequenced chapters for PMs, founders, leaders, and marketers — plain English, real examples, no engineering degree required.",
-    status: "live",
-    kinds: ["concept"],
-    href: AI_LITERACY.href,
-  },
-  {
     id: "tools",
-    title: "Master the tools",
-    tagline: "Claude · Code · Cowork",
+    title: "Tools",
+    tagline: "Claude · Cowork · ServiceNow",
     description:
-      "Complete playbooks for Claude and Cowork — mental models, Skills, schedules, MCP connectors, and production ops for teams that ship.",
-    status: "growing",
+      "Complete playbooks for the AI tools practitioners ship with — Claude, Cowork, and ServiceNow AI from mental model through production.",
+    status: "live",
     kinds: ["tool-guide"],
-  },
-  {
-    id: "solve",
-    title: "Solve real problems",
-    tagline: "Workflows for SMEs & teams",
-    description:
-      "Implementation guides and workflows you can copy — support triage, ops automation, and practical fixes for non-technical businesses.",
-    status: "growing",
-    kinds: ["workflow", "implementation"],
   },
 ];
 

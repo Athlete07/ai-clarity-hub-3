@@ -1,7 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Lightbulb } from "lucide-react";
 import { AI_LITERACY, BRAND, brandOgMeta } from "@/lib/brand";
-import { CREATOR } from "@/lib/creator";
+import {
+  contentAuthorJsonLd,
+  contentPublisherJsonLd,
+  SITE_ORIGIN,
+} from "@/lib/content-attribution";
 import type { Concept } from "@/lib/concepts";
 import {
   chapterPath,
@@ -13,8 +17,6 @@ import {
 import { executiveKbTrackSearch } from "@/lib/executive-kb-track";
 import { ROLES, type RoleId } from "@/lib/role-themes";
 import { cn } from "@/lib/utils";
-
-const SITE_ORIGIN = "https://factorbeam.com";
 
 export function literacyArticleJsonLd({
   concept,
@@ -47,16 +49,8 @@ export function literacyArticleJsonLd({
       provider: { "@type": "Organization", name: BRAND.name },
       about: trackRole?.title,
     },
-    author: {
-      "@type": "Person",
-      name: CREATOR.name,
-      url: `${SITE_ORIGIN}/creator`,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: BRAND.name,
-      url: SITE_ORIGIN,
-    },
+    author: contentAuthorJsonLd(),
+    publisher: contentPublisherJsonLd(),
     mainEntityOfPage: url,
   };
 }

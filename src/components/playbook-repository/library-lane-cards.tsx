@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { LIBRARY_LANES, laneMatchesKinds, type LibraryLane } from "@/lib/playbook-repository/vision";
 import type { PlaybookKind } from "@/lib/playbook-repository/taxonomy";
 import { cn } from "@/lib/utils";
@@ -15,7 +14,7 @@ export function LibraryLaneTabs({
   onSelectLane,
 }: LibraryLaneTabsProps) {
   return (
-    <nav className="catalog-lane-tabs" aria-label="Browse by path">
+    <nav className="catalog-lane-tabs" aria-label="Browse by category">
       <button
         type="button"
         onClick={() => onSelectLane(null)}
@@ -27,14 +26,6 @@ export function LibraryLaneTabs({
       {LIBRARY_LANES.map((lane) => {
         const isSoon = lane.status === "coming-soon";
         const active = laneMatchesKinds(lane, activeKinds);
-
-        if (lane.href) {
-          return (
-            <Link key={lane.id} to={lane.href} className="catalog-lane-tab">
-              {lane.title}
-            </Link>
-          );
-        }
 
         if (isSoon) {
           return (

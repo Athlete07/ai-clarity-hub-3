@@ -7,6 +7,8 @@ export const CREATOR = {
   /** Professional title — not Author or Founder */
   title: "Curator",
   brand: "FactorBeam",
+  /** Prefix on chapter footers — keep in sync with title "Curator". */
+  attributionLabel: "Vetted by",
   /** Shown at the bottom of every chapter */
   chapterCredit: "Curator, FactorBeam",
   location: "Bengaluru, India",

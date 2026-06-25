@@ -1,4 +1,9 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import {
+  validateCommentText,
+  validateDisplayName,
+  validatePlaybookSlug,
+} from "./comment-validation";
 
 export type UseCaseComment = {
   id: string;
@@ -8,6 +13,9 @@ export type UseCaseComment = {
   upvotes: number;
   created_at: string;
 };
+
+const COMMENT_COLUMNS =
+  "id,playbook_slug,display_name,comment_text,upvotes,created_at";
 
 let client: SupabaseClient | null = null;
 
@@ -31,14 +39,17 @@ export function getSupabase(): SupabaseClient | null {
 export async function fetchComments(
   playbookSlug: string,
 ): Promise<UseCaseComment[]> {
+  if (!validatePlaybookSlug(playbookSlug)) return [];
+
   const supabase = getSupabase();
   if (!supabase) return [];
 
   const { data, error } = await supabase
     .from("comments")
-    .select("*")
+    .select(COMMENT_COLUMNS)
     .eq("playbook_slug", playbookSlug)
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false })
+    .limit(200);
 
   if (error) {
     console.warn("[comments] fetch failed:", error.message);
@@ -51,14 +62,19 @@ export async function fetchCommentCounts(): Promise<Record<string, number>> {
   const supabase = getSupabase();
   if (!supabase) return {};
 
-  const { data, error } = await supabase.from("comments").select("playbook_slug");
+  const { data, error } = await supabase.rpc("comment_counts_by_playbook");
 
-  if (error || !data) return {};
+  if (error || !data) {
+    console.warn("[comments] counts failed:", error?.message);
+    return {};
+  }
 
   const counts: Record<string, number> = {};
-  for (const row of data) {
-    const slug = row.playbook_slug as string;
-    counts[slug] = (counts[slug] ?? 0) + 1;
+  for (const row of data as Array<{
+    playbook_slug: string;
+    comment_count: number;
+  }>) {
+    counts[row.playbook_slug] = Number(row.comment_count) || 0;
   }
   return counts;
 }
@@ -68,6 +84,12 @@ export async function postComment(opts: {
   displayName: string;
   commentText: string;
 }): Promise<UseCaseComment | null> {
+  if (!validatePlaybookSlug(opts.playbookSlug)) return null;
+
+  const displayName = validateDisplayName(opts.displayName);
+  const commentText = validateCommentText(opts.commentText);
+  if (!displayName || !commentText) return null;
+
   const supabase = getSupabase();
   if (!supabase) return null;
 
@@ -75,10 +97,10 @@ export async function postComment(opts: {
     .from("comments")
     .insert({
       playbook_slug: opts.playbookSlug,
-      display_name: opts.displayName.trim(),
-      comment_text: opts.commentText.trim(),
+      display_name: displayName,
+      comment_text: commentText,
     })
-    .select()
+    .select(COMMENT_COLUMNS)
     .single();
 
   if (error) {
@@ -88,21 +110,19 @@ export async function postComment(opts: {
   return data as UseCaseComment;
 }
 
-export async function upvoteComment(
-  id: string,
-  currentUpvotes: number,
-): Promise<boolean> {
-  const supabase = getSupabase();
-  if (!supabase) return false;
+export async function upvoteComment(id: string): Promise<number | null> {
+  if (!id) return null;
 
-  const { error } = await supabase
-    .from("comments")
-    .update({ upvotes: currentUpvotes + 1 })
-    .eq("id", id);
+  const supabase = getSupabase();
+  if (!supabase) return null;
+
+  const { data, error } = await supabase.rpc("increment_comment_upvote", {
+    target_id: id,
+  });
 
   if (error) {
     console.warn("[comments] upvote failed:", error.message);
-    return false;
+    return null;
   }
-  return true;
+  return typeof data === "number" ? data : null;
 }

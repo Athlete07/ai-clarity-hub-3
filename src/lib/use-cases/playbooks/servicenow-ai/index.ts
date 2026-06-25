@@ -47,13 +47,13 @@ export const SERVICENOW_AI_ROADMAP = [
 
 export const SERVICENOW_AI: UseCasePlaybook = {
   slug: "servicenow-ai",
-  title: "ServiceNow AI — The Complete Playbook",
+  title: "ServiceNow AI Decoded: Now Assist, Agents, and Architecture That Holds Up",
   summary:
-    "From first concepts to production architecture — everything a practitioner needs to interview, build POCs on PDI, and lead Now Assist, AI Agents, and the full Now Platform AI stack.",
+    "Stop demoing Now Assist without a platform mental model. Ten chapters take you from ecosystem map to Now Assist, AI Agents, PDI labs, and the enterprise architecture story that survives security review and hiring loops.",
   heroBullets: [
-    "12-chapter arc · mental model → Now Assist → agents → PDI labs → governance → career",
-    "Chapters 1–10 live — mental model → Now Assist → search → PI → agents → VA → automation → custom AI → enterprise deployment → career mastery",
-    "Built for freshers through senior architects — the benchmark ServiceNow AI literacy path",
+    "10 chapters live · read in order or jump to the bottleneck blocking your rollout",
+    "Mental model → Now Assist → search → PI → agents → VA → automation → custom AI → deployment → career",
+    "~18 hours of depth — PDI blueprints, interview prep, and artifacts you can paste into proposals today",
   ],
   kind: "tool-guide",
   categoryId: "customer-ops",
@@ -142,7 +142,7 @@ export const SERVICENOW_AI: UseCasePlaybook = {
   guide: {
     series: {
       id: SERIES_ID,
-      title: "ServiceNow AI — The Complete Playbook",
+      title: "ServiceNow AI Decoded: Now Assist, Agents, and Architecture That Holds Up",
       subtitle:
         "Mental model → ecosystem map → Now Assist → PI → search → agents → PDI POCs → governance → production architecture.",
     },
@@ -236,7 +236,7 @@ export const SERVICENOW_AI: UseCasePlaybook = {
   ],
   nextPlaybook: {
     slug: "claude-full-stack",
-    title: "The Complete Claude Playbook",
+    title: "Claude in Production: MCP, Code, and the Practitioner's Roadmap",
     description:
       "Complementary AI literacy for teams using Claude alongside ServiceNow — mental models, MCP, and production workflows.",
   },

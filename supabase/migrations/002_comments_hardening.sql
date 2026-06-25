@@ -1,30 +1,10 @@
--- FactorBeam playbook comments — hardened schema
--- Run in Supabase SQL editor, then set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in .env
--- Existing deployments: also run supabase/migrations/002_comments_hardening.sql
+-- Migration for existing FactorBeam comment tables (run once in Supabase SQL editor)
 
-create table if not exists comments (
-  id uuid primary key default gen_random_uuid(),
-  playbook_slug text not null,
-  display_name text not null check (char_length(display_name) between 1 and 64),
-  comment_text text not null check (char_length(comment_text) between 1 and 4000),
-  upvotes int not null default 0 check (upvotes >= 0),
-  created_at timestamptz not null default now()
-);
-
-create index if not exists idx_comments_playbook_slug on comments (playbook_slug);
-create index if not exists idx_comments_created_at on comments (created_at desc);
-
-alter table comments enable row level security;
-
--- Read-only public access
-drop policy if exists "comments_select_all" on comments;
-create policy "comments_select_all"
-  on comments for select
-  to anon, authenticated
-  using (true);
-
--- Inserts validated at the row level; no direct updates from clients
+drop policy if exists "comments_update_upvotes" on comments;
 drop policy if exists "comments_insert_all" on comments;
+
+revoke update on comments from anon, authenticated;
+
 drop policy if exists "comments_insert_anon" on comments;
 create policy "comments_insert_anon"
   on comments for insert
@@ -37,11 +17,6 @@ create policy "comments_insert_anon"
     and comment_text !~ '[[:cntrl:]]'
   );
 
-drop policy if exists "comments_update_upvotes" on comments;
-
-revoke update on comments from anon, authenticated;
-
--- Atomic upvote increment (clients cannot edit comment text or arbitrary columns)
 create or replace function increment_comment_upvote(target_id uuid)
 returns int
 language plpgsql
@@ -71,7 +46,6 @@ $$;
 revoke all on function increment_comment_upvote(uuid) from public;
 grant execute on function increment_comment_upvote(uuid) to anon, authenticated;
 
--- Aggregated counts without scanning all rows client-side
 create or replace function comment_counts_by_playbook()
 returns table(playbook_slug text, comment_count bigint)
 language sql

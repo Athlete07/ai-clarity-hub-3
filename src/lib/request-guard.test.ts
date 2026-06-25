@@ -12,26 +12,20 @@ describe("guardRequest", () => {
     expect(res?.status).toBe(404);
   });
 
-  it("blocks POST to non-API routes", () => {
+  it("blocks POST to all routes", () => {
     const res = guardRequest(
       new Request("https://example.com/contact", { method: "POST", body: "{}" }),
     );
     expect(res?.status).toBe(405);
   });
 
-  it("allows GET to pages", () => {
-    expect(guardRequest(new Request("https://example.com/ai-literacy"))).toBeNull();
+  it("blocks oversized URLs", () => {
+    const longPath = "/library/" + "a".repeat(3000);
+    const res = guardRequest(new Request(`https://example.com${longPath}`));
+    expect(res?.status).toBe(414);
   });
 
-  it("allows POST to AO API", () => {
-    expect(
-      guardRequest(
-        new Request("https://example.com/api/ao/sync", {
-          method: "POST",
-          body: "{}",
-          headers: { "content-length": "2" },
-        }),
-      ),
-    ).toBeNull();
+  it("allows GET to pages", () => {
+    expect(guardRequest(new Request("https://example.com/ai-literacy"))).toBeNull();
   });
 });

@@ -36,6 +36,7 @@ export function CommentsSection({ playbookSlug }: { playbookSlug: string }) {
   const [name, setName] = useState("");
   const [showNameField, setShowNameField] = useState(false);
   const [text, setText] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [upvoted, setUpvoted] = useState<Set<string>>(new Set());
   const [error, setError] = useState<string | null>(null);
 
@@ -65,6 +66,7 @@ export function CommentsSection({ playbookSlug }: { playbookSlug: string }) {
 
     const displayName = name.trim();
     const commentText = text.trim();
+    if (honeypot) return;
     if (!displayName) {
       setShowNameField(true);
       setError("Please enter a display name.");
@@ -95,13 +97,13 @@ export function CommentsSection({ playbookSlug }: { playbookSlug: string }) {
 
   async function handleUpvote(comment: UseCaseComment) {
     if (upvoted.has(comment.id)) return;
-    const ok = await upvoteComment(comment.id, comment.upvotes);
-    if (!ok) return;
+    const newCount = await upvoteComment(comment.id);
+    if (newCount === null) return;
     markCommentUpvoted(comment.id);
     setUpvoted((prev) => new Set([...prev, comment.id]));
     setComments((prev) =>
       prev.map((c) =>
-        c.id === comment.id ? { ...c, upvotes: c.upvotes + 1 } : c,
+        c.id === comment.id ? { ...c, upvotes: newCount } : c,
       ),
     );
   }
@@ -143,6 +145,16 @@ export function CommentsSection({ playbookSlug }: { playbookSlug: string }) {
       </h2>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
+        <input
+          type="text"
+          name="website"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden
+          className="absolute left-[-9999px] h-0 w-0 opacity-0"
+        />
         {showNameField && (
           <div>
             <label

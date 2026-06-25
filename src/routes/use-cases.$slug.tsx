@@ -1,24 +1,23 @@
-import { createFileRoute, notFound, Outlet, redirect } from "@tanstack/react-router";
-import { resolveLegacyChapterSlug, useCaseBySlug } from "@/lib/use-cases/registry";
+import { createFileRoute, Outlet, redirect } from "@tanstack/react-router";
+import { resolveLegacyChapterSlug } from "@/lib/use-cases/registry";
 
-/** Layout route — child routes: index (workflow playbooks only) or $chapterSlug (guides). */
 export const Route = createFileRoute("/use-cases/$slug")({
-  loader: ({ params }) => {
+  beforeLoad: ({ params }) => {
     const legacy = resolveLegacyChapterSlug(params.slug);
     if (legacy) {
       throw redirect({
-        to: "/use-cases/$slug/$chapterSlug",
-        params: { slug: legacy.playbookSlug, chapterSlug: legacy.chapterSlug },
+        to: "/library/$slug/$chapterSlug",
+        params: {
+          slug: legacy.playbookSlug,
+          chapterSlug: legacy.chapterSlug,
+        },
+        replace: true,
       });
     }
-
-    const playbook = useCaseBySlug(params.slug);
-    if (!playbook) throw notFound();
-    return { playbook };
   },
-  component: UseCaseSlugLayout,
+  component: UseCaseSlugRedirectLayout,
 });
 
-function UseCaseSlugLayout() {
+function UseCaseSlugRedirectLayout() {
   return <Outlet />;
 }

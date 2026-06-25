@@ -119,14 +119,14 @@ export function RepositoryRow({
 
   if (entry.entryChapterSlug) {
     return (
-      <Link to="/use-cases/$slug" params={{ slug: entry.slug }} className={cardClass}>
+      <Link to="/library/$slug" params={{ slug: entry.slug }} className={cardClass}>
         {inner}
       </Link>
     );
   }
 
   return (
-    <Link to="/use-cases/$slug" params={{ slug: entry.slug }} className={cardClass}>
+    <Link to="/library/$slug" params={{ slug: entry.slug }} className={cardClass}>
       {inner}
     </Link>
   );

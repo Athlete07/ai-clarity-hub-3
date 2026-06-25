@@ -2,6 +2,12 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, BookOpen, Lightbulb } from "lucide-react";
 import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
 import {
+  attributionFromPlaybook,
+  contentAuthorJsonLd,
+  contentPublisherJsonLd,
+  SITE_ORIGIN,
+} from "@/lib/content-attribution";
+import {
   firstGuideChapter,
   guideChapterPath,
   guideOverviewPath,
@@ -27,8 +33,8 @@ export function guideArticleJsonLd(
       url: `${siteOrigin}${guideOverviewPath(playbook.slug)}`,
     },
     position: chapter.number,
-    author: { "@type": "Organization", name: "FactorBeam" },
-    publisher: { "@type": "Organization", name: "FactorBeam" },
+    author: contentAuthorJsonLd(attributionFromPlaybook(playbook)),
+    publisher: contentPublisherJsonLd(),
   };
 }
 
@@ -54,7 +60,7 @@ export function GuideChapterSeriesBanner({
     >
       <nav aria-label="Guide breadcrumb" className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px]">
         <Link
-          to="/use-cases"
+          to="/library"
           className="font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           {PLAYBOOK_REPOSITORY.name}
@@ -63,7 +69,7 @@ export function GuideChapterSeriesBanner({
           /
         </span>
         <Link
-          to="/use-cases/$slug"
+          to="/library/$slug"
           params={{ slug: playbook.slug }}
           className="font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
@@ -93,7 +99,7 @@ export function GuideChapterSeriesBanner({
 
       <div className="mt-4 flex flex-wrap gap-3">
         <Link
-          to="/use-cases/$slug"
+          to="/library/$slug"
           params={{ slug: playbook.slug }}
           className="inline-flex items-center gap-1.5 text-[12px] font-medium text-purple transition-colors hover:text-purple-dark"
         >
@@ -102,7 +108,7 @@ export function GuideChapterSeriesBanner({
         </Link>
         {!isFirst && first ? (
           <Link
-            to="/use-cases/$slug/$chapterSlug"
+            to="/library/$slug/$chapterSlug"
             params={{ slug: playbook.slug, chapterSlug: first.slug }}
             className="inline-flex items-center gap-1.5 text-[12px] font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
@@ -143,7 +149,7 @@ export function GuideChapterJumpLinks({
         {others.map((ch) => (
           <li key={ch.slug}>
             <Link
-              to="/use-cases/$slug/$chapterSlug"
+              to="/library/$slug/$chapterSlug"
               params={{ slug: playbook.slug, chapterSlug: ch.slug }}
               className="group flex items-start gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-muted/50"
             >
@@ -163,7 +169,7 @@ export function GuideChapterJumpLinks({
         ))}
       </ul>
       <Link
-        to="/use-cases/$slug"
+        to="/library/$slug"
         params={{ slug: playbook.slug }}
         className="landing-text-cta mt-4 inline-flex items-center gap-1 text-[12px]"
       >

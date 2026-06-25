@@ -3,24 +3,10 @@
  * Complements Cloudflare DDoS/WAF (configure WAF + rate limiting in the dashboard).
  */
 
-const CSP = [
-  "default-src 'self'",
-  "base-uri 'self'",
-  "object-src 'none'",
-  "frame-ancestors 'none'",
-  "form-action 'self'",
-  "upgrade-insecure-requests",
-  // Theme bootstrap + consent-gated GA4/AdSense (loaded only after consent)
-  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com data:",
-  "img-src 'self' data: blob: https:",
-  "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com",
-  "frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com",
-].join("; ");
+import { CONTENT_SECURITY_POLICY } from "./csp";
 
 const SECURITY_HEADERS: Record<string, string> = {
-  "Content-Security-Policy": CSP,
+  "Content-Security-Policy": CONTENT_SECURITY_POLICY,
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
   "X-Frame-Options": "DENY",
   "X-Content-Type-Options": "nosniff",

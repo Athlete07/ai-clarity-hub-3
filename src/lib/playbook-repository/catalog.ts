@@ -52,7 +52,7 @@ export function playbookToCatalogEntry(p: UseCasePlaybook): RepositoryCatalogEnt
     featured: p.featured,
     catalogBadge: p.catalogBadge,
     entryChapterSlug: firstChapter?.slug,
-    href: `/use-cases/${p.slug}`,
+    href: `/library/${p.slug}`,
   };
 }
 

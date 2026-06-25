@@ -17,11 +17,11 @@ export const LEGACY_GUIDE_CHAPTER_SLUGS: Record<
 };
 
 export function guideChapterPath(playbookSlug: string, chapterSlug: string): string {
-  return `/use-cases/${playbookSlug}/${chapterSlug}`;
+  return `/library/${playbookSlug}/${chapterSlug}`;
 }
 
 export function guideOverviewPath(playbookSlug: string): string {
-  return `/use-cases/${playbookSlug}`;
+  return `/library/${playbookSlug}`;
 }
 
 export function hasGuideChapters(
@@ -44,7 +44,7 @@ export function firstGuideChapter(playbook: UseCasePlaybook): GuideChapter | und
 /** Library cards and catalog hrefs land on the guide overview; use entryChapterSlug to start reading. */
 export function playbookEntryPath(playbook: UseCasePlaybook): string {
   if (hasGuideChapters(playbook)) return guideOverviewPath(playbook.slug);
-  return `/use-cases/${playbook.slug}`;
+  return `/library/${playbook.slug}`;
 }
 
 export function guideStartChapterPath(playbook: UseCasePlaybook): string | undefined {

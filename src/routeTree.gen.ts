@@ -24,15 +24,19 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UseCasesIndexRouteImport } from './routes/use-cases.index'
 import { Route as PlaybooksIndexRouteImport } from './routes/playbooks.index'
+import { Route as LibraryIndexRouteImport } from './routes/library.index'
 import { Route as ExecutiveKbIndexRouteImport } from './routes/executive-kb.index'
 import { Route as AiLiteracyIndexRouteImport } from './routes/ai-literacy.index'
 import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as PlaybookSlugRouteImport } from './routes/playbook.$slug'
+import { Route as LibrarySlugRouteImport } from './routes/library.$slug'
 import { Route as ExecutiveKbTrackRouteImport } from './routes/executive-kb.$track'
 import { Route as AiLiteracyTrackRouteImport } from './routes/ai-literacy.$track'
 import { Route as UseCasesSlugIndexRouteImport } from './routes/use-cases.$slug.index'
+import { Route as LibrarySlugIndexRouteImport } from './routes/library.$slug.index'
 import { Route as UseCasesSlugChapterSlugRouteImport } from './routes/use-cases.$slug.$chapterSlug'
 import { Route as PlaybooksPlaybookIdChapterSlugRouteImport } from './routes/playbooks.$playbookId.$chapterSlug'
+import { Route as LibrarySlugChapterSlugRouteImport } from './routes/library.$slug.$chapterSlug'
 import { Route as ExecutiveKbKbIdChapterSlugRouteImport } from './routes/executive-kb.$kbId.$chapterSlug'
 import { Route as AiLiteracyKbIdChapterSlugRouteImport } from './routes/ai-literacy.$kbId.$chapterSlug'
 
@@ -111,6 +115,11 @@ const PlaybooksIndexRoute = PlaybooksIndexRouteImport.update({
   path: '/',
   getParentRoute: () => PlaybooksRoute,
 } as any)
+const LibraryIndexRoute = LibraryIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LibraryRoute,
+} as any)
 const ExecutiveKbIndexRoute = ExecutiveKbIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -131,6 +140,11 @@ const PlaybookSlugRoute = PlaybookSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => PlaybookRoute,
 } as any)
+const LibrarySlugRoute = LibrarySlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => LibraryRoute,
+} as any)
 const ExecutiveKbTrackRoute = ExecutiveKbTrackRouteImport.update({
   id: '/$track',
   path: '/$track',
@@ -146,6 +160,11 @@ const UseCasesSlugIndexRoute = UseCasesSlugIndexRouteImport.update({
   path: '/',
   getParentRoute: () => UseCasesSlugRoute,
 } as any)
+const LibrarySlugIndexRoute = LibrarySlugIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LibrarySlugRoute,
+} as any)
 const UseCasesSlugChapterSlugRoute = UseCasesSlugChapterSlugRouteImport.update({
   id: '/$chapterSlug',
   path: '/$chapterSlug',
@@ -157,6 +176,11 @@ const PlaybooksPlaybookIdChapterSlugRoute =
     path: '/$playbookId/$chapterSlug',
     getParentRoute: () => PlaybooksRoute,
   } as any)
+const LibrarySlugChapterSlugRoute = LibrarySlugChapterSlugRouteImport.update({
+  id: '/$chapterSlug',
+  path: '/$chapterSlug',
+  getParentRoute: () => LibrarySlugRoute,
+} as any)
 const ExecutiveKbKbIdChapterSlugRoute =
   ExecutiveKbKbIdChapterSlugRouteImport.update({
     id: '/$kbId/$chapterSlug',
@@ -177,7 +201,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
   '/executive-kb': typeof ExecutiveKbRouteWithChildren
-  '/library': typeof LibraryRoute
+  '/library': typeof LibraryRouteWithChildren
   '/playbook': typeof PlaybookRouteWithChildren
   '/playbooks': typeof PlaybooksRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -186,16 +210,20 @@ export interface FileRoutesByFullPath {
   '/use-cases': typeof UseCasesRouteWithChildren
   '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
+  '/library/$slug': typeof LibrarySlugRouteWithChildren
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRouteWithChildren
   '/ai-literacy/': typeof AiLiteracyIndexRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
+  '/library/': typeof LibraryIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
   '/use-cases/': typeof UseCasesIndexRoute
   '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
+  '/library/$slug/$chapterSlug': typeof LibrarySlugChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
   '/use-cases/$slug/$chapterSlug': typeof UseCasesSlugChapterSlugRoute
+  '/library/$slug/': typeof LibrarySlugIndexRoute
   '/use-cases/$slug/': typeof UseCasesSlugIndexRoute
 }
 export interface FileRoutesByTo {
@@ -203,7 +231,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
-  '/library': typeof LibraryRoute
   '/playbook': typeof PlaybookRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -213,12 +240,15 @@ export interface FileRoutesByTo {
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/ai-literacy': typeof AiLiteracyIndexRoute
   '/executive-kb': typeof ExecutiveKbIndexRoute
+  '/library': typeof LibraryIndexRoute
   '/playbooks': typeof PlaybooksIndexRoute
   '/use-cases': typeof UseCasesIndexRoute
   '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
+  '/library/$slug/$chapterSlug': typeof LibrarySlugChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
   '/use-cases/$slug/$chapterSlug': typeof UseCasesSlugChapterSlugRoute
+  '/library/$slug': typeof LibrarySlugIndexRoute
   '/use-cases/$slug': typeof UseCasesSlugIndexRoute
 }
 export interface FileRoutesById {
@@ -229,7 +259,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/creator': typeof CreatorRoute
   '/executive-kb': typeof ExecutiveKbRouteWithChildren
-  '/library': typeof LibraryRoute
+  '/library': typeof LibraryRouteWithChildren
   '/playbook': typeof PlaybookRouteWithChildren
   '/playbooks': typeof PlaybooksRouteWithChildren
   '/privacy-policy': typeof PrivacyPolicyRoute
@@ -238,16 +268,20 @@ export interface FileRoutesById {
   '/use-cases': typeof UseCasesRouteWithChildren
   '/ai-literacy/$track': typeof AiLiteracyTrackRoute
   '/executive-kb/$track': typeof ExecutiveKbTrackRoute
+  '/library/$slug': typeof LibrarySlugRouteWithChildren
   '/playbook/$slug': typeof PlaybookSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRouteWithChildren
   '/ai-literacy/': typeof AiLiteracyIndexRoute
   '/executive-kb/': typeof ExecutiveKbIndexRoute
+  '/library/': typeof LibraryIndexRoute
   '/playbooks/': typeof PlaybooksIndexRoute
   '/use-cases/': typeof UseCasesIndexRoute
   '/ai-literacy/$kbId/$chapterSlug': typeof AiLiteracyKbIdChapterSlugRoute
   '/executive-kb/$kbId/$chapterSlug': typeof ExecutiveKbKbIdChapterSlugRoute
+  '/library/$slug/$chapterSlug': typeof LibrarySlugChapterSlugRoute
   '/playbooks/$playbookId/$chapterSlug': typeof PlaybooksPlaybookIdChapterSlugRoute
   '/use-cases/$slug/$chapterSlug': typeof UseCasesSlugChapterSlugRoute
+  '/library/$slug/': typeof LibrarySlugIndexRoute
   '/use-cases/$slug/': typeof UseCasesSlugIndexRoute
 }
 export interface FileRouteTypes {
@@ -268,16 +302,20 @@ export interface FileRouteTypes {
     | '/use-cases'
     | '/ai-literacy/$track'
     | '/executive-kb/$track'
+    | '/library/$slug'
     | '/playbook/$slug'
     | '/use-cases/$slug'
     | '/ai-literacy/'
     | '/executive-kb/'
+    | '/library/'
     | '/playbooks/'
     | '/use-cases/'
     | '/ai-literacy/$kbId/$chapterSlug'
     | '/executive-kb/$kbId/$chapterSlug'
+    | '/library/$slug/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
     | '/use-cases/$slug/$chapterSlug'
+    | '/library/$slug/'
     | '/use-cases/$slug/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -285,7 +323,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/creator'
-    | '/library'
     | '/playbook'
     | '/privacy-policy'
     | '/sitemap.xml'
@@ -295,12 +332,15 @@ export interface FileRouteTypes {
     | '/playbook/$slug'
     | '/ai-literacy'
     | '/executive-kb'
+    | '/library'
     | '/playbooks'
     | '/use-cases'
     | '/ai-literacy/$kbId/$chapterSlug'
     | '/executive-kb/$kbId/$chapterSlug'
+    | '/library/$slug/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
     | '/use-cases/$slug/$chapterSlug'
+    | '/library/$slug'
     | '/use-cases/$slug'
   id:
     | '__root__'
@@ -319,16 +359,20 @@ export interface FileRouteTypes {
     | '/use-cases'
     | '/ai-literacy/$track'
     | '/executive-kb/$track'
+    | '/library/$slug'
     | '/playbook/$slug'
     | '/use-cases/$slug'
     | '/ai-literacy/'
     | '/executive-kb/'
+    | '/library/'
     | '/playbooks/'
     | '/use-cases/'
     | '/ai-literacy/$kbId/$chapterSlug'
     | '/executive-kb/$kbId/$chapterSlug'
+    | '/library/$slug/$chapterSlug'
     | '/playbooks/$playbookId/$chapterSlug'
     | '/use-cases/$slug/$chapterSlug'
+    | '/library/$slug/'
     | '/use-cases/$slug/'
   fileRoutesById: FileRoutesById
 }
@@ -339,7 +383,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CreatorRoute: typeof CreatorRoute
   ExecutiveKbRoute: typeof ExecutiveKbRouteWithChildren
-  LibraryRoute: typeof LibraryRoute
+  LibraryRoute: typeof LibraryRouteWithChildren
   PlaybookRoute: typeof PlaybookRouteWithChildren
   PlaybooksRoute: typeof PlaybooksRouteWithChildren
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
@@ -455,6 +499,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybooksIndexRouteImport
       parentRoute: typeof PlaybooksRoute
     }
+    '/library/': {
+      id: '/library/'
+      path: '/'
+      fullPath: '/library/'
+      preLoaderRoute: typeof LibraryIndexRouteImport
+      parentRoute: typeof LibraryRoute
+    }
     '/executive-kb/': {
       id: '/executive-kb/'
       path: '/'
@@ -483,6 +534,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaybookSlugRouteImport
       parentRoute: typeof PlaybookRoute
     }
+    '/library/$slug': {
+      id: '/library/$slug'
+      path: '/$slug'
+      fullPath: '/library/$slug'
+      preLoaderRoute: typeof LibrarySlugRouteImport
+      parentRoute: typeof LibraryRoute
+    }
     '/executive-kb/$track': {
       id: '/executive-kb/$track'
       path: '/$track'
@@ -504,6 +562,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseCasesSlugIndexRouteImport
       parentRoute: typeof UseCasesSlugRoute
     }
+    '/library/$slug/': {
+      id: '/library/$slug/'
+      path: '/'
+      fullPath: '/library/$slug/'
+      preLoaderRoute: typeof LibrarySlugIndexRouteImport
+      parentRoute: typeof LibrarySlugRoute
+    }
     '/use-cases/$slug/$chapterSlug': {
       id: '/use-cases/$slug/$chapterSlug'
       path: '/$chapterSlug'
@@ -517,6 +582,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/playbooks/$playbookId/$chapterSlug'
       preLoaderRoute: typeof PlaybooksPlaybookIdChapterSlugRouteImport
       parentRoute: typeof PlaybooksRoute
+    }
+    '/library/$slug/$chapterSlug': {
+      id: '/library/$slug/$chapterSlug'
+      path: '/$chapterSlug'
+      fullPath: '/library/$slug/$chapterSlug'
+      preLoaderRoute: typeof LibrarySlugChapterSlugRouteImport
+      parentRoute: typeof LibrarySlugRoute
     }
     '/executive-kb/$kbId/$chapterSlug': {
       id: '/executive-kb/$kbId/$chapterSlug'
@@ -566,6 +638,33 @@ const ExecutiveKbRouteChildren: ExecutiveKbRouteChildren = {
 const ExecutiveKbRouteWithChildren = ExecutiveKbRoute._addFileChildren(
   ExecutiveKbRouteChildren,
 )
+
+interface LibrarySlugRouteChildren {
+  LibrarySlugChapterSlugRoute: typeof LibrarySlugChapterSlugRoute
+  LibrarySlugIndexRoute: typeof LibrarySlugIndexRoute
+}
+
+const LibrarySlugRouteChildren: LibrarySlugRouteChildren = {
+  LibrarySlugChapterSlugRoute: LibrarySlugChapterSlugRoute,
+  LibrarySlugIndexRoute: LibrarySlugIndexRoute,
+}
+
+const LibrarySlugRouteWithChildren = LibrarySlugRoute._addFileChildren(
+  LibrarySlugRouteChildren,
+)
+
+interface LibraryRouteChildren {
+  LibrarySlugRoute: typeof LibrarySlugRouteWithChildren
+  LibraryIndexRoute: typeof LibraryIndexRoute
+}
+
+const LibraryRouteChildren: LibraryRouteChildren = {
+  LibrarySlugRoute: LibrarySlugRouteWithChildren,
+  LibraryIndexRoute: LibraryIndexRoute,
+}
+
+const LibraryRouteWithChildren =
+  LibraryRoute._addFileChildren(LibraryRouteChildren)
 
 interface PlaybookRouteChildren {
   PlaybookSlugRoute: typeof PlaybookSlugRoute
@@ -628,7 +727,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CreatorRoute: CreatorRoute,
   ExecutiveKbRoute: ExecutiveKbRouteWithChildren,
-  LibraryRoute: LibraryRoute,
+  LibraryRoute: LibraryRouteWithChildren,
   PlaybookRoute: PlaybookRouteWithChildren,
   PlaybooksRoute: PlaybooksRouteWithChildren,
   PrivacyPolicyRoute: PrivacyPolicyRoute,

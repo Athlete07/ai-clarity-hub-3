@@ -4,7 +4,9 @@ import { ShareMenu } from "@/components/share-menu";
 import { LandingPageShell } from "@/components/home/landing-page-shell";
 import { LandingSectionLabel } from "@/components/home/landing-ui";
 import { ExplainParagraph } from "@/components/use-cases/explain-text";
+import { ContentAttribution } from "@/components/creator-attribution";
 import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
+import { contentAuthorJsonLd, attributionFromPlaybook } from "@/lib/content-attribution";
 import { PLAYBOOK_KIND_LABELS } from "@/lib/playbook-repository/taxonomy";
 import type { UseCaseProgress } from "@/lib/use-case-storage";
 import {
@@ -27,6 +29,7 @@ export function guideCourseJsonLd(
     name: playbook.title,
     description: playbook.summary,
     url: `${siteOrigin}${guideOverviewPath(playbook.slug)}`,
+    author: contentAuthorJsonLd(attributionFromPlaybook(playbook)),
     provider: { "@type": "Organization", name: "FactorBeam" },
     hasCourseInstance: {
       "@type": "CourseInstance",
@@ -82,7 +85,7 @@ function ChapterArticleCard({
 
   return (
     <Link
-      to="/use-cases/$slug/$chapterSlug"
+      to="/library/$slug/$chapterSlug"
       params={{ slug: playbookSlug, chapterSlug: chapter.slug }}
       className="landing-surface-card landing-surface-card-hover group flex flex-col rounded-2xl p-5 sm:p-6"
     >
@@ -136,7 +139,7 @@ export function GuidePlaybookOverview({
       <header className="playbook-detail-hero relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-5 pb-14 pt-28 sm:px-8 sm:pb-16 sm:pt-32 lg:px-12">
           <Link
-            to="/use-cases"
+            to="/library"
             className="inline-flex items-center gap-1.5 text-[13px] font-medium text-white/60 transition-colors hover:text-white"
           >
             ← {PLAYBOOK_REPOSITORY.backShort}
@@ -177,7 +180,7 @@ export function GuidePlaybookOverview({
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
-              to="/use-cases/$slug/$chapterSlug"
+              to="/library/$slug/$chapterSlug"
               params={{ slug: playbook.slug, chapterSlug: first.slug }}
               className="landing-cta-on-aurora inline-flex items-center gap-2"
             >
@@ -267,6 +270,13 @@ export function GuidePlaybookOverview({
           </section>
         ) : null}
 
+        <section className="mx-auto max-w-3xl px-5 pb-8 sm:px-8 lg:px-12">
+          <ContentAttribution
+            variant="compact"
+            override={attributionFromPlaybook(playbook)}
+          />
+        </section>
+
         <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8 sm:pb-32 lg:px-12">
           <div className="catalog-methodology flex flex-col items-center p-10 text-center sm:p-14">
             <div className="catalog-methodology-aurora" aria-hidden />
@@ -279,7 +289,7 @@ export function GuidePlaybookOverview({
                 your bottleneck — each one stands alone.
               </p>
               <Link
-                to="/use-cases/$slug/$chapterSlug"
+                to="/library/$slug/$chapterSlug"
                 params={{ slug: playbook.slug, chapterSlug: first.slug }}
                 className="landing-cta-on-aurora mt-8 inline-flex items-center gap-2"
               >
@@ -303,7 +313,7 @@ export function guideOverviewHead(playbook: UseCasePlaybook) {
 
   return {
     meta: [
-      { title: `${playbook.title} — Complete guide | FactorBeam` },
+      { title: `${playbook.title} | FactorBeam` },
       { name: "description", content: description },
       { property: "og:title", content: playbook.title },
       { property: "og:description", content: description },

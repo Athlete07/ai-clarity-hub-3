@@ -7,7 +7,7 @@ import { ExampleTabs } from "@/components/example-tabs";
 import { HighlightExplainer } from "@/components/highlight-explainer";
 import { Quiz } from "@/components/quiz";
 import { DiagramBlock } from "@/components/diagrams";
-import { CreatorAttribution } from "@/components/creator-attribution";
+import { ContentAttribution } from "@/components/creator-attribution";
 import { CommentsSection } from "@/components/use-cases/comments-section";
 import {
   LiteracyChapterJumpLinks,
@@ -524,7 +524,7 @@ function ConceptPage() {
 
             {/* Author attribution */}
             <div className="mt-14">
-              <CreatorAttribution />
+              <ContentAttribution />
             </div>
 
             <nav

@@ -19,7 +19,7 @@ export function PlaybookCard({
 
   return (
     <Link
-      to="/use-cases/$slug"
+      to="/library/$slug"
       params={{ slug: playbook.slug }}
       className={`playbook-row-card group flex flex-col gap-4 rounded-2xl border border-border bg-card p-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-8 ${
         featured ? "sm:p-10" : ""

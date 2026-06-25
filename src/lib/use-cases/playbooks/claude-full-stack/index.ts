@@ -15,9 +15,9 @@ const SERIES_ID = "claude-full-stack";
 
 export const CLAUDE_FULL_STACK: UseCasePlaybook = {
   slug: "claude-full-stack",
-  title: "The Complete Claude Playbook",
+  title: "Claude in Production: MCP, Code, and the Practitioner's Roadmap",
   summary:
-    "Stop guessing at Claude. Ten chapters take you from mental model to production workflows — pricing, Projects, MCP, Claude Code, Agent Skills, and the traps nobody warns you about.",
+    "Stop treating Claude like a chatbot with a billing page. Ten chapters take you from mental model to MCP, Claude Code, Agent Skills, and production workflows — the stack practitioners ship, not the hype cycle vendors sell.",
   heroBullets: [
     "10 chapters · read in order or jump to the bottleneck that’s costing you time",
     "Claude.ai → MCP → Claude Code → Agent Skills — one arc, not scattered blog posts",
@@ -118,7 +118,7 @@ export const CLAUDE_FULL_STACK: UseCasePlaybook = {
   guide: {
     series: {
       id: SERIES_ID,
-      title: "Claude — The Full Stack Decoded",
+      title: "Claude in Production: MCP, Code, and the Practitioner's Roadmap",
       subtitle:
         "Mental model → Claude.ai → MCP → Claude Code → Agent Skills → production workflows. Ten chapters. One stack.",
     },

@@ -18,11 +18,11 @@ export const AI_LITERACY = {
 /** Primary repository — workflows, playbooks, and future migrated AI Literacy content. */
 export const PLAYBOOK_REPOSITORY = {
   name: "Playbook Library",
-  navLabel: "Playbook Library",
+  navLabel: "Library",
   shortLabel: "Library",
-  href: "/use-cases" as const,
-  /** Friendly alias — redirects to href. */
-  aliasHref: "/library" as const,
+  href: "/library" as const,
+  /** Legacy URL — redirects to href. */
+  aliasHref: "/use-cases" as const,
   browse: "Browse the library",
   explore: "Explore the library",
   back: "Back to library",

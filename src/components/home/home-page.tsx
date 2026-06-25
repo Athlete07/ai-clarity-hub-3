@@ -103,7 +103,7 @@ export function HomePage({
             {guidePlaybooks.map((playbook, i) => (
                 <Link
                   key={playbook.slug}
-                  to="/use-cases/$slug"
+                  to="/library/$slug"
                   params={{ slug: playbook.slug }}
                   className={cn(
                     "landing-playbook-spotlight group",

@@ -77,6 +77,11 @@ export type UseCasePlaybook = {
   featured?: boolean;
   /** Short badge on catalog cards — e.g. "New · Complete guide". */
   catalogBadge?: string;
+  /** Optional domain reviewer — defaults to platform curator in attribution UI. */
+  attribution?: {
+    reviewerName?: string;
+    reviewerTitle?: string;
+  };
   searchKeywords: string[];
   /** Multi-chapter guide. Chapters live at /use-cases/{slug}/{chapterSlug}. */
   guide?: GuidePlaybook;

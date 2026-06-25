@@ -1082,11 +1082,11 @@
   color: rgb(255 255 255 / 0.55);
 }
 
-.playbook-detail-hero a {
+.playbook-detail-hero a:not(.landing-cta-on-aurora):not(.landing-cta-ghost-on-aurora) {
   color: rgb(255 255 255 / 0.7);
 }
 
-.playbook-detail-hero a:hover {
+.playbook-detail-hero a:not(.landing-cta-on-aurora):not(.landing-cta-ghost-on-aurora):hover {
   color: white;
 }
 

@@ -12,9 +12,9 @@ const SERIES_ID = "cowork-coo";
 
 export const COWORK_COO: UseCasePlaybook = {
   slug: "cowork-coo",
-  title: "The Complete Cowork Playbook",
+  title: "Cowork Beyond Chat: The Operator's Guide to Scheduled AI Automation",
   summary:
-    "Stop re-running the same file chores every Sunday night. Seven chapters take you from mental model to scheduled Skills, Gmail-and-Slack connectors, production gates, and 24 copy-paste workflow blueprints — the ops guide Anthropic doesn't ship.",
+    "Stop re-running the same file chores every Sunday night. Seven chapters take you from mental model to scheduled Skills, Gmail-and-Slack connectors, production gates, and 24 workflow blueprints — autonomous ops when the chat window closes.",
   heroBullets: [
     "7 chapters · ~15 hr read · 24 workflow blueprints you can run this week",
     "Skills, native schedules, MCP, and audit gates — one arc from sandbox to production",
@@ -23,7 +23,7 @@ export const COWORK_COO: UseCasePlaybook = {
   kind: "tool-guide",
   categoryId: "automation",
   featured: true,
-  catalogBadge: "New · Complete guide",
+  catalogBadge: "New · Operator guide",
   tags: [
     "7 Chapters",
     "24 Blueprints",
@@ -102,7 +102,7 @@ export const COWORK_COO: UseCasePlaybook = {
   guide: {
     series: {
       id: SERIES_ID,
-      title: "The Complete Cowork Playbook",
+      title: "Cowork Beyond Chat: The Operator's Guide to Scheduled AI Automation",
       subtitle:
         "Your COO on a hard drive — mental model → Skills → autopilot schedules → connected workflows → production ops. Seven chapters. One operator stack.",
     },
@@ -123,7 +123,7 @@ export const COWORK_COO: UseCasePlaybook = {
       "Anthropic's desktop automation product — Claude with filesystem access, schedules, Skills, and workflow history.",
     ),
     " is how operators turn recurring file work into infrastructure instead of one-off chats.",
-    " This playbook matches the depth of our Claude Full Stack guide: seven chapters, native product surface (Plugins, Dispatch, Chrome), and artifacts you can paste into your ops wiki today.",
+    " This playbook matches the depth of our Claude in Production guide: seven chapters, native product surface (Plugins, Dispatch, Chrome), and artifacts you can paste into your ops wiki today.",
   ],
   decisionCriteria: [
     {
