@@ -1,6 +1,7 @@
 import { CLAUDE_FULL_STACK } from "./playbooks/claude-full-stack";
 import { COWORK_COO } from "./playbooks/cowork-coo";
 import { AI_CUSTOMER_QUERY_TRIAGE } from "./playbooks/ai-customer-query-triage";
+import { SERVICENOW_AI } from "./playbooks/servicenow-ai";
 import type { UseCasePlaybook } from "./types";
 import {
   guideChapterBySlug,
@@ -9,6 +10,7 @@ import {
 } from "./guide-helpers";
 
 export const USE_CASE_PLAYBOOKS: UseCasePlaybook[] = [
+  SERVICENOW_AI,
   CLAUDE_FULL_STACK,
   COWORK_COO,
   AI_CUSTOMER_QUERY_TRIAGE,
