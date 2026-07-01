@@ -37,11 +37,6 @@ export function GuideChapterNav({
       <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
         {series.title}
       </p>
-      {series.subtitle && (
-        <p className="mt-1 text-[12px] leading-snug text-muted-foreground">
-          {series.subtitle}
-        </p>
-      )}
       <ol className={cn("mt-4 space-y-0.5", !isSidebar && "sm:grid sm:grid-cols-2 sm:gap-2 sm:space-y-0")}>
         {chapters.map((chapter) => {
           const active = chapter.slug === currentChapterSlug;

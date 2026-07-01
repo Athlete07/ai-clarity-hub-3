@@ -1094,6 +1094,12 @@
   color: white;
 }
 
+/* Audio synopsis on dark playbook hero — explicit contrast (not inherited foreground) */
+.playbook-detail-hero .guide-audio-brief-on-hero .guide-audio-brief-play {
+  background: white;
+  color: #1a1530;
+}
+
 .dark .playbook-detail-hero {
   background:
     radial-gradient(ellipse 120% 80% at 50% -10%, rgb(83 74 183 / 0.35), transparent 55%),

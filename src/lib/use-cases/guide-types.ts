@@ -40,6 +40,13 @@ export type GuideDiagram = {
   steps: ArchitectureStep[];
 };
 
+/** Optional chapter audio brief — auto-generated when omitted. */
+export type GuideAudioBrief = {
+  transcript: string;
+  src: string;
+  durationSeconds?: number;
+};
+
 /** One chapter inside a multi-chapter guide playbook. */
 export type GuideChapter = {
   slug: string;
@@ -52,6 +59,8 @@ export type GuideChapter = {
   diagrams: GuideDiagram[];
   mindmap?: MindmapDef;
   readingMinutes?: number;
+  /** Optional custom audio brief; otherwise built from chapter metadata. */
+  audioBrief?: GuideAudioBrief;
   businessContext: (string | ExplainSpan)[];
   decisionCriteria: DecisionCriterion[];
   architecture: {

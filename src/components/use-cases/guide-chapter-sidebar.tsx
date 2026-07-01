@@ -74,9 +74,6 @@ export function GuideChapterSidebar({
       </Link>
 
       <p className="text-[13px] font-medium leading-snug text-foreground">{series.title}</p>
-      {series.subtitle && (
-        <p className="mt-1 text-[12px] leading-snug text-muted-foreground">{series.subtitle}</p>
-      )}
 
       <div className="mt-4">
         <div className="flex items-center justify-between text-[10px] text-muted-foreground">

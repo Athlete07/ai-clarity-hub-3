@@ -7,6 +7,7 @@ import {
   contentPublisherJsonLd,
   SITE_ORIGIN,
 } from "@/lib/content-attribution";
+import { resolveChapterAudioBrief } from "@/lib/use-cases/audio-brief";
 import {
   firstGuideChapter,
   guideChapterPath,
@@ -188,6 +189,8 @@ export function guideChapterHead(
   const total = playbook.guide.chapters.length;
   const pageTitle = `${chapter.title} — Ch ${chapter.number} of ${total} | ${playbook.title}`;
   const description = `${chapter.subtitle} Standalone article from ${playbook.title} (chapter ${chapter.number} of ${total}).`;
+  const audioBrief = resolveChapterAudioBrief(playbook.slug, playbook.title, chapter);
+  const articleUrl = `${SITE_ORIGIN}${guideChapterPath(playbook.slug, chapter.slug)}`;
 
   return {
     meta: [
@@ -205,6 +208,23 @@ export function guideChapterHead(
       {
         type: "application/ld+json",
         children: JSON.stringify(guideArticleJsonLd(playbook, chapter)),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AudioObject",
+          name: `${chapter.title} — chapter brief`,
+          description: `Audio brief for chapter ${chapter.number} of ${playbook.title}.`,
+          contentUrl: `${SITE_ORIGIN}${audioBrief.src}`,
+          encodingFormat: "audio/mpeg",
+          duration: `PT${audioBrief.durationSeconds}S`,
+          inLanguage: "en",
+          transcript: audioBrief.transcript,
+          url: articleUrl,
+          author: contentAuthorJsonLd(attributionFromPlaybook(playbook)),
+          publisher: contentPublisherJsonLd(),
+        }),
       },
     ],
   };

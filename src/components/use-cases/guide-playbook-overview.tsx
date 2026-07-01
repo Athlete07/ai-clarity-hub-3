@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, Check, Clock } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Clock, Headphones } from "lucide-react";
 import { ShareMenu } from "@/components/share-menu";
 import { LandingPageShell } from "@/components/home/landing-page-shell";
 import { LandingSectionLabel } from "@/components/home/landing-ui";
+import { GuideAudioBriefPlayer } from "@/components/use-cases/guide-audio-brief-player";
 import { ExplainParagraph } from "@/components/use-cases/explain-text";
 import { ContentAttribution } from "@/components/creator-attribution";
 import { PLAYBOOK_REPOSITORY, brandOgMeta } from "@/lib/brand";
@@ -16,6 +17,7 @@ import {
   guideProgressKey,
   totalGuideReadingMinutes,
 } from "@/lib/use-cases/guide-helpers";
+import { resolvePlaybookOverviewAudioBrief } from "@/lib/use-cases/audio-brief";
 import type { GuideChapter } from "@/lib/use-cases/guide-types";
 import type { UseCasePlaybook } from "@/lib/use-cases/types";
 
@@ -109,10 +111,19 @@ function ChapterArticleCard({
         {chapter.subtitle}
       </p>
       {chapter.readingMinutes ? (
-        <p className="mt-4 text-[11px] font-medium uppercase tracking-wider text-muted-foreground/80">
-          ~{chapter.readingMinutes} min · standalone article
+        <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium uppercase tracking-wider text-muted-foreground/80">
+          <span>~{chapter.readingMinutes} min · standalone article</span>
+          <span className="inline-flex items-center gap-1 normal-case tracking-normal">
+            <Headphones size={12} aria-hidden />
+            Audio synopsis
+          </span>
         </p>
-      ) : null}
+      ) : (
+        <p className="mt-4 inline-flex items-center gap-1 text-[11px] font-medium text-muted-foreground/80">
+          <Headphones size={12} aria-hidden />
+          Audio synopsis available
+        </p>
+      )}
     </Link>
   );
 }
@@ -133,6 +144,7 @@ export function GuidePlaybookOverview({
   const pct = guide.chapters.length
     ? Math.round((doneCount / guide.chapters.length) * 100)
     : 0;
+  const overviewAudioBrief = resolvePlaybookOverviewAudioBrief(playbook);
 
   return (
     <LandingPageShell>
@@ -177,6 +189,22 @@ export function GuidePlaybookOverview({
           ) : null}
 
           <GuideMetaGrid playbook={playbook} />
+
+          {overviewAudioBrief ? (
+            <GuideAudioBriefPlayer
+              className="mt-8 max-w-2xl"
+              variant="onDark"
+              synopsisKind="playbook"
+              title={playbook.title}
+              transcript={overviewAudioBrief.transcript}
+              paragraphs={overviewAudioBrief.paragraphs}
+              tier={overviewAudioBrief.tier}
+              src={overviewAudioBrief.src}
+              durationSeconds={overviewAudioBrief.durationSeconds}
+              label={overviewAudioBrief.label}
+              fullReadMinutes={totalMinutes}
+            />
+          ) : null}
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
@@ -232,11 +260,6 @@ export function GuidePlaybookOverview({
                 Every chapter is a
                 <em className="landing-headline-italic"> standalone article.</em>
               </h2>
-              {guide.series.subtitle ? (
-                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
-                  {guide.series.subtitle}
-                </p>
-              ) : null}
             </div>
             {totalMinutes ? (
               <p className="inline-flex items-center gap-1.5 text-[13px] text-muted-foreground">

@@ -14,7 +14,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "audio:manifest": "tsx scripts/export-audio-brief-manifest.ts",
+    "audio:generate": "tsx scripts/generate-audio-briefs.ts",
+    "audio:briefs": "npm run audio:manifest && npm run audio:generate -- --force"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.40.2",
@@ -44,6 +47,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "edge-tts-universal": "^1.4.0",
     "eslint": "^9.32.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
@@ -52,6 +56,7 @@
     "globals": "^15.15.0",
     "prettier": "^3.7.3",
     "sharp": "^0.35.1",
+    "tsx": "^4.22.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "^8.0.16",

@@ -1,0 +1,309 @@
+{
+  "pages": [
+    {
+      "path": "/"
+    },
+    {
+      "path": "/about"
+    },
+    {
+      "path": "/ai-literacy"
+    },
+    {
+      "path": "/contact"
+    },
+    {
+      "path": "/creator"
+    },
+    {
+      "path": "/executive-kb"
+    },
+    {
+      "path": "/library"
+    },
+    {
+      "path": "/playbooks"
+    },
+    {
+      "path": "/privacy-policy"
+    },
+    {
+      "path": "/terms-of-service"
+    },
+    {
+      "path": "/use-cases"
+    },
+    {
+      "path": "/ai-literacy/"
+    },
+    {
+      "path": "/library/"
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/ai-vs-ml-vs-deep-learning",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy?track=pm",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy?track=founder",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy?track=business-leader",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy?track=marketer",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-ai-vs-ml-vs-deep-learning",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-ai-vs-ml-vs-dl-business-lens",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-ai-marketers-mental-model",
+      "fromCrawl": true
+    },
+    {
+      "path": "/about#editorial-methodology",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch01-mental-model",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch02-plans-pricing",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch03-interface-power-user",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch04-prompting",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch05-memory-context",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch06-projects",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch07-mcp",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch08-claude-code",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch09-production-workflows",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/claude-full-stack/ch10-power-user-hacks",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch01-mental-model",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch02-now-assist",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch03-ai-search",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch04-predictive-intelligence",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch05-ai-agents",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch06-virtual-agent",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch07-process-automation",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch08-llm-integration",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch09-architecture-security-deployment",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/servicenow-ai/ch10-future-career-mastery",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch01-understanding-cowork",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch02-skills-tar-framework",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch03-scheduling-autopilot",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch04-mcp-connected-automation",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch05-production-operations",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch06-workflow-blueprints",
+      "fromCrawl": true
+    },
+    {
+      "path": "/library/cowork-coo/ch07-product-surface-power-user",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/how-models-learn",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/training-vs-inference",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/data-and-labels",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/probability-and-confidence",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/model-evaluation",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/pm-foundations/bias-and-hallucination",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-how-models-learn",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-training-vs-inference",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-data-competitive-advantage",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-probability-confidence",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-model-evaluation",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-bias-hallucination-liability",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-founders/founder-ai-landscape",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-how-models-learn-marketing",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-ai-marketing-tool-landscape",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-prompting-for-marketers",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-brand-voice-age-of-ai",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-ai-ethics-responsible-marketing",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-measuring-ai-marketing-impact",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-marketers/mkt-ai-marketing-mindset",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-how-models-learn-for-function",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-training-vs-inference-cost",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-data-as-business-asset",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-probability-confidence-ai-risk",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-model-evaluation-leaders",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-bias-hallucination-liability",
+      "fromCrawl": true
+    },
+    {
+      "path": "/ai-literacy/ai-fundamentals-for-business-leaders/bl-ai-landscape-vendor-structure",
+      "fromCrawl": true
+    }
+  ],
+  "host": "https://www.factorbeam.com",
+  "lastBuilt": "2026-06-25T17:44:43.029Z"
+}

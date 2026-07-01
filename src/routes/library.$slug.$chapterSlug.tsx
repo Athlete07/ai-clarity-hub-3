@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Check, Clock } from "lucide-react";
 import { ShareMenu } from "@/components/share-menu";
 import { ContentAttribution } from "@/components/creator-attribution";
+import { GuideAudioBriefPlayer } from "@/components/use-cases/guide-audio-brief-player";
 import { CommentsSection } from "@/components/use-cases/comments-section";
 import { ExplainParagraph } from "@/components/use-cases/explain-text";
 import { GuideChapterPager } from "@/components/use-cases/guide-chapter-nav";
@@ -25,6 +26,7 @@ import {
 } from "@/lib/use-cases/guide-helpers";
 import { PLAYBOOK_KIND_LABELS } from "@/lib/playbook-repository/taxonomy";
 import { attributionFromPlaybook } from "@/lib/content-attribution";
+import { resolveChapterAudioBrief } from "@/lib/use-cases/audio-brief";
 import { loadGuideChapter } from "@/lib/use-cases/registry";
 
 export const Route = createFileRoute("/library/$slug/$chapterSlug")({
@@ -51,6 +53,7 @@ function GuideChapterPage() {
   const tocItems = buildGuideChapterToc(chapter);
   const prev = prevGuideChapter(playbook, chapter.slug);
   const next = nextGuideChapter(playbook, chapter.slug);
+  const audioBrief = resolveChapterAudioBrief(playbook.slug, playbook.title, chapter);
 
   useEffect(() => {
     markInProgress(progressKey);
@@ -99,6 +102,18 @@ function GuideChapterPage() {
       <p className="mt-5 border-t border-border/60 pt-5 text-[16px] leading-relaxed text-muted-foreground">
         {chapter.subtitle}
       </p>
+
+      <GuideAudioBriefPlayer
+        className="mt-6"
+        title={`Chapter ${chapter.number}: ${chapter.title}`}
+        transcript={audioBrief.transcript}
+        paragraphs={audioBrief.paragraphs}
+        tier={audioBrief.tier}
+        src={audioBrief.src}
+        durationSeconds={audioBrief.durationSeconds}
+        label={audioBrief.label}
+        fullReadMinutes={chapter.readingMinutes}
+      />
     </header>
   );
 
