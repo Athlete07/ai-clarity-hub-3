@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "node scripts/generate-ads-txt.mjs && node scripts/generate-favicons.mjs && vite build",
-    "build:deploy": "node scripts/generate-ads-txt.mjs && node scripts/generate-favicons.mjs && vite build && node scripts/package-static-deploy.mjs",
+    "build:deploy": "node scripts/generate-ads-txt.mjs && node scripts/generate-favicons.mjs && vite build && node scripts/package-static-deploy.mjs && node scripts/verify-deploy-assets.mjs",
     "ads:txt": "node scripts/generate-ads-txt.mjs",
     "favicons": "node scripts/generate-favicons.mjs",
     "build:dev": "vite build --mode development",

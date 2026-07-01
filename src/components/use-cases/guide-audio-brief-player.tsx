@@ -164,6 +164,7 @@ export function GuideAudioBriefPlayer({
   };
 
   const progress = displayDuration ? (currentTime / displayDuration) * 100 : 0;
+  const darkPlayIconColor = "#1a1530";
 
   return (
     <section
@@ -253,9 +254,22 @@ export function GuideAudioBriefPlayer({
               ? "guide-audio-brief-play bg-white text-[#1a1530] shadow-[0_2px_14px_rgba(0,0,0,0.28)] hover:scale-105 active:scale-95"
               : "bg-foreground text-background hover:opacity-90",
           )}
+          style={
+            isDark
+              ? { backgroundColor: "#ffffff", color: darkPlayIconColor }
+              : undefined
+          }
           aria-label={isPlaying ? "Pause audio brief" : "Play audio brief"}
         >
-          {isPlaying ? <Pause size={16} /> : <Play size={16} className="ml-0.5" />}
+          {isPlaying ? (
+            <Pause size={16} color={isDark ? darkPlayIconColor : undefined} />
+          ) : (
+            <Play
+              size={16}
+              className="ml-0.5"
+              color={isDark ? darkPlayIconColor : undefined}
+            />
+          )}
         </button>
 
         <div className="min-w-0 flex-1">

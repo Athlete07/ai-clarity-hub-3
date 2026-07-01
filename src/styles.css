@@ -207,10 +207,14 @@
   .site-header--slim {
     height: var(--header-height-slim);
   }
-  .site-logo {
+  .site-logo,
+  .site-logo-lockup {
     display: inline-flex;
     align-items: center;
     line-height: 1.2;
+  }
+  .beta-tag {
+    translate: 0 0.5px;
   }
   .nav-link {
     font-size: 0.875rem;
@@ -387,6 +391,12 @@
 
 .landing-nav-overlay .site-wordmark span {
   color: white !important;
+}
+
+.landing-nav-overlay .beta-tag {
+  border-color: rgb(255 255 255 / 0.3);
+  background: rgb(255 255 255 / 0.12);
+  color: rgb(255 255 255 / 0.92);
 }
 
 .landing-hero {
@@ -1094,10 +1104,20 @@
   color: white;
 }
 
-/* Audio synopsis on dark playbook hero — explicit contrast (not inherited foreground) */
+/* Audio synopsis on dark playbook hero — explicit contrast (production-safe) */
 .playbook-detail-hero .guide-audio-brief-on-hero .guide-audio-brief-play {
-  background: white;
-  color: #1a1530;
+  background: #fff !important;
+  color: #1a1530 !important;
+  opacity: 1 !important;
+}
+
+.playbook-detail-hero .guide-audio-brief-on-hero .guide-audio-brief-play svg {
+  color: #1a1530 !important;
+  stroke: #1a1530 !important;
+}
+
+.playbook-detail-hero .guide-audio-brief-on-hero .guide-audio-brief-play:hover {
+  opacity: 1 !important;
 }
 
 .dark .playbook-detail-hero {

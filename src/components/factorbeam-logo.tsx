@@ -9,6 +9,31 @@ const WORDMARK_SIZE = {
 } as const;
 
 type LogoContext = keyof typeof WORDMARK_SIZE;
+type BetaVariant = "default" | "onDark";
+
+export function BetaTag({
+  variant = "default",
+  className,
+}: {
+  variant?: BetaVariant;
+  className?: string;
+}) {
+  return (
+    <span
+      className={cn(
+        "beta-tag inline-flex shrink-0 items-center rounded border px-1.5 py-px text-[9px] font-bold uppercase leading-none tracking-[0.08em]",
+        variant === "onDark"
+          ? "border-white/30 bg-white/10 text-white/90"
+          : "border-purple/30 bg-purple/10 text-purple-dark dark:border-purple/40 dark:bg-purple/15 dark:text-purple",
+        className,
+      )}
+      title="Beta version"
+      aria-label="Beta version"
+    >
+      Beta
+    </span>
+  );
+}
 
 /** Colored wordmark only — Factor (ink) + Beam (purple). No icon image. */
 export function FactorBeamWordmark({
@@ -59,27 +84,39 @@ type LogoProps = {
   className?: string;
   showWordmark?: boolean;
   iconOnly?: boolean;
+  showBeta?: boolean;
+  betaVariant?: BetaVariant;
   /** @deprecated Use `context` instead */
   size?: number;
 };
 
-/** FactorBeam wordmark — icon image removed; colored name only. */
+/** FactorBeam wordmark with optional BETA tag — used in header and site chrome. */
 export function FactorBeamLogo({
   context = "header",
   markSize,
   className,
   showWordmark: _showWordmark = true,
   iconOnly = false,
+  showBeta = true,
+  betaVariant = "default",
   size,
 }: LogoProps) {
   const resolvedContext = iconOnly || context === "icon" ? "icon" : context;
   const fontSize = markSize ?? size;
 
   return (
-    <FactorBeamWordmark
-      context={resolvedContext}
-      className={cn(context === "header" && "site-logo", className)}
-      style={fontSize ? { fontSize } : undefined}
-    />
+    <span
+      className={cn(
+        "site-logo-lockup inline-flex items-center gap-1.5",
+        context === "header" && "site-logo",
+        className,
+      )}
+    >
+      <FactorBeamWordmark
+        context={resolvedContext}
+        style={fontSize ? { fontSize } : undefined}
+      />
+      {showBeta && BRAND.isBeta ? <BetaTag variant={betaVariant} /> : null}
+    </span>
   );
 }

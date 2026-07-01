@@ -43,6 +43,8 @@ export const SHOW_AI_LITERACY_IN_NAV = true;
 /** FactorBeam brand assets — single source of truth for logo paths. */
 export const BRAND = {
   name: "FactorBeam",
+  /** Show BETA tag beside the wordmark in site chrome. */
+  isBeta: true,
   /** Canonical production URL — used in structured data and absolute links. */
   siteUrl: "https://www.factorbeam.com",
   tagline: "Understand AI enough to ship.",

@@ -28,14 +28,23 @@ function ThemeToggle() {
   );
 }
 
-export function Logo() {
+export function Logo({
+  onDark = false,
+  className,
+}: {
+  onDark?: boolean;
+  className?: string;
+} = {}) {
   return (
     <Link
       to="/"
-      className="inline-flex shrink-0 items-center text-foreground transition-opacity hover:opacity-90"
+      className={cn(
+        "inline-flex shrink-0 items-center text-foreground transition-opacity hover:opacity-90",
+        className,
+      )}
       aria-label={`${BRAND.name} home`}
     >
-      <FactorBeamLogo context="compact" />
+      <FactorBeamLogo context="compact" betaVariant={onDark ? "onDark" : "default"} />
     </Link>
   );
 }
@@ -135,16 +144,10 @@ export function Nav({ slim = false, overlay = false }: { slim?: boolean; overlay
     >
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-4 sm:gap-6">
-          <Link
-            to="/"
-            className={cn(
-              "inline-flex shrink-0 items-center transition-opacity hover:opacity-90",
-              isOverlayTop ? "text-white" : "text-foreground",
-            )}
-            aria-label={`${BRAND.name} home`}
-          >
-            <FactorBeamLogo context="compact" />
-          </Link>
+          <Logo
+            onDark={isOverlayTop}
+            className={isOverlayTop ? "text-white" : "text-foreground"}
+          />
           {slim && (
             <Link
               to={AI_LITERACY.href}
